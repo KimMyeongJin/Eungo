@@ -1,0 +1,13 @@
+package com.eungo.util;
+
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
+
+public class Gmail extends Authenticator{
+
+	@Override
+	protected PasswordAuthentication getPasswordAuthentication() {
+		return new PasswordAuthentication("ssarmango6", "bitc5600");
+	}
+	
+}
