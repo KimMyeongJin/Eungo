@@ -3,13 +3,13 @@
     
 <!-- js -->
     <!--/slider-->
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <script src="js/jquery.zoomslider.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery-1.11.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/modernizr-2.6.2.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery.zoomslider.min.js"></script>
     <!--//slider-->
     <!--search jQuery-->
-    <script src="js/classie-search.js"></script>
-    <script src="js/demo1-search.js"></script>
+    <script src="<%=request.getContextPath() %>/js/classie-search.js"></script>
+    <script src="<%=request.getContextPath() %>/js/demo1-search.js"></script>
     <!--//search jQuery-->
 
     <script>
@@ -48,18 +48,18 @@
     <!-- //password-script -->
 
     <!-- stats -->
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.countup.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery.waypoints.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery.countup.js"></script>
     <script>
         $('.counter').countUp();
     </script>
     <!-- //stats -->
 
     <!-- //js -->
-    <script src="js/bootstrap.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.js"></script>
     <!--/ start-smoth-scrolling -->
-    <script src="js/move-top.js"></script>
-    <script src="js/easing.js"></script>
+    <script src="<%=request.getContextPath() %>/js/move-top.js"></script>
+    <script src="<%=request.getContextPath() %>/js/easing.js"></script>
     <script>
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event) {

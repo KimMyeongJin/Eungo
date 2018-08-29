@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
     <script>
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
@@ -9,11 +10,11 @@
             window.scrollTo(0, 1);
         }
     </script>
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="css/zoomslider.css" rel='stylesheet' type='text/css' />
-    <link href="css/style6.css" rel='stylesheet' type='text/css' />
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="<%=request.getContextPath() %>/css/zoomslider.css" rel='stylesheet' type='text/css' />
+    <link href="<%=request.getContextPath() %>/css/style6.css" rel='stylesheet' type='text/css' />
+    <link href="<%=request.getContextPath() %>/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="<%=request.getContextPath() %>/css/fontawesome-all.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
     
