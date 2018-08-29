@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% String cp = request.getContextPath(); %> <%--ContextPath 선언 --%>
+<%
+		String cp = request.getContextPath(); //--ContextPath 선언 --
+		String id = null;
+		if(request.getParameter("id")!= null){
+						id = request.getParameter("id");
+		}
+%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -18,6 +24,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
+  	}
+})();
+</script>
+<script>
+(function(){
+if(typeof _bsa !== 'undefined' && _bsa) {
+	// format, zoneKey, segment:value, options
+	_bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
+}
+})();
+</script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
+  	}
+})();
+</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-30027142-1', 'w3layouts.com');
+  ga('send', 'pageview');
+</script>
+<body>
     <!-- banner-inner -->
     <div id="demo-1" data-zs-src='["images/1.jpg", "images/2.jpg","images/3.jpg", "images/4.jpg"]' data-zs-overlay="dots">
         <div class="demo-inner-content">
@@ -29,14 +68,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="col-md-4">
                                 <span>Welcome Back!</span>
                             </div>
+                            <%  if(id == null) {%>
                             <div class="col-md-3 sign-btn">
-                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fas fa-lock"></i> Sign In</a>
+                                <a href="/index.jsp" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-lock"></i> 로그인</a>
                             </div>
                             <div class="col-md-3 sign-btn">
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
-                                    <i class="far fa-user"></i> Register</a>
+                                    <i class="far fa-user"></i> 회원가입</a>
                             </div>
+                            <%} else{ %>
+                            <div class="col-md-3 sign-btn">
+                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-lock"></i> 로그아웃</a>
+                            </div>
+                            <div class="col-md-3 sign-btn">
+                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
+                                    <i class="far fa-user"></i> 회원정보</a>
+                            </div>
+                            <% } %>
                             <div class="search col-md-2">
                                 <div class="mobile-nav-button">
                                     <button id="trigger-overlay" type="button">
@@ -64,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="logo">
                             <h1>
                                 <a class="navbar-brand" href="index.html">
-                                    <i class="fab fa-codepen"></i> Replenish</a>
+                                    <i class="fab fa-codepen"></i> 제목</a>
                             </h1>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +126,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-lg-auto text-center">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">홈버튼
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
@@ -128,40 +178,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="banner-info-w3layouts text-center">
 
                 <h3>
-                    <span>Find the Right Job</span> .
-                    <span>Right Now.</span>
+                    <span>S e a r c h</span>
                 </h3>
-                <p>Your job search starts and ends with us.</p>
+                <p>본인이 원하는 해당분야를 선택하여 검색</p>
 
                 <form action="#" method="post" class="ban-form row">
-                    <div class="col-md-3 banf">
+                    <div class="col-md-3 banf" style ="flex : 0 0 75%; max-width: 75%">
                         <input class="form-control" type="text" name="Name" placeholder="Name" required="">
                     </div>
-                    <div class="col-md-3 banf">
+<!--                   <div class="col-md-3 banf">
                         <select class="form-control" id="country12">
-                            <option>Location</option>
-                            <option>Afghanistan</option>
-                            <option>Alaska</option>
-                            <option>Andong</option>
-                            <option>Bologna</option>
-                            <option>Canada</option>
-                            <option>France</option>
-                            <option>Germany</option>
+                            <option>종목1</option>
+                            <option>종목2</option>
+                            <option>종목3</option>
+                            <option>종목4</option>
+                            <option>종목5</option>
                         </select>
-                    </div>
-                    <div class="col-md-3 banf">
+                    </div>                   
+ 					 <div class="col-md-3 banf">
                         <select id="country13" class="form-control">
-                            <option>Finance Sector</option>
-                            <option>Banking Sector</option>
-                            <option> Engineering Sector</option>
-                            <option>Accounting Jobs</option>
-                            <option>Interior Design</option>
-                            <option>Export Import Jobs</option>
+                            <option>세부종목1</option>
+                            <option>세부종목2</option>
+                            <option>세부종목3</option>
+                            <option>세부종목4</option>
+                            <option>세부종목5</option>
                         </select>
 
-                    </div>
+
+                    </div> -->
                     <div class="col-md-3 banf">
-                        <button class="btn1" type="submit">FIND JOB
+                        <button class="btn1" type="submit">상세 검색
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -176,7 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="inner-sec-w3ls py-lg-5  py-3">
                 <h3 class="tittle text-center mb-lg-4 mb-3">
-                    <span>Our Mission</span>Popular Categories</h3>
+                    <span>카테고리</span>메뉴 카테고리</h3>
                 <div class="row populor_category_grids mt-5">
                     <div class="col-md-3 category_grid">
                         <div class="view view-tenth">
@@ -276,14 +322,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="inner-sec-w3ls py-lg-5  py-3">
                 <h3 class="tittle text-center mb-lg-4 mb-3">
-                    <span>Some Info</span>Latest Job flow-positions</h3>
+                    <span>Some Info</span>최신글/인기글</h3>
                 <div class="tabs mt-5">
                     <ul class="nav nav-pills my-4" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Featured Jobs</a>
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">인기글</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Recent Jobs</a>
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">최신글</a>
                         </li>
 
                     </ul>
@@ -808,265 +854,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </section>
-    <!--//preocess-->
 
-    <!--job -->
-    <section class="banner-bottom-wthree mid py-lg-5 py-3">
-        <div class="container">
-            <div class="inner-sec-w3ls py-lg-5  py-3">
-                <div class="mid-info text-center pt-3">
-                    <h3 class="tittle text-center cen mb-lg-5 mb-3">
-                        <span>Some Info</span>Make a Difference with Your Online Resume!</h3>
-                    <p></p>
-                    <div class="resume">
-                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
-                            <i class="far fa-user"></i> Create Acccount</a>
-                    </div>
-                </div>
+    <!--//stats-->
 
-            </div>
-        </div>
-    </section>
-    <!--//job -->
     <!--job -->
     <section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
         <div class="container">
             <div class="inner-sec-w3ls py-lg-5  py-3">
                 <h3 class="tittle text-center mb-lg-5 mb-3">
-                    <span>Some Info</span>Selection Process</h3>
-
-                <div class="mid-info text-center mt-5">
-                    <div class="parent-chart">
-                        <div class="level lev-one top-level">
-                            <div class="flow-position">
-                                <img src="images/s1.jpg" alt=" " class="img-fluid rounded-circle">
-                                <br>
-                                <strong>Recruitment Process</strong>
-                                <br> Lorem ipsum
-                            </div>
-                        </div>
-                        <div class="flow-chart">
-                            <div class="level lev-two last-lev">
-                                <div class="flow-position">
-                                    <img src="images/s2.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>1.Job Vacancy</strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s3.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>2. Job Analysis
-                                    </strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s4.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>3. Attracting Candidates
-                                    </strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s5.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>4.Screening </strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s6.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>5.Interviewing Candidates
-                                    </strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s7.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>6.Selecting</strong>
-                                    <br> Lorem ipsum
-                                </div>
-                                <!--
-                            -->
-                                <div class="flow-position">
-                                    <img src="images/s8.jpg" alt=" " class="img-fluid rounded-circle">
-                                    <br>
-                                    <strong>7.Employee Evaluation
-                                    </strong>
-                                    <br> Lorem ipsum
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--//job -->
-    <!--/candidates -->
-    <section class="banner-bottom-wthree bg-light py-lg-5 py-3 text-center">
-        <div class="container">
-            <div class="inner-sec-w3ls py-lg-4 py-md-4 py-3">
-                <h3 class="tittle text-center mb-lg-5 mb-3">
-                    <span>Some Info</span>Featured Candidates</h3>
+                    <span>Some Info</span> QnA</h3>
                 <div class="row mt-5">
-                    <div class="col-lg-3 member-main text-center">
+
+                    <div class="card-deck">
                         <div class="card">
+                            <img src="images/g1.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
-                                <div class="member-img">
-                                    <img src="images/team1.jpg" alt=" " class="img-fluid rounded-circle">
-                                </div>
-                                <div class="member-info text-center py-lg-4 py-2">
-                                    <h4>Mark Jackman</h4>
-
-                                    <p class="my-4"> Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-                                    <div class="mt-3 team-social text-center">
-
-                                        <ul class="social-icons text-center">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mx-3">
-                                                <a href="#">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-google-plus-g"></i>
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">질문예제1</h5>
+                                <p class="card-text">질문내용</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">글 업데이트 시간 반영</small>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 member-main text-center">
                         <div class="card">
+                            <img src="images/g2.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
-                                <div class="member-img">
-                                    <img src="images/team2.jpg" alt=" " class="img-fluid rounded-circle">
-                                </div>
-                                <div class="member-info text-center py-lg-4 py-2">
-                                    <h4>Janet Levine</h4>
-
-                                    <p class="my-4">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros..
-
-                                    </p>
-                                    <div class="mt-3 team-social text-center">
-
-                                        <ul class="social-icons text-center">
-
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mx-3">
-                                                <a href="#">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-google-plus-g"></i>
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">질문내용 2</h5>
+                                <p class="card-text">질문 내용</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">글 업데이트 시간 반영</small>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 member-main text-center">
                         <div class="card">
+                            <img src="images/g3.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
-                                <div class="member-img">
-                                    <img src="images/team3.jpg" alt=" " class="img-fluid rounded-circle">
-                                </div>
-                                <div class="member-info text-center py-lg-4 py-2">
-                                    <h4>Rene Rickman</h4>
-
-                                    <p class="my-4">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros..
-
-                                    </p>
-                                    <div class="mt-3 team-social text-center">
-
-                                        <ul class="social-icons text-center">
-
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mx-3">
-                                                <a href="#">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-google-plus-g"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">질문 예제3</h5>
+                                <p class="card-text">글내용</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 member-main text-center">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="member-img">
-                                    <img src="images/team4.jpg" alt=" " class="img-fluid rounded-circle">
-                                </div>
-                                <div class="member-info text-center py-lg-4 py-2">
-                                    <h4>Daniele Norwich</h4>
-                                    <p class="my-4">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros..
-                                    </p>
-                                    <div class="mt-3 team-social text-center">
-
-                                        <ul class="social-icons text-center">
-
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mx-3">
-                                                <a href="#">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fab fa-google-plus-g"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="card-footer">
+                                <small class="text-muted">업데이트</small>
                             </div>
                         </div>
                     </div>
@@ -1074,13 +901,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </section>
-    <!--/candidates -->
+       <!--/candidates -->
     <!--/stats-->
     <section class="banner-bottom-wthree bg-dark dotts py-lg-5 py-3">
         <div class="container">
             <div class="inner-sec-w3ls py-lg-5  py-3">
                 <h3 class="tittle cen text-center mb-lg-5 mb-3">
-                    <span>Some Info</span> Our Stats</h3>
+                    <span>Some Info</span>조회수</h3>
                 <div class="stats row mt-5">
                     <div class="col-md-3 stats_left counter_grid text-center">
 
@@ -1106,288 +933,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
         </div>
-    </section>
-    <!--//stats-->
-
-    <!--job -->
-    <section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
-        <div class="container">
-            <div class="inner-sec-w3ls py-lg-5  py-3">
-                <h3 class="tittle text-center mb-lg-5 mb-3">
-                    <span>Some Info</span> Quick Career Tips</h3>
-                <div class="row mt-5">
-
-                    <div class="card-deck">
-                        <div class="card">
-                            <img src="images/g1.jpg" alt="Card image cap" class="img-fluid card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Would Disruption Work for Your Business?</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore .</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="images/g2.jpg" alt="Card image cap" class="img-fluid card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">The New Mix of a Multigenerational Workforce</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore. </p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="images/g3.jpg" alt="Card image cap" class="img-fluid card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Would Disruption Work for Your Business?</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore. </p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--//job -->
-    <!--/mobile-app -->
-    <section class="banner_bottom mobile-app">
-        <div class="dotts py-lg-5 py-3">
-            <div class="container">
-                <!--/mobile-app -->
-                <div class="inner-sec-w3ls py-lg-5  py-3">
-                    <div class="row">
-                        <div class="col-md-7 app-info">
-                            <h3 class="header">Download &amp; Enjoy</h3>
-                            <p class="para_vl">Nam arcu mauris, tincidunt sed convallis non, egestas ut lacus. Cras sapien urna, malesuada ut varius consequat, hendrerit nisl. Aliquam vestibulum, odio non ullamcorper malesuada.</p>
-                            <ul class="app-devices mt-5">
-                                <li>
-                                    <a href="#" title="">
-                                        <i class="fab fa-apple"></i>
-                                        <span class="app-con">App Store
-                                            <span class="avail">Available now on the </span>
-                                        </span>
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="">
-                                        <i class="fab fa-google-play"></i>
-
-                                        <span class="app-con">Google Play
-                                            <span class="avail">Get in on</span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                            <p class="para_vl">
-                                <a href="#">Click here </a>to know more about apps.</p>
-                        </div>
-                        <div class="col-md-5 app-img">
-                            <img src="images/mobile.png" alt=" " class="img-fluid">
-                        </div>
-                    </div>
-                    <!--//mobile-app -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--clients-->
-    <section class="clents-slide py-lg-5 py-3">
-        <div class="container">
-            <div class="inner-sec-w3ls py-lg-5  py-3">
-                <h3 class="tittle text-center mb-lg-5 mb-3">
-                    <span>Some Info</span> What Clients Say?</h3>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner mt-5">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>convallis felis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.</p>
-                                            <h5>Davidson</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team4.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6 testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team3.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Cras rutrum</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Janet Levine</h5>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>felis mattis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non yallis.</p>
-                                            <h5>Mercurio</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team2.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team1.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Cras rutrum</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Rene Rickman</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>convallis felis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.</p>
-                                            <h5>Mark Jackman</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team1.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6 testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team2.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Convallis</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Daniele</h5>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>felis mattis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non yallis.</p>
-                                            <h5>Mercurio</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team3.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team4.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Cras rutrum</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Melissa Hoffman</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>convallis felis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.</p>
-                                            <h5>Melissa Hoffman</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team4.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6 testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team3.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Convallis</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Daniele </h5>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids row">
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>felis mattis</h6>
-                                            <p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non yallis.</p>
-                                            <h5>Thomas Muller</h5>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team2.jpg" alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6  testi-main">
-                                    <div class="testi-grids t2 row">
-                                        <div class="col-md-3 col-sm-3 col-xs-3 img-testi">
-                                            <img class="img-fluid" src="images/team1.jpg" alt="">
-                                        </div>
-                                        <div class="col-md-9 col-sm-9 col-xs-9 clients-info-text">
-                                            <h6>Felis mattis</h6>
-                                            <p>Lorem ipsum dolor sit amet. enim, non convallis felis mattis.</p>
-                                            <h5>Mark Jackman</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev test" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="fas fa-long-arrow-alt-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next test" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="fas fa-long-arrow-alt-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </section>
+    </section> 
     <!--//clients-->
     <!--footer -->
     <footer class="footer-emp-w3layouts bg-dark dotts py-lg-5 py-3">
@@ -1395,7 +941,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="row footer-top">
                 <div class="col-lg-3 footer-grid-wthree-w3ls">
                     <div class="footer-title">
-                        <h3>About Us</h3>
+                        <h3>상세문의</h3>
                     </div>
                     <div class="footer-text">
                         <p>Curabitur non nulla sit amet nislinit tempus convallis quis ac lectus. lac inia eget consectetur sed, convallis at tellus. Nulla porttitor accumsana tincidunt.</p>
@@ -1524,15 +1070,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="login px-4 mx-auto mw-100">
                         <h5 class="text-center mb-4">Login Now</h5>
-                        <form action="#" method="post">
+                        <form action="./home.jsp" method="post">
                             <div class="form-group">
                                 <label class="mb-2">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="" required="">
+                                <input type="email" name = "id"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label class="mb-2">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="" required="">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
                             </div>
                             <div class="form-check mb-2">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -1564,25 +1110,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h5 class="text-center mb-4">Register Now</h5>
                         <form action="#" method="post">
                             <div class="form-group">
-                                <label>First name</label>
+                                <label>이름</label>
 
                                 <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
                             </div>
                             <div class="form-group">
-                                <label>Last name</label>
+                                <label>이메일</label>
                                 <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
                             </div>
 
                             <div class="form-group">
-                                <label class="mb-2">Password</label>
+                                <label class="mb-2">패스워드</label>
                                 <input type="password" class="form-control" id="password1" placeholder="" required="">
                             </div>
                             <div class="form-group">
-                                <label>Confirm Password</label>
+                                <label>패스워드 확인</label>
                                 <input type="password" class="form-control" id="password2" placeholder="" required="">
                             </div>
 
-                            <button type="submit" class="btn btn-primary submit mb-4">Register</button>
+                            <button type="submit" class="btn btn-primary submit mb-4">가입하기</button>
                             <p class="text-center pb-4">
                                 <a href="#">By clicking Register, I agree to your terms</a>
                             </p>
@@ -1598,7 +1144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!--//model-form-->
     
-		<!-- 스크립트2 -->
+    <!-- 스크립트2 -->
     <%@include file="/include/footerScript.jsp"%>    
 </body>
 
