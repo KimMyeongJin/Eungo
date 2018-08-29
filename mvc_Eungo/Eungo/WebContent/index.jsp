@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-	location.href="home.jsp";
-</script>
-
+	<script>
+		location.href = "home.jsp"
+	</script>
 </body>
 </html>
