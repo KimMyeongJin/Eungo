@@ -58,7 +58,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 </script>
 <body>
     <!-- banner-inner -->
-    <div id="demo-1" data-zs-src='["images/1.jpg", "images/2.jpg","images/3.jpg", "images/4.jpg"]' data-zs-overlay="dots">
+    <div id="demo-1" data-zs-src='["<%=request.getContextPath() %>/images/1.jpg", "<%=request.getContextPath() %>/images/2.jpg","<%=request.getContextPath() %>/images/3.jpg", "<%=request.getContextPath() %>/images/4.jpg"]' data-zs-overlay="dots">
         <div class="demo-inner-content">
             <div class="header-top">
                 <header>
@@ -233,7 +233,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p1.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p1.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -247,7 +247,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p2.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p2.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -262,7 +262,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p3.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p3.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -276,7 +276,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p4.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p4.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -292,7 +292,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p4.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p4.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -306,7 +306,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                             <div class="mask">
                                 <a href="#">
-                                    <img src="images/p4.jpg" class="img-fluid" alt="">
+                                    <img src="<%=request.getContextPath() %>/images/p4.jpg" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -586,7 +586,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                                         <!--//job4-->
                                     </div>
                                     <div class="col-lg-4 text-info-sec">
-                                        <img src="images/job-1.jpg" alt=" " class="img-fluid" />
+                                        <img src="<%=request.getContextPath() %>/images/job-1.jpg" alt=" " class="img-fluid" />
                                     </div>
 
                                 </div>
@@ -596,7 +596,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             <div class="menu-grids mt-4">
                                 <div class="row t-in">
                                     <div class="col-lg-4 text-info-sec">
-                                        <img src="images/job-2.jpg" alt=" " class="img-fluid" />
+                                        <img src="<%=request.getContextPath() %>/images/job-2.jpg" alt=" " class="img-fluid" />
                                     </div>
                                     <div class="col-lg-8 text-info-sec">
                                         <!--/job1-->
@@ -867,7 +867,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 
                     <div class="card-deck">
                         <div class="card">
-                            <img src="images/g1.jpg" alt="Card image cap" class="img-fluid card-img-top">
+                            <img src="<%=request.getContextPath() %>/images/g1.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">질문예제1</h5>
                                 <p class="card-text">질문내용</p>
@@ -877,7 +877,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                         </div>
                         <div class="card">
-                            <img src="images/g2.jpg" alt="Card image cap" class="img-fluid card-img-top">
+                            <img src="<%=request.getContextPath() %>/images/g2.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">질문내용 2</h5>
                                 <p class="card-text">질문 내용</p>
@@ -887,7 +887,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             </div>
                         </div>
                         <div class="card">
-                            <img src="images/g3.jpg" alt="Card image cap" class="img-fluid card-img-top">
+                            <img src="<%=request.getContextPath() %>/images/g3.jpg" alt="Card image cap" class="img-fluid card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">질문 예제3</h5>
                                 <p class="card-text">글내용</p>
