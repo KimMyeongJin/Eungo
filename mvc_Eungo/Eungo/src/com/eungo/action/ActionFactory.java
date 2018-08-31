@@ -1,5 +1,7 @@
 package com.eungo.action;
 
+import com.eungo.controller.member.MemberJoinAction;
+
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
 
@@ -13,6 +15,9 @@ public class ActionFactory {
 	}
 
 	public Action getAction(String cmd) {
+		if(cmd.equals("member_join")) {			
+			return new MemberJoinAction();			
+		}
 		return null;
 	}
 

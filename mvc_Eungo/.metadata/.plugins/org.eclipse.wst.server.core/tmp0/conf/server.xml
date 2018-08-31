@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\it\Documents\Eungo\mvc_Eungo\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\it\Documents\Eungo\mvc_Eungo\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Eungo" path="/Eungo" reloadable="true" source="org.eclipse.jst.jee.server:Eungo">
+      <Context docBase="C:\Users\dom\Documents\Eungo\mvc_Eungo\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\dom\Documents\Eungo\mvc_Eungo\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Eungo" path="/Eungo" reloadable="true" source="org.eclipse.jst.jee.server:Eungo">
 
     <!-- maxTotal: Maximum number of database connections in pool. Make sure you
          configure your mysqld max_connections large enough to handle
@@ -151,7 +151,7 @@
     <!-- url: The JDBC connection url for connecting to your MySQL database.
          -->
 
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/TestDB" password="bitc5600" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/eungo" username="root"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/TestDB" password="bitc5600" type="javax.sql.DataSource" url="jdbc:mysql://18.221.68.182:3306/eungo" username="root"/>
 
 </Context></Host>
     </Engine>
