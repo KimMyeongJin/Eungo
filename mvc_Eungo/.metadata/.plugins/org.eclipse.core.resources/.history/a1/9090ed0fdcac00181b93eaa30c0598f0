@@ -49,7 +49,7 @@ public class EmailSendAction implements Action{
 		}
 		
 		System.out.println("HOST : "+ host);
-		String from = "eungo5600@gmail.com";
+		String from = "ssarmango6@gmail.com";
 		String to = email;
 		String salt = dao.select_salt(email);
 		String code = SHA256.getEncrypt(to, salt);

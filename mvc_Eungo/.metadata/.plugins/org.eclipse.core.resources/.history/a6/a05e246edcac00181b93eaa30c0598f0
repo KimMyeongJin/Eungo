@@ -1,6 +1,5 @@
 package com.eungo.action;
 
-import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
 
 public class ActionFactory {
