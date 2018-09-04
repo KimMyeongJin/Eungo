@@ -91,5 +91,25 @@ public class MemberDAO {
 		}
 		return -1;
 	}
+	
+	public int checkEmail(String email){
+		System.out.println("email : "+email);
+		String SQL = "SELECT email FROM member WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs =pstmt.executeQuery();			
+			
+			if(rs.next()) {
+				return 1;
+			}else {
+				return 2;
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}
+		return -1;
+	}
 
 }

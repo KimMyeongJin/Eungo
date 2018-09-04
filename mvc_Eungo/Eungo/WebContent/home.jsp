@@ -1112,7 +1112,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                         <form action="<%=request.getContextPath()%>/member?cmd=member_join" method="post">
                             <div class="form-group">
                                 <label>E-mail</label>
-                                <input type="email" class="form-control" name="email" id="validationDefault01" required>
+                                <input type="email" class="form-control" name="email" id="validationEmail" required>
+                                <small id="checkMsg"></small>
                             </div>                            
 
                             <div class="form-group">
@@ -1123,6 +1124,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
                             <div class="form-group">
                                 <label>Confirm Password</label>
                                 <input type="password" class="form-control" name="password_check" id="password2" required>
+                                <small id="checkPwd"></small>
                             </div>
                             
                             <div class="form-group">
@@ -1157,7 +1159,83 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
     <!--//model-form-->
     
     <!-- 스크립트2 -->
-    <%@include file="/include/footerScript.jsp"%>    
+    <%@include file="/include/footerScript.jsp"%>  
+    <!-- email check -->
+    <script>
+    window.onload = function() {
+        document.getElementById("validationEmail").onchange = sendId;
+        document.getElementById("password1").onchange = checkPwd;
+        document.getElementById("password2").onchange = checkPwd;  
+    }     
+    
+ 
+    function sendId() {
+    	var dom = document.getElementById("validationEmail");
+    	var result = dom.value;
+    	console.log("result : "+result);
+    	$.ajax({
+			type : "POST",
+			url : "member?cmd=member_emailcheck",
+		  dataType : "text",
+		  contentType : "application/text;charset=utf-8",
+		  data : result,
+		  success : function(data){			  
+			  var listView = document.getElementById('checkMsg');
+			  if(result ==''){
+				  listView.innerHTML = "Email을 입력해주세요";
+				  listView.style.color = "red";
+				  document.getElementById("validationEmail").setCustomValidity("이메일을 입력해주세요.");
+			  } else if(data==2){
+			     listView.innerHTML = "사용 할 수 있는 Email 입니다";
+			     listView.style.color = "blue";
+			     document.getElementById("validationEmail").setCustomValidity('');
+			    } else if(data==1){
+			     listView.innerHTML = "이미 등록된 Email 입니다";
+			     listView.style.color = "red";
+			     document.getElementById("validationEmail").setCustomValidity("가입된 이메일입니다.");
+			    } 
+		  },
+		  error : function(jqXHR,textStatus,errorThrown){
+			  console.log("에러 발생~~\n"+textStatus+":"+errorThrown);
+		  }
+		  
+		});
+	 }
+	 
+	 
+	 
+    </script>
+    <!-- //email check -->
+    <!-- password-script -->
+    <script>
+    
+        /* function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        } */
+        
+    
+    function checkPwd(){
+    	  var f1 = document.forms[0];
+    	  var pw1 = document.getElementById("password1").value;
+    	  var pw2 = document.getElementById("password2").value;
+    	  if(pw1!=pw2){
+    	   document.getElementById('checkPwd').style.color = "red";
+    	   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요."; 
+    	   document.getElementById("password2").setCustomValidity("동일한 암호를 입력하세요.");
+    	  }else{
+    	   document.getElementById('checkPwd').style.color = "black";
+    	   document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
+    	   document.getElementById("password2").setCustomValidity('');
+    	  }    	  
+	}    	
+    </script>
+    <!-- //password-script -->  
 </body>
 
 </html>

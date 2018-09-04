@@ -1,5 +1,6 @@
 package com.eungo.action;
 
+import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
 
@@ -20,6 +21,8 @@ public class ActionFactory {
 			return new MemberJoinAction();			
 		}else if(cmd.equals("emailSend")) {
 			return new EmailSendAction();
+		}else if(cmd.equals("member_emailcheck")) {
+			return new EmailCheckAction();
 		}
 		return null;
 	}
