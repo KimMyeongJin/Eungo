@@ -3,6 +3,7 @@ package com.eungo.action;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
+import com.eungo.controller.member.SearchCategoryAction;
 
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
@@ -23,6 +24,8 @@ public class ActionFactory {
 			return new EmailSendAction();
 		}else if(cmd.equals("member_emailcheck")) {
 			return new EmailCheckAction();
+		}else if(cmd.equals("search_category")) {
+			return new SearchCategoryAction();
 		}
 		return null;
 	}
