@@ -8,6 +8,14 @@ public class MemberVO {
 	private String phonenumber;
 	private String gender;
 	private String birthday;
+	private boolean seller;	
+	
+	public boolean isSeller() {
+		return seller;
+	}
+	public void setSeller(boolean seller) {
+		this.seller = seller;
+	}
 	public String getEmail() {
 		return email;
 	}
