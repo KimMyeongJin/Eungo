@@ -50,12 +50,11 @@
                         <h3 class="panel-title">Smart search</h3>
                      </div>
                      <div class="panel-body search-widget">
-                        <form action="<%=request.getContextPath()%>/board" class=" form-inline">
+                        <form action="" class=" form-inline">
                            <fieldset>
                               <div class="row">
                                  <div class="col-xs-12">
-                                 	<input type="hidden" name="cmd" value="board_search">
-                                    <input type="text" name="search_text" class="form-control"
+                                    <input type="text" class="form-control"
                                        placeholder="Key word">
                                  </div>
                               </div>
