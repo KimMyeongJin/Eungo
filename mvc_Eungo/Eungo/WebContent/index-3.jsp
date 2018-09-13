@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	String cp = request.getContextPath(); //--ContextPath 선언 --
-	String id = null;
-	if (request.getParameter("id") != null) {
-		id = request.getParameter("id");
-	}
-%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -17,7 +10,7 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Home page</title>
+<title>GARO ESTATE | Home page</title>
 <%@include file="/include/head.jsp"%>
 </head>
 <body>
@@ -26,17 +19,17 @@
 		<div id="status">&nbsp;</div>
 	</div>
 	<!-- Body content -->
+
 	<%@include file="/include/header.jsp"%>
 	<!--End top header -->
+
 	<%@include file="/include/navbar.jsp"%>
 	<!-- End of nav bar -->
+
 	<div class="slider-area">
 		<div class="slider">
 			<div id="bg-slider" class="owl-carousel owl-theme">
 
-				<div class="item">
-					<img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V">
-				</div>
 				<div class="item">
 					<img src="assets/img/slide1/slider-image-2.jpg"
 						alt="The Last of us">
@@ -47,7 +40,7 @@
 
 			</div>
 		</div>
-		<div class="slider-content">
+		<div class="container slider-content">
 			<div class="row">
 				<div
 					class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
@@ -55,21 +48,26 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 						Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam
 						velit adipisci quibusdam aliquam teneturo!</p>
-					<div class="search-form wow pulse" data-wow-delay="0.8s">
 
-						<form action="" class=" form-inline">
-							<button class="btn  toggle-btn" type="button">
-								<i class="fa fa-bars"></i>
-							</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-							<div class="form-group">
+	<div class="home-lager-shearch"
+		style="background-color: rgb(252, 252, 252); padding-top: 25px; margin-top: -125px;">
+		<div class="container">
+			<div class="col-md-12 large-search">
+				<div class="search-form wow pulse">
+					<form action="" class=" form-inline">
+						<div class="col-md-12">
+							<div class="col-md-4">
 								<input type="text" class="form-control" placeholder="Key word">
 							</div>
-							<div class="form-group">
+							<div class="col-md-4">
 								<select id="lunchBegins" class="selectpicker"
 									data-live-search="true" data-live-search-style="begins"
 									title="Select your city">
-
 									<option>New york, CA</option>
 									<option>Paris</option>
 									<option>Casablanca</option>
@@ -78,7 +76,7 @@
 									<option>kyoto , shibua</option>
 								</select>
 							</div>
-							<div class="form-group">
+							<div class="col-md-4">
 								<select id="basic" class="selectpicker show-tick form-control">
 									<option>-Status-</option>
 									<option>Rent</option>
@@ -87,161 +85,145 @@
 
 								</select>
 							</div>
-							<button class="btn search-btn" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
+						</div>
+						<div class="col-md-12 ">
+							<div class="search-row">
 
-							<div style="display: none;" class="search-toggle">
-
-								<div class="search-row">
-
-									<div class="form-group mar-r-20">
-										<label for="price-range">Price range ($):</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[0,450]" id="price-range"><br />
-										<b class="pull-left color">2000$</b> <b
-											class="pull-right color">100000$</b>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group mar-l-20">
-										<label for="property-geo">Property geo (m2) :</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[50,450]" id="property-geo"><br />
-										<b class="pull-left color">40m</b> <b class="pull-right color">12000m</b>
-									</div>
-									<!-- End of  -->
+								<div class="col-sm-3">
+									<label for="price-range">Price range ($):</label> <input
+										type="text" class="span2" value="" data-slider-min="0"
+										data-slider-max="600" data-slider-step="5"
+										data-slider-value="[0,450]" id="price-range"><br />
+									<b class="pull-left color">2000$</b> <b
+										class="pull-right color">100000$</b>
 								</div>
+								<!-- End of  -->
 
-								<div class="search-row">
-
-									<div class="form-group mar-r-20">
-										<label for="price-range">Min baths :</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[250,450]" id="min-baths"><br />
-										<b class="pull-left color">1</b> <b class="pull-right color">120</b>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group mar-l-20">
-										<label for="property-geo">Min bed :</label> <input type="text"
-											class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[250,450]" id="min-bed"><br /> <b
-											class="pull-left color">1</b> <b class="pull-right color">120</b>
-									</div>
-									<!-- End of  -->
-
+								<div class="col-sm-3">
+									<label for="property-geo">Property geo (m2) :</label> <input
+										type="text" class="span2" value="" data-slider-min="0"
+										data-slider-max="600" data-slider-step="5"
+										data-slider-value="[50,450]" id="property-geo"><br />
+									<b class="pull-left color">40m</b> <b class="pull-right color">12000m</b>
 								</div>
-								<br>
-								<div class="search-row">
+								<!-- End of  -->
 
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Fire
-												Place(3100)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Dual
-												Sinks(500)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Hurricane
-												Shutters(99)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
+								<div class="col-sm-3">
+									<label for="price-range">Min baths :</label> <input type="text"
+										class="span2" value="" data-slider-min="0"
+										data-slider-max="600" data-slider-step="5"
+										data-slider-value="[250,450]" id="min-baths"><br />
+									<b class="pull-left color">1</b> <b class="pull-right color">120</b>
 								</div>
+								<!-- End of  -->
 
-								<div class="search-row">
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Swimming
-												Pool(1190)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> 2
-												Stories(4600)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Emergency
-												Exit(200)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
+								<div class="col-sm-3">
+									<label for="property-geo">Min bed :</label> <input type="text"
+										class="span2" value="" data-slider-min="0"
+										data-slider-max="600" data-slider-step="5"
+										data-slider-value="[250,450]" id="min-bed"><br /> <b
+										class="pull-left color">1</b> <b class="pull-right color">120</b>
 								</div>
+								<!-- End of  -->
 
-								<div class="search-row">
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Laundry
-												Room(10073)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Jog
-												Path(1503)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> 26'
-												Ceilings(1200)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									<br>
-									<hr>
-								</div>
-								<button class="btn search-btn prop-btm-sheaerch" type="submit">
-									<i class="fa fa-search"></i>
-								</button>
 							</div>
 
-						</form>
-					</div>
+							<div class="search-row">
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Fire
+											Place(3100)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Dual
+											Sinks(500)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Hurricane
+											Shutters(99)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Swimming
+											Pool(1190)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> 2
+											Stories(4600)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Emergency
+											Exit(200)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Laundry
+											Room(10073)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> Jog Path(1503)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox"> 26'
+											Ceilings(1200)
+										</label>
+									</div>
+								</div>
+								<!-- End of  -->
+							</div>
+						</div>
+						<div class="center">
+							<input type="submit" value=""
+								class="btn btn-default btn-lg-sheach">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
 	<!-- property area -->
-	<div class="content-area home-area-1 recent-property"
+	<div class="content-area recent-property"
 		style="background-color: #FCFCFC; padding-bottom: 55px;">
 		<div class="container">
 			<div class="row">
@@ -467,8 +449,6 @@
 		</div>
 	</div>
 
-
-
 	<!--TESTIMONIALS -->
 	<div class="testimonial-area recent-property"
 		style="background-color: #FCFCFC; padding-bottom: 15px;">
@@ -653,6 +633,7 @@
 		</div>
 	</div>
 
+
 	<!-- Footer area-->
 	<%@include file="/include/footer.jsp"%>
 
@@ -667,6 +648,7 @@
 	<script src="assets/js/jquery.easypiechart.min.js"></script>
 
 	<script src="assets/js/owl.carousel.min.js"></script>
+
 	<script src="assets/js/wow.js"></script>
 
 	<script src="assets/js/icheck.min.js"></script>
