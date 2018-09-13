@@ -1,35 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	String cp = request.getContextPath(); //--ContextPath 선언 --
-	String id = null;
-	if (request.getParameter("id") != null) {
-		id = request.getParameter("id");
-	}
-%>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Home page</title>
-<%@include file="/include/head.jsp"%>
-</head>
-<body>
+<title>GARO ESTATE | Home page</title>
 
-	<div id="preloader">
-		<div id="status">&nbsp;</div>
-	</div>
-	<!-- Body content -->
+	<!-- Start header -->
 	<%@include file="/include/header.jsp"%>
-	<!--End top header -->
+	<!-- End of header -->
+
+	<!-- Start nav bar -->
 	<%@include file="/include/navbar.jsp"%>
 	<!-- End of nav bar -->
+	
 	<div class="slider-area">
 		<div class="slider">
 			<div id="bg-slider" class="owl-carousel owl-theme">
@@ -55,6 +39,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 						Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam
 						velit adipisci quibusdam aliquam teneturo!</p>
+						
 					<div class="search-form wow pulse" data-wow-delay="0.8s">
 
 						<form action="<%=request.getContextPath()%>/board" class=" form-inline">
@@ -66,149 +51,6 @@
 							<button class="btn search-btn" type="submit">
 								<i class="fa fa-search"></i>
 							</button>
-
-							<div style="display: none;" class="search-toggle">
-
-								<div class="search-row">
-
-									<div class="form-group mar-r-20">
-										<label for="price-range">Price range ($):</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[0,450]" id="price-range"><br />
-										<b class="pull-left color">2000$</b> <b
-											class="pull-right color">100000$</b>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group mar-l-20">
-										<label for="property-geo">Property geo (m2) :</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[50,450]" id="property-geo"><br />
-										<b class="pull-left color">40m</b> <b class="pull-right color">12000m</b>
-									</div>
-									<!-- End of  -->
-								</div>
-
-								<div class="search-row">
-
-									<div class="form-group mar-r-20">
-										<label for="price-range">Min baths :</label> <input
-											type="text" class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[250,450]" id="min-baths"><br />
-										<b class="pull-left color">1</b> <b class="pull-right color">120</b>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group mar-l-20">
-										<label for="property-geo">Min bed :</label> <input type="text"
-											class="span2" value="" data-slider-min="0"
-											data-slider-max="600" data-slider-step="5"
-											data-slider-value="[250,450]" id="min-bed"><br /> <b
-											class="pull-left color">1</b> <b class="pull-right color">120</b>
-									</div>
-									<!-- End of  -->
-
-								</div>
-								<br>
-								<div class="search-row">
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Fire
-												Place(3100)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Dual
-												Sinks(500)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Hurricane
-												Shutters(99)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-								</div>
-
-								<div class="search-row">
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Swimming
-												Pool(1190)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> 2
-												Stories(4600)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Emergency
-												Exit(200)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-								</div>
-
-								<div class="search-row">
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Laundry
-												Room(10073)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> Jog
-												Path(1503)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox"> 26'
-												Ceilings(1200)
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									<br>
-									<hr>
-								</div>
-								<button class="btn search-btn prop-btm-sheaerch" type="submit">
-									<i class="fa fa-search"></i>
-								</button>
-							</div>
-
 						</form>
 					</div>
 				</div>
@@ -632,23 +474,6 @@
 	<!-- Footer area-->
 	<%@include file="/include/footer.jsp"%>
 
-	<script src="assets/js/modernizr-2.6.2.min.js"></script>
-
-	<script src="assets/js/jquery-1.10.2.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/bootstrap-select.min.js"></script>
-	<script src="assets/js/bootstrap-hover-dropdown.js"></script>
-
-	<script src="assets/js/easypiechart.min.js"></script>
-	<script src="assets/js/jquery.easypiechart.min.js"></script>
-
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<script src="assets/js/wow.js"></script>
-
-	<script src="assets/js/icheck.min.js"></script>
-	<script src="assets/js/price-range.js"></script>
-
-	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

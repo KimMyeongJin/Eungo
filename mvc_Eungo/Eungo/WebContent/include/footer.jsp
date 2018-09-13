@@ -12,7 +12,7 @@
 						<h4>About us</h4>
 						<div class="footer-title-line"></div>
 
-						<img src="assets/img/footer-logo.png" alt="" class="wow pulse"
+						<img src="<%=request.getContextPath() %>/assets/img/footer-logo2.png" alt="" class="wow pulse"
 							data-wow-delay="1s">
 						<p>Lorem ipsum dolor cum necessitatibus su quisquam molestias.
 							Vel unde, blanditiis.</p>
@@ -29,12 +29,12 @@
 						<h4>Quick links</h4>
 						<div class="footer-title-line"></div>
 						<ul class="footer-menu">
-							<li><a href="properties.jsp">Properties</a></li>
+							<li><a href="<%=request.getContextPath() %>/properties/properties.jsp">Properties</a></li>
 							<li><a href="#">Services</a></li>
-							<li><a href="submit-property.jsp">Submit property </a></li>
-							<li><a href="contact.jsp">Contact us</a></li>
-							<li><a href="faq.jsp">fqa</a></li>
-							<li><a href="faq.jsp">Terms </a></li>
+							<li><a href="<%=request.getContextPath() %>/account/submit-property.jsp">Submit property </a></li>
+							<li><a href="<%=request.getContextPath() %>/account/contact.jsp">Contact us</a></li>
+							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">fqa</a></li>
+							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">Terms </a></li>
 						</ul>
 					</div>
 				</div>
@@ -45,14 +45,14 @@
 						<ul class="footer-blog">
 							<li>
 								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="single.jsp"> <img
-										src="assets/img/demo/small-proerty-2.jpg">
+									<a href="<%=request.getContextPath() %>/single/single.jsp"> <img
+										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
 									</a> <span class="blg-date">12-12-2016</span>
 
 								</div>
 								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
 									<h6>
-										<a href="single.jsp">Add news functions </a>
+										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
 									</h6>
 									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
 										dolor sit amet, nulla ...</p>
@@ -61,14 +61,14 @@
 
 							<li>
 								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="single.jsp"> <img
-										src="assets/img/demo/small-proerty-2.jpg">
+									<a href="<%=request.getContextPath() %>/single/single.jsp"> <img
+										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
 									</a> <span class="blg-date">12-12-2016</span>
 
 								</div>
 								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
 									<h6>
-										<a href="single.jsp">Add news functions </a>
+										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
 									</h6>
 									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
 										dolor sit amet, nulla ...</p>
@@ -77,14 +77,14 @@
 
 							<li>
 								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="single.jsp"> <img
+									<a href="single/single.jsp"> <img
 										src="assets/img/demo/small-proerty-2.jpg">
 									</a> <span class="blg-date">12-12-2016</span>
 
 								</div>
 								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
 									<h6>
-										<a href="single.jsp">Add news functions </a>
+										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
 									</h6>
 									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
 										dolor sit amet, nulla ...</p>
@@ -164,5 +164,16 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+	<script src="<%=request.getContextPath() %>/assets/js/modernizr-2.6.2.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="<%=request.getContextPath() %>/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/bootstrap-select.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/bootstrap-hover-dropdown.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/easypiechart.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/jquery.easypiechart.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/owl.carousel.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/wow.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/icheck.min.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/price-range.js"></script>
+	<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
