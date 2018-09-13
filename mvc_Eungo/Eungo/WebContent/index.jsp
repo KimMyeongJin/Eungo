@@ -48,10 +48,10 @@
 								<input type="hidden" name="cmd" value="board_search"> <input
 									type="text" name="search_text" class="form-control"
 									placeholder="Key word">
+										<button class="btn search-btn" type="submit">
+											<i class="fa fa-search"></i>
+										</button>
 							</div>
-							<button class="btn search-btn" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
 						</div>
 					</form>
 				</div>

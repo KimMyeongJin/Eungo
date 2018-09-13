@@ -2608,7 +2608,9 @@ padding-bottom: 15px;
 .large-search .search-form .form-inline .form-control, .form-inline .form-control,
 .large-search .search-form .bootstrap-select button.dropdown-toggle ,
 .large-search .search-form .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
-    width:100%;
+    width:70%;
+    height:55px;
+    margin-left:15%;
 }
 .large-search .search-row{
     overflow: hidden;

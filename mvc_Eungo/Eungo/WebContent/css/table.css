@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#customers {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    height: 150px;
+}
+
+#customers td, #customers th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    color: white;
+    text-align: right;
+}
+
+#customers tr:nth-child(even){
+	    background-color: #dddddd;
+	
+}
+
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: right;
+    color: white;
+}
