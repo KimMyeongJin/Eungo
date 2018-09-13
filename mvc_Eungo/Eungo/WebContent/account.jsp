@@ -63,7 +63,6 @@
 							<div class="form-group">
 								<label for="email">Email</label> <input type="text"
 									class="form-control" name="email" id="validationEmail">
-									<small id="checkMsg"></small>
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label> <input type="password"
@@ -124,7 +123,7 @@
 								System.out.println("apiURL 요기: " + apiURL);
 								session.setAttribute("state", state);
 							%>
-							<a href="<%=apiURL%>"><img height="167" width="84"
+							<a href="<%=apiURL%>"><img height="50"
 								src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
 
 						</form>

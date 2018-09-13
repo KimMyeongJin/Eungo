@@ -57,7 +57,6 @@ public class EmailSendAction implements Action{
 		String subject = "회원가입을 위한 이메일 인증 메일입니다.";
 		String content = "다음 링크에 접속하여 이메일 인증을 진행해주세요. "
 				+ "<a href='"+host+"gmail/emailCheckAction.jsp?code="+code+"'>이메일 인증하기</a>";
-		
 				
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -86,7 +85,6 @@ public class EmailSendAction implements Action{
 			Transport.send(msg);
 			Script.moving(response, "이메일 주소 인증 메일이 전송되었습니다. 회원가입시 입력했던 이메일에 들어가셔서 인증해주세요.", url_in);
 		}catch(Exception e){
-			e.printStackTrace();
 			Script.moving(response, "오류가 발생했습니다.");
 		}
 		

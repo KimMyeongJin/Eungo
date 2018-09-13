@@ -57,35 +57,11 @@
 						velit adipisci quibusdam aliquam teneturo!</p>
 					<div class="search-form wow pulse" data-wow-delay="0.8s">
 
-						<form action="" class=" form-inline">
-							<button class="btn  toggle-btn" type="button">
-								<i class="fa fa-bars"></i>
-							</button>
+						<form action="<%=request.getContextPath()%>/board" class=" form-inline">
 
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Key word">
-							</div>
-							<div class="form-group">
-								<select id="lunchBegins" class="selectpicker"
-									data-live-search="true" data-live-search-style="begins"
-									title="Select your city">
-
-									<option>New york, CA</option>
-									<option>Paris</option>
-									<option>Casablanca</option>
-									<option>Tokyo</option>
-									<option>Marraekch</option>
-									<option>kyoto , shibua</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<select id="basic" class="selectpicker show-tick form-control">
-									<option>-Status-</option>
-									<option>Rent</option>
-									<option>Boy</option>
-									<option>used</option>
-
-								</select>
+								<input type="hidden" name="cmd" value="board_search">
+								<input type="text" name="search_text" class="form-control" placeholder="Key word">
 							</div>
 							<button class="btn search-btn" type="submit">
 								<i class="fa fa-search"></i>

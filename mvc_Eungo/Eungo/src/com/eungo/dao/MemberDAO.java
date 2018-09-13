@@ -95,7 +95,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
