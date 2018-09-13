@@ -47,10 +47,10 @@
 	</div>
 	<!-- Body content -->
 
-	<%@include file="/include2/header.jsp"%>
+	<%@include file="/include/header.jsp"%>
 	<!--End top header -->
 
-	<%@include file="/include2/navbar.jsp"%>
+	<%@include file="/include/navbar.jsp"%>
 	<!-- End of nav bar -->
 
 	<div class="page-head">
@@ -585,7 +585,7 @@
 	</div>
 
 	<!-- Footer area-->
-	<%@include file="/include2/footer.jsp"%>
+	<%@include file="/include/footer.jsp"%>
 
 	<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
 	<script src="assets/js/jquery-1.10.2.min.js"></script>
