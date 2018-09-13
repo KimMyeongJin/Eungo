@@ -9,9 +9,36 @@
 <html class="no-js">
 <!--<![endif]-->
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>GARO ESTATE | Property page</title>
-<%@include file="/include/head.jsp"%>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GARO ESTATE | Property  page</title>
+        <meta name="description" content="GARO is a real-estate template">
+        <meta name="author" content="Kimarotec">
+        <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/fontello.css">
+        <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+        <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
+        <link href="assets/css/animate.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/icheck.min_all.css">
+        <link rel="stylesheet" href="assets/css/price-range.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.theme.css">
+        <link rel="stylesheet" href="assets/css/owl.transitions.css">
+        <link rel="stylesheet" href="assets/css/lightslider.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
 
@@ -20,10 +47,10 @@
 	</div>
 	<!-- Body content -->
 
-	<%@include file="/include/header.jsp"%>
+	<%@include file="/include2/header.jsp"%>
 	<!--End top header -->
 
-	<%@include file="/include/navbar.jsp"%>
+	<%@include file="/include2/navbar.jsp"%>
 	<!-- End of nav bar -->
 
 	<div class="page-head">
@@ -55,11 +82,11 @@
 									</a>
 								</div>
 
-								<ul id="image-gallery" class="gallery list-unstyled cS-hidden" >
+								<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
 									<li data-thumb="assets/img/property-1/property1.jpg"><img
 										src="assets/img/property-1/property1.jpg" /></li>
-									<li data-thumb="assets/img/property-1/property2.jpg"><img
-										src="assets/img/property-1/property2.jpg" /></li>
+									<li data-thumb="img/property-1/property2.jpg"><img
+										src="assets/img/property-1/property3.jpg" /></li>
 									<li data-thumb="assets/img/property-1/property3.jpg"><img
 										src="assets/img/property-1/property3.jpg" /></li>
 									<li data-thumb="assets/img/property-1/property4.jpg"><img
@@ -203,12 +230,12 @@
 
 							<h4 class="s-property-title">Features</h4>
 							<ul>
-								<li><a href="properties.jsp">Swimming Pool</a></li>
-								<li><a href="properties.jsp">3 Stories</a></li>
-								<li><a href="properties.jsp">Central Cooling</a></li>
-								<li><a href="properties.jsp">Jog Path 2</a></li>
-								<li><a href="properties.jsp">2 Lawn</a></li>
-								<li><a href="properties.jsp">Bike Path</a></li>
+								<li><a href="properties.html">Swimming Pool</a></li>
+								<li><a href="properties.html">3 Stories</a></li>
+								<li><a href="properties.html">Central Cooling</a></li>
+								<li><a href="properties.html">Jog Path 2</a></li>
+								<li><a href="properties.html">2 Lawn</a></li>
+								<li><a href="properties.html">Bike Path</a></li>
 							</ul>
 
 						</div>
@@ -286,7 +313,7 @@
 								<ul>
 									<li>
 										<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-											<a href="single.jsp"><img
+											<a href="single.html"><img
 												src="assets/img/demo/small-property-2.jpg"></a> <span
 												class="property-seeker"> <b class="b-1">A</b> <b
 												class="b-2">S</b>
@@ -294,14 +321,14 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 											<h6>
-												<a href="single.jsp">Super nice villa </a>
+												<a href="single.html">Super nice villa </a>
 											</h6>
 											<span class="property-price">3000000$</span>
 										</div>
 									</li>
 									<li>
 										<div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-											<a href="single.jsp"><img
+											<a href="single.html"><img
 												src="assets/img/demo/small-property-1.jpg"></a> <span
 												class="property-seeker"> <b class="b-1">A</b> <b
 												class="b-2">S</b>
@@ -309,14 +336,14 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 											<h6>
-												<a href="single.jsp">Super nice villa </a>
+												<a href="single.html">Super nice villa </a>
 											</h6>
 											<span class="property-price">3000000$</span>
 										</div>
 									</li>
 									<li>
 										<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-											<a href="single.jsp"><img
+											<a href="single.html"><img
 												src="assets/img/demo/small-property-3.jpg"></a> <span
 												class="property-seeker"> <b class="b-1">A</b> <b
 												class="b-2">S</b>
@@ -324,7 +351,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 											<h6>
-												<a href="single.jsp">Super nice villa </a>
+												<a href="single.html">Super nice villa </a>
 											</h6>
 											<span class="property-price">3000000$</span>
 										</div>
@@ -332,7 +359,7 @@
 
 									<li>
 										<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-											<a href="single.jsp"><img
+											<a href="single.html"><img
 												src="assets/img/demo/small-property-2.jpg"></a> <span
 												class="property-seeker"> <b class="b-1">A</b> <b
 												class="b-2">S</b>
@@ -340,7 +367,7 @@
 										</div>
 										<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 											<h6>
-												<a href="single.jsp">Super nice villa </a>
+												<a href="single.html">Super nice villa </a>
 											</h6>
 											<span class="property-price">3000000$</span>
 										</div>
@@ -558,9 +585,9 @@
 	</div>
 
 	<!-- Footer area-->
-	<%@include file="/include/footer.jsp"%>
+	<%@include file="/include2/footer.jsp"%>
 
-	<script src="assets/js/modernizr-2.6.2.min.js"></script>
+	<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
 	<script src="assets/js/jquery-1.10.2.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-select.min.js"></script>
