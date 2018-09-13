@@ -1,5 +1,6 @@
 package com.eungo.action;
 
+import com.eungo.controller.board.BoardSelectAll;
 import com.eungo.controller.board.BoardSearchAction;
 import com.eungo.controller.board.SearchCategoryAction;
 import com.eungo.controller.member.EmailCheckAction;
@@ -35,6 +36,8 @@ public class ActionFactory {
 			return new NaverLoginAction();
 		}else if(cmd.equals("board_search")) {
 			return new BoardSearchAction();
+		}else if(cmd.equals("board_select_all")) {
+			return new BoardSelectAll();
 		}
 		return null;
 	}
