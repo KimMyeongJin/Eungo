@@ -44,7 +44,7 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<div class="checkbox">
-							<label> <input type="checkbox" checked> 접속중
+							<label> <input type="checkbox"> 접속중
 							</label>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<div class="checkbox">
-							<label> <input type="checkbox" checked> NEW
+							<label> <input type="checkbox"> NEW
 							</label>
 						</div>
 					</div>
@@ -80,13 +80,13 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<div class="checkbox">
-							<label> <input type="checkbox" checked> SENIOR
+							<label> <input type="checkbox"> SENIOR
 							</label>
 						</div>
 					</div>
 					<div class="col-xs-6">
 						<div class="checkbox">
-							<label> <input type="checkbox" checked> SEMIPRO
+							<label> <input type="checkbox"> SEMIPRO
 							</label>
 						</div>
 					</div>

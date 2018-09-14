@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	String email = null;
-	if (request.getParameter("email") != null) {
-		email = request.getParameter("email");
-	}
-%>
+
 <nav class="navbar navbar-default ">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -25,43 +20,51 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse yamm" id="navigation">
 			<div class="button navbar-right">
-				<%
-					if (email == null) {
-				%>
-				<button class="navbar-btn nav-button wow bounceInRight login"
-					onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"
-					data-wow-delay="0.45s">Login</button>
-				<%
-					} else {
-				%>
-				<button class="navbar-btn nav-button wow bounceInRight login"
-					onclick="location.href='#'" data-wow-delay="0.45s">Logout</button>
-				<%
-					}
-				%>
-				<button class="navbar-btn nav-button wow fadeInRight"
-					onclick="location.href='<%=request.getContextPath()%>/account/submit-property.jsp'"
-					data-wow-delay="0.48s">Submit</button>
+
+				<c:choose>
+					<c:when test="${sessionScope.email!=null}">
+						<button class="navbar-btn nav-button wow bounceInRight login"
+							onclick="location.href='<%=request.getContextPath()%>/member?cmd=member_logout'"
+							data-wow-delay="0.45s">Logout</button>
+						<c:choose>
+							<c:when test="${sessionScope.seller==true }">
+								<button class="navbar-btn nav-button wow fadeInRight"
+									onclick="location.href='<%=request.getContextPath()%>/account/submit-service.jsp'"
+									data-wow-delay="0.48s">Submit</button>
+							</c:when>
+							<c:otherwise>
+								<button class="navbar-btn nav-button wow fadeInRight"
+									onclick="location.href='<%=request.getContextPath()%>/account/seller-register.jsp'"
+									data-wow-delay="0.48s">Do Sell</button>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+						<button class="navbar-btn nav-button wow bounceInRight login"
+							onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"
+							data-wow-delay="0.45s">Login</button>
+						<button class="navbar-btn nav-button wow fadeInRight"
+							onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"
+							data-wow-delay="0.48s">Do Sell</button>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<ul class="main-nav nav navbar-nav navbar-right">
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
 					href="<%=request.getContextPath()%>/index.jsp"> Home</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a class=""
 					href="<%=request.getContextPath()%>/board?cmd=board_select_all">Services</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.3s"><a class=""
-					href="<%=request.getContextPath()%>/service/service.jsp">Service</a></li>
-				<li class="dropdown yamm-fw" data-wow-delay="0.4s"><a href="#"
+				<li class="dropdown yamm-fw" data-wow-delay="0.3s"><a href="#"
 					class="dropdown-toggle" data-toggle="dropdown"
-					data-hover="dropdown" data-delay="200">Account<b
-						class="caret"></b></a>
+					data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
 							<div class="yamm-content">
 								<div class="row">
-									<div class="col-sm-7"></div>									
-									<div class="col-sm-3">																			
+									<div class="col-sm-7"></div>
+									<div class="col-sm-3">
 										<h5>User account</h5>
-										<ul>											
+										<ul>
 											<li><a
 												href="<%=request.getContextPath()%>/account/user-services.jsp">Your
 													properties</a></li>
