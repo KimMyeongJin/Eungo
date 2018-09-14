@@ -17,8 +17,7 @@ public class BoardSearchAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url ="properties.jsp";
 		
-		String search_text = request.getParameter("search_text");
-		
+		String search_text = request.getParameter("search_text");		
 		BoardDAO dao = new BoardDAO();
 		List<BoardVO> list = dao.search(search_text);
 		

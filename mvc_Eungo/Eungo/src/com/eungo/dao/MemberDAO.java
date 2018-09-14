@@ -95,7 +95,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -174,7 +174,7 @@ public class MemberDAO {
 	}
 
 	public int checkEmail(String email) {
-		System.out.println("email : " + email);
+		//System.out.println("email : " + email);
 		String SQL = "SELECT email FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
 		try {

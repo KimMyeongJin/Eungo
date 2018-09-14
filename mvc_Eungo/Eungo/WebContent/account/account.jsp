@@ -145,7 +145,7 @@
 			console.log("result : " + result);
 			$.ajax({
 				type : "POST",
-				url : "member?cmd=member_emailcheck",
+				url : "../member?cmd=member_emailcheck",
 				dataType : "text",
 				contentType : "application/text;charset=utf-8",
 				data : result,
@@ -154,18 +154,15 @@
 					if (result == '') {
 						listView.innerHTML = "Email을 입력해주세요";
 						listView.style.color = "red";
-						document.getElementById("validationEmail")
-								.setCustomValidity("이메일을 입력해주세요.");
+						document.getElementById("validationEmail").setCustomValidity("이메일을 입력해주세요.");
 					} else if (data == 2) {
 						listView.innerHTML = "사용 할 수 있는 Email 입니다";
 						listView.style.color = "blue";
-						document.getElementById("validationEmail")
-								.setCustomValidity('');
+						document.getElementById("validationEmail").setCustomValidity('');
 					} else if (data == 1) {
 						listView.innerHTML = "이미 등록된 Email 입니다";
 						listView.style.color = "red";
-						document.getElementById("validationEmail")
-								.setCustomValidity("가입된 이메일입니다.");
+						document.getElementById("validationEmail").setCustomValidity("가입된 이메일입니다.");
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -179,16 +176,7 @@
 	
 	<!-- password-script -->
 	<script>
-		/* function validatePassword() {
-		    var pass2 = document.getElementById("password2").value;
-		    var pass1 = document.getElementById("password1").value;
-		    if (pass1 != pass2)
-		        document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-		    else
-		        document.getElementById("password2").setCustomValidity('');
-		    //empty string means no validation error
-		} */
-
+		
 		function checkPwd() {
 			var f1 = document.forms[0];
 			var pw1 = document.getElementById("password1").value;

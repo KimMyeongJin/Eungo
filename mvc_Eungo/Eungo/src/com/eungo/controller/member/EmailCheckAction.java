@@ -13,7 +13,8 @@ import com.eungo.dao.MemberDAO;
 
 public class EmailCheckAction implements Action{
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		BufferedReader in = request.getReader();
 		StringBuffer sb = new StringBuffer();
 		String line = null;
