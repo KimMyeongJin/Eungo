@@ -36,19 +36,19 @@
 						<ul class="sort-by-list pull-left">
 							<li class="active"><a href="javascript:void(0);"
 								class="order_by_date" data-orderby="property_date"
-								data-order="ASC"> Property Date <i
+								data-order="ASC"> Service Date <i
 									class="fa fa-sort-amount-asc"></i>
 							</a></li>
 							<li class=""><a href="javascript:void(0);"
 								class="order_by_price" data-orderby="property_price"
-								data-order="DESC"> Property Price <i
+								data-order="DESC"> service Price <i
 									class="fa fa-sort-numeric-desc"></i>
 							</a></li>
 						</ul>
 
 						<!--/ .sort-by-list-->
 						<div class="items-per-page pull-right">
-							<label for="items_per_page"><b>Property per page :</b></label>
+							<label for="items_per_page"><b>Service per page :</b></label>
 							<div class="sel">
 								<select id="items_per_page" name="per_page">
 									<option value="3">3</option>
@@ -77,7 +77,7 @@
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp">
+										<a href="<%=request.getContextPath()%>/service/service.jsp">
 											Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
@@ -95,10 +95,10 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 										<div class="dealer-action pull-right">
 											<a
-												href="<%=request.getContextPath()%>/account/submit-property.jsp"
+												href="<%=request.getContextPath()%>/account/submit-service.jsp"
 												class="button">Edit </a> <a href="#"
 												class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp"
+												href="<%=request.getContextPath()%>/service/service.jsp"
 												class="button">View</a>
 										</div>
 									</div>
@@ -113,7 +113,7 @@
 								</div>
 								<div class="item-entry overflow ">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -127,9 +127,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>
@@ -138,12 +138,12 @@
 						<div class="col-md-4 p0">
 							<div class="box-two proerty-item">
 								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 										src="<%=request.getContextPath()%>/assets/img/demo/property-1.jpg"></a>
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -157,9 +157,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath() %>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath() %>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>
@@ -168,12 +168,12 @@
 						<div class="col-md-4 p0">
 							<div class="box-two proerty-item">
 								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 										src="<%=request.getContextPath()%>/assets/img/demo/property-3.jpg"></a>
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -187,9 +187,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>
@@ -198,12 +198,12 @@
 						<div class="col-md-4 p0">
 							<div class="box-two proerty-item">
 								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 										src="<%=request.getContextPath()%>/img/demo/property-1.jpg"></a>
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -217,9 +217,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>
@@ -229,12 +229,12 @@
 						<div class="col-md-4 p0">
 							<div class="box-two proerty-item">
 								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 										src="<%=request.getContextPath()%>/assets/img/demo/property-2.jpg"></a>
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -247,9 +247,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>
@@ -258,12 +258,12 @@
 						<div class="col-md-4 p0">
 							<div class="box-two proerty-item">
 								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 										src="assets/img/demo/property-3.jpg"></a>
 								</div>
 								<div class="item-entry overflow">
 									<h5>
-										<a href="<%=request.getContextPath()%>/property/property.jsp"> Super nice villa </a>
+										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
 									</h5>
 									<div class="dot-hr"></div>
 									<span class="pull-left"><b> Area :</b> 120m </span> <span
@@ -276,9 +276,9 @@
 											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
 											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
 										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-property.jsp" class="button">Edit </a> <a
+											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
 												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/property/property.jsp" class="button">View</a>
+												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
 										</div>
 									</div>
 								</div>

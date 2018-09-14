@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">Submit new property</h1>
+				<h1 class="page-title">Submit new service</h1>
 			</div>
 		</div>
 	</div>

@@ -48,19 +48,19 @@
 								<ul class="sort-by-list">
 									<li class="active"><a href="javascript:void(0);"
 										class="order_by_date" data-orderby="property_date"
-										data-order="ASC"> Property Date <i
+										data-order="ASC"> Service Date <i
 											class="fa fa-sort-amount-asc"></i>
 									</a></li>
 									<li class=""><a href="javascript:void(0);"
 										class="order_by_price" data-orderby="property_price"
-										data-order="DESC"> Property Price <i
+										data-order="DESC"> Service Price <i
 											class="fa fa-sort-numeric-desc"></i>
 									</a></li>
 								</ul>
 								<!--/ .sort-by-list-->
 
 								<div class="items-per-page">
-									<label for="items_per_page"><b>Property per page :</b></label>
+									<label for="items_per_page"><b>Service per page :</b></label>
 									<div class="sel">
 										<select id="items_per_page" name="per_page">
 											<option value="3">3</option>
@@ -97,19 +97,19 @@
 								<ul class="sort-by-list">
 									<li class="active"><a href="javascript:void(0);"
 										class="order_by_date" data-orderby="property_date"
-										data-order="ASC"> Property Date <i
+										data-order="ASC"> Servcie Date <i
 											class="fa fa-sort-amount-asc"></i>
 									</a></li>
 									<li class=""><a href="javascript:void(0);"
 										class="order_by_price" data-orderby="property_price"
-										data-order="DESC"> Property Price <i
+										data-order="DESC"> Service Price <i
 											class="fa fa-sort-numeric-desc"></i>
 									</a></li>
 								</ul>
 								<!--/ .sort-by-list-->
 
 								<div class="items-per-page">
-									<label for="items_per_page"><b>Property per page :</b></label>
+									<label for="items_per_page"><b>Servcie per page :</b></label>
 									<div class="sel">
 										<select id="items_per_page" name="per_page">
 											<option value="3">3</option>
@@ -146,7 +146,7 @@
 										<div class="box-two proerty-item">
 											<div class="item-thumb">
 												<a
-													href="<%=request.getContextPath()%>/property/property.jsp"><img
+													href="<%=request.getContextPath()%>/service/service.jsp"><img
 													src="<%=request.getContextPath()%>/assets/img/demo/property-3.jpg"></a>
 											</div>
 

@@ -29,9 +29,9 @@
 						<h4>Quick links</h4>
 						<div class="footer-title-line"></div>
 						<ul class="footer-menu">
-							<li><a href="<%=request.getContextPath() %>/properties/properties.jsp">Properties</a></li>
+							<li><a href="<%=request.getContextPath() %>/service/services.jsp">sales</a></li>
 							<li><a href="#">Services</a></li>
-							<li><a href="<%=request.getContextPath() %>/account/submit-property.jsp">Submit property </a></li>
+							<li><a href="<%=request.getContextPath() %>/account/submit-service.jsp">Submit service </a></li>
 							<li><a href="<%=request.getContextPath() %>/account/contact.jsp">Contact us</a></li>
 							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">fqa</a></li>
 							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">Terms </a></li>
@@ -154,7 +154,7 @@
 						<li><a class="wow fadeInUp animated" href="#"
 							data-wow-delay="0.2s">Home</a></li>
 						<li><a class="wow fadeInUp animated" href="#"
-							data-wow-delay="0.3s">Property</a></li>
+							data-wow-delay="0.3s">Service</a></li>
 						<li><a class="wow fadeInUp animated" href="#"
 							data-wow-delay="0.4s">Faq</a></li>
 						<li><a class="wow fadeInUp animated" href="#"

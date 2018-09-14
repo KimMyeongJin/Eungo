@@ -48,10 +48,10 @@
 								<input type="hidden" name="cmd" value="board_search"> <input
 									type="text" name="search_text" class="form-control"
 									placeholder="Key word">
-										<button class="btn search-btn" type="submit">
-											<i class="fa fa-search"></i>
-										</button>
 							</div>
+							<button class="btn search-btn" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
 						</div>
 					</form>
 				</div>
@@ -207,9 +207,9 @@
 							<h5>
 								<a href="property-1.jsp">CAN'T DECIDE ? </a>
 							</h5>
-							<h5 class="tree-sub-ttl">Show all properties</h5>
-							<button class="btn border-btn more-black" value="All properties">All
-								properties</button>
+							<h5 class="tree-sub-ttl">Show all Services</h5>
+							<button class="btn border-btn more-black" value="All services">All
+								Services</button>
 						</div>
 					</div>
 				</div>
@@ -393,7 +393,7 @@
 							</div>
 							<div class="chart" data-percent="12000">
 								<h2 class="percent" id="counter1">0</h2>
-								<h5>Properties in stock</h5>
+								<h5>Servcies in stock</h5>
 							</div>
 						</div>
 					</div>
@@ -443,7 +443,7 @@
 							lodo nisl no us nibh mas lsa</p>
 					</div>
 					<div class="asks-first-arrow">
-						<a href="properties.jsp"><span class="fa fa-angle-right"></span></a>
+						<a href="<%=request.getContextPath()%>/service/services.jsp"><span class="fa fa-angle-right"></span></a>
 					</div>
 				</div>
 			</div>
@@ -459,7 +459,7 @@
 							lodo nisl no us nibh mas lsa</p>
 					</div>
 					<div class="asks-first-arrow">
-						<a href="properties.jsp"><span class="fa fa-angle-right"></span></a>
+						<a href="<%=request.getContextPath()%>/service/services.jsp"><span class="fa fa-angle-right"></span></a>
 					</div>
 				</div>
 			</div>

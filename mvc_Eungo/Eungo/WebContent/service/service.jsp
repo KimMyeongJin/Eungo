@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Property page</title>
+<title>GARO ESTATE | Service page</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/lightslider.min.css">
 
@@ -198,22 +198,22 @@
 						<h4 class="s-property-title">Features</h4>
 						<ul>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">Swimming
+								href="<%=request.getContextPath()%>/service/services.jsp">Swimming
 									Pool</a></li>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">3
+								href="<%=request.getContextPath()%>/service/services.jsp">3
 									Stories</a></li>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">Central
+								href="<%=request.getContextPath()%>/service/services.jsp">Central
 									Cooling</a></li>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">Jog
+								href="<%=request.getContextPath()%>/service/services.jsp">Jog
 									Path 2</a></li>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">2
+								href="<%=request.getContextPath()%>/service/services.jsp">2
 									Lawn</a></li>
 							<li><a
-								href="<%=request.getContextPath()%>/properties/properties.jsp">Bike
+								href="<%=request.getContextPath()%>/service/services.jsp">Bike
 									Path</a></li>
 						</ul>
 
@@ -287,7 +287,7 @@
 					<div
 						class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 						<div class="panel-heading">
-							<h3 class="panel-title">Similar Properties</h3>
+							<h3 class="panel-title">Similar Services</h3>
 						</div>
 						<div class="panel-body recent-property-widget">
 							<ul>
@@ -301,7 +301,7 @@
 									</div>
 									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 										<h6>
-											<a href="<%=request.getContextPath()%>/property/property.jsp">Super
+											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
 												nice villa </a>
 										</h6>
 										<span class="property-price">3000000$</span>
@@ -309,7 +309,7 @@
 								</li>
 								<li>
 									<div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 											src="<%=request.getContextPath()%>/assets/img/demo/small-property-1.jpg"></a>
 										<span class="property-seeker"> <b class="b-1">A</b> <b
 											class="b-2">S</b>
@@ -317,7 +317,7 @@
 									</div>
 									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 										<h6>
-											<a href="<%=request.getContextPath()%>/property/property.jsp">Super
+											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
 												nice villa </a>
 										</h6>
 										<span class="property-price">3000000$</span>
@@ -325,7 +325,7 @@
 								</li>
 								<li>
 									<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 											src="<%=request.getContextPath()%>/assets/img/demo/small-property-3.jpg"></a>
 										<span class="property-seeker"> <b class="b-1">A</b> <b
 											class="b-2">S</b>
@@ -333,7 +333,7 @@
 									</div>
 									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 										<h6>
-											<a href="<%=request.getContextPath()%>/property/property.jsp">Super
+											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
 												nice villa </a>
 										</h6>
 										<span class="property-price">3000000$</span>
@@ -342,7 +342,7 @@
 
 								<li>
 									<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/property/property.jsp"><img
+										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
 											src="<%=request.getContextPath()%>/assets/img/demo/small-property-2.jpg"></a>
 										<span class="property-seeker"> <b class="b-1">A</b> <b
 											class="b-2">S</b>
@@ -350,7 +350,7 @@
 									</div>
 									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
 										<h6>
-											<a href="<%=request.getContextPath()%>/property/property.jsp">Super
+											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
 												nice villa </a>
 										</h6>
 										<span class="property-price">3000000$</span>

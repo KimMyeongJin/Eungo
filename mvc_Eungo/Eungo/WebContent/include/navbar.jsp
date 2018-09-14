@@ -47,12 +47,12 @@
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
 					href="<%=request.getContextPath()%>/index.jsp"> Home</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a class=""
-					href="<%=request.getContextPath()%>/properties/properties.jsp">Properties</a></li>
+					href="<%=request.getContextPath()%>/board?cmd=board_select_all">Services</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.3s"><a class=""
-					href="<%=request.getContextPath()%>/property/property.jsp">Property</a></li>
+					href="<%=request.getContextPath()%>/service/service.jsp">Service</a></li>
 				<li class="dropdown yamm-fw" data-wow-delay="0.4s"><a href="#"
 					class="dropdown-toggle" data-toggle="dropdown"
-					data-hover="dropdown" data-delay="200">Template <b
+					data-hover="dropdown" data-delay="200">Account<b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
@@ -63,10 +63,10 @@
 										<h5>User account</h5>
 										<ul>											
 											<li><a
-												href="<%=request.getContextPath()%>/account/user-properties.jsp">Your
+												href="<%=request.getContextPath()%>/account/user-services.jsp">Your
 													properties</a></li>
 											<li><a
-												href="<%=request.getContextPath()%>/account/submit-property.jsp">Submit
+												href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
 													property</a></li>
 											<li><a
 												href="<%=request.getContextPath()%>/account/change-password.jsp">Change
