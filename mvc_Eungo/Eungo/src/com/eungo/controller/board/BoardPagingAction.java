@@ -30,7 +30,7 @@ public class BoardPagingAction implements Action {
 		
 		
 		int totalNum = dao.boardTotalCount(); // list에 들어있는 모든 values 수
-		List<BoardVO> list = dao.boardPaging((pageNum - 1) * per_page,per_page);
+		List<BoardVO> list = dao.boardPaging(per_page,(pageNum - 1) * per_page);
 		Map<String, Integer> paging = page.pagenation(per_page, pageNum, totalNum);
 		
 		request.setAttribute("per_page", per_page);

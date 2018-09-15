@@ -53,7 +53,7 @@
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
 					href="<%=request.getContextPath()%>/index.jsp"> Home</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a class=""
-					href="<%=request.getContextPath()%>/board?cmd=board_select_all">Services</a></li>
+					href="<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9">Services</a></li>
 				<li class="dropdown yamm-fw" data-wow-delay="0.3s"><a href="#"
 					class="dropdown-toggle" data-toggle="dropdown"
 					data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>

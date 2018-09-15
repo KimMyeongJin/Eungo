@@ -45,9 +45,12 @@
 						class=" form-inline">
 						<div class="row">
 							<div class="form-group">
-								<input type="hidden" name="cmd" value="board_search"> <input
+								<input type="hidden" name="cmd" value="board_search"> 
+								<input
 									type="text" name="search_text" class="form-control"
 									placeholder="Key word">
+								<input type="hidden" name="per_page" value="9"> 
+								<input type="hidden" name="pageNum" value="1"> 
 							</div>
 							<button class="btn search-btn" type="submit">
 								<i class="fa fa-search"></i>
@@ -68,7 +71,7 @@
 			<div
 				class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
 				<!-- /.feature title -->
-				<h2>Top submitted property</h2>
+				<h2>Top submitted service</h2>
 				<p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu
 					nec pretium. Nullam sed arcu ultricies .</p>
 			</div>
@@ -76,6 +79,7 @@
 
 		<div class="row">
 			<div class="proerty-th">
+				
 				<div class="col-sm-6 col-md-3 p0">
 					<div class="box-two proerty-item">
 						<div class="item-thumb">
@@ -92,6 +96,7 @@
 						</div>
 					</div>
 				</div>
+				
 
 				<div class="col-sm-6 col-md-3 p0">
 					<div class="box-two proerty-item">

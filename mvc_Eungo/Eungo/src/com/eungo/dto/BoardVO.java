@@ -4,13 +4,35 @@ public class BoardVO {
 	private String email;
 	private int lnumber;
 	private String ltitle;
+	private String lcontent;
+	private String limage;
 	private String lcategory;
 	private int lprice;
 	private int lsellcount;
 	private int lviewcount;
 	private String lcomment;
 	private String lrule;
+	private String ldate;
 	
+	
+	public String getLdate() {
+		return ldate;
+	}
+	public void setLdate(String ldate) {
+		this.ldate = ldate;
+	}
+	public String getLcontent() {
+		return lcontent;
+	}
+	public void setLcontent(String lcontent) {
+		this.lcontent = lcontent;
+	}
+	public String getLimage() {
+		return limage;
+	}
+	public void setLimage(String limage) {
+		this.limage = limage;
+	}
 	public String getEmail() {
 		return email;
 	}
