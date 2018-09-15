@@ -14,20 +14,22 @@ import com.eungo.dao.BoardDAO;
 import com.eungo.dto.BoardVO;
 import com.eungo.util.Pagenation;
 
-public class BoardSearchAction implements Action{
+public class SmartSearchAction implements Action{
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url ="/service/services.jsp";
+		String url = "service/services.jsp";
 		
 		BoardDAO dao = new BoardDAO();
 		Pagenation page = new Pagenation();
 		
 		String search_text = request.getParameter("search_text");
+		String search_category = request.getParameter("search_category");
 		int per_page = Integer.parseInt(request.getParameter("per_page"));	//페이지당 띄우는 자료숫자
 		int pageNum = Integer.parseInt(request.getParameter("pageNum")); //현재 페이지
 		
 		int totalNum = dao.boardTotalCount(); // list에 들어있는 모든 values 수				
-		List<BoardVO> list = dao.search(search_text);
+		List<BoardVO> list = dao.smart_search(search_text, search_category);
 		Map<String, Integer> paging = page.pagenation(per_page, pageNum, totalNum);		
 		
 		request.setAttribute("per_page", per_page);
@@ -35,5 +37,8 @@ public class BoardSearchAction implements Action{
 		request.setAttribute("list", list);
 		RequestDispatcher dis = request.getRequestDispatcher(url);
 		dis.forward(request, response);		
+		
+		
 	}
+
 }

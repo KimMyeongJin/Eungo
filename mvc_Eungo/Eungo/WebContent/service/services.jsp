@@ -57,25 +57,8 @@
 											class="fa fa-sort-numeric-desc"></i>
 									</a></li>
 								</ul>
-								<!--/ .sort-by-list-->
-
-								<div class="items-per-page">
-									<label for="items_per_page"><b>Service per page :</b></label>
-									<div class="sel">
-										<select id="items_per_page" name="per_page">
-											<option value="3">3</option>
-											<option value="6">6</option>
-											<option value="9">9</option>
-											<option selected="selected" value="12">12</option>
-											<option value="15">15</option>
-											<option value="30">30</option>
-											<option value="45">45</option>
-											<option value="60">60</option>
-										</select>
-									</div>
-									<!--/ .sel-->
-								</div>
-								<!--/ .items-per-page-->
+								<!--/ .sort-by-list-->								
+								
 							</div>
 
 							<div class="col-xs-2 layout-switcher">
@@ -111,15 +94,71 @@
 								<div class="items-per-page">
 									<label for="items_per_page"><b>Servcie per page :</b></label>
 									<div class="sel">
-										<select id="items_per_page" name="per_page">
+										<select id="items_per_page" name="per_page" onchange="per_page()">
+										<c:choose>
+										<c:when test="${per_page == 3 }">
+											<option value="3" selected="selected">3</option>
+										</c:when>
+										<c:otherwise>
 											<option value="3">3</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 6 }">
+											<option value="6" selected="selected">6</option>
+										</c:when>
+										<c:otherwise>
 											<option value="6">6</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 9 }">
+											<option value="9" selected="selected">9</option>
+										</c:when>
+										<c:otherwise>
 											<option value="9">9</option>
-											<option selected="selected" value="12">12</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 12 }">
+											<option value="12" selected="selected">12</option>
+										</c:when>
+										<c:otherwise>
+											<option value="12">15</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 15 }">
+											<option value="15" selected="selected">15</option>
+										</c:when>
+										<c:otherwise>
 											<option value="15">15</option>
-											<option value="30">30</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 30 }">
+											<option value="30" selected="selected">30</option>
+										</c:when>
+										<c:otherwise>
+											<option value="3">30</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>
+										<c:when test="${per_page == 45 }">
+											<option value="45" selected="selected">45</option>
+										</c:when>
+										<c:otherwise>
 											<option value="45">45</option>
+										</c:otherwise>
+										</c:choose>
+										<c:choose>	
+										<c:when test="${per_page == 60 }">
+											<option value="60" selected="selected">60</option>
+										</c:when>
+										<c:otherwise>
 											<option value="60">60</option>
+										</c:otherwise>
+										</c:choose>	
 										</select>
 									</div>
 									<!--/ .sel-->
@@ -181,12 +220,10 @@
 							<div class="pull-right">
 								<div class="pagination">
 									<ul>
-										<li><a href="#">Prev</a></li>
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">Next</a></li>
+										<c:forEach var="paging" items="${paging }">
+											<li><a
+												href="<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=${paging.value}&per_page=${per_page}">${paging.key}</a></li>
+										</c:forEach>
 									</ul>
 								</div>
 							</div>
@@ -199,7 +236,13 @@
 		</div>
 	</div>
 </div>
-
+<script>
+function per_page() {
+    var x = document.getElementById("items_per_page").value;
+    location.href = "<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page="+x;
+    
+}
+</script>
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
 </body>

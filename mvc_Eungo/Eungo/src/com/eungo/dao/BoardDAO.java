@@ -13,8 +13,59 @@ public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	//페이지 넘길 때마다 9개씩 가져오게하는 쿼리
+	public List<BoardVO> boardPaging(int pageNum, int per_page) {
+		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+			Connection conn = DBManager.getConnection();
+			try {
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setInt(1, per_page);
+				pstmt.setInt(2, pageNum);				
+				rs = pstmt.executeQuery();
+				
+				List<BoardVO> list = new ArrayList<>();
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					board.setEmail(rs.getString("email"));
+					board.setLnumber(rs.getInt("lnumber"));
+					board.setLtitle(rs.getString("ltitle"));
+					board.setLcategory(rs.getString("lcategory"));
+					board.setLprice(rs.getInt("lprice"));
+					board.setLsellcount(rs.getInt("lsellcount"));
+					board.setLviewcount(rs.getInt("lviewcount"));
+					board.setLcomment(rs.getString("lcomment"));
+					board.setLrule(rs.getString("lrule"));
+					list.add(board);
+				}
+				return list;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return null;
+	}
+	
+	public int boardTotalCount() {
+		String SQL = "SELECT count(*) FROM list";
+		Connection conn = DBManager.getConnection();
+		int totalNum = 0;
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				totalNum = rs.getInt("count(*)");
+			}
+			return totalNum;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public List<BoardVO> getSelectAll(){
-		String SQL = "SELECT * FROM list ORDER BY lnumber";
+		String SQL = "SELECT * FROM list ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -76,13 +127,13 @@ public class BoardDAO {
 		return null;
 	}
 	
-	public List<BoardVO> search_catagory(String search_text, String search_catagory) {
+	public List<BoardVO> smart_search(String search_text, String search_category) {
 		String SQL ="SELECT * FROM list WHERE lcategory LIKE ? AND ltitle LIKE ?  OR lcomment LIKE ?";
 		
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, "%"+search_catagory+"%");
+			pstmt.setString(1, "%"+search_category+"%");
 			pstmt.setString(2, "%"+search_text+"%");
 			pstmt.setString(3, "%"+search_text+"%");
 			rs = pstmt.executeQuery();

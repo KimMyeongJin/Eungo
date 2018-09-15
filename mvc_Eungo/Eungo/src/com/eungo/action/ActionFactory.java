@@ -1,12 +1,14 @@
 package com.eungo.action;
 
+import com.eungo.controller.board.BoardPagingAction;
 //import com.eungo.controller.board.BoardSelectAll;
 import com.eungo.controller.board.BoardSearchAction;
-import com.eungo.controller.board.SearchCategoryAction;
+import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
 import com.eungo.controller.member.MemberLoginAction;
+import com.eungo.controller.member.MemberLogoutAction;
 import com.eungo.controller.member.NaverLoginAction;
 
 public class ActionFactory {
@@ -28,16 +30,18 @@ public class ActionFactory {
 			return new EmailSendAction();
 		}else if(cmd.equals("member_emailcheck")) {
 			return new EmailCheckAction();
-		}else if(cmd.equals("search_category")) {
-			return new SearchCategoryAction();
+		}else if(cmd.equals("smart_search")) {
+			return new SmartSearchAction();
 		}else if(cmd.equals("member_login")) {
 			return new MemberLoginAction();
+		}else if(cmd.equals("member_logout")) {
+			return new MemberLogoutAction();
 		}else if(cmd.equals("naver_email")) {
 			return new NaverLoginAction();
 		}else if(cmd.equals("board_search")) {
 			return new BoardSearchAction();
-		}else if(cmd.equals("board_select_all")) {
-			//return new BoardSelectAll();
+		}else if(cmd.equals("board_paging")) {
+			return new BoardPagingAction();
 		}
 		return null;
 	}

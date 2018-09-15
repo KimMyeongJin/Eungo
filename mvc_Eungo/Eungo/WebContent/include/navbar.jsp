@@ -65,15 +65,16 @@
 									<div class="col-sm-3">
 										<h5>User account</h5>
 										<ul>
-											<li><a
-												href="<%=request.getContextPath()%>/account/user-services.jsp">Your
-													properties</a></li>
-											<li><a
-												href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
-													property</a></li>
-											<li><a
-												href="<%=request.getContextPath()%>/account/change-password.jsp">Change
-													password</a></li>
+											<c:choose>
+												<c:when test="${sessionScope.seller==true }">
+													<li><a
+														href="<%=request.getContextPath()%>/account/user-services.jsp">Your
+															properties</a></li>
+													<li><a
+														href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
+															property</a></li>
+												</c:when>												
+											</c:choose>
 											<li><a
 												href="<%=request.getContextPath()%>/account/user-profile.jsp">Your
 													profile</a></li>

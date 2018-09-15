@@ -208,7 +208,7 @@
 								<a href="property-1.jsp">CAN'T DECIDE ? </a>
 							</h5>
 							<h5 class="tree-sub-ttl">Show all Services</h5>
-							<button onclick="location.href='<%=request.getContextPath()%>/board?cmd=board_select_all'" class="btn border-btn more-black" value="All services">All
+							<button onclick="location.href='<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9'" class="btn border-btn more-black" value="All services">All
 								Services</button>
 						</div>
 					</div>

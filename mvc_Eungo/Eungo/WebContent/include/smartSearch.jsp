@@ -6,12 +6,14 @@
 		<h3 class="panel-title">Smart search</h3>
 	</div>
 	<div class="panel-body search-widget">
-		<form action="<%=request.getContextPath()%>/board?cmd=board_search" method="get" class=" form-inline">
+		<form id="smart_search" action="<%=request.getContextPath()%>/board" method="get" class=" form-inline">
 			<fieldset>
 				<div class="row">
-					<div class="col-xs-12">
-					<input type="hidden" name="cmd" value="board_search">
+					<div class="col-xs-12">					
+					<input type="hidden" name="cmd" value="smart_search">
 						<input type="text" class="form-control" name="search_text" placeholder="Key word">
+						<input type="hidden" name="per_page" value="${per_page }">
+						<input type="hidden" name="pageNum" value="1">
 					</div>
 				</div>
 			</fieldset>
@@ -19,7 +21,7 @@
 			<fieldset>
 				<div class="row">
 					<div class="col-xs-12">
-						<select id="lunchBegins" class="selectpicker"
+						<select id="lunchBegins" class="selectpicker" name="search_category" form="smart_search"
 							data-live-search="true" data-live-search-style="begins"
 							title="Select Your Categroy">
 							<option>워드프레스</option>
