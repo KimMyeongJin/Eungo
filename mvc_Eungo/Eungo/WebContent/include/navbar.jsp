@@ -58,31 +58,34 @@
 					class="dropdown-toggle" data-toggle="dropdown"
 					data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li>
-							<div class="yamm-content">
-								<div class="row">
-									<div class="col-sm-7"></div>
-									<div class="col-sm-3">
-										<h5>User account</h5>
-										<ul>
-											<c:choose>
-												<c:when test="${sessionScope.seller==true }">
-													<li><a
-														href="<%=request.getContextPath()%>/account/user-services.jsp">Your
-															properties</a></li>
-													<li><a
-														href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
-															property</a></li>
-												</c:when>												
-											</c:choose>
-											<li><a
-												href="<%=request.getContextPath()%>/account/user-profile.jsp">Your
-													profile</a></li>
-										</ul>
+						<c:if test="${sessionScope.email != null }">
+							<li>
+								<div class="yamm-content">
+									<div class="row">
+										<div class="col-sm-7"></div>
+										<div class="col-sm-3">
+											<h5>User account</h5>
+											<ul>
+												<c:choose>
+													<c:when test="${sessionScope.seller==true }">
+														<li><a
+															href="<%=request.getContextPath()%>/account/user-services.jsp">Your
+																properties</a></li>
+														<li><a
+															href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
+																property</a></li>
+													</c:when>
+												</c:choose>
+
+												<li><a
+													href="<%=request.getContextPath()%>/account/user-profile.jsp">Your
+														profile</a></li>
+											</ul>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
+							</li>
+						</c:if>
 					</ul></li>
 				<%-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a
 					href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a></li> --%>
