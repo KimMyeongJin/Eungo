@@ -95,7 +95,7 @@
 							<div class="text-center">
 								<button type="submit" class="btn btn-default">Log in</button>
 							</div>
-<<<<<<< HEAD
+
 							<%
 								String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
 								String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
@@ -109,12 +109,11 @@
 								System.out.println("apiURL 요기: " + apiURL);
 								session.setAttribute("state", state);
 							%>
-							<a href="<%=apiURL%>"><img height="50"
-								src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
-
+					
+							<a class="login-social" href="<%=apiURL%>"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
 						</form>
 						<br>
-=======
+
 
 
 						</form>
@@ -132,19 +131,7 @@
 													}
 									%>
 					
-								<%//네이버 아이디 로그인
-									String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
-									String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
-									SecureRandom random = new SecureRandom();
-									String state = new BigInteger(130, random).toString();
-									String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-									apiURL += "&client_id=" + clientId;
-									apiURL += "&redirect_uri=" + redirectURI;
-									apiURL += "&state=" + state;
-					
-									System.out.println("apiURL 요기: " + apiURL);
-									session.setAttribute("state", state);
-												%>
+							
 					
 								<script>/* //페이스북 아이디 로그인 */
 								var checkLoginStatus = function(response){
@@ -192,8 +179,8 @@
 								  fjs.parentNode.insertBefore(js, fjs);
 								}(document, 'script', 'facebook-jssdk'));
 								</script>
-							<a class="login-social" href="<%=apiURL%>"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
->>>>>>> 6d1b83e0e992468c4cbdc39bb886826226ce12df
+						
+
 
 						<h2>Social login :</h2>
 
