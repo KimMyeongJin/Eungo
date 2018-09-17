@@ -76,37 +76,14 @@ public class MemberDAO {
 		return null;
 	}
 
-	public int naver_id(MemberVO member) {
-		String SQL = "INSERT id FROM member WHERE ";
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getPassword());
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				boolean emailcheck = rs.getBoolean("emailcheck");
-				if (emailcheck == true) {
-					return 1;
-				} else {
-					return 2;
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		return -1;
-	}
-
+	
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,\"null\",\"null\",\"null\",\"null\",\"1988-01-10\",null);";
+		String SQL = "INSERT INTO member VALUES(?,false,\"null\",\"null\",\"null\",\"null\",null,false, ?)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getNbirthday());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -116,7 +93,7 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-
+	
 	public int insert_facebookemail(MemberVO member) {
 		String SQL = "INSERT INTO member VALUES(?)";
 		Connection conn = DBManager.getConnection();
@@ -171,6 +148,28 @@ public class MemberDAO {
 		return -1;
 	}
 
+	public MemberVO select_email(MemberVO member) {
+	      String SQL = "SELECT emailcheck, seller FROM member WHERE email = ? AND password= ?";
+	      Connection conn = DBManager.getConnection();
+	      try {
+	         pstmt = conn.prepareStatement(SQL);
+	         pstmt.setString(1, member.getEmail());
+	         pstmt.setString(2, member.getPassword());
+	         rs = pstmt.executeQuery();
+	         MemberVO check_member = new MemberVO();
+	         if (rs.next()) {
+	            check_member.setEmailcheck(rs.getBoolean("emailcheck"));
+	            check_member.setSeller(rs.getBoolean("seller"));            
+	         }
+	         return check_member;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }      
+	      return null;
+	   }
+	
 	public int select_emailcheck(String email) {
 		String SQL = "SELECT emailcheck FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
