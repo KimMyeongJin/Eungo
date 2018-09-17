@@ -1152,6 +1152,8 @@ fieldset {
 .search-widget .form-inline .form-control,.search-widget  .form-inline .form-control { 
     width: 100%;
     background: #FFF;
+    margin-left: auto;
+
 }
 .properties-page .box-two { 
     box-shadow: 0px 1px 1px rgba(236, 236, 236, 0.1);
