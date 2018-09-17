@@ -83,7 +83,7 @@
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 login-blocks">
 						<h2>Login :</h2>
-						<form action="member_login" method="post">
+						<form action="<%=request.getContextPath()%>/member?cmd=member_login" method="post">
 							<div class="form-group">
 								<label for="email">Email</label> <input type="text"
 									class="form-control" name="email" id="email">
