@@ -78,12 +78,13 @@ public class MemberDAO {
 
 	
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,\"null\",\"null\",\"null\",\"null\",null,false, ?)";
+		String SQL = "INSERT INTO member VALUES(?,true,\"null\",\"null\",\"null\",?,null,false, ?)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getNbirthday());
+			pstmt.setString(2, member.getGender());
+			pstmt.setString(3, member.getNbirthday());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {

@@ -47,7 +47,13 @@ public class NaverLoginAction implements Action {
 			MemberDAO dao = new MemberDAO();
 			MemberVO member = new MemberVO();
 			String email = m.getEmail();
+			String gender = m.getGender();
+			String nbirthday = m.getBirthday();
 			member.setEmail(email);
+			member.setGender(gender);
+			member.setNbirthday(nbirthday);
+	
+			
 
 			if (dao.checkEmail(email) != 1) {
 				int result = dao.insert_naveremail(member);
