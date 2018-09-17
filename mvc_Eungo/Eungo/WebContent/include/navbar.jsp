@@ -98,7 +98,7 @@
 												</c:choose>
 
 												<li><a
-													href="<%=request.getContextPath()%>/account/user-profile.jsp">Your
+													href="<%=request.getContextPath()%>/member?cmd=member_update">Your
 														profile</a></li>
 											</ul>
 										</div>

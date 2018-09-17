@@ -18,21 +18,17 @@ public class MemberUpdateAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url= "account/user-profile.jsp";
 		
+		
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
 		
 		MemberDAO dao = new MemberDAO();
 		MemberVO member = new MemberVO();
-		member = dao.select_one(email);
-		System.out.println(member.getEmail());
-		System.out.println("2");
-		if(member == null) {
-			Script.moving(response, "DB에러");
-		}else {
-			request.setAttribute("member", member);
-			RequestDispatcher dis = request.getRequestDispatcher(url);
-			dis.forward(request, response);
-		}
+		member = dao.select_one(email);		
+		
+		request.setAttribute("member", member);
+		RequestDispatcher dis = request.getRequestDispatcher(url);
+		dis.forward(request, response);
 				
 		
 	}

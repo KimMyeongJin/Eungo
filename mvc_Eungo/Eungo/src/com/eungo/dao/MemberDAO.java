@@ -22,7 +22,8 @@ public class MemberDAO {
 			MemberVO member = new MemberVO();
 			if(rs.next()) {				
 				member.setEmail(rs.getString("email"));
-				member.setPhonenumber(rs.getString("phonenumber"));			
+				member.setPhonenumber(rs.getString("phonenumber"));	
+				member.setGender(rs.getString("gender"));
 				member.setBirthday(rs.getString("Birthday"));
 			}	
 			return member;
@@ -78,13 +79,13 @@ public class MemberDAO {
 
 	
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,true,\"null\",\"null\",\"null\",?,null,false, ?)";
+		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,?,?,false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getGender());
-			pstmt.setString(3, member.getNbirthday());
+			pstmt.setString(3, member.getBirthday());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {

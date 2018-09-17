@@ -13,8 +13,15 @@ public class BoardVO {
 	private String lcomment;
 	private String lrule;
 	private String ldate;
+	private int good;	
 	
 	
+	public int getGood() {
+		return good;
+	}
+	public void setGood(int good) {
+		this.good = good;
+	}
 	public String getLdate() {
 		return ldate;
 	}

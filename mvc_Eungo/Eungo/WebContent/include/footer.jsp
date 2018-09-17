@@ -78,7 +78,7 @@
 							<li>
 								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
 									<a href="single/single.jsp"> <img
-										src="assets/img/demo/small-proerty-2.jpg">
+										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
 									</a> <span class="blg-date">12-12-2016</span>
 
 								</div>

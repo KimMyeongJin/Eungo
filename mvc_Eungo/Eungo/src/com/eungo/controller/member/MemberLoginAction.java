@@ -30,43 +30,47 @@ public class MemberLoginAction implements Action{
 		String salt = dao.select_salt(email);
 		if(salt == null){
 			Script.moving(response, "아이디가 존재하지 않습니다.");
-		} 
-		String password = SHA256.getEncrypt(request.getParameter("password"), salt);
-		member.setEmail(email);
-		member.setPassword(password);
-		//로그인 페이지에서 받아온값 비교하기 위해 세팅완료
-		
-		/*//쿠키저장
-		if(request.getParameter("email") != null){
-			Cookie cookie = new Cookie("cookieID",member.getEmail());
-			cookie.setMaxAge(6000);
-			response.addCookie(cookie);
-		}else{
-			Cookie cookie = new Cookie("cookieID",null);
-			cookie.setMaxAge(0);
-			response.addCookie(cookie); 
-		}*/
-		
-		
-		check_member = dao.select_email(member);
-		if(check_member.isEmailcheck() == true){
+		}else if(salt.equals("naver")) {
+			Script.moving(response, "네이버로 로그인 해주세요");
+		}else {
+			String password = SHA256.getEncrypt(request.getParameter("password"), salt);
+			member.setEmail(email);
+			member.setPassword(password);
+			//로그인 페이지에서 받아온값 비교하기 위해 세팅완료
 			
-			Cookie cookie = new Cookie("cookieID",member.getEmail());
-			cookie.setMaxAge(6000);
-			response.addCookie(cookie);
+			/*//쿠키저장
+			if(request.getParameter("email") != null){
+				Cookie cookie = new Cookie("cookieID",member.getEmail());
+				cookie.setMaxAge(6000);
+				response.addCookie(cookie);
+			}else{
+				Cookie cookie = new Cookie("cookieID",null);
+				cookie.setMaxAge(0);
+				response.addCookie(cookie); 
+			}*/
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("email", member.getEmail());
-			session.setAttribute("seller", check_member.isSeller());
-			Script.moving(response, "로그인 성공", url);
-		}else if(check_member.isEmailcheck() == false){
-			HttpSession session = request.getSession();
-			session.setAttribute("email", member.getEmail());
-			session.setAttribute("seller", check_member.isSeller());
-			Script.moving(response, "미인증 회원입니다. 이메일인증을 해주세요.", email_url);
-		}else{
-			System.out.println(naming+"sql error");
-			Script.moving(response, "이메일 혹은 비밀번호를 확인하세요.");
+			
+			check_member = dao.select_email(member);
+			if(check_member.isEmailcheck() == true){
+				
+				Cookie cookie = new Cookie("cookieID",member.getEmail());
+				cookie.setMaxAge(6000);
+				response.addCookie(cookie);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("email", member.getEmail());
+				session.setAttribute("seller", check_member.isSeller());
+				Script.moving(response, "로그인 성공", url);
+			}else if(check_member.isEmailcheck() == false){
+				HttpSession session = request.getSession();
+				session.setAttribute("email", member.getEmail());
+				session.setAttribute("seller", check_member.isSeller());
+				Script.moving(response, "미인증 회원입니다. 이메일인증을 해주세요.", email_url);
+			}else{
+				System.out.println(naming+"sql error");
+				Script.moving(response, "이메일 혹은 비밀번호를 확인하세요.");
+			}
 		}
+		
 	}
 }

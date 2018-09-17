@@ -95,41 +95,18 @@
 							<div class="text-center">
 								<button type="submit" class="btn btn-default">Log in</button>
 							</div>
-
-							<%
-								String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
-								String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
-								SecureRandom random = new SecureRandom();
-								String state = new BigInteger(130, random).toString();
-								String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-								apiURL += "&client_id=" + clientId;
-								apiURL += "&redirect_uri=" + redirectURI;
-								apiURL += "&state=" + state;
-
-								System.out.println("apiURL 요기: " + apiURL);
-								session.setAttribute("state", state);
-							%>
-					
-							<a class="login-social" href="<%=apiURL%>"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
-						</form>
-						<br>
-
-
-
-						</form>
-						<br>
+							</form>							
+						<br>						
 
 						<h2>Social login :</h2>
 
 						<p class="login-select">
 							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
 							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
-						<%	
-										String id = null;
-										if (request.getParameter("email") != null) {
-											id = request.getParameter("email");
-													}
-									%>
+							<a class="login-social" href="<%=request.getContextPath()%>/member?cmd=naver_login"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
+							
+						
+						
 					
 							
 					

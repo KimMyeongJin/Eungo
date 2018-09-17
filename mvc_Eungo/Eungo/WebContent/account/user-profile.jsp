@@ -61,17 +61,17 @@
 
 							<div class="form-group">
 								<label>Email <small>(required)</small></label> <input
-									name="email" type="email" class="form-control"
-									 value="${member.email}">
+									name="email" readonly="readonly" class="form-control"
+									value="${member.email}">
 							</div>
 							<div class="form-group">
-								<label>Phone Number<small>(required)</small></label> <input
+								<label>Phone Number</label> <input
 									name="lastname" type="text" class="form-control"
-									 value="${member.phonenumber}">
+									value="${member.phonenumber}">
 							</div>
 							<div class="form-group">
-								<label>Gender <small>(required)</small></label> <input
-									name="firstname" type="text" class="form-control"
+								<label>Gender </label> <input
+									name="firstname" readonly="readonly" class="form-control"
 									value="${member.gender}">
 							</div>
 							<div class="form-group">
@@ -82,23 +82,25 @@
 						</div>
 						<div class="col-sm-3 padding-top-25">
 							<div class="form-group">
-								<label>Password <small>(required)</small></label> <input
-									name="Password" type="password" class="form-control"
-									value="${member.password}">
+								<label>Password <small>(required)</small></label>  <input name="Password" type="password"
+									class="form-control"> <small>함수넣기</small>
 							</div>
 							<div class="form-group">
-								<label>Confirm password : <small>(required)</small></label> <input
+								<label>New password </label> <input name="new_password"
+									id="password1" type="password" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Confirm password </label> <input id="password2"
 									type="password" class="form-control">
 							</div>
-							
+
 						</div>
 
 					</div>
 
 					<div class="col-sm-5 col-sm-offset-1">
-						<br> <input type='button' class='btn btn-finish btn-primary'
+						<br> <input type="submit" class='btn btn-finish btn-primary'
 							name='update' value="update" />
-							<a href = "member?cmd=index.jsp"/>					
 					</div>
 					<br>
 				</form>

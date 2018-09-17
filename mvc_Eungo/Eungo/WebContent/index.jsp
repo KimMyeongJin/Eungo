@@ -45,16 +45,16 @@
 						class=" form-inline">
 						<div class="row">
 							<div class="form-group">
-								<input type="hidden" name="cmd" value="board_search"> 
-								<input
+								<input type="hidden" name="cmd" value="board_search"> <input
 									type="text" name="search_text" class="form-control"
-									placeholder="Key word">
-								<input type="hidden" name="per_page" value="9"> 
-								<input type="hidden" name="pageNum" value="1"> 
+									placeholder="Key word"> <input type="hidden"
+									name="per_page" value="9"> <input type="hidden"
+									name="pageNum" value="1">
+								<button class="btn search-btn" type="submit">
+									<i class="fa fa-search"></i>
+								</button>
 							</div>
-							<button class="btn search-btn" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
+
 						</div>
 					</form>
 				</div>
@@ -79,7 +79,7 @@
 
 		<div class="row">
 			<div class="proerty-th">
-				
+
 				<div class="col-sm-6 col-md-3 p0">
 					<div class="box-two proerty-item">
 						<div class="item-thumb">
@@ -96,7 +96,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 
 				<div class="col-sm-6 col-md-3 p0">
 					<div class="box-two proerty-item">
@@ -213,7 +213,9 @@
 								<a href="property-1.jsp">CAN'T DECIDE ? </a>
 							</h5>
 							<h5 class="tree-sub-ttl">Show all Services</h5>
-							<button onclick="location.href='<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9'" class="btn border-btn more-black" value="All services">All
+							<button
+								onclick="location.href='<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9'"
+								class="btn border-btn more-black" value="All services">All
 								Services</button>
 						</div>
 					</div>
@@ -448,7 +450,8 @@
 							lodo nisl no us nibh mas lsa</p>
 					</div>
 					<div class="asks-first-arrow">
-						<a href="<%=request.getContextPath()%>/service/services.jsp"><span class="fa fa-angle-right"></span></a>
+						<a href="<%=request.getContextPath()%>/service/services.jsp"><span
+							class="fa fa-angle-right"></span></a>
 					</div>
 				</div>
 			</div>
@@ -464,7 +467,8 @@
 							lodo nisl no us nibh mas lsa</p>
 					</div>
 					<div class="asks-first-arrow">
-						<a href="<%=request.getContextPath()%>/service/services.jsp"><span class="fa fa-angle-right"></span></a>
+						<a href="<%=request.getContextPath()%>/service/services.jsp"><span
+							class="fa fa-angle-right"></span></a>
 					</div>
 				</div>
 			</div>
