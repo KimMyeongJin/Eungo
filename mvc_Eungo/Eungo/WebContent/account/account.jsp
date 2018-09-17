@@ -83,7 +83,7 @@
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 login-blocks">
 						<h2>Login :</h2>
-						<form action="<%=request.getContextPath()%>/member?cmd=member_login" method="post">
+						<form action="<%=request.getContextPath() %>/member?cmd=member_login" method="post">
 							<div class="form-group">
 								<label for="email">Email</label> <input type="text"
 									class="form-control" name="email" id="email">
@@ -105,19 +105,73 @@
 						<p class="login-select">
 							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
 							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
-						<%
-								String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
-								String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
-								SecureRandom random = new SecureRandom();
-								String state = new BigInteger(130, random).toString();
-								String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-								apiURL += "&client_id=" + clientId;
-								apiURL += "&redirect_uri=" + redirectURI;
-								apiURL += "&state=" + state;
-
-								System.out.println("apiURL 요기: " + apiURL);
-								session.setAttribute("state", state);
-							%>
+						<%	
+										String id = null;
+										if (request.getParameter("email") != null) {
+											id = request.getParameter("email");
+													}
+									%>
+					
+								<%//네이버 아이디 로그인
+									String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
+									String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
+									SecureRandom random = new SecureRandom();
+									String state = new BigInteger(130, random).toString();
+									String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+									apiURL += "&client_id=" + clientId;
+									apiURL += "&redirect_uri=" + redirectURI;
+									apiURL += "&state=" + state;
+					
+									System.out.println("apiURL 요기: " + apiURL);
+									session.setAttribute("state", state);
+												%>
+					
+								<script>/* //페이스북 아이디 로그인 */
+								var checkLoginStatus = function(response){
+									console.log(response);
+									//statusChangeCallback(response);
+									if(response.status === 'connected'){
+										document.querySelector('#authBtn').value = 'Logout';
+										FB.api('/me', function(resp){
+											document.querySelector('#name').innerHTML = resp.name;
+										});
+									}else{
+										document.querySelector('#authBtn').value = 'Login';
+									}
+								}
+								window.fbAsyncInit = function() {
+								    FB.init({
+								      appId      : '233237927536168',
+								      cookie     : true,  // enable cookies to allow the server to access 
+								                          // the session
+								      xfbml      : true,  // parse social plugins on this page
+								      version    : 'v3.1' // use graph api version 2.8
+								    });
+								
+								    // Now that we've initialized the JavaScript SDK, we call 
+								    // FB.getLoginStatus().  This function gets the state of the
+								    // person visiting this page and can return one of three states to
+								    // the callback you provide.  They can be:
+								    //
+								    // 1. Logged into your app ('connected')
+								    // 2. Logged into Facebook, but not your app ('not_authorized')
+								    // 3. Not logged into Facebook and can't tell if they are logged into
+								    //    your app or not.
+								    //
+								    // These three cases are handled in the callback function.
+								
+								    FB.getLoginStatus(checkLoginStatus);
+								  };
+								  
+								// Load the SDK asynchronously
+								(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id; 
+								  js.src = "https://connect.facebook.net/en_US/sdk.js";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));
+								</script>
 							<a class="login-social" href="<%=apiURL%>"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
 
 						</p>

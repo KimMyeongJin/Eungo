@@ -35,33 +35,9 @@ public class MemberDAO {
 		return null;
 	}
 
-	public int naver_id(MemberVO member) {
-		String SQL = "INSERT id FROM member WHERE ";
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getPassword());
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				boolean emailcheck = rs.getBoolean("emailcheck");
-				if (emailcheck == true) {
-					return 1;
-				} else {
-					return 2;
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		return -1;
-	}
 
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?)";
+		String SQL = "INSERT INTO member VALUES(?,false,\"null\",\"null\",\"null\",\"null\",\"1988-01-10\",null);";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -75,7 +51,6 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-
 	public int insert_facebookemail(MemberVO member) {
 		String SQL = "INSERT INTO member VALUES(?)";
 		Connection conn = DBManager.getConnection();
