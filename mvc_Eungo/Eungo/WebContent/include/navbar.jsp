@@ -54,11 +54,11 @@
 					href="<%=request.getContextPath()%>/index.jsp"> Home</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a class=""
 					href="<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9">Services</a></li>
-				<li class="dropdown yamm-fw" data-wow-delay="0.3s"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"
-					data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<c:if test="${sessionScope.email != null }">
+				<c:if test="${sessionScope.email != null }">
+					<li class="dropdown yamm-fw" data-wow-delay="0.3s"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>
+						<ul class="dropdown-menu">
 							<li>
 								<div class="yamm-content">
 									<div class="row">
@@ -85,8 +85,8 @@
 									</div>
 								</div>
 							</li>
-						</c:if>
-					</ul></li>
+						</ul></li>
+				</c:if>
 				<%-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a
 					href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a></li> --%>
 				<!-- 당장 contact.jsp 필요없어서 주석처리함  -->
