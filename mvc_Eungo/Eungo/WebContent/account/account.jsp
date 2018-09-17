@@ -83,7 +83,7 @@
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 login-blocks">
 						<h2>Login :</h2>
-						<form action="<%=request.getContextPath() %>/member?cmd=member_login" method="post">
+						<form action="<%=request.getContextPath()%>/member?cmd=member_login" method="post">
 							<div class="form-group">
 								<label for="email">Email</label> <input type="text"
 									class="form-control" name="email" id="email">
@@ -95,7 +95,17 @@
 							<div class="text-center">
 								<button type="submit" class="btn btn-default">Log in</button>
 							</div>
-							<%
+
+
+						</form>
+						<br>
+
+						<h2>Social login :</h2>
+
+						<p class="login-select">
+							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
+							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
+						<%
 								String clientId = "Tdm9CqMQithoF4ZWgDSw";//애플리케이션 클라이언트 아이디값";
 								String redirectURI = URLEncoder.encode("http://localhost:8000/Eungo/callback.jsp", "UTF-8");
 								SecureRandom random = new SecureRandom();
@@ -108,18 +118,8 @@
 								System.out.println("apiURL 요기: " + apiURL);
 								session.setAttribute("state", state);
 							%>
-							<a href="<%=apiURL%>"><img height="50"
-								src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
+							<a class="login-social" href="<%=apiURL%>"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
 
-						</form>
-						<br>
-
-						<h2>Social login :</h2>
-
-						<p>
-							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
-							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
-							<a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
 						</p>
 					</div>
 
@@ -145,7 +145,7 @@
 			console.log("result : " + result);
 			$.ajax({
 				type : "POST",
-				url : "../member?cmd=member_emailcheck",
+				url : "member?cmd=member_emailcheck",
 				dataType : "text",
 				contentType : "application/text;charset=utf-8",
 				data : result,

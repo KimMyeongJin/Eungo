@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 import com.eungo.dto.MemberVO;
 import com.eungo.util.DBManager;
 
@@ -11,53 +12,27 @@ public class MemberDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	public MemberVO select_one(String email) {
-		String SQL = "SELECT * FROM member WHERE email = ?";
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			MemberVO member = new MemberVO();
-			if(rs.next()) {				
-				member.setEmail(rs.getString("email"));
-				member.setPhonenumber(rs.getString("phonenumber"));			
-				member.setBirthday(rs.getString("Birthday"));
-			}	
-			return member;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		
-		return null;
-	}
-	
 	// select_id
-	public int select_email(MemberVO member) {
-		String SQL = "SELECT emailcheck FROM member WHERE email = ? AND password= ?";
+	public MemberVO select_email(MemberVO member) {
+		String SQL = "SELECT emailcheck, seller FROM member WHERE email = ? AND password= ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
 			rs = pstmt.executeQuery();
-
+			MemberVO check_member = new MemberVO();
 			if (rs.next()) {
-				boolean emailcheck = rs.getBoolean("emailcheck");
-				if (emailcheck == true) {
-					return 1;
-				} else {
-					return 2;
-				}
+				check_member.setEmailcheck(rs.getBoolean("emailcheck"));
+				check_member.setSeller(rs.getBoolean("seller"));				
 			}
+			return check_member;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
-		}
-		return -1;
+		}		
+		return null;
 	}
 
 	public int naver_id(MemberVO member) {
@@ -116,25 +91,9 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	public int update(MemberVO member) {
-		String SQL = "UPDATE member SET email =?,password =?,phonenumber =?";
-		
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getPassword());
-			pstmt.setString(3, member.getPhonenumber());
-			pstmt.executeUpdate();
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-	}
-	
+
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -213,7 +172,7 @@ public class MemberDAO {
 	}
 
 	public int checkEmail(String email) {
-		System.out.println("email : " + email);
+		//System.out.println("email : " + email);
 		String SQL = "SELECT email FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
 		try {
@@ -231,6 +190,5 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	
-	
+
 }
