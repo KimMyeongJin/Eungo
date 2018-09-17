@@ -18,7 +18,7 @@ public class MemberLogoutAction implements Action{
 		String url = "index.jsp";
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("email", null);
+		session.invalidate();
 		
 		RequestDispatcher dis = request.getRequestDispatcher(url);
 		dis.forward(request, response);		
