@@ -61,11 +61,13 @@
 
         //세션 30분 = 네이버 서버에 access_token이 메모리에 떠있음.
       	session.setAttribute("access_token", access_token);
-        response.sendRedirect("home.jsp");
+       	response.sendRedirect(request.getContextPath()+"/member?cmd=naver_email");
       }
     } catch (Exception e) {
       System.out.println(e);
     }
   %>
+ 
+  
   </body>
 </html>
