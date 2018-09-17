@@ -34,7 +34,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1 profiel-container">
-				<form action="" method="">
+				<form
+					action="<%=request.getContextPath()%>/member?cmd=member_updateProc"
+					method="POST">
 					<div class="profiel-header">
 						<h3>
 							<b>BUILD</b> YOUR PROFILE <br> <small>This
@@ -42,11 +44,12 @@
 						</h3>
 						<hr>
 					</div>
+
 					<div class="clear">
 						<div class="col-sm-3 col-sm-offset-1">
 							<div class="picture-container">
 								<div class="picture">
-									<img src="<%=request.getContextPath() %>/assets/img/avatar.png" class="picture-src"
+									<img src="assets/img/avatar.png" class="picture-src"
 										id="wizardPicturePreview" title="" /> <input type="file"
 										id="wizard-picture">
 								</div>
@@ -57,73 +60,45 @@
 						<div class="col-sm-3 padding-top-25">
 
 							<div class="form-group">
-								<label>First Name <small>(required)</small></label> <input
-									name="firstname" type="text" class="form-control"
-									placeholder="Andrew...">
-							</div>
-							<div class="form-group">
-								<label>Last Name <small>(required)</small></label> <input
-									name="lastname" type="text" class="form-control"
-									placeholder="Smith...">
-							</div>
-							<div class="form-group">
 								<label>Email <small>(required)</small></label> <input
 									name="email" type="email" class="form-control"
-									placeholder="andrew@email@email.com.com">
+									 value="${member.email}">
+							</div>
+							<div class="form-group">
+								<label>Phone Number<small>(required)</small></label> <input
+									name="lastname" type="text" class="form-control"
+									 value="${member.phonenumber}">
+							</div>
+							<div class="form-group">
+								<label>Gender <small>(required)</small></label> <input
+									name="firstname" type="text" class="form-control"
+									value="${member.gender}">
+							</div>
+							<div class="form-group">
+								<label>Birth Day<small>(required)</small></label> <input
+									name="firstname" type="text" class="form-control"
+									value="${member.birthday}">
 							</div>
 						</div>
 						<div class="col-sm-3 padding-top-25">
 							<div class="form-group">
 								<label>Password <small>(required)</small></label> <input
-									name="Password" type="password" class="form-control">
+									name="Password" type="password" class="form-control"
+									value="${member.password}">
 							</div>
 							<div class="form-group">
 								<label>Confirm password : <small>(required)</small></label> <input
 									type="password" class="form-control">
 							</div>
-						</div>
-
-					</div>
-
-					<div class="clear">
-						<br>
-						<hr>
-						<br>
-						<div class="col-sm-5 col-sm-offset-1">
-							<div class="form-group">
-								<label>Facebook :</label> <input name="Facebook" type="text"
-									class="form-control" placeholder="https://facebook.com/user">
-							</div>
-							<div class="form-group">
-								<label>Twitter :</label> <input name="Twitter" type="text"
-									class="form-control" placeholder="https://Twitter.com/@user">
-							</div>
-							<div class="form-group">
-								<label>Website :</label> <input name="website" type="text"
-									class="form-control" placeholder="https://yoursite.com/">
-							</div>
-						</div>
-
-						<div class="col-sm-5">
-							<div class="form-group">
-								<label>Public email :</label> <input name="p-email" type="email"
-									class="form-control" placeholder="p-email@rmail.com">
-							</div>
-							<div class="form-group">
-								<label>Phone :</label> <input name="Phone" type="text"
-									class="form-control" placeholder="+1 9090909090">
-							</div>
-							<div class="form-group">
-								<label>FAX :</label> <input name="FAX" type="text"
-									class="form-control" placeholder="+1 9090909090">
-							</div>
+							
 						</div>
 
 					</div>
 
 					<div class="col-sm-5 col-sm-offset-1">
 						<br> <input type='button' class='btn btn-finish btn-primary'
-							name='finish' value='Finish' />
+							name='update' value="update" />
+							<a href = "member?cmd=index.jsp"/>					
 					</div>
 					<br>
 				</form>
@@ -138,11 +113,11 @@
 
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
-<script src="<%=request.getContextPath() %>/assets/js/jquery.bootstrap.wizard.js"
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.bootstrap.wizard.js"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath() %>/assets/js/jquery.validate.min.js"></script>
-<script src="<%=request.getContextPath() %>/assets/js/wizard.js"></script>
-
-
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
 </body>
 </html>
