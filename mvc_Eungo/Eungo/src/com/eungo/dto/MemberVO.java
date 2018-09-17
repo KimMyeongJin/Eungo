@@ -9,14 +9,7 @@ public class MemberVO {
 	private String gender;
 	private String birthday;
 	private boolean seller;	
-	private String nbirthday;
 	
-	public String getNbirthday() {
-		return nbirthday;
-	}
-	public void setNbirthday(String nbirthday) {
-		this.nbirthday = nbirthday;
-	}
 	public boolean isSeller() {
 		return seller;
 	}
