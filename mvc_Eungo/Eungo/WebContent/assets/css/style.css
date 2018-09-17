@@ -48,10 +48,16 @@ h6, .h6{
     font-weight: bold;
     text-transform: uppercase;
 }
+p.login-select{
+	font-size: 15px;
+	line-height: 2em;
+}
 p{
     font-size: 15px;
     line-height: 1.6180em;
 }
+
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
     color: #999999;
     font-weight: 300;
