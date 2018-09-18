@@ -6,8 +6,6 @@
 <%@ page import="java.math.BigInteger"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
-<%@page import="com.naverLogin.search.Member"%>
-<%@page import="com.naverLogin.search.ApiMemberPro"%>
 <%@page import="com.google.gson.Gson"%>
 <!DOCTYPE html>
 <html class="no-js">
@@ -64,8 +62,9 @@
 									class="form-control" name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
-								<label for="name">Gender</label> <input type="text"
-									class="form-control" name="gender" id="gender">
+								<label>Gender <small>(required)</small></label><br> 
+								<input type="radio" name="gender"	class="form-control"  onclick="checked">male</input>
+								<input type="radio" name="gender"	class="form-control"  onclick="checked">female</input>	
 							</div>
 							<div class="form-group">
 								<label for="name">Birthday</label> <input type="text"
@@ -98,11 +97,13 @@
 							</form>							
 						<br>						
 
+
 						<h2>Social login :</h2>
 
 						<p class="login-select">
 							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
-							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
+							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>													
+							<a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
 							<a class="login-social" href="<%=request.getContextPath()%>/member?cmd=naver_login"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
 							
 						
@@ -159,12 +160,9 @@
 						
 
 
-						<h2>Social login :</h2>
 
 						<p>
-							<a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
-							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>
-							<a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
+
 						</p>
 					</div>
 

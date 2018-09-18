@@ -25,7 +25,12 @@ public class MemberUpdateAction implements Action{
 		MemberDAO dao = new MemberDAO();
 		MemberVO member = new MemberVO();
 		member = dao.select_one(email);		
-		
+		if(member.getGender().equals("M")) {
+			member.setGender("남자");
+		}else if(member.getGender().equals("F")) {
+			member.setGender("여자");
+		}
+		request.setAttribute("salt", member.getSalt());
 		request.setAttribute("member", member);
 		RequestDispatcher dis = request.getRequestDispatcher(url);
 		dis.forward(request, response);

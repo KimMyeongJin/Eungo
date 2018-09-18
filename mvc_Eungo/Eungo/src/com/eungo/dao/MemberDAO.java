@@ -59,16 +59,18 @@ public class MemberDAO {
 		String SQL = "SELECT emailcheck, seller FROM member WHERE email = ? AND password= ?";
 		Connection conn = DBManager.getConnection();
 		try {
-			pstmt = conn.prepareStatement(SQL);
+			pstmt = conn.prepareStatement(SQL);			
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
 			rs = pstmt.executeQuery();
 			MemberVO check_member = new MemberVO();
 			if (rs.next()) {
 				check_member.setEmailcheck(rs.getBoolean("emailcheck"));
-				check_member.setSeller(rs.getBoolean("seller"));				
-			}
-			return check_member;
+				check_member.setSeller(rs.getBoolean("seller"));
+				return check_member;
+			}else if(rs.next()==false) {
+				return null;
+			}			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -151,7 +153,7 @@ public class MemberDAO {
 	}
 
 	public MemberVO select_email(MemberVO member) {
-	      String SQL = "SELECT emailcheck, seller FROM member WHERE email = ? AND password= ?";
+	      String SQL = "SELECT emailcheck FROM member WHERE email = ? AND password= ?";
 	      Connection conn = DBManager.getConnection();
 	      try {
 	         pstmt = conn.prepareStatement(SQL);
