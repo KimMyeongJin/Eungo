@@ -80,7 +80,9 @@
 									value="${member.birthday}">
 							</div>
 						</div>
-						<div class="col-sm-3 padding-top-25">
+						<c:choose>
+							<c:when test="${salt != naver}">
+									<div class="col-sm-3 padding-top-25">
 							<div class="form-group">
 								<label>Password <small>(required)</small></label>  <input name="Password" type="password"
 									class="form-control"> <small>함수넣기</small>
@@ -95,6 +97,12 @@
 							</div>
 
 						</div>
+							</c:when>
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
+					
 
 					</div>
 
