@@ -150,7 +150,7 @@ public class BoardDAO {
 			pstmt.setString(2, "%"+search_text+"%");
 			pstmt.setString(3, "%"+search_text+"%");
 			pstmt.setInt(4, per_page);
-			pstmt.setInt(5, pageNum);
+			pstmt.setInt(5, (pageNum-1)*per_page);
 			rs = pstmt.executeQuery();
 			List<BoardVO> list = new ArrayList<>();
 			

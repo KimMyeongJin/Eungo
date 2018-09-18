@@ -1,5 +1,0 @@
-package com.eungo.action;
-
-public interface Action {
-
-}

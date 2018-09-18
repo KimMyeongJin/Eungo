@@ -6,7 +6,7 @@ import java.util.Map;
 public class Pagenation {
 	public Map<String, Integer> pagenation(int per_page, int pageNum, int totalNum) {
 		
-		Map<String, Integer> paging = new LinkedHashMap();
+		Map<String, Integer> paging = new LinkedHashMap<String, Integer>();
 		if (totalNum != 0) {
 			int totalPage = 0;
 			if (totalNum % per_page == 0) {

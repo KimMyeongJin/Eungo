@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
 import com.eungo.dao.MemberDAO;
-import com.eungo.dto.MemberVO;
-import com.eungo.util.DBManager;
 import com.eungo.util.Script;
 
 public class SubmitLoadAction implements Action {
@@ -22,8 +20,7 @@ public class SubmitLoadAction implements Action {
 		String url = "account/submit-service.jsp";
 		String index_url = "index.jsp";
 		
-		String phonenumber = null;
-		MemberVO member = new MemberVO();
+		String phonenumber = null;		
 		MemberDAO dao = new MemberDAO();
 		
 		HttpSession session = request.getSession();

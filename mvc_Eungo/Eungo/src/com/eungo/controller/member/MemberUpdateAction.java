@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.eungo.action.Action;
 import com.eungo.dao.MemberDAO;
 import com.eungo.dto.MemberVO;
-import com.eungo.util.Script;
+
 
 public class MemberUpdateAction implements Action{
 	@Override

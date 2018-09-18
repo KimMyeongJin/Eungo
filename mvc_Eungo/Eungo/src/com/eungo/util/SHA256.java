@@ -3,7 +3,6 @@ package com.eungo.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
-import java.util.Arrays;
 
 public class SHA256 {
 	public static String getEncrypt(String source, String salt) {
