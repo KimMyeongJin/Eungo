@@ -63,8 +63,8 @@
 							</div>
 							<div class="form-group">
 								<label>Gender <small>(required)</small></label><br> 
-								<input type="radio" name="gender"	class="form-control"  onclick="checked">male</input>
-								<input type="radio" name="gender"	class="form-control"  onclick="checked">female</input>	
+								<input type="radio" name="gender" class="form-control" value="M" ><label>male</label>
+								<input type="radio" name="gender" class="form-control" value="F" ><label>female</label>
 							</div>
 							<div class="form-group">
 								<label for="name">Birthday</label> <input type="text"

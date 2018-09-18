@@ -29,7 +29,7 @@
 						<c:choose>
 							<c:when test="${sessionScope.seller==true }">
 								<button class="navbar-btn nav-button wow fadeInRight"
-									onclick="location.href='<%=request.getContextPath()%>/account/submit-service.jsp'"
+									onclick="location.href='<%=request.getContextPath()%>/board?cmd=submit_load'"
 									data-wow-delay="0.48s">Submit</button>
 							</c:when>
 							<c:otherwise>
@@ -38,27 +38,7 @@
 									data-wow-delay="0.48s">Do Sell</button>
 							</c:otherwise>
 						</c:choose>
-					</c:when>
-					
-					<c:when test="${sessionScope.access_token!=null}">
-						<button class="navbar-btn nav-button wow bounceInRight login"
-						onclick="location.href='<%=request.getContextPath()%>/member?cmd=naver_logout'"
-						data-wow-delay="0.45s">Logout</button>
-						<c:choose>
-							<c:when test="${sessionScope.seller==true }">
-							<button class="navbar-btn nav-button wow fadeInRight"
-							onclick="location.href='<%=request.getContextPath()%>/account/submit-service.jsp'"
-							data-wow-delay="0.48s">Submit</button>
-							</c:when>
-							
-					<c:otherwise>
-						<button class="navbar-btn nav-button wow fadeInRight"
-							onclick="location.href='<%=request.getContextPath()%>/account/seller-register.jsp'"
-							data-wow-delay="0.48s">Do Sell</button>
-					</c:otherwise>
-						</c:choose>
-					</c:when>
-					
+					</c:when>	
 					<c:otherwise>
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"

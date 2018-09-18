@@ -3,6 +3,8 @@ package com.eungo.action;
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
 import com.eungo.controller.board.SmartSearchAction;
+import com.eungo.controller.board.SubmitLoadAction;
+import com.eungo.controller.board.SubmitServiceAction;
 import com.eungo.controller.member.ApiConnectAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
@@ -53,6 +55,10 @@ public class ActionFactory {
 			return new MemberUpdateAction();
 		} else if (cmd.equals("member_updateProc")) {
 			return new MemberUpdateProcAction();
+		} else if (cmd.equals("submit_load")) {
+			return new SubmitLoadAction();
+		} else if (cmd.equals("submit_service")) {
+			return new SubmitServiceAction();
 		}
 		return null;
 	}

@@ -70,9 +70,8 @@
 									value="${member.phonenumber}">
 							</div>
 							<div class="form-group">
-								<label>Gender <small>(required)</small></label><br> 
-								<input type="radio" name="gender"	class="form-control" value="${member.gender}" onclick="checked">male</input>
-								<input type="radio" name="gender"	class="form-control" value="${member.gender}" onclick="checked">female</input>	
+								<label>Gender </label>
+								<input readonly="readonly" name="gender" class="form-control" value="${member.gender}" />
 							</div>
 							<div class="form-group">
 								<label>Birth Day<small>(required)</small></label> <input
@@ -112,12 +111,7 @@
 	
 	</div>
 </div>
-<%	
-				String pw = null;
-		if (request.getParameter("password") != null) {
-		pw = request.getParameter("password");
-													}
-									%>
+
 <script>
 		window.onload = function() {
 			document.getElementById("validationEmail").onchange = sendId;

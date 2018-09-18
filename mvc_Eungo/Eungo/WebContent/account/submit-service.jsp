@@ -5,6 +5,8 @@
 <html class="no-js">
 <head>
 <title>GARO ESTATE | Submit property Page</title>
+<script type="text/javascript" src="<%=request.getContextPath() %>/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/editor/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
@@ -32,7 +34,7 @@
 		<div class="clearfix">
 			<div class="wizard-container">
 				<div class="wizard-card ct-wizard-orange" id="wizardProperty">
-					<form id="submit_form"
+					<form id="submit_form" name="w_form"
 						action="<%=request.getContextPath()%>/submit_service"
 						method="post" enctype="multipart/form-data">
 						<div class="wizard-header">
@@ -71,13 +73,13 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>Property price <small>(required)</small></label> <input
-													name="lprice" type="text" class="form-control"
-													>
+													name="lprice" type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label>Service category : <small>(required)</small></label> <select name="lcategory" id="lunchBegins"
+												<label>Service category : <small>(required)</small></label>
+												<select name="lcategory" id="lunchBegins"
 													class="selectpicker" data-live-search="true"
 													data-live-search-style="begins" title="Select category"
 													form="submit_form">
@@ -109,20 +111,19 @@
 
 							<div class="tab-pane" id="step2">
 								<h4 class="info-text">How much your Property is Beautiful ?</h4>
-								<div class="row">
-									<div class="col-sm-12">
+								<div class="row">									
 										<div class="col-sm-12">
 											<div class="form-group">
-												<label>Property Description :</label>
-												<textarea id="textAreaContent" name="content" rows="15" cols="80" style="width: 100%; display: none;">이미지링크해서 aws서버 연결해서 바로보기</textarea>
+												<label>Service Description :</label>
+												<textarea id="textAreaContent" name="lcontent" rows="15"
+													cols="80" ></textarea>
 											</div>
-										</div>
-									</div>
-																		
+										</div>									
+
 									<div class="col-sm-12 padding-top-15">
-									<div>
-									<label>옵션 :</label>
-									</div>
+										<div>
+											<label>옵션 :</label>
+										</div>
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
@@ -138,12 +139,12 @@
 													</label>
 												</div>
 											</div>
-										</div>	
+										</div>
 									</div>
 									<div class="col-sm-12 padding-bottom-15">
-									<div>
-									<label>등급 :</label>
-									</div>									
+										<div>
+											<label>등급 :</label>
+										</div>
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
@@ -166,8 +167,8 @@
 													<label> <input type="checkbox"> SENIOR
 													</label>
 												</div>
-											</div>											
-										</div>	
+											</div>
+										</div>
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
@@ -175,7 +176,7 @@
 													</label>
 												</div>
 											</div>
-										</div>										
+										</div>
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
@@ -190,9 +191,9 @@
 													<label> <input type="checkbox"> MASTER
 													</label>
 												</div>
-											</div>										
-										</div>									
-									</div>									
+											</div>
+										</div>
+									</div>
 									<br>
 								</div>
 							</div>
@@ -204,15 +205,13 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="property-images">Chose Images :</label> <input
-												class="form-control" type="file" id="property-images">											
+												class="form-control" type="file" id="property-images">
 										</div>
 										<div class="form-group">
-											<input
-												class="form-control" type="file" id="property-images">											
+											<input class="form-control" type="file" id="property-images">
 										</div>
 										<div class="form-group">
-											 <input
-												class="form-control" type="file" id="property-images">											
+											<input class="form-control" type="file" id="property-images">
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -271,14 +270,14 @@
 						<div class="wizard-footer">
 							<div class="pull-right">
 								<input type='button' class='btn btn-next btn-primary'
-									name='next' value='Next' /> <input type='button'
+									name='next' value='Next' /> <input type="submit"
 									class='btn btn-finish btn-primary ' name='finish'
-									value='Finish' />
+									value='Finish' onclick="submitContents(this)" />
 							</div>
 
 							<div class="pull-left">
 								<input type='button' class='btn btn-previous btn-default'
-									name='previous' value='Previous' />
+									name='previous' value='Previous'/>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -292,12 +291,46 @@
 
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
-
 <script
 	src="<%=request.getContextPath()%>/assets/js/jquery.bootstrap.wizard.js"
 	type="text/javascript"></script>
 <script
 	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
 <script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
+
+<!-- Naver Smart Editor 2 -->
+<script>
+  var form = document.w_form;
+  var oEditors = [];
+  nhn.husky.EZCreator.createInIFrame({
+      oAppRef: oEditors,
+      elPlaceHolder: "textAreaContent",
+      sSkinURI: "<%=request.getContextPath()%>/editor/SmartEditor2Skin.html",
+      fCreator: "createSEditor2"
+     
+  });
+  
+ 
+  //‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+  function submitContents(elClickedObj) {
+      // 에디터의 내용이 textarea에 적용된다.
+      oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", [ ]);
+   
+      // 에디터의 내용에 대한 값 검증은 이곳에서
+      // document.getElementById("textAreaContent").value를 이용해서 처리한다.
+    
+      try {
+          elClickedObj.form.submit();
+      } catch(e) {
+       
+      }
+  }
+   
+  // textArea에 이미지 첨부
+  function pasteHTML(filepath){
+      var sHTML = '<img src=../editor/upload/'+filepath+'>';
+      oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
+  }
+</script>
 </body>
 </html>

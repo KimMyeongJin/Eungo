@@ -28,14 +28,14 @@ public class MemberLoginAction implements Action {
 
 		String email = request.getParameter("email");
 		// String password = request.getParameter("password");
-		String salt = dao.select_salt(email);
+		String salt = dao.select_salt(email);		
 		dao.select_one(email);
 		if (salt == null) {
 			Script.moving(response, "아이디가 존재하지 않습니다.");
 		} else if (salt.equals("naver")) {
 			Script.moving(response, "네이버로 로그인 해주세요");
 		} else {
-			String password = SHA256.getEncrypt(request.getParameter("password"), salt);
+			String password = SHA256.getEncrypt(request.getParameter("password"), salt);			
 			member.setEmail(email);
 			member.setPassword(password);
 			// 로그인 페이지에서 받아온값 비교하기 위해 세팅완료
@@ -47,12 +47,9 @@ public class MemberLoginAction implements Action {
 			 * Cookie("cookieID",null); cookie.setMaxAge(0); response.addCookie(cookie); }
 			 */
 
-			System.out.println(member.getEmail());
-			System.out.println(member.getPassword());
+			
 			check_member = dao.select_email_seller(member);
-			if (check_member != null) {
-				System.out.println(check_member.isEmailcheck());
-				System.out.println(check_member.getEmail());
+			if (check_member != null) {				
 				if (check_member.isEmailcheck() == true) {
 
 					Cookie cookie = new Cookie("cookieID", member.getEmail());
