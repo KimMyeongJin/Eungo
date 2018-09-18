@@ -62,8 +62,9 @@
 									class="form-control" name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
-								<label for="name">Gender</label> <input type="text"
-									class="form-control" name="gender" id="gender">
+								<label>Gender <small>(required)</small></label><br> 
+								<input type="radio" name="gender"	class="form-control"  onclick="checked">male</input>
+								<input type="radio" name="gender"	class="form-control"  onclick="checked">female</input>	
 							</div>
 							<div class="form-group">
 								<label for="name">Birthday</label> <input type="text"
