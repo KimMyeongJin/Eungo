@@ -32,10 +32,12 @@
 		<div class="clearfix">
 			<div class="wizard-container">
 				<div class="wizard-card ct-wizard-orange" id="wizardProperty">
-					<form action="" method="">
+					<form id="submit_form"
+						action="<%=request.getContextPath()%>/submit_service"
+						method="post" enctype="multipart/form-data">
 						<div class="wizard-header">
 							<h3>
-								<b>Submit</b> YOUR PROPERTY <br> <small>Lorem ipsum
+								<b>Submit</b> YOUR SERVICE <br> <small>Lorem ipsum
 									dolor sit amet, consectetur adipisicing.</small>
 							</h3>
 						</div>
@@ -53,28 +55,52 @@
 									<div class="col-sm-4 col-sm-offset-1">
 										<div class="picture-container">
 											<div class="picture">
-												<img src="<%=request.getContextPath() %>/assets/img/default-property.jpg"
+												<img
+													src="<%=request.getContextPath()%>/assets/img/default-property.jpg"
 													class="picture-src" id="wizardPicturePreview" title="" />
-												<input type="file" id="wizard-picture">
+												<input type="file" id="wizard-picture" name="limage">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Property name <small>(required)</small></label> <input
-												name="propertyname" type="text" class="form-control"
+											<label>Service name <small>(required)</small></label> <input
+												name="ltitle" type="text" class="form-control"
 												placeholder="Super villa ...">
 										</div>
-
-										<div class="form-group">
-											<label>Property price <small>(required)</small></label> <input
-												name="propertyprice" type="text" class="form-control"
-												placeholder="3330000">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Property price <small>(required)</small></label> <input
+													name="lprice" type="text" class="form-control"
+													>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Service category : <small>(required)</small></label> <select name="lcategory" id="lunchBegins"
+													class="selectpicker" data-live-search="true"
+													data-live-search-style="begins" title="Select category"
+													form="submit_form">
+													<option>워드프레스</option>
+													<option>웹사이트 개발</option>
+													<option>쇼핑몰·커머스</option>
+													<option>모바일앱·웹</option>
+													<option>프로그램 개발</option>
+													<option>게임</option>
+													<option>데이터베이스</option>
+													<option>데이터분석·리포트</option>
+													<option>서버 및 기술지원</option>
+													<option>QA·테스트</option>
+													<option>파일변환</option>
+													<option>챗봇</option>
+													<option>기타</option>
+												</select>
+											</div>
 										</div>
 										<div class="form-group">
-											<label>Telephone <small>(empty if you wanna
+											<label>Phonenumber <small>(empty if you wanna
 													use default phone number)</small></label> <input name="phone" type="text"
-												class="form-control" placeholder="+1 473 843 7436">
+												class="form-control" value="${phonenumber }">
 										</div>
 									</div>
 								</div>
@@ -88,103 +114,19 @@
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label>Property Description :</label>
-												<textarea name="discrition" class="form-control"></textarea>
+												<textarea id="textAreaContent" name="content" rows="15" cols="80" style="width: 100%; display: none;">이미지링크해서 aws서버 연결해서 바로보기</textarea>
 											</div>
 										</div>
 									</div>
-
-									<div class="col-sm-12">
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Property State :</label> <select id="lunchBegins"
-													class="selectpicker" data-live-search="true"
-													data-live-search-style="begins" title="Select your city">
-													<option>Seoul</option>
-													<option>Paris</option>
-													<option>Casablanca</option>
-													<option>Tokyo</option>
-													<option>Marraekch</option>
-													<option>kyoto , shibua</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Property City :</label> <select id="lunchBegins"
-													class="selectpicker" data-live-search="true"
-													data-live-search-style="begins" title="Select your city">
-													<option>New york, CA</option>
-													<option>Paris</option>
-													<option>Casablanca</option>
-													<option>Tokyo</option>
-													<option>Marraekch</option>
-													<option>kyoto , shibua</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Property Statue :</label> <select id="basic"
-													class="selectpicker show-tick form-control">
-													<option>-Status-</option>
-													<option>Rent</option>
-													<option>Boy</option>
-													<option>used</option>
-
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Property Statue :</label> <select id="basic"
-													class="selectpicker show-tick form-control">
-													<option>-Status-</option>
-													<option>Rent</option>
-													<option>Boy</option>
-													<option>used</option>
-
-												</select>
-											</div>
-										</div>
-									</div>
+																		
 									<div class="col-sm-12 padding-top-15">
-										<div class="col-sm-4">
-											<div class="form-group">
-												<label for="property-geo">Min bed :</label> <input
-													type="text" class="span2" value="" data-slider-min="0"
-													data-slider-max="600" data-slider-step="5"
-													data-slider-value="[250,450]" id="min-bed"><br />
-												<b class="pull-left color">1</b> <b class="pull-right color">120</b>
-											</div>
-										</div>
-										<div class="col-sm-4">
-
-											<div class="form-group">
-												<label for="price-range">Min baths :</label> <input
-													type="text" class="span2" value="" data-slider-min="0"
-													data-slider-max="600" data-slider-step="5"
-													data-slider-value="[250,450]" id="min-baths"><br />
-												<b class="pull-left color">1</b> <b class="pull-right color">120</b>
-											</div>
-										</div>
-										<div class="col-sm-4">
-
-											<div class="form-group">
-												<label for="property-geo">Property geo (m2) :</label> <input
-													type="text" class="span2" value="" data-slider-min="0"
-													data-slider-max="600" data-slider-step="5"
-													data-slider-value="[50,450]" id="property-geo"><br />
-												<b class="pull-left color">40m</b> <b
-													class="pull-right color">12000m</b>
-											</div>
-										</div>
+									<div>
+									<label>옵션 :</label>
 									</div>
-									<div class="col-sm-12 padding-top-15">
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> Swimming
-														Pool
+													<label> <input type="checkbox"> 접속중
 													</label>
 												</div>
 											</div>
@@ -192,35 +134,20 @@
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> 2 Stories
+													<label> <input type="checkbox"> 세금계산서
 													</label>
 												</div>
 											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> Emergency
-														Exit
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> Fire Place
-													</label>
-												</div>
-											</div>
-										</div>
+										</div>	
 									</div>
 									<div class="col-sm-12 padding-bottom-15">
+									<div>
+									<label>등급 :</label>
+									</div>									
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> Laundry
-														Room
+													<label> <input type="checkbox"> NEW
 													</label>
 												</div>
 											</div>
@@ -228,7 +155,7 @@
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> Jog Path
+													<label> <input type="checkbox"> JUNIOR
 													</label>
 												</div>
 											</div>
@@ -236,7 +163,23 @@
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> Ceilings
+													<label> <input type="checkbox"> SENIOR
+													</label>
+												</div>
+											</div>											
+										</div>	
+										<div class="col-sm-3">
+											<div class="form-group">
+												<div class="checkbox">
+													<label> <input type="checkbox"> SEMIPRO
+													</label>
+												</div>
+											</div>
+										</div>										
+										<div class="col-sm-3">
+											<div class="form-group">
+												<div class="checkbox">
+													<label> <input type="checkbox"> PRO
 													</label>
 												</div>
 											</div>
@@ -244,12 +187,12 @@
 										<div class="col-sm-3">
 											<div class="form-group">
 												<div class="checkbox">
-													<label> <input type="checkbox"> Dual Sinks
+													<label> <input type="checkbox"> MASTER
 													</label>
 												</div>
-											</div>
-										</div>
-									</div>
+											</div>										
+										</div>									
+									</div>									
 									<br>
 								</div>
 							</div>
@@ -261,9 +204,15 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="property-images">Chose Images :</label> <input
-												class="form-control" type="file" id="property-images">
-											<p class="help-block">Select multipel images for your
-												property .</p>
+												class="form-control" type="file" id="property-images">											
+										</div>
+										<div class="form-group">
+											<input
+												class="form-control" type="file" id="property-images">											
+										</div>
+										<div class="form-group">
+											 <input
+												class="form-control" type="file" id="property-images">											
 										</div>
 									</div>
 									<div class="col-sm-6">
