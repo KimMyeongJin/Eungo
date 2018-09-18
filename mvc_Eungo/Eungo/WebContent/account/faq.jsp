@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | FAQ page</title>
+<title>GARO ESTATE | property User profile Page</title>
 
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
@@ -13,170 +13,88 @@
 <!-- Start nav bar -->
 <%@include file="../include/navbar.jsp"%>
 <!-- End of nav bar -->
+  <div class="page-head">
+      <div class="container">
+         <div class="row">
+            <div class="page-head-content">
+               <h1 class="page-title">FAQ Page</h1>
+            </div>
+         </div>
+      </div>
+   </div>
+<!-- End page header -->
 
-	<div class="page-head">
-		<div class="container">
-			<div class="row">
-				<div class="page-head-content">
-					<h1 class="page-title">FAQ PAge</h1>
-				</div>
-			</div>
-		</div>
+<!-- property area -->
+<div class="content-area recent-property"
+      style="background-color: #FCFCFC; padding-bottom: 55px;">
+      <div class="container">		
+         <div class="row">
+            <div
+               class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+               <!-- /.feature title -->
+               <h2><i class="pe-7s-user strong"></i> 실시간 문의 </h2>
+               <br>
+            </div>
+         </div>
+	<br>
+	
+	<fieldset style="text-align: center;">
+    <textarea id="messageWindow" rows="10" cols="50" readonly></textarea>
+    <br>
+    <br>
+    <div>
+	    <input style="width: 300px; background-color: #E6E6E6;" id="inputMessage" type="text" autofocus>
+	    <input style="width: 75px;" type="submit" value="send" onclick="send()" />
+    </div> 
+   </fieldset>
+   
+   <script>
+        var textarea = document.getElementById("messageWindow");
+        var webSocket = new WebSocket('ws://localhost:8000/Eungo/broadCasting');
+        var inputMessage = document.getElementById('inputMessage');
+        
+    webSocket.onerror = function(event) {
+      onError(event)
+    };
+    
+    webSocket.onopen = function(event) {
+      onOpen(event)
+    };
+    
+    webSocket.onmessage = function(event) {
+      onMessage(event)
+    };
+    
+    function onMessage(event) {
+        textarea.value += "상담원 : " + event.data + "\n";
+    }
+    
+    function onOpen(event) {
+        textarea.value += "상담원과 연결이 되었습니다.\n";
+    }
+    
+    function onError(event) {
+      alert(event.data);
+    }
+    
+    function send() {
+        textarea.value += "나 : " + inputMessage.value + "\n";
+        webSocket.send(inputMessage.value);
+        inputMessage.value = "";
+    }
+  </script>
+		<!-- end row -->
 	</div>
+</div>
+<br>
 
-	<!-- property area -->
-	<div class="content-area recent-property"
-		style="background-color: #FCFCFC; padding-bottom: 55px;">
-		<div class="container">
-
-			<div class="row">
-				<div
-					class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-					<!-- /.feature title -->
-					<h2>Our terms</h2>
-					<br>
-				</div>
-			</div>
-
-			<div class="row row-feat">
-				<div class="col-md-12">
-
-					<div class="col-sm-6 feat-list">
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa11">Nostrud exercitation ullamco
-										laboris 1 1</h4>
-								</div>
-								<div id="fqa11" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa22">Nostrud exercitation ullamco
-										laboris 2 2</h4>
-								</div>
-								<div id="fqa22" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa33">Nostrud exercitation ullamco
-										laboris 3 3</h4>
-								</div>
-								<div id="fqa33" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 feat-list">
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa1">Nostrud exercitation ullamco laboris
-										1</h4>
-								</div>
-								<div id="fqa1" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa2">Nostrud exercitation ullamco laboris
-										2</h4>
-								</div>
-								<div id="fqa2" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title fqa-title" data-toggle="collapse"
-										data-target="#fqa3">Nostrud exercitation ullamco laboris
-										3</h4>
-								</div>
-								<div id="fqa3" class="panel-collapse collapse fqa-body">
-									<div class="panel-body">
-										<ol>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-											<li>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
-										</ol>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Footer area-->
-	<%@include file="../include/footer.jsp"%>
+<!-- Footer area-->
+<%@include file="/include/footer.jsp"%>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.bootstrap.wizard.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
 </body>
 </html>

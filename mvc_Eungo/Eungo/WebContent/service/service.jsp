@@ -274,6 +274,7 @@
 										<li><i class="pe-7s-mail strong"> </i>
 											email@yourcompany.com</li>
 										<li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+										<li><i class="pe-7s-user strong"> </i><a href="<%=request.getContextPath()%>/account/faq.jsp" style="color:#FFF"> FAQ </a></li>
 									</ul>
 									<p>Duis mollis blandit tempus porttitor curabiturDuis
 										mollis blandit tempus porttitor curabitur , est non…</p>
