@@ -314,7 +314,9 @@
        
       }
   }
-   
+  document.getElementById("smart_editor2").setAttribute('style','width:'+editorArea.parentNode.offsetWidth+'px');
+
+ 
   // textArea에 이미지 첨부
   function pasteHTML(filepath){
       var sHTML = '<img src=../editor/upload/'+filepath+'>';

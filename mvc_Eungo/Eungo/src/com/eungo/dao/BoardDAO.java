@@ -45,7 +45,7 @@ public class BoardDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, per_page);
-			pstmt.setInt(2, pageNum);
+			pstmt.setInt(2, (pageNum - 1) * per_page);
 			rs = pstmt.executeQuery();
 
 			List<BoardVO> list = new ArrayList<>();
