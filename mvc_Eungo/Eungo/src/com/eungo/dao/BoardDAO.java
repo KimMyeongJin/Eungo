@@ -12,43 +12,66 @@ import com.eungo.util.DBManager;
 public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
-	//페이지 넘길 때마다 9개씩 가져오게하는 쿼리
+
+	public int boardInsert(BoardVO board) {
+		String SQL = "INSERT INTO list(email,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, board.getEmail());
+			pstmt.setString(2, board.getLtitle());
+			pstmt.setString(3, board.getLcontent());
+			pstmt.setString(4, board.getLimage());
+			pstmt.setString(5, board.getLimage2());
+			pstmt.setString(6, board.getLimage3());
+			pstmt.setString(7, board.getLimage4());
+			pstmt.setString(8, board.getYoutube());
+			pstmt.setString(9, board.getLcategory());
+			pstmt.setInt(10, board.getLprice());
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	// 페이지 넘길 때마다 9개씩 가져오게하는 쿼리
 	public List<BoardVO> boardPaging(int per_page, int pageNum) {
 		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT ? OFFSET ?";
-			Connection conn = DBManager.getConnection();
-			try {
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, per_page);
-				pstmt.setInt(2, pageNum);				
-				rs = pstmt.executeQuery();
-				
-				List<BoardVO> list = new ArrayList<>();
-				while(rs.next()) {
-					BoardVO board = new BoardVO();
-					board.setEmail(rs.getString("email"));
-					board.setLnumber(rs.getInt("lnumber"));
-					board.setLtitle(rs.getString("ltitle"));
-					board.setLcontent(rs.getString("lcontent"));
-					board.setLimage(rs.getString("limage"));
-					board.setLcategory(rs.getString("lcategory"));
-					board.setLprice(rs.getInt("lprice"));
-					board.setLsellcount(rs.getInt("lsellcount"));
-					board.setLviewcount(rs.getInt("lviewcount"));
-					board.setLcomment(rs.getString("lcomment"));
-					board.setLrule(rs.getString("lrule"));
-					board.setLdate(rs.getString("ldate"));
-					list.add(board);
-				}
-				return list;
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(conn, pstmt, rs);
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, per_page);
+			pstmt.setInt(2, pageNum);
+			rs = pstmt.executeQuery();
+
+			List<BoardVO> list = new ArrayList<>();
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setEmail(rs.getString("email"));
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLcontent(rs.getString("lcontent"));
+				board.setLimage(rs.getString("limage"));
+				board.setLcategory(rs.getString("lcategory"));
+				board.setLprice(rs.getInt("lprice"));
+				board.setLsellcount(rs.getInt("lsellcount"));
+				board.setLviewcount(rs.getInt("lviewcount"));				
+				board.setLdate(rs.getString("ldate"));
+				list.add(board);
 			}
-			return null;
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
 	}
-	
+
 	public int boardTotalCount() {
 		String SQL = "SELECT count(*) FROM list";
 		Connection conn = DBManager.getConnection();
@@ -56,7 +79,7 @@ public class BoardDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				totalNum = rs.getInt("count(*)");
 			}
 			return totalNum;
@@ -66,7 +89,7 @@ public class BoardDAO {
 		}
 		return 0;
 	}
-	
+
 	public int smartSearchCount(String search_text, String search_category) {
 		String SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
@@ -74,10 +97,10 @@ public class BoardDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, search_category);
-			pstmt.setString(2, "%"+search_text+"%");
-			pstmt.setString(3, "%"+search_text+"%");
+			pstmt.setString(2, "%" + search_text + "%");
+			pstmt.setString(3, "%" + search_text + "%");
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				totalNum = rs.getInt("count(*)");
 			}
 			return totalNum;
@@ -87,17 +110,18 @@ public class BoardDAO {
 		}
 		return 0;
 	}
+
 	public int searchCount(String search_text) {
 		String SQL = "SELECT count(*) FROM list WHERE lcategory like ? or ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, "%"+search_text+"%");
-			pstmt.setString(2, "%"+search_text+"%");
-			pstmt.setString(3, "%"+search_text+"%");
+			pstmt.setString(1, "%" + search_text + "%");
+			pstmt.setString(2, "%" + search_text + "%");
+			pstmt.setString(3, "%" + search_text + "%");
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				totalNum = rs.getInt("count(*)");
 			}
 			return totalNum;
@@ -107,15 +131,15 @@ public class BoardDAO {
 		}
 		return 0;
 	}
-	
-	public List<BoardVO> getSelectAll(){
+
+	public List<BoardVO> getSelectAll() {
 		String SQL = "SELECT * FROM list ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			List<BoardVO> list = new ArrayList<>();
-			while(rs.next()) {
+			while (rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setEmail(rs.getString("email"));
 				board.setLnumber(rs.getInt("lnumber"));
@@ -125,9 +149,7 @@ public class BoardDAO {
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));
-				board.setLcomment(rs.getString("lcomment"));
-				board.setLrule(rs.getString("lrule"));
+				board.setLviewcount(rs.getInt("lviewcount"));				
 				board.setLdate(rs.getString("ldate"));
 				list.add(board);
 			}
@@ -139,22 +161,22 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
-	public List<BoardVO> search(String search_text,int per_page, int pageNum) {
-		String SQL ="SELECT * FROM list WHERE ltitle LIKE ? OR lcategory LIKE ? OR lcontent LIKE ? ORDER bY lnumber DESC  LIMIT ? OFFSET ?";
-		
+
+	public List<BoardVO> search(String search_text, int per_page, int pageNum) {
+		String SQL = "SELECT * FROM list WHERE ltitle LIKE ? OR lcategory LIKE ? OR lcontent LIKE ? ORDER bY lnumber DESC  LIMIT ? OFFSET ?";
+
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, "%"+search_text+"%");
-			pstmt.setString(2, "%"+search_text+"%");
-			pstmt.setString(3, "%"+search_text+"%");
+			pstmt.setString(1, "%" + search_text + "%");
+			pstmt.setString(2, "%" + search_text + "%");
+			pstmt.setString(3, "%" + search_text + "%");
 			pstmt.setInt(4, per_page);
-			pstmt.setInt(5, (pageNum-1)*per_page);
+			pstmt.setInt(5, (pageNum - 1) * per_page);
 			rs = pstmt.executeQuery();
 			List<BoardVO> list = new ArrayList<>();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setEmail(rs.getString("email"));
 				board.setLnumber(rs.getInt("lnumber"));
@@ -164,9 +186,7 @@ public class BoardDAO {
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));
-				board.setLcomment(rs.getString("lcomment"));
-				board.setLrule(rs.getString("lrule"));
+				board.setLviewcount(rs.getInt("lviewcount"));				
 				board.setLdate(rs.getString("ldate"));
 				list.add(board);
 			}
@@ -178,22 +198,22 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
-	public List<BoardVO> smart_search(String search_text, String search_category,int per_page, int pageNum) {
-		String SQL ="SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
-		
+
+	public List<BoardVO> smart_search(String search_text, String search_category, int per_page, int pageNum) {
+		String SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
+
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, search_category);
-			pstmt.setString(2, "%"+search_text+"%");
-			pstmt.setString(3, "%"+search_text+"%");
+			pstmt.setString(2, "%" + search_text + "%");
+			pstmt.setString(3, "%" + search_text + "%");
 			pstmt.setInt(4, per_page);
-			pstmt.setInt(5, (pageNum-1)*per_page);
+			pstmt.setInt(5, (pageNum - 1) * per_page);
 			rs = pstmt.executeQuery();
 			List<BoardVO> list = new ArrayList<>();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setEmail(rs.getString("email"));
 				board.setLnumber(rs.getInt("lnumber"));
@@ -203,9 +223,7 @@ public class BoardDAO {
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));
-				board.setLcomment(rs.getString("lcomment"));
-				board.setLrule(rs.getString("lrule"));
+				board.setLviewcount(rs.getInt("lviewcount"));				
 				board.setLdate(rs.getString("ldate"));
 				list.add(board);
 			}

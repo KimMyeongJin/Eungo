@@ -35,7 +35,7 @@
 			<div class="wizard-container">
 				<div class="wizard-card ct-wizard-orange" id="wizardProperty">
 					<form id="submit_form" name="w_form"
-						action="<%=request.getContextPath()%>/submit_service"
+						action="<%=request.getContextPath()%>/board?cmd=submit_service"
 						method="post" enctype="multipart/form-data">
 						<div class="wizard-header">
 							<h3>
@@ -60,26 +60,26 @@
 												<img
 													src="<%=request.getContextPath()%>/assets/img/default-property.jpg"
 													class="picture-src" id="wizardPicturePreview" title="" />
-												<input type="file" id="wizard-picture" name="limage">
+												<input type="file" id="wizard-picture" name="limage" required="required">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Service name <small>(required)</small></label> <input
+											<label>Service name <small>(required)</small></label> <input required="required"
 												name="ltitle" type="text" class="form-control"
-												placeholder="Super villa ...">
+												>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>Property price <small>(required)</small></label> <input
-													name="lprice" type="text" class="form-control">
+													name="lprice" type="text" class="form-control" required="required">
 											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>Service category : <small>(required)</small></label>
-												<select name="lcategory" id="lunchBegins"
+												<select name="lcategory" id="lunchBegins" required
 													class="selectpicker" data-live-search="true"
 													data-live-search-style="begins" title="Select category"
 													form="submit_form">
@@ -101,8 +101,8 @@
 										</div>
 										<div class="form-group">
 											<label>Phonenumber <small>(empty if you wanna
-													use default phone number)</small></label> <input name="phone" type="text"
-												class="form-control" value="${phonenumber }">
+													use default phone number)</small></label> <input name="phonenumber" type="text"
+												class="form-control" value="${phonenumber }" required="required">
 										</div>
 									</div>
 								</div>
@@ -205,13 +205,13 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="property-images">Chose Images :</label> <input
-												class="form-control" type="file" id="property-images">
+												class="form-control" type="file" id="service-image1" name="limage2">
 										</div>
 										<div class="form-group">
-											<input class="form-control" type="file" id="property-images">
+											<input class="form-control" type="file" id="service-image2" name="limage3">
 										</div>
 										<div class="form-group">
-											<input class="form-control" type="file" id="property-images">
+											<input class="form-control" type="file" id="service-image3" name="limage4">
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -219,19 +219,7 @@
 											<label for="property-video">Property video :</label> <input
 												class="form-control" value=""
 												placeholder="http://www.youtube.com, http://vimeo.com"
-												name="property_video" type="text">
-										</div>
-
-										<div class="form-group">
-											<input class="form-control" value=""
-												placeholder="http://www.youtube.com, http://vimeo.com"
-												name="property_video" type="text">
-										</div>
-
-										<div class="form-group">
-											<input class="form-control" value=""
-												placeholder="http://www.youtube.com, http://vimeo.com"
-												name="property_video" type="text">
+												name="youtube" type="text">
 										</div>
 									</div>
 								</div>
@@ -310,6 +298,7 @@
      
   });
   
+  
  
   //‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
   function submitContents(elClickedObj) {
@@ -330,7 +319,7 @@
   function pasteHTML(filepath){
       var sHTML = '<img src=../editor/upload/'+filepath+'>';
       oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
-  }
+  }	
 </script>
 </body>
 </html>

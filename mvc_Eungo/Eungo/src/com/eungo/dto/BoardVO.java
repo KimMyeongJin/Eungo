@@ -6,16 +6,42 @@ public class BoardVO {
 	private String ltitle;
 	private String lcontent;
 	private String limage;
+	private String limage2;
+	private String limage3;
+	private String limage4;
+	private String youtube;
 	private String lcategory;
 	private int lprice;
 	private int lsellcount;
-	private int lviewcount;
-	private String lcomment;
-	private String lrule;
+	private int lviewcount;		
 	private String ldate;
 	private int good;	
 	
 	
+	public String getLimage2() {
+		return limage2;
+	}
+	public void setLimage2(String limage2) {
+		this.limage2 = limage2;
+	}
+	public String getLimage3() {
+		return limage3;
+	}
+	public void setLimage3(String limage3) {
+		this.limage3 = limage3;
+	}
+	public String getLimage4() {
+		return limage4;
+	}
+	public void setLimage4(String limage4) {
+		this.limage4 = limage4;
+	}
+	public String getYoutube() {
+		return youtube;
+	}
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
+	}
 	public int getGood() {
 		return good;
 	}
@@ -81,18 +107,5 @@ public class BoardVO {
 	}
 	public void setLviewcount(int lviewcount) {
 		this.lviewcount = lviewcount;
-	}
-	public String getLcomment() {
-		return lcomment;
-	}
-	public void setLcomment(String lcomment) {
-		this.lcomment = lcomment;
-	}
-	public String getLrule() {
-		return lrule;
-	}
-	public void setLrule(String lrule) {
-		this.lrule = lrule;
-	}
-	
+	}	
 }
