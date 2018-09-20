@@ -81,7 +81,7 @@ public class MemberDAO {
 
 	
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,?,?,false)";
+		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,?,?,false,null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -132,7 +132,7 @@ public class MemberDAO {
 	}
 	
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false,null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
