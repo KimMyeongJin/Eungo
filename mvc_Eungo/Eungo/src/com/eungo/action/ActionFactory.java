@@ -5,6 +5,7 @@ import com.eungo.controller.board.BoardSearchAction;
 import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.board.SubmitLoadAction;
 import com.eungo.controller.board.SubmitServiceAction;
+import com.eungo.controller.board.ViewServiceAction;
 import com.eungo.controller.member.ApiConnectAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
@@ -59,6 +60,8 @@ public class ActionFactory {
 			return new SubmitLoadAction();
 		} else if (cmd.equals("submit_service")) {
 			return new SubmitServiceAction();
+		} else if (cmd.equals("view_service")) {
+			return new ViewServiceAction();
 		}
 		return null;
 	}

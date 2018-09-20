@@ -43,31 +43,31 @@
 							method="post">
 
 							<div class="form-group">
-								<label for="email">Email</label> <input type="text"
+								<label for="email">Email</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" autofocus="autofocus" required="required"
 									class="form-control" name="email" id="validationEmail">
 								<small id="checkMsg"></small>
 							</div>
 							<div class="form-group">
-								<label for="password">Password</label> <input type="password"
+								<label for="password">Password</label> <input type="password" required="required"
 									class="form-control" name="password" id="password1">								
 							</div>
 							<div class="form-group">
-								<label for="password">Confirm Password</label> <input
+								<label for="password">Confirm Password</label> <input required="required"
 									type="password" class="form-control" name="password_check"
 									id="password2">
 								<small id="checkPwd"></small>
 							</div>
 							<div class="form-group">
-								<label for="name">Phone Number</label> <input type="text"
+								<label for="name">Phone Number</label> <input type="tel" placeholder="01012345678" pattern="[0-9]{11}"
 									class="form-control" name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
 								<label>Gender <small>(required)</small></label><br> 
-								<input type="radio" name="gender" class="form-control" value="M" ><label>male</label>
-								<input type="radio" name="gender" class="form-control" value="F" ><label>female</label>
+								<input type="radio" name="gender" class="form-control" value="M" required="required"><label>male</label>
+								<input type="radio" name="gender" class="form-control" value="F" required="required"><label>female</label>
 							</div>
 							<div class="form-group">
-								<label for="name">Birthday</label> <input type="text"
+								<label for="name">Birthday</label> <input type="text" placeholder="yyyymmdd" pattern="[0-9]8"
 									class="form-control" name="birthday" id="birthday">
 							</div>
 							<div class="text-center">
@@ -84,11 +84,11 @@
 						<h2>Login :</h2>
 						<form action="<%=request.getContextPath() %>/member?cmd=member_login" method="post">
 							<div class="form-group">
-								<label for="email">Email</label> <input type="text"
-									class="form-control" name="email" id="email">
+								<label for="email">Email</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="required"
+									class="form-control" name="email" id="validationEmail_login">								
 							</div>
 							<div class="form-group">
-								<label for="password">Password</label> <input type="password"
+								<label for="password">Password</label> <input type="password" required="required"
 									class="form-control" name="password" id="password">
 							</div>
 							<div class="text-center">
@@ -177,7 +177,7 @@
 	
 	<script>
 		window.onload = function() {
-			document.getElementById("validationEmail").onchange = sendId;
+			document.getElementById("validationEmail").onchange = sendId;			
 			document.getElementById("password1").onchange = checkPwd;
 			document.getElementById("password2").onchange = checkPwd;
 		}

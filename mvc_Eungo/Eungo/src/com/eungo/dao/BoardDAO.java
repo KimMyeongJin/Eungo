@@ -30,7 +30,7 @@ public class BoardDAO {
 			pstmt.setInt(10, board.getLprice());
 			pstmt.executeUpdate();
 			return 1;
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
@@ -56,11 +56,16 @@ public class BoardDAO {
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
 				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));				
+				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
 				list.add(board);
 			}
 			return list;
@@ -91,7 +96,12 @@ public class BoardDAO {
 	}
 
 	public int smartSearchCount(String search_text, String search_category) {
-		String SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
+		String SQL = "";
+		if (search_text.equals("") || search_text == null) {
+			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? ORDER BY lnumber DESC";
+		} else {
+			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
+		}
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
@@ -112,7 +122,7 @@ public class BoardDAO {
 	}
 
 	public int searchCount(String search_text) {
-		String SQL = "SELECT count(*) FROM list WHERE lcategory like ? or ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
+		String SQL = "SELECT count(*) FROM list WHERE lcategory like ? OR ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
@@ -146,11 +156,16 @@ public class BoardDAO {
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
 				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));				
+				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
 				list.add(board);
 			}
 			return list;
@@ -162,7 +177,42 @@ public class BoardDAO {
 		return null;
 	}
 
+	public BoardVO getSelectOne(int lnumber) {
+		String SQL = "SELECT * FROM list WHERE lnumber = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, lnumber);
+			rs = pstmt.executeQuery();
+			BoardVO board = new BoardVO();
+			if (rs.next()) {
+				board.setEmail(rs.getString("email"));
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLcontent(rs.getString("lcontent"));
+				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
+				board.setLcategory(rs.getString("lcategory"));
+				board.setLprice(rs.getInt("lprice"));
+				board.setLsellcount(rs.getInt("lsellcount"));
+				board.setLviewcount(rs.getInt("lviewcount"));
+				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
+			}
+			return board;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+
 	public List<BoardVO> search(String search_text, int per_page, int pageNum) {
+
 		String SQL = "SELECT * FROM list WHERE ltitle LIKE ? OR lcategory LIKE ? OR lcontent LIKE ? ORDER bY lnumber DESC  LIMIT ? OFFSET ?";
 
 		Connection conn = DBManager.getConnection();
@@ -183,11 +233,16 @@ public class BoardDAO {
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
 				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));				
+				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
 				list.add(board);
 			}
 			return list;
@@ -200,8 +255,12 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> smart_search(String search_text, String search_category, int per_page, int pageNum) {
-		String SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
-
+		String SQL = "";
+		if (search_text.equals("") || search_text == null) {
+			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
+		} else {
+			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
+		}
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -220,11 +279,16 @@ public class BoardDAO {
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
 				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLprice(rs.getInt("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
-				board.setLviewcount(rs.getInt("lviewcount"));				
+				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
 				list.add(board);
 			}
 			return list;

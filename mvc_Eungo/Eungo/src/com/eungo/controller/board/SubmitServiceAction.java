@@ -1,6 +1,7 @@
 package com.eungo.controller.board;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +22,20 @@ public class SubmitServiceAction implements Action{
 		// TODO Auto-generated method stub
 		String url = "index.jsp";
 		
-		String imagePath = request.getServletContext().getRealPath("images/service");
+		String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/";
 		BoardVO board = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		MultipartRequest multi = new MultipartRequest(request,imagePath ,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
-		
+		Enumeration<?> files = multi.getFileNames();				
+	    String file1 = (String)files.nextElement();	   
+	    String file2 = (String)files.nextElement();
+	    String file3 = (String)files.nextElement();	   
+	    String file4 = (String)files.nextElement();
+	    
+	    String limage = multi.getFilesystemName(file1);
+	    String limage2=multi.getFilesystemName(file2);
+	    String limage3=multi.getFilesystemName(file3);
+	    String limage4=multi.getFilesystemName(file4);
 		
 		HttpSession session = request.getSession();
 		board.setEmail(session.getAttribute("email").toString());		
@@ -33,17 +43,17 @@ public class SubmitServiceAction implements Action{
 		board.setLprice(Integer.parseInt(multi.getParameter("lprice")));
 		board.setLcontent(multi.getParameter("lcontent"));
 		board.setLcategory(multi.getParameter("lcategory"));
-		if(multi.getParameter("limage")!=null) {
-			board.setLimage(imagePath+multi.getParameter("limage"));
+		if(limage!=null) {
+			board.setLimage("/Eungo/images/service/"+limage);
 		}
-		if(multi.getParameter("limage2")!=null) {
-			board.setLimage(imagePath+multi.getParameter("limage2"));
+		if(limage2!=null) {
+			board.setLimage2("/Eungo/images/service/"+limage2);
 		}
-		if(multi.getParameter("limage3")!=null) {
-			board.setLimage(imagePath+multi.getParameter("limage3"));
+		if(limage3!=null) {
+			board.setLimage3("/Eungo/images/service/"+limage3);
 		}
-		if(multi.getParameter("limage4")!=null) {
-			board.setLimage(imagePath+multi.getParameter("limage4"));
+		if(limage4!=null) {
+			board.setLimage4("/Eungo/images/service/"+limage4);
 		}
 		board.setYoutube(multi.getParameter("youtube"));
 		int result = dao.boardInsert(board);

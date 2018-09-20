@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">Super nice villa</h1>
+				<h1 class="page-title" ><a href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a></h1>
 			</div>
 		</div>
 	</div>
@@ -47,10 +47,10 @@
 
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
 								<li
-									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property1.jpg"><img
-									src="<%=request.getContextPath()%>/assets/img/property-1/property1.jpg" /></li>
+									data-thumb="${board.limage }"><img
+									src="${board.limage }" /></li>
 								<li
-									data-thumb="<%=request.getContextPath()%>/img/property-1/property2.jpg"><img
+									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property2.jpg"><img
 									src="<%=request.getContextPath()%>/assets/img/property-1/property3.jpg" /></li>
 								<li
 									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property3.jpg"><img

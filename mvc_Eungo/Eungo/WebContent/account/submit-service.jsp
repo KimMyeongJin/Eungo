@@ -73,7 +73,7 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>Property price <small>(required)</small></label> <input
-													name="lprice" type="text" class="form-control" required="required">
+													name="lprice" type="number" class="form-control" required="required">
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -101,9 +101,15 @@
 										</div>
 										<div class="form-group">
 											<label>Phonenumber <small>(empty if you wanna
-													use default phone number)</small></label> <input name="phonenumber" type="text"
+													use default phone number)</small></label> <input name="phonenumber" type="tel" placeholder="01012345678" pattern="[0-9]{11}"
 												class="form-control" value="${phonenumber }" required="required">
 										</div>
+										<div class="form-group">
+												<div class="checkbox">
+													<label> <input type="checkbox"> 세금계산서
+													</label>
+												</div>
+											</div>
 									</div>
 								</div>
 							</div>
@@ -118,82 +124,7 @@
 												<textarea id="textAreaContent" name="lcontent" rows="15"
 													cols="80" ></textarea>
 											</div>
-										</div>									
-
-									<div class="col-sm-12 padding-top-15">
-										<div>
-											<label>옵션 :</label>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> 접속중
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> 세금계산서
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-12 padding-bottom-15">
-										<div>
-											<label>등급 :</label>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> NEW
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> JUNIOR
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> SENIOR
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> SEMIPRO
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> PRO
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox"> MASTER
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
+										</div>				
 									<br>
 								</div>
 							</div>
@@ -242,7 +173,7 @@
 											</p>
 
 											<div class="checkbox">
-												<label> <input type="checkbox" /> <strong>Accept
+												<label> <input type="checkbox" name="submit" required="required"/> <strong>Accept
 														termes and conditions.</strong>
 												</label>
 											</div>
@@ -322,6 +253,10 @@
       var sHTML = '<img src=../editor/upload/'+filepath+'>';
       oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
   }	
+</script>
+<script type="text/javascript">
+	$("[name=submit]").attr("required".true);
+	
 </script>
 </body>
 </html>

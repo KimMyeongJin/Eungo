@@ -184,14 +184,14 @@
 									<div class="col-sm-6 col-md-4 p0">
 										<div class="box-two proerty-item">
 											<div class="item-thumb">
-												<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-													src="<%=request.getContextPath()%>/assets/img/demo/property-3.jpg"></a>
+												<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}"><img
+													src="${list.limage}"></a>
 											</div>
 
 											<div class="item-entry overflow">
 												<h5>
 													<a
-														href="<%=request.getContextPath()%>/property/property.jsp">
+														href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}">
 														${list.ltitle } </a>
 												</h5>
 												<div class="dot-hr"></div>
