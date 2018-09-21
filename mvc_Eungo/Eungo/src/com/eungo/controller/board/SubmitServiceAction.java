@@ -56,6 +56,7 @@ public class SubmitServiceAction implements Action{
 			board.setLimage4("/Eungo/images/service/"+limage4);
 		}
 		board.setYoutube(multi.getParameter("youtube"));
+		board.setLphone_number(Integer.parseInt(multi.getParameter("lphone_number")));
 		int result = dao.boardInsert(board);
 		if(result ==1 ) {
 			Script.moving(response, "서비스를 게시합니다", url);

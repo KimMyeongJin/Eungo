@@ -185,7 +185,7 @@
 									<div class="col-sm-6 col-md-4 p0">
 										<div class="box-two proerty-item">
 											<div class="item-thumb">
-												<a href="<%=request.getContextPath()%>/board?cmd=view_service&$lnumber=${list.lnumber}"><img
+												<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}"><img
 													src="${list.limage}"></a>
 											</div>
 
