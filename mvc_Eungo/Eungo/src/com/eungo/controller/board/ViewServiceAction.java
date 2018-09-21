@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eungo.action.Action;
 import com.eungo.dao.BoardDAO;
+import com.eungo.dao.MemberDAO;
 import com.eungo.dto.BoardVO;
+import com.eungo.dto.MemberVO;
+import com.eungo.util.HyphenAdd;
 
 public class ViewServiceAction implements Action{
 
@@ -19,11 +22,16 @@ public class ViewServiceAction implements Action{
 		String url = "service/service.jsp";
 		
 		BoardDAO dao = new BoardDAO();
-		BoardVO board = new BoardVO();
-		int lnumber = Integer.parseInt(request.getParameter("lnumber"));
+		BoardVO board = new BoardVO();		
+		MemberDAO mdao = new MemberDAO();
 		
+		int lnumber = Integer.parseInt(request.getParameter("lnumber"));		
 		board = dao.getSelectOne(lnumber);
+		String change = board.getLphone_number();		
+		board.setLphone_number(HyphenAdd.phone(change));		
 		
+		MemberVO seller = mdao.select_one(board.getEmail());
+		request.setAttribute("seller", seller);
 		request.setAttribute("board", board);
 		RequestDispatcher dis = request.getRequestDispatcher(url);
 		dis.forward(request, response);		

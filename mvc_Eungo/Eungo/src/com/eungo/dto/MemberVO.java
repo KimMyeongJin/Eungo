@@ -8,8 +8,22 @@ public class MemberVO {
 	private String phonenumber;
 	private String gender;
 	private String birthday;
+	private String address;
 	private boolean seller;	
-	
+	private String filename;
+			
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	public boolean isSeller() {
 		return seller;
 	}

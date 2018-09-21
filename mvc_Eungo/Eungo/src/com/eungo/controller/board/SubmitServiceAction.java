@@ -1,6 +1,7 @@
 package com.eungo.controller.board;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -22,9 +23,10 @@ public class SubmitServiceAction implements Action{
 		// TODO Auto-generated method stub
 		String url = "index.jsp";
 		
-		String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/";
+		String imagePath = "C:/Users/it/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/";
 		BoardVO board = new BoardVO();
 		BoardDAO dao = new BoardDAO();
+		DecimalFormat df = new DecimalFormat("###,###");
 		MultipartRequest multi = new MultipartRequest(request,imagePath ,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
 		Enumeration<?> files = multi.getFileNames();				
 	    String file1 = (String)files.nextElement();	   
@@ -40,7 +42,7 @@ public class SubmitServiceAction implements Action{
 		HttpSession session = request.getSession();
 		board.setEmail(session.getAttribute("email").toString());		
 		board.setLtitle(multi.getParameter("ltitle"));		
-		board.setLprice(Integer.parseInt(multi.getParameter("lprice")));
+		board.setLprice(df.format(Integer.parseInt(multi.getParameter("lprice"))));
 		board.setLcontent(multi.getParameter("lcontent"));
 		board.setLcategory(multi.getParameter("lcategory"));
 		if(limage!=null) {
@@ -56,7 +58,7 @@ public class SubmitServiceAction implements Action{
 			board.setLimage4("/Eungo/images/service/"+limage4);
 		}
 		board.setYoutube(multi.getParameter("youtube"));
-		board.setLphone_number(Integer.parseInt(multi.getParameter("lphone_number")));
+		board.setLphone_number(multi.getParameter("lphone_number"));
 		int result = dao.boardInsert(board);
 		if(result ==1 ) {
 			Script.moving(response, "서비스를 게시합니다", url);
