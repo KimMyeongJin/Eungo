@@ -14,21 +14,21 @@ public class BoardDAO {
 	private ResultSet rs;
 
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good,lphone_number) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0,?)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, board.getEmail());
-			pstmt.setString(2, board.getLtitle());
-			pstmt.setString(3, board.getLcontent());
-			pstmt.setString(4, board.getLimage());
-			pstmt.setString(5, board.getLimage2());
-			pstmt.setString(6, board.getLimage3());
-			pstmt.setString(7, board.getLimage4());
-			pstmt.setString(8, board.getYoutube());
-			pstmt.setString(9, board.getLcategory());
-			pstmt.setInt(10, board.getLprice());
-			pstmt.setInt(11, board.getLnumber());
+			pstmt.setString(2, board.getLphone_number());
+			pstmt.setString(3, board.getLtitle());
+			pstmt.setString(4, board.getLcontent());
+			pstmt.setString(5, board.getLimage());
+			pstmt.setString(6, board.getLimage2());
+			pstmt.setString(7, board.getLimage3());
+			pstmt.setString(8, board.getLimage4());
+			pstmt.setString(9, board.getYoutube());
+			pstmt.setString(10, board.getLcategory());
+			pstmt.setString(11, board.getLprice());			
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -62,12 +62,12 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getInt("lprice"));
+				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
-				board.setLphone_number(rs.getInt("lphone_number"));
+				board.setLphone_number(rs.getString("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -163,12 +163,12 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getInt("lprice"));
+				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
-				board.setLphone_number(rs.getInt("lphone_number"));
+				board.setLphone_number(rs.getString("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -199,11 +199,12 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getInt("lprice"));
+				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getString("lphone_number"));
 			}
 			return board;
 		} catch (Exception e) {
@@ -241,12 +242,12 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getInt("lprice"));
+				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
-				board.setLphone_number(rs.getInt("lphone_number"));
+				board.setLphone_number(rs.getString("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -288,12 +289,12 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getInt("lprice"));
+				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
-				board.setLphone_number(rs.getInt("lphone_number"));
+				board.setLphone_number(rs.getString("lphone_number"));
 				list.add(board);
 			}
 			return list;

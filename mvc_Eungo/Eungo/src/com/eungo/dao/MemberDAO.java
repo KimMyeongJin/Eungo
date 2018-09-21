@@ -25,6 +25,7 @@ public class MemberDAO {
 				member.setPhonenumber(rs.getString("phonenumber"));	
 				member.setGender(rs.getString("gender"));
 				member.setBirthday(rs.getString("Birthday"));
+				member.setFilename(rs.getString("filename"));
 			}	
 			return member;
 		} catch (Exception e) {

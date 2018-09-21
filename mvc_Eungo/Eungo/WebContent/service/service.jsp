@@ -21,8 +21,7 @@
 		<div class="row">
 			<div class="page-head-content">
 				<h1 class="page-title">
-					<a
-						href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a>
+					${board.lcategory}
 				</h1>
 			</div>
 		</div>
@@ -72,7 +71,7 @@
 					<div class="single-property-header">
 						<h1 class="property-title pull-left"><a
 						href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a> > <a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${board.lnumber}">${board.ltitle }</a></h1>
-						<span class="property-price pull-right">${board.lprice } 원</span>
+						
 					</div>
 
 					<div class="property-meta entry-meta clearfix ">
@@ -225,7 +224,7 @@
 
 					</div>
 					<!-- End features area  -->
-					<c:if test="${board.youtube != null}">
+					<c:if test="${board.youtube != ''}">
 					<div class="section property-video">
 						<h4 class="s-property-title">Service Video</h4>
 						<div class="video-thumb">
@@ -248,14 +247,24 @@
 
 								<div class="clear">
 									<div class="col-xs-4 col-sm-4 dealer-face">
-										<a href=""> <img
+									<c:choose>
+										<c:when test="${seller.filename != null }">
+										<a href="#"> <img
 											src="<%=request.getContextPath()%>/assets/img/client-face1.png"
 											class="img-circle">
 										</a>
+										</c:when>
+										<c:otherwise>
+										<a href="#"> <img
+											src="<%=request.getContextPath()%>/assets/img/no_image.png"
+											class="img-circle">
+										</a>
+										</c:otherwise>
+										</c:choose>
 									</div>
 									<div class="col-xs-8 col-sm-8 ">
 										<h3 class="dealer-name">
-											<a href="#">${board.email }</a> <span>${board.ltitle }</span>
+											<a href="#">${board.ltitle }</a> <span>${board.email }</span>
 										</h3>
 										<div class="dealer-social-media">
 											<a class="twitter" target="_blank" href=""> <i
@@ -276,116 +285,70 @@
 
 								<div class="clear">
 									<ul class="dealer-contacts">
+									<c:if test="${seller.address != null }">
 										<li><i class="pe-7s-map-marker strong"> </i> 9089 your
 											adress her</li>
+									</c:if>
 										<li><i class="pe-7s-mail strong"> </i>
 											${board.email }</li>
-										<li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+										
+										<li><i class="pe-7s-call strong"> </i> ${board.lphone_number }</li>
 										<li><i class="pe-7s-user strong"> </i><a
 											href="<%=request.getContextPath()%>/account/faq.jsp"
 											style="color: #FFF"> FAQ </a></li>
 									</ul>
-									<p>Duis mollis blandit tempus porttitor curabiturDuis
-										mollis blandit tempus porttitor curabitur , est non…</p>
+									<h5>전문가 소개</h5>
+									<p>소개자료 나중에 띄울거임</p>
 								</div>
-
 							</div>
 						</div>
 					</div>
-
-
-					<div
-						class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-						<div class="panel-heading">
-							<h3 class="panel-title">Similar Services</h3>
-						</div>
-						<div class="panel-body recent-property-widget">
-							<ul>
-								<li>
-									<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-										<a href="single.html"><img
-											src="<%=request.getContextPath()%>/assets/img/demo/small-property-2.jpg"></a>
-										<span class="property-seeker"> <b class="b-1">A</b> <b
-											class="b-2">S</b>
-										</span>
-									</div>
-									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-										<h6>
-											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
-												nice villa </a>
-										</h6>
-										<span class="property-price">3000000$</span>
-									</div>
-								</li>
-								<li>
-									<div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-											src="<%=request.getContextPath()%>/assets/img/demo/small-property-1.jpg"></a>
-										<span class="property-seeker"> <b class="b-1">A</b> <b
-											class="b-2">S</b>
-										</span>
-									</div>
-									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-										<h6>
-											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
-												nice villa </a>
-										</h6>
-										<span class="property-price">3000000$</span>
-									</div>
-								</li>
-								<li>
-									<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-											src="<%=request.getContextPath()%>/assets/img/demo/small-property-3.jpg"></a>
-										<span class="property-seeker"> <b class="b-1">A</b> <b
-											class="b-2">S</b>
-										</span>
-									</div>
-									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-										<h6>
-											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
-												nice villa </a>
-										</h6>
-										<span class="property-price">3000000$</span>
-									</div>
-								</li>
-
-								<li>
-									<div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-										<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-											src="<%=request.getContextPath()%>/assets/img/demo/small-property-2.jpg"></a>
-										<span class="property-seeker"> <b class="b-1">A</b> <b
-											class="b-2">S</b>
-										</span>
-									</div>
-									<div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-										<h6>
-											<a href="<%=request.getContextPath()%>/service/service.jsp">Super
-												nice villa </a>
-										</h6>
-										<span class="property-price">3000000$</span>
-									</div>
-								</li>
-
-							</ul>
-						</div>
+					
+					<!-- payment -->
+					<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+	<div class="panel-heading">
+		<h3 class="panel-title">구매하기</h3>
+	</div>
+	<div class="panel-body search-widget">
+		<form id="smart_search" action="<%=request.getContextPath()%>/board" method="get" class=" form-inline">
+					<input type="hidden" name="cmd" value="smart_search">
+			<c:when test="">
+			<fieldset>
+				<div class="row">
+					<div class="col-xs-12">
+						<select id="lunchBegins" class="selectpicker" name="search_category" form="smart_search"
+							data-live-search="true" data-live-search-style="begins"
+							title="Select Your Categroy">
+							<option>워드프레스</option>
+							<option>웹사이트 개발</option>
+							<option>쇼핑몰·커머스</option>
+							<option>모바일앱·웹</option>
+							<option>프로그램 개발</option>
+							<option>게임</option>
+							<option>데이터베이스</option>
+							<option>데이터분석·리포트</option>
+							<option>서버 및 기술지원</option>
+							<option>QA·테스트</option>
+							<option>파일변환</option>
+							<option>챗봇</option>
+							<option>기타</option>
+						</select>
 					</div>
-
-
-
-					<div
-						class="panel panel-default sidebar-menu wow fadeInRight animated">
-						<div class="panel-heading">
-							<h3 class="panel-title">Ads her</h3>
-						</div>
-						<div class="panel-body recent-property-widget">
-							<img src="<%=request.getContextPath()%>/assets/img/ads.jpg">
-						</div>
+				</div>
+			</fieldset>
+			</c:when>	
+			<fieldset>
+				<div class="row">
+					<div class="col-xs-12">
+						<input class="button btn largesearch-btn" value="${board.lprice } 원/VAT포함"
+							type="submit">
 					</div>
-
-					<!-- Smart Search -->
-					<%@include file="../include/smartSearch.jsp"%>
-					<!-- End of Smart Search -->
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+					<!-- End of payment -->
 
 				</aside>
 			</div>

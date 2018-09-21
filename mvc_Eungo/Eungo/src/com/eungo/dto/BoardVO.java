@@ -11,18 +11,18 @@ public class BoardVO {
 	private String limage4;
 	private String youtube;
 	private String lcategory;
-	private int lprice;
+	private String lprice;
 	private int lsellcount;
 	private int lviewcount;		
 	private String ldate;
 	private int good;	
-	private int lphone_number;
+	private String lphone_number;
 	
 	
-	public int getLphone_number() {
+	public String getLphone_number() {
 		return lphone_number;
 	}
-	public void setLphone_number(int lphone_number) {
+	public void setLphone_number(String lphone_number) {
 		this.lphone_number = lphone_number;
 	}
 	public String getLimage2() {
@@ -97,10 +97,10 @@ public class BoardVO {
 	public void setLcategory(String lcategory) {
 		this.lcategory = lcategory;
 	}
-	public int getLprice() {
+	public String getLprice() {
 		return lprice;
 	}
-	public void setLprice(int lprice) {
+	public void setLprice(String lprice) {
 		this.lprice = lprice;
 	}
 	public int getLsellcount() {
