@@ -115,24 +115,29 @@ public class MemberDAO {
 	}
 
 	public int update(MemberVO member) {
-		String SQL = "UPDATE member SET email =?,password =?,phonenumber =?";
+		String SQL = "UPDATE member SET password =?,phonenumber =?,filename=?,birthday=? WHERE email =?";
 		
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getPassword());
-			pstmt.setString(3, member.getPhonenumber());
+			
+			pstmt.setString(1, member.getPassword());
+			pstmt.setString(2, member.getPhonenumber());
+			pstmt.setString(3, member.getFilename());
+			pstmt.setString(4, member.getBirthday());
+			pstmt.setString(5, member.getEmail());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
 		}
 		return -1;
 	}
 	
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,false,null)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,?,false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -142,6 +147,7 @@ public class MemberDAO {
 			pstmt.setString(4, member.getPhonenumber());
 			pstmt.setString(5, member.getGender());
 			pstmt.setString(6, member.getBirthday());
+			pstmt.setString(7, member.getFilename());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {

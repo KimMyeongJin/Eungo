@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
+<%@page import="com.google.gson.Gson"%>
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -35,8 +41,8 @@
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1 profiel-container">
 				<form action="<%=request.getContextPath()%>/member?cmd=member_updateProc"
+				enctype ="multipart/form-data"
 				 method="POST">
-				
 					<div class="profiel-header">
 						<h3>
 							<b>BUILD</b> YOUR PROFILE <br> <small>This
@@ -44,13 +50,14 @@
 						</h3>
 						<hr>
 					</div>
-
+					
 					<div class="clear">
 						<div class="col-sm-3 col-sm-offset-1">
+							
 							<div class="picture-container">
 								<div class="picture">
-									<img src="assets/img/avatar.png" class="picture-src"
-										id="wizardPicturePreview" title="" /> <input type="file"
+									<img  class="picture-src"
+										id="wizardPicturePreview" src="" name="filename"/> <input name="filename" type="file"
 										id="wizard-picture">
 								</div>
 								<h6>Choose Picture</h6>
@@ -70,29 +77,22 @@
 									value="${member.phonenumber}">
 							</div>
 							<div class="form-group">
-								<label>Gender </label>
-								<input readonly="readonly" name="gender" class="form-control" value="${member.gender}" />
-							</div>
-							<div class="form-group">
 								<label>Birth Day<small>(required)</small></label> <input
 									name="birthday" type="text" class="form-control"
 									value="${member.birthday}">
 							</div>
 						</div>
 						<div class="col-sm-3 padding-top-25">
+													
 							<div class="form-group">
-								<label>Password </label> <input
-									name="password" type="password" id="password" class="form-control">
-							</div>							
-							<div class="form-group">
-								<label>New password  </label> <input id="password1" name=""
+								<label>password  </label> <input id="password1" name="password"
 									type="password" class="form-control">
+									
 							</div>
 							<div class="form-group">
-								<label>Confirm password </label> <input id="password2" name=""
+								<label>Confirm password </label> <input id="password2" name="password_check"
 									type="password" class="form-control">
 									<small id="checkPwd"></small>
-									
 							</div>
 
 						</div>
@@ -113,8 +113,15 @@
 </div>
 
 <script>
+<%	
+String pw = null;
+if (request.getParameter("password") != null) {
+pw = request.getParameter("password");
+									}
+					%>
+							
 		window.onload = function() {
-			document.getElementById("validationEmail").onchange = sendId;
+			//document.getElementById("validationEmail").onchange = sendId;
 			document.getElementById("password1").onchange = checkPwd;
 			document.getElementById("password2").onchange = checkPwd;
 		}
@@ -159,7 +166,7 @@
 	
 	<!-- password-script -->
 	<script>
-		/* function validatePassword() {
+	/* 	 function validatePassword() {
 		    var pass2 = document.getElementById("password2").value;
 		    var pass1 = document.getElementById("password1").value;
 		    if (pass1 != pass2)
@@ -167,7 +174,7 @@
 		    else
 		        document.getElementById("password2").setCustomValidity('');
 		    //empty string means no validation error
-		} */
+		}  */
 
 		function checkPwd() {
 			var f1 = document.forms[0];
@@ -175,12 +182,12 @@
 			var pw2 = document.getElementById("password2").value;
 			if (pw1 != pw2) {
 				document.getElementById('checkPwd').style.color = "red";
-				document.getElementById('password2').innerHTML = "동일한 암호를 입력하세요.";
+				document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요.";
 				document.getElementById("password2").setCustomValidity(
 						"동일한 암호를 입력하세요.");
 			} else {
 				document.getElementById('checkPwd').style.color = "black";
-				document.getElementById('password2').innerHTML = "암호가 확인 되었습니다.";
+				document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
 				document.getElementById("password2").setCustomValidity('');
 			}
 		}

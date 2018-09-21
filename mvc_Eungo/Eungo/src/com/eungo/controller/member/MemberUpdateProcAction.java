@@ -12,6 +12,9 @@ import com.eungo.dao.MemberDAO;
 import com.eungo.dto.MemberVO;
 import com.eungo.util.SHA256;
 import com.eungo.util.Script;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 public class MemberUpdateProcAction implements Action{ 
 	@Override
@@ -20,14 +23,25 @@ public class MemberUpdateProcAction implements Action{
 		
 		MemberVO member = new MemberVO();
 		MemberDAO dao = new MemberDAO();
+		String savePath = request.getServletContext().getRealPath("/image");
+		int sizeLimit = 1024*1024*15;
 		
-		String email = request.getParameter("email");		
+		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		
+		String filename = multi.getFilesystemName("filename");
+		String email = multi.getParameter("email");		
 		String salt = dao.select_salt(email);
-		String password = SHA256.getEncrypt(request.getParameter("password"),salt);
+		String password = SHA256.getEncrypt(multi.getParameter("password"),salt);
+		String phonenumber = multi.getParameter("phonenumber");
+		String birthday = multi.getParameter("birthday");
 		
+		 
+       
 		member.setEmail(email);
 		member.setPassword(password);
-		
+		member.setPhonenumber(phonenumber);
+		member.setFilename(filename);
+		member.setBirthday(birthday);
 		int result = dao.update(member);
 		if(result == 1) {
 			HttpSession session = request.getSession();

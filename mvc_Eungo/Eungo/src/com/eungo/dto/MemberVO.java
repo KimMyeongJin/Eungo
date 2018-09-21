@@ -9,7 +9,14 @@ public class MemberVO {
 	private String gender;
 	private String birthday;
 	private boolean seller;	
+	private String filename;
 	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	public boolean isSeller() {
 		return seller;
 	}
