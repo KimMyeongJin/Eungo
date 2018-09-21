@@ -16,8 +16,15 @@ public class BoardVO {
 	private int lviewcount;		
 	private String ldate;
 	private int good;	
+	private int lphone_number;
 	
 	
+	public int getLphone_number() {
+		return lphone_number;
+	}
+	public void setLphone_number(int lphone_number) {
+		this.lphone_number = lphone_number;
+	}
 	public String getLimage2() {
 		return limage2;
 	}

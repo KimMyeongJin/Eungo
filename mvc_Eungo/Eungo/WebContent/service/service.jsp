@@ -20,7 +20,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title" ><a href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a></h1>
+				<h1 class="page-title">
+					<a
+						href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a>
+				</h1>
 			</div>
 		</div>
 	</div>
@@ -46,18 +49,20 @@
 							</div>
 
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-								<li
-									data-thumb="${board.limage }"><img
+								<li data-thumb="${board.limage }"><img
 									src="${board.limage }" /></li>
-								<li
-									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property2.jpg"><img
-									src="<%=request.getContextPath()%>/assets/img/property-1/property3.jpg" /></li>
-								<li
-									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property3.jpg"><img
-									src="<%=request.getContextPath()%>/assets/img/property-1/property3.jpg" /></li>
-								<li
-									data-thumb="<%=request.getContextPath()%>/assets/img/property-1/property4.jpg"><img
-									src="<%=request.getContextPath()%>/assets/img/property-1/property4.jpg" /></li>
+								<c:if test="${board.limage2 != null }">
+									<li data-thumb="${board.limage2 }"><img
+										src="${board.limage2 }" /></li>
+								</c:if>
+								<c:if test="${board.limage3 != null }">
+									<li data-thumb="${board.limage3 }"><img
+										src="${board.limage3 }" /></li>
+								</c:if>
+								<c:if test="${board.limage4 != null }">
+									<li data-thumb="${board.limage4 }"><img
+										src="${board.limage4 }" /></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
@@ -65,8 +70,9 @@
 
 				<div class="single-property-wrapper">
 					<div class="single-property-header">
-						<h1 class="property-title pull-left">Villa in Coral Gables</h1>
-						<span class="property-price pull-right">$825,000</span>
+						<h1 class="property-title pull-left"><a
+						href="<%=request.getContextPath()%>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=${board.lcategory}">${board.lcategory}</a> > <a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${board.lnumber}">${board.ltitle }</a></h1>
+						<span class="property-price pull-right">${board.lprice } 원</span>
 					</div>
 
 					<div class="property-meta entry-meta clearfix ">
@@ -147,7 +153,7 @@
 					<!-- .property-meta -->
 
 					<div class="section">
-						<h4 class="s-property-title">Description</h4>
+						<h4 class="s-property-title">서비스 설명</h4>
 						<div class="s-property-content">
 							<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis
 								dapibus nisl. Suspendisse ultricies commodo arcu nec pretium.
@@ -219,9 +225,9 @@
 
 					</div>
 					<!-- End features area  -->
-
+					<c:if test="${board.youtube != null}">
 					<div class="section property-video">
-						<h4 class="s-property-title">Property Video</h4>
+						<h4 class="s-property-title">Service Video</h4>
 						<div class="video-thumb">
 							<a class="video-popup" href="yout" title="Virtual Tour"> <img
 								src="<%=request.getContextPath()%>/assets/img/property-video.jpg"
@@ -229,6 +235,7 @@
 							</a>
 						</div>
 					</div>
+					</c:if>
 					<!-- End video area  -->
 				</div>
 			</div>
@@ -248,7 +255,7 @@
 									</div>
 									<div class="col-xs-8 col-sm-8 ">
 										<h3 class="dealer-name">
-											<a href="">Nathan James</a> <span>Real Estate Agent</span>
+											<a href="#">${board.email }</a> <span>${board.ltitle }</span>
 										</h3>
 										<div class="dealer-social-media">
 											<a class="twitter" target="_blank" href=""> <i
@@ -272,9 +279,11 @@
 										<li><i class="pe-7s-map-marker strong"> </i> 9089 your
 											adress her</li>
 										<li><i class="pe-7s-mail strong"> </i>
-											email@yourcompany.com</li>
+											${board.email }</li>
 										<li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-										<li><i class="pe-7s-user strong"> </i><a href="<%=request.getContextPath()%>/account/faq.jsp" style="color:#FFF"> FAQ </a></li>
+										<li><i class="pe-7s-user strong"> </i><a
+											href="<%=request.getContextPath()%>/account/faq.jsp"
+											style="color: #FFF"> FAQ </a></li>
 									</ul>
 									<p>Duis mollis blandit tempus porttitor curabiturDuis
 										mollis blandit tempus porttitor curabitur , est non…</p>

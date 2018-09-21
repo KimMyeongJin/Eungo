@@ -14,7 +14,7 @@ public class BoardDAO {
 	private ResultSet rs;
 
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		String SQL = "INSERT INTO list(email,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good,lphone_number) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0,?)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -28,6 +28,7 @@ public class BoardDAO {
 			pstmt.setString(8, board.getYoutube());
 			pstmt.setString(9, board.getLcategory());
 			pstmt.setInt(10, board.getLprice());
+			pstmt.setInt(11, board.getLnumber());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -66,6 +67,7 @@ public class BoardDAO {
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getInt("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -166,6 +168,7 @@ public class BoardDAO {
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getInt("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -243,6 +246,7 @@ public class BoardDAO {
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getInt("lphone_number"));
 				list.add(board);
 			}
 			return list;
@@ -289,6 +293,7 @@ public class BoardDAO {
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getInt("lphone_number"));
 				list.add(board);
 			}
 			return list;
