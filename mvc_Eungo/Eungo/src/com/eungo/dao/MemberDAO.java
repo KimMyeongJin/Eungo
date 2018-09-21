@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
+import com.eungo.dto.FacebookVO;
 import com.eungo.dto.MemberVO;
 import com.eungo.util.DBManager;
 
@@ -99,12 +99,12 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	public int insert_facebookemail(MemberVO member) {
+	public int insert_facebookemail(FacebookVO member) {
 		String SQL = "INSERT INTO member VALUES(?)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
+			pstmt.setString(1, member.getUserEmail());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
