@@ -16,6 +16,7 @@ import com.eungo.controller.member.MemberUpdateAction;
 import com.eungo.controller.member.MemberUpdateProcAction;
 import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
+import com.eungo.controller.member.PwCheckAction;
 
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
@@ -36,6 +37,8 @@ public class ActionFactory {
 			return new EmailSendAction();
 		} else if (cmd.equals("member_emailcheck")) {
 			return new EmailCheckAction();
+		} else if (cmd.equals("member_pwcheck")) {
+			return new PwCheckAction();
 		} else if (cmd.equals("smart_search")) {
 			return new SmartSearchAction();
 		} else if (cmd.equals("member_login")) {

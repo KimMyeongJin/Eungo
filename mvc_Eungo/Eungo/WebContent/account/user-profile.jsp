@@ -11,7 +11,52 @@
 <html class="no-js">
 <head>
 <title>GARO ESTATE | property User profile Page</title>
+<script language="javascript">
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "abc.go.kr";
 
+	function goPopup() {
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("/Eungo/popup/jusoPopup.jsp", "pop",
+				"width=570,height=420, scrollbars=yes, resizable=yes");
+
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+		//var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+
+	function jusoCallBack(roadFullAddr) {
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.form.roadFullAddr.value = roadFullAddr;
+	}
+</script>
+<script>
+	function sendPw() {
+		var pw = $("#password").val();
+		console.log("pw : " + pw);
+		$.ajax({
+			async : true,
+			type : 'POST',
+			data : pw,
+			url : "<%=request.getContextPath()%>/member?cmd=member_pwcheck",
+			dataType : "json",
+			contentType : "application/json;charset=utf-8",
+			success : function(data) {
+				if (pw == '') {
+					alert("비밀번호를 입력해주세요.");
+				} else if (data == 1) {
+					alert("비밀번호 확인.");
+				} else if (data == -1) {
+					alert("비밀번호가 틀렸습니다.")
+				}
+			},
+			error : function(error) {
+
+				alert("error : " + error);
+			}
+		});
+	}
+</script>
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
 <!-- End of header -->
@@ -40,9 +85,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1 profiel-container">
-				<form action="<%=request.getContextPath()%>/member?cmd=member_updateProc"
-				enctype ="multipart/form-data"
-				 method="POST">
+				<form id="form" name="form"
+					action="<%=request.getContextPath()%>/member?cmd=member_updateProc"
+					enctype="multipart/form-data" method="POST">
 					<div class="profiel-header">
 						<h3>
 							<b>BUILD</b> YOUR PROFILE <br> <small>This
@@ -50,14 +95,14 @@
 						</h3>
 						<hr>
 					</div>
-					
+
 					<div class="clear">
 						<div class="col-sm-3 col-sm-offset-1">
-							
+
 							<div class="picture-container">
 								<div class="picture">
-									<img  class="picture-src"
-										id="wizardPicturePreview" src="" name="filename"/> <input name="filename" type="file"
+									<img class="picture-src" id="wizardPicturePreview" src=""
+										name="filename" /> <input name="filename" type="file"
 										id="wizard-picture">
 								</div>
 								<h6>Choose Picture</h6>
@@ -67,131 +112,94 @@
 						<div class="col-sm-3 padding-top-25">
 
 							<div class="form-group">
-								<label>Email <small>(required)</small></label> <input
-									name="email" readonly="readonly" class="form-control"
-									value="${member.email}">
+								<label>Email </label> <input name="email" readonly="readonly"
+									class="form-control" value="${member.email}">
 							</div>
 							<div class="form-group">
-								<label>Phone Number<small>(required)</small></label> <input
-									name="phonenumber" type="text" class="form-control"
-									value="${member.phonenumber}">
+								<label for="name">Phone Number</label> <input type="tel"
+									value="${member.phonenumber }"
+									pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{4}" class="form-control"
+									name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
-								<label>Birth Day<small>(required)</small></label> <input
-									name="birthday" type="text" class="form-control"
+								<label>Birth Day</label> <input name="birthday" type="text"
+									class="form-control"
+									pattern="[0-9]{4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}"
 									value="${member.birthday}">
 							</div>
 						</div>
 						<div class="col-sm-3 padding-top-25">
-													
-							<div class="form-group">
-								<label>password  </label> <input id="password1" name="password"
+							<div class="form-group row">
+								<label>password </label> <input id="password" name="password"
 									type="password" class="form-control">
-									
+								<button id="pwck" name="pwck" onclick="sendPw()"
+									class="btn btn-primary">check</button>
+
 							</div>
 							<div class="form-group">
-								<label>Confirm password </label> <input id="password2" name="password_check"
-									type="password" class="form-control">
-									<small id="checkPwd"></small>
+								<label>modify password </label> <input id="password1"
+									name="mod_password" type="password" class="form-control">
+
+							</div>
+							<div class="form-group">
+								<label>Confirm password </label> <input id="password2"
+									name="password_check" type="password" class="form-control">
+								<small id="checkPwd"></small>
 							</div>
 
 						</div>
+						<div class="col-sm-6 padding-top-25">
+							<div class="form-group">
+								<label>address </label>
+								<button class="btn btn-outline-info float-right"
+									onclick="goPopup()" type="button">주소입력</button>
+								<div id="callBackDiv">
+									<input id="address" name="roadFullAddr" type="text"
+										class="form-control" maxlength="20" value="${member.address }"
+										readonly>
+								</div>
+							</div>
 
+						</div>
 					</div>
 
 					<div class="col-sm-5 col-sm-offset-1">
-						<br> <button type="submit" class="btn btn-warning">Update</button>		
+						<br>
+						<button type="submit" class="btn btn-warning">Update</button>
 					</div>
-					
-				
-				 </form>
+
+
+				</form>
 			</div>
 		</div>
 		<!-- end row -->
-	
+
 	</div>
 </div>
+<!-- //email check -->
 
+<!-- password-script -->
 <script>
-<%	
-String pw = null;
-if (request.getParameter("password") != null) {
-pw = request.getParameter("password");
-									}
-					%>
-							
-		window.onload = function() {
-			//document.getElementById("validationEmail").onchange = sendId;
-			document.getElementById("password1").onchange = checkPwd;
-			document.getElementById("password2").onchange = checkPwd;
+	window.onload = function() {
+		document.getElementById("password1").onchange = checkPwd;
+		document.getElementById("password2").onchange = checkPwd;
+	}
+	function checkPwd() {
+		var f1 = document.forms[0];
+		var pw1 = document.getElementById("password1").value;
+		var pw2 = document.getElementById("password2").value;
+		if (pw1 != pw2) {
+			document.getElementById('checkPwd').style.color = "red";
+			document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요.";
+			document.getElementById("password2").setCustomValidity(
+					"동일한 암호를 입력하세요.");
+		} else {
+			document.getElementById('checkPwd').style.color = "black";
+			document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
+			document.getElementById("password2").setCustomValidity('');
 		}
-
-		/* function sendId() {
-			var dom = document.getElementById("validationEmail");
-			var result = dom.value;
-			console.log("result : " + result);
-			$.ajax({
-				type : "POST",
-				url : "../member?cmd=member_emailcheck",
-				dataType : "text",
-				contentType : "application/text;charset=utf-8",
-				data : result,
-				success : function(data) {
-					var listView = document.getElementById('checkMsg');
-					if (result == '') {
-						listView.innerHTML = "Email을 입력해주세요";
-						listView.style.color = "red";
-						document.getElementById("validationEmail")
-								.setCustomValidity("이메일을 입력해주세요.");
-					} else if (data == 2) {
-						listView.innerHTML = "사용 할 수 있는 Email 입니다";
-						listView.style.color = "blue";
-						document.getElementById("validationEmail")
-								.setCustomValidity('');
-					} else if (data == 1) {
-						listView.innerHTML = "이미 등록된 Email 입니다";
-						listView.style.color = "red";
-						document.getElementById("validationEmail")
-								.setCustomValidity("가입된 이메일입니다.");
-					}
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);
-				}
-
-			});
-		} */
-	</script>
-	<!-- //email check -->
-	
-	<!-- password-script -->
-	<script>
-	/* 	 function validatePassword() {
-		    var pass2 = document.getElementById("password2").value;
-		    var pass1 = document.getElementById("password1").value;
-		    if (pass1 != pass2)
-		        document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-		    else
-		        document.getElementById("password2").setCustomValidity('');
-		    //empty string means no validation error
-		}  */
-
-		function checkPwd() {
-			var f1 = document.forms[0];
-			var pw1 = document.getElementById("password1").value;
-			var pw2 = document.getElementById("password2").value;
-			if (pw1 != pw2) {
-				document.getElementById('checkPwd').style.color = "red";
-				document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요.";
-				document.getElementById("password2").setCustomValidity(
-						"동일한 암호를 입력하세요.");
-			} else {
-				document.getElementById('checkPwd').style.color = "black";
-				document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
-				document.getElementById("password2").setCustomValidity('');
-			}
-		}
-	</script>									
+	}
+</script>
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
 <script
@@ -199,6 +207,6 @@ pw = request.getParameter("password");
 	type="text/javascript"></script>
 <script
 	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
+<script src="<%=request.getContextPath() %>/assets/js/wizard.js"></script>
 </body>
 </html>

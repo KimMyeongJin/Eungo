@@ -5,12 +5,20 @@ public class MemberVO {
 	private boolean emailcheck;
 	private String password;
 	private String salt;
+	private String address;
 	private String phonenumber;
 	private String gender;
 	private String birthday;
 	private boolean seller;	
 	private String filename;
 	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getFilename() {
 		return filename;
 	}

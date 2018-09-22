@@ -58,7 +58,7 @@
 								<small id="checkPwd"></small>
 							</div>
 							<div class="form-group">
-								<label for="name">Phone Number</label> <input type="tel" placeholder="01012345678" pattern="[0-9]{11}"
+								<label for="name">Phone Number</label> <input type="tel" placeholder="01012345678" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{4}"
 									class="form-control" name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
@@ -67,8 +67,8 @@
 								<input type="radio" name="gender" class="form-control" value="F" required="required"><label>female</label>
 							</div>
 							<div class="form-group">
-								<label for="name">Birthday</label> <input type="text" placeholder="yyyymmdd" pattern="[0-9]8"
-									class="form-control" name="birthday" id="birthday">
+								<label for="name">Birthday</label> <input type="date"
+									class="form-control" name="birthday" id="birthday" max="">
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-default">Register</button>

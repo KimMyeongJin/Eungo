@@ -26,6 +26,7 @@ public class MemberDAO {
 				member.setGender(rs.getString("gender"));
 				member.setBirthday(rs.getString("Birthday"));
 				member.setFilename(rs.getString("filename"));
+				member.setAddress(rs.getString("address"));
 			}	
 			return member;
 		} catch (Exception e) {
@@ -82,7 +83,7 @@ public class MemberDAO {
 
 	
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,?,?,false,null)";
+		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,null,?,?,false,null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -138,7 +139,7 @@ public class MemberDAO {
 	}
 	
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,?,?,?,?,false)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,null,?,?,?,?,false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -252,6 +253,24 @@ public class MemberDAO {
 				return 1;
 			} else {
 				return 2;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public int checkPassword(String password) {
+		//System.out.println("email : " + email);
+		String SQL = "SELECT email FROM member WHERE password = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, password);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				return 1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
