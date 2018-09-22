@@ -11,9 +11,7 @@ public class MemberVO {
 	private String birthday;
 	private boolean seller;	
 	private String profile;
-	
-	
-	
+		
 	public String getProfile() {
 		return profile;
 	}

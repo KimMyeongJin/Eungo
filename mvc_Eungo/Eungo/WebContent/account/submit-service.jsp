@@ -101,7 +101,7 @@
 										</div>
 										<div class="form-group">
 											<label>Phonenumber <small>(empty if you wanna
-													use default phone number)</small></label> <input name="lphone_number" type="tel" placeholder="01012345678" pattern="[0-9]{11}"
+													use default phone number)</small></label> <input name="lphone_number" type="tel" placeholder="01012345678" pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}"
 												class="form-control" value="${phonenumber }" required="required">
 										</div>
 										<div class="form-group">
@@ -112,17 +112,23 @@
 											</div>
 									</div>
 								</div>
-							</div>
-							<!--  End step 1 -->
-
-							<div class="tab-pane" id="step2">
-								<h4 class="info-text">How much your Property is Beautiful ?</h4>
-								<div class="row">									
-										<div class="col-sm-12">
+								<div class="col-sm-12">
 											<div class="form-group">
 												<label>Service Description :</label>
 												<textarea id="textAreaContent" name="lcontent" rows="15"
-													cols="80" ></textarea>
+													cols="80" style="width:100%"></textarea>
+											</div>
+										</div>
+							</div>
+							<!--  End step 1 -->
+
+							<div class="tab-pane" id="step2">								
+								<div class="row">									
+										<div class="col-sm-12">
+											<div class="form-group">
+												<h4 class="info-text">취소 및 환불규정</h4>
+												<textarea id="cancel_rule" name="lcontent" rows="15"
+													cols="80" style="width:100%"></textarea>
 											</div>
 										</div>				
 									<br>
@@ -245,18 +251,14 @@
        
       }
   }
-  document.getElementById("smart_editor2").setAttribute('style','width:'+editorArea.parentNode.offsetWidth+'px');
+  
 
  
-  // textArea에 이미지 첨부
+ /*  // textArea에 이미지 첨부 */
   function pasteHTML(filepath){
       var sHTML = '<img src=../editor/upload/'+filepath+'>';
       oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
   }	
-</script>
-<script type="text/javascript">
-	$("[name=submit]").attr("required".true);
-	
 </script>
 </body>
 </html>

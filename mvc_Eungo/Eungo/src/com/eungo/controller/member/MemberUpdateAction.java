@@ -32,8 +32,7 @@ public class MemberUpdateAction implements Action{
 			member.setGender("여자");
 		}else if(member.getGender().equals(null)) {
 			Script.moving(response, "세션이 만료되었습니다", login_url);
-		}
-		request.setAttribute("salt", member.getSalt());
+		}		
 		request.setAttribute("member", member);
 		RequestDispatcher dis = request.getRequestDispatcher(url);
 		dis.forward(request, response);

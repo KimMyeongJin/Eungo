@@ -122,7 +122,7 @@
 							<div class="form-group">
 								<label for="name">Phone Number</label> <input type="tel"
 									value="${member.phonenumber }"
-									pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{4}" class="form-control"
+									pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}" class="form-control"
 									name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
