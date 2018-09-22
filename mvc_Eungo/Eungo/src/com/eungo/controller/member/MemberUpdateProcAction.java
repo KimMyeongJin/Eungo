@@ -1,6 +1,7 @@
 package com.eungo.controller.member;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,40 +16,58 @@ import com.eungo.util.Script;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-public class MemberUpdateProcAction implements Action{ 
+public class MemberUpdateProcAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="index.jsp";
-		
+		String url = "index.jsp";
+
 		MemberVO member = new MemberVO();
 		MemberDAO dao = new MemberDAO();
-		String savePath = request.getServletContext().getRealPath("/image");
-		int sizeLimit = 1024*1024*15;
-		
-		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		
-		String filename = multi.getFilesystemName("filename");
-		String email = multi.getParameter("email");		
+		// String savePath =
+		// request.getServletContext().getRealPath("/images/profile/"); aws등록시 사용
+		String savePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/profile/"; // 집에서 path
+
+		int sizeLimit = 1024 * 1024 * 15;
+
+		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8",
+				new DefaultFileRenamePolicy());
+
+		String email = multi.getParameter("email");
 		String salt = dao.select_salt(email);
-		String password = SHA256.getEncrypt(multi.getParameter("password"),salt);
+		String new_password = multi.getParameter("mod_password");
+		
+		if (!new_password.equals("")) {
+			new_password = SHA256.getEncrypt(new_password, salt);
+		} else {
+			new_password = null;
+		}
+		
 		String phonenumber = multi.getParameter("phonenumber");
 		String birthday = multi.getParameter("birthday");
+		String address = multi.getParameter("roadFullAddr");
+
+		Enumeration<?> files = multi.getFileNames();
+		String file1 = (String) files.nextElement();
+		String profile = null;
+		if (multi.getFilesystemName(file1)!=null) {
+			profile = "/Eungo/images/profile/" + multi.getFilesystemName(file1);
+		}else {
+			profile = dao.select_one(email).getProfile();
+		}
 		
-		 
-       
 		member.setEmail(email);
-		member.setPassword(password);
+		if (new_password != null) {
+			member.setPassword(new_password);
+			member.setSalt(salt);
+		}
 		member.setPhonenumber(phonenumber);
-		member.setFilename(filename);
+		member.setProfile(profile);
 		member.setBirthday(birthday);
+		member.setAddress(address);
 		int result = dao.update(member);
-		if(result == 1) {
-			HttpSession session = request.getSession();
-			session.setAttribute("password", member.getPassword());
-			Script.moving(response, "회원정보 수정 완료", url);		
-		}else if(result == -1) {
-			
+		if (result == 1) {
+			Script.moving(response, "회원정보 수정 완료", url);
+		} else if (result == -1) {
 			Script.moving(response, "DB 에러");
 		}
 	}

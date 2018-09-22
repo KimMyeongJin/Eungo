@@ -20,33 +20,33 @@ public class MemberDAO {
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			MemberVO member = new MemberVO();
-			if(rs.next()) {				
+			if (rs.next()) {
 				member.setEmail(rs.getString("email"));
-				member.setPhonenumber(rs.getString("phonenumber"));	
+				member.setPhonenumber(rs.getString("phonenumber"));
 				member.setGender(rs.getString("gender"));
 				member.setBirthday(rs.getString("Birthday"));
-				member.setFilename(rs.getString("filename"));
+				member.setProfile(rs.getString("profile"));
 				member.setAddress(rs.getString("address"));
-			}	
+			}
 			return member;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
 		}
-		
+
 		return null;
 	}
-	
+
 	public String select_phonenumber(String email) {
 		String SQL = "SELECT phonenumber FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
 		String phonenumber = null;
 		try {
-			pstmt = conn.prepareStatement(SQL);			
+			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();			
-			if(rs.next()) {
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
 				phonenumber = rs.getString("phonenumber");
 			}
 			return phonenumber;
@@ -56,12 +56,13 @@ public class MemberDAO {
 		}
 		return null;
 	}
+
 	// select_id
 	public MemberVO select_email_seller(MemberVO member) {
 		String SQL = "SELECT emailcheck, seller FROM member WHERE email = ? AND password= ?";
 		Connection conn = DBManager.getConnection();
 		try {
-			pstmt = conn.prepareStatement(SQL);			
+			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
 			rs = pstmt.executeQuery();
@@ -70,18 +71,17 @@ public class MemberDAO {
 				check_member.setEmailcheck(rs.getBoolean("emailcheck"));
 				check_member.setSeller(rs.getBoolean("seller"));
 				return check_member;
-			}else if(rs.next()==false) {
+			} else if (rs.next() == false) {
 				return null;
-			}			
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
-		}		
+		}
 		return null;
 	}
 
-	
 	public int insert_naveremail(MemberVO member) {
 		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,null,?,?,false,null)";
 		Connection conn = DBManager.getConnection();
@@ -99,7 +99,7 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	
+
 	public int insert_facebookemail(FacebookVO member) {
 		String SQL = "INSERT INTO member VALUES(?)";
 		Connection conn = DBManager.getConnection();
@@ -117,27 +117,52 @@ public class MemberDAO {
 	}
 
 	public int update(MemberVO member) {
-		String SQL = "UPDATE member SET password =?,phonenumber =?,filename=?,birthday=? WHERE email =?";
-		
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			
-			pstmt.setString(1, member.getPassword());
-			pstmt.setString(2, member.getPhonenumber());
-			pstmt.setString(3, member.getFilename());
-			pstmt.setString(4, member.getBirthday());
-			pstmt.setString(5, member.getEmail());
-			pstmt.executeUpdate();
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			DBManager.close(conn, pstmt);
+		String SQL = null;
+		if (member.getPassword() != null) {
+			SQL = "UPDATE member SET password =?, salt=?, phonenumber =?, profile=?, birthday=?, address=? WHERE email =?";
+
+			Connection conn = DBManager.getConnection();
+			try {
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setString(1, member.getPassword());
+				pstmt.setString(2, member.getSalt());
+				pstmt.setString(3, member.getPhonenumber());
+				pstmt.setString(4, member.getProfile());
+				pstmt.setString(5, member.getBirthday());
+				pstmt.setString(6, member.getAddress());
+				pstmt.setString(7, member.getEmail());
+				pstmt.executeUpdate();
+				return 1;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+			return -1;
+		}else {
+			SQL = "UPDATE member SET  phonenumber =?, profile=?, birthday=?, address=? WHERE email =?";
+
+			Connection conn = DBManager.getConnection();
+			try {
+				pstmt = conn.prepareStatement(SQL);				
+				pstmt.setString(1, member.getPhonenumber());
+				pstmt.setString(2, member.getProfile());
+				pstmt.setString(3, member.getBirthday());
+				pstmt.setString(4, member.getAddress());
+				pstmt.setString(5, member.getEmail());
+				pstmt.executeUpdate();
+				return 1;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+			return -1;
 		}
-		return -1;
+		
+
 	}
-	
+
 	public int insert(MemberVO member) {
 		String SQL = "INSERT INTO member VALUES(?,false,?,?,null,?,?,?,?,false)";
 		Connection conn = DBManager.getConnection();
@@ -149,7 +174,7 @@ public class MemberDAO {
 			pstmt.setString(4, member.getPhonenumber());
 			pstmt.setString(5, member.getGender());
 			pstmt.setString(6, member.getBirthday());
-			pstmt.setString(7, member.getFilename());
+			pstmt.setString(7, member.getProfile());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -161,27 +186,27 @@ public class MemberDAO {
 	}
 
 	public MemberVO select_email(MemberVO member) {
-	      String SQL = "SELECT emailcheck FROM member WHERE email = ? AND password= ?";
-	      Connection conn = DBManager.getConnection();
-	      try {
-	         pstmt = conn.prepareStatement(SQL);
-	         pstmt.setString(1, member.getEmail());
-	         pstmt.setString(2, member.getPassword());
-	         rs = pstmt.executeQuery();
-	         MemberVO check_member = new MemberVO();
-	         if (rs.next()) {
-	            check_member.setEmailcheck(rs.getBoolean("emailcheck"));
-	            check_member.setSeller(rs.getBoolean("seller"));            
-	         }
-	         return check_member;
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      } finally {
-	         DBManager.close(conn, pstmt, rs);
-	      }      
-	      return null;
-	   }
-	
+		String SQL = "SELECT emailcheck FROM member WHERE email = ? AND password= ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getPassword());
+			rs = pstmt.executeQuery();
+			MemberVO check_member = new MemberVO();
+			if (rs.next()) {
+				check_member.setEmailcheck(rs.getBoolean("emailcheck"));
+				check_member.setSeller(rs.getBoolean("seller"));
+			}
+			return check_member;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+
 	public int select_emailcheck(String email) {
 		String SQL = "SELECT emailcheck FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
@@ -241,7 +266,7 @@ public class MemberDAO {
 	}
 
 	public int checkEmail(String email) {
-		//System.out.println("email : " + email);
+		// System.out.println("email : " + email);
 		String SQL = "SELECT email FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
 		try {
@@ -259,9 +284,9 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	
+
 	public int checkPassword(String password) {
-		//System.out.println("email : " + email);
+		// System.out.println("email : " + email);
 		String SQL = "SELECT email FROM member WHERE password = ?";
 		Connection conn = DBManager.getConnection();
 		try {

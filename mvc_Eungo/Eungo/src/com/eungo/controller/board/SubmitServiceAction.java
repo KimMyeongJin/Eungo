@@ -23,7 +23,9 @@ public class SubmitServiceAction implements Action{
 		// TODO Auto-generated method stub
 		String url = "index.jsp";
 		
-		String imagePath = "C:/Users/it/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/";
+		//String imagePath = request.getServletContext().getRealPath("/images/service/"); //aws등록시 사용
+		//String imagePath = "C:/Users/it/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //학원 path
+		String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //집에서 path
 		BoardVO board = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		DecimalFormat df = new DecimalFormat("###,###");

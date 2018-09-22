@@ -13,38 +13,27 @@ import com.eungo.action.Action;
 import com.eungo.dao.MemberDAO;
 import com.eungo.util.SHA256;
 
-public class PwCheckAction implements Action{
+public class PwCheckAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		BufferedReader in = request.getReader();
 		StringBuffer sb = new StringBuffer();
 		String line = null;
-		while((line = in.readLine()) != null) {
+		while ((line = in.readLine()) != null) {
 			sb.append(line);
-			System.out.println("ajax data : "+line);
-			
 		}
-		System.out.println("ajax data : "+sb.toString());
-		
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");		
-		MemberDAO dao = new MemberDAO();		
+		String email = (String) session.getAttribute("email");
+		MemberDAO dao = new MemberDAO();
 		String salt = dao.select_salt(email);
-		System.out.println(salt);
-		String password = SHA256.getEncrypt(line, salt);
-		System.out.println(password);
-		int result = dao.checkPassword(password);	
-		
-		
-		String data = String.valueOf(result);
-		
-		if(result != -1) {
-			PrintWriter out = response.getWriter();
-			out.println(data);
-		}
-		
-	}
-	
+		String password = SHA256.getEncrypt(sb.toString(), salt);		
+		int result = dao.checkPassword(password);
 
+		String data = String.valueOf(result);
+
+		PrintWriter out = response.getWriter();
+		out.println(data);
+
+	}
 }

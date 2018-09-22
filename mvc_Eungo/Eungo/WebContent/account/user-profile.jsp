@@ -31,30 +31,35 @@
 	}
 </script>
 <script>
-	function sendPw() {
-		var pw = $("#password").val();
-		console.log("pw : " + pw);
-		$.ajax({
-			async : true,
-			type : 'POST',
-			data : pw,
-			url : "<%=request.getContextPath()%>/member?cmd=member_pwcheck",
-			dataType : "json",
-			contentType : "application/json;charset=utf-8",
-			success : function(data) {
-				if (pw == '') {
-					alert("비밀번호를 입력해주세요.");
-				} else if (data == 1) {
-					alert("비밀번호 확인.");
-				} else if (data == -1) {
-					alert("비밀번호가 틀렸습니다.")
-				}
-			},
-			error : function(error) {
 
-				alert("error : " + error);
-			}
-		});
+
+	function sendPw() {
+				var pw = $("#password").val();
+				if(pw != ''){		
+				$.ajax({
+					async : true,
+					type : 'POST',
+					data : pw,
+					url : "<%=request.getContextPath()%>/member?cmd=member_pwcheck",
+						dataType : "json",
+						contentType : "application/json;charset=utf-8",
+						success : function(data) {
+							if (data == 1) {
+								alert("비밀번호 확인.");
+								$("#password1").removeAttr("readonly");
+								$("#password2").removeAttr("readonly");
+							} else if (data == -1) {
+								alert("비밀번호가 틀렸습니다.");
+							}
+						},
+						error : function(error) {
+							alert("error : " + error);
+						}
+					});
+		} else if (pw == '') {
+			alert("비밀번호를 입력해주세요.");
+		}
+
 	}
 </script>
 <!-- Start header -->
@@ -101,9 +106,8 @@
 
 							<div class="picture-container">
 								<div class="picture">
-									<img class="picture-src" id="wizardPicturePreview" src=""
-										name="filename" /> <input name="filename" type="file"
-										id="wizard-picture">
+									<img class="picture-src" id="wizardPicturePreview" src="${member.profile }"/> <input name="profile" type="file"
+									id="wizard-picture">
 								</div>
 								<h6>Choose Picture</h6>
 							</div>
@@ -131,19 +135,19 @@
 						<div class="col-sm-3 padding-top-25">
 							<div class="form-group row">
 								<label>password </label> <input id="password" name="password"
-									type="password" class="form-control">
-								<button id="pwck" name="pwck" onclick="sendPw()"
-									class="btn btn-primary">check</button>
+									type="password" class="form-control" />
+								<button id="pwck" name="pwck" type="button" onclick="sendPw()"
+									class="btn btn-info">check</button>
 
 							</div>
 							<div class="form-group">
-								<label>modify password </label> <input id="password1"
+								<label>modify password </label> <input id="password1" readonly
 									name="mod_password" type="password" class="form-control">
 
 							</div>
 							<div class="form-group">
-								<label>Confirm password </label> <input id="password2"
-									name="password_check" type="password" class="form-control">
+								<label>Confirm password </label> <input id="password2" readonly
+									name="check_password" type="password" class="form-control">
 								<small id="checkPwd"></small>
 							</div>
 
@@ -151,10 +155,10 @@
 						<div class="col-sm-6 padding-top-25">
 							<div class="form-group">
 								<label>address </label>
-								<button class="btn btn-outline-info float-right"
-									onclick="goPopup()" type="button">주소입력</button>
+								<button class="btn btn-info float-right" onclick="goPopup()"
+									type="button">주소입력</button>
 								<div id="callBackDiv">
-									<input id="address" name="roadFullAddr" type="text"
+									<input id="roadFullAddr" name="roadFullAddr" type="text"
 										class="form-control" maxlength="20" value="${member.address }"
 										readonly>
 								</div>
@@ -162,18 +166,13 @@
 
 						</div>
 					</div>
-
 					<div class="col-sm-5 col-sm-offset-1">
 						<br>
 						<button type="submit" class="btn btn-warning">Update</button>
 					</div>
-
-
 				</form>
 			</div>
 		</div>
-		<!-- end row -->
-
 	</div>
 </div>
 <!-- //email check -->
@@ -207,6 +206,6 @@
 	type="text/javascript"></script>
 <script
 	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
-<script src="<%=request.getContextPath() %>/assets/js/wizard.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
 </body>
 </html>

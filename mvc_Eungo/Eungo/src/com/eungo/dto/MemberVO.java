@@ -10,21 +10,22 @@ public class MemberVO {
 	private String gender;
 	private String birthday;
 	private boolean seller;	
-	private String filename;
+	private String profile;
 	
 	
+	
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+	}	
 	public boolean isSeller() {
 		return seller;
 	}
