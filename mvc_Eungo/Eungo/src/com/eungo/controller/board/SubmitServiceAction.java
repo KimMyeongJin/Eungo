@@ -44,7 +44,7 @@ public class SubmitServiceAction implements Action{
 		HttpSession session = request.getSession();
 		board.setEmail(session.getAttribute("email").toString());		
 		board.setLtitle(multi.getParameter("ltitle"));		
-		board.setLprice(df.format(Integer.parseInt(multi.getParameter("lprice"))));
+		//board.setLprice(df.format(Integer.parseInt(multi.getParameter("lprice"))));
 		board.setLcontent(multi.getParameter("lcontent"));
 		board.setLcategory(multi.getParameter("lcategory"));
 		if(limage!=null) {
