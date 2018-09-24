@@ -12,9 +12,26 @@ import com.eungo.util.DBManager;
 public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-
+	
+	public int lnumberSelect(String email) {
+		String SQL = "SELECT lnumber FROM list WHERE email = ? ORDER BY lnumber DESC";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("lnumber");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lprice,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -28,7 +45,6 @@ public class BoardDAO {
 			pstmt.setString(8, board.getLimage4());
 			pstmt.setString(9, board.getYoutube());
 			pstmt.setString(10, board.getLcategory());
-			pstmt.setString(11, board.getLprice());			
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -62,7 +78,6 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -163,7 +178,6 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -199,7 +213,6 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -242,7 +255,6 @@ public class BoardDAO {
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
 				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getString("lprice"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -288,8 +300,7 @@ public class BoardDAO {
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));
-				board.setLprice(rs.getString("lprice"));
+				board.setLcategory(rs.getString("lcategory"));				
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
