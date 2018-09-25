@@ -31,7 +31,7 @@ public class BoardDAO {
 	}
 	
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,limage,limage2,limage3,limage4,youtube,lcategory,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -39,12 +39,13 @@ public class BoardDAO {
 			pstmt.setString(2, board.getLphone_number());
 			pstmt.setString(3, board.getLtitle());
 			pstmt.setString(4, board.getLcontent());
-			pstmt.setString(5, board.getLimage());
-			pstmt.setString(6, board.getLimage2());
-			pstmt.setString(7, board.getLimage3());
-			pstmt.setString(8, board.getLimage4());
-			pstmt.setString(9, board.getYoutube());
-			pstmt.setString(10, board.getLcategory());
+			pstmt.setString(5, board.getLcategory());
+			pstmt.setString(6, board.getLimage());
+			pstmt.setString(7, board.getLimage2());
+			pstmt.setString(8, board.getLimage3());
+			pstmt.setString(9, board.getLimage4());
+			pstmt.setString(10, board.getYoutube());
+			pstmt.setString(11, board.getCancel_rule());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -72,12 +73,13 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -172,12 +174,13 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -207,12 +210,13 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -249,12 +253,13 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -295,12 +300,13 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setLcategory(rs.getString("lcategory"));	
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setLcategory(rs.getString("lcategory"));				
+				board.setCancel_rule(rs.getString("cancel_rule"));		
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));

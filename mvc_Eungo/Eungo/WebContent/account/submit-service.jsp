@@ -160,7 +160,7 @@
 													<td>
 														<div>
 															<span>STANDARD</span><br> <span><input
-																type="number" value="0" name="standard"
+																type="number" value="0" name="standard_price"
 																id="standard_price" required></span>원
 															<div>(VAT포함)(단위/원)</div>
 														</div>
@@ -168,14 +168,14 @@
 													<td>
 														<div>
 															<span>DELUXE</span><br> <span><input
-																type="number" value="0" name="deluxe" id="deluxe_price"></span>
+																type="number" value="0" name="deluxe_price" id="deluxe_price"></span>
 															<div>(VAT포함)(단위/원)</div>
 														</div>
 													</td>
 													<td>
 														<div>
 															<span>PREMIUM</span><br> <span><input
-																type="number" value="0" name="premium"
+																type="number" value="0" name="premium_price"
 																id="premium_price"></span>원
 															<div>(VAT포함)(단위/원)</div>
 														</div>
@@ -259,7 +259,7 @@
 									<div class="col-sm-12">
 										<div class="form-group">
 											<h4 class="info-text">취소 및 환불 규정</h4>
-											<textarea id="cancel_rule" name="lcontent" rows="15"
+											<textarea id="cancel_rule" name="cancel_rule" rows="15"
 												cols="80" style="width: 100%" required></textarea>
 										</div>
 									</div>

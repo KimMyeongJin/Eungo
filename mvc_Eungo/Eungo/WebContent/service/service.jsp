@@ -248,10 +248,9 @@
 								<div class="clear">
 									<div class="col-xs-4 col-sm-4 dealer-face">
 									<c:choose>
-										<c:when test="${seller.filename != null }">
+										<c:when test="${seller.profile != null }">
 										<a href="#"> <img
-											src="<%=request.getContextPath()%>/assets/img/client-face1.png"
-											class="img-circle">
+											src="${seller.profile }" class="img-circle">
 										</a>
 										</c:when>
 										<c:otherwise>
@@ -311,8 +310,7 @@
 	</div>
 	<div class="panel-body search-widget">
 		<form id="smart_search" action="<%=request.getContextPath()%>/board" method="get" class=" form-inline">
-					<input type="hidden" name="cmd" value="smart_search">
-			<c:when test="">
+					<input type="hidden" name="cmd" value="smart_search">			
 			<fieldset>
 				<div class="row">
 					<div class="col-xs-12">
@@ -335,8 +333,7 @@
 						</select>
 					</div>
 				</div>
-			</fieldset>
-			</c:when>	
+			</fieldset>				
 			<fieldset>
 				<div class="row">
 					<div class="col-xs-12">

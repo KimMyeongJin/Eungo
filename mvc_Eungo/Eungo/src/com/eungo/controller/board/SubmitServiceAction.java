@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
 import com.eungo.dao.BoardDAO;
+import com.eungo.dao.PriceDAO;
 import com.eungo.dto.BoardVO;
 import com.eungo.dto.PriceVO;
 import com.eungo.util.Script;
@@ -29,8 +30,9 @@ public class SubmitServiceAction implements Action{
 		//String imagePath = "C:/Users/it/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //학원 path
 		String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //집에서 path		
 		BoardVO board = new BoardVO();
-		PriceVO price = new PriceVO();
 		BoardDAO dao = new BoardDAO();
+		PriceVO price = new PriceVO();
+		PriceDAO pdao = new PriceDAO();
 		MultipartRequest multi = new MultipartRequest(request,imagePath ,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
 		Enumeration<?> files = multi.getFileNames();				
 	    String file1 = (String)files.nextElement();	   
@@ -44,8 +46,7 @@ public class SubmitServiceAction implements Action{
 	    String limage4=multi.getFilesystemName(file4);		
 		
 		board.setEmail(email);		
-		board.setLtitle(multi.getParameter("ltitle"));		
-		//board.setLprice(df.format(Integer.parseInt(multi.getParameter("lprice"))));
+		board.setLtitle(multi.getParameter("ltitle"));				
 		board.setLcontent(multi.getParameter("lcontent"));
 		board.setLcategory(multi.getParameter("lcategory"));
 		if(limage!=null) {
@@ -62,6 +63,7 @@ public class SubmitServiceAction implements Action{
 		}
 		board.setYoutube(multi.getParameter("youtube"));
 		board.setLphone_number(multi.getParameter("lphone_number"));
+		board.setCancel_rule(multi.getParameter("cancel_rule").replace("\r\n", "<br>"));
 		
 		int result = dao.boardInsert(board);
 		int lnumber = dao.lnumberSelect(email);
@@ -83,9 +85,9 @@ public class SubmitServiceAction implements Action{
 			price.setPremium_modify(Integer.parseInt(multi.getParameter("premium_modify")));
 			price.setPremium_time(multi.getParameter("premium_time"));	
 		}
+		int p_result = pdao.insert(price);
 		
-		
-		if(result ==1 ) {
+		if(result ==1&&p_result==1) {
 			Script.moving(response, "서비스를 게시합니다", url);
 		}else {
 			Script.moving(response, "DB에러");

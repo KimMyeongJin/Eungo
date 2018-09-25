@@ -5,12 +5,13 @@ public class BoardVO {
 	private int lnumber;
 	private String ltitle;
 	private String lcontent;
+	private String lcategory;
 	private String limage;
 	private String limage2;
 	private String limage3;
 	private String limage4;
 	private String youtube;
-	private String lcategory;
+	private String cancel_rule;
 	private String lprice;
 	private int lsellcount;
 	private int lviewcount;		
@@ -19,6 +20,12 @@ public class BoardVO {
 	private String lphone_number;
 	
 	
+	public String getCancel_rule() {
+		return cancel_rule;
+	}
+	public void setCancel_rule(String cancel_rule) {
+		this.cancel_rule = cancel_rule;
+	}
 	public String getLphone_number() {
 		return lphone_number;
 	}
