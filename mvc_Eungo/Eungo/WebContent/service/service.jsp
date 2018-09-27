@@ -7,7 +7,13 @@
 <title>GARO ESTATE | Service page</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/lightslider.min.css">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    function fnMove(seq){
+        var offset = $("#div" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
 <!-- End of header -->
@@ -75,155 +81,22 @@
 					</div>
 
 					<div class="property-meta entry-meta clearfix ">
-
-						<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-							<span class="property-info-icon icon-tag"> <svg
-									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-									viewBox="0 0 48 48">
-                                        <path class="meta-icon"
-										fill-rule="evenodd" clip-rule="evenodd" fill="#FFA500"
-										d="M47.199 24.176l-23.552-23.392c-.504-.502-1.174-.778-1.897-.778l-19.087.09c-.236.003-.469.038-.696.1l-.251.1-.166.069c-.319.152-.564.321-.766.529-.497.502-.781 1.196-.778 1.907l.092 19.124c.003.711.283 1.385.795 1.901l23.549 23.389c.221.218.482.393.779.523l.224.092c.26.092.519.145.78.155l.121.009h.012c.239-.003.476-.037.693-.098l.195-.076.2-.084c.315-.145.573-.319.791-.539l18.976-19.214c.507-.511.785-1.188.781-1.908-.003-.72-.287-1.394-.795-1.899zm-35.198-9.17c-1.657 0-3-1.345-3-3 0-1.657 1.343-3 3-3 1.656 0 2.999 1.343 2.999 3 0 1.656-1.343 3-2.999 3z"></path>
-                                        </svg>
-							</span> <span class="property-info-entry"> <span
-								class="property-info-label">Status</span> <span
-								class="property-info-value">For Sale</span>
-							</span>
+						<div class="row">
+							<button onclick="fnMove('1')">서비스설명</button>
+							<button onclick="fnMove('2')">가격정보</button>
+							<button onclick="fnMove('3')">취소및환불규정</button>
+							<button onclick="fnMove('4')">서비스평가</button>
 						</div>
-
-						<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-							<span class="property-info icon-area"> <svg
-									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-									viewBox="0 0 48 48">
-                                        <path class="meta-icon"
-										fill="#FFA500"
-										d="M46 16v-12c0-1.104-.896-2.001-2-2.001h-12c0-1.103-.896-1.999-2.002-1.999h-11.997c-1.105 0-2.001.896-2.001 1.999h-12c-1.104 0-2 .897-2 2.001v12c-1.104 0-2 .896-2 2v11.999c0 1.104.896 2 2 2v12.001c0 1.104.896 2 2 2h12c0 1.104.896 2 2.001 2h11.997c1.106 0 2.002-.896 2.002-2h12c1.104 0 2-.896 2-2v-12.001c1.104 0 2-.896 2-2v-11.999c0-1.104-.896-2-2-2zm-4.002 23.998c0 1.105-.895 2.002-2 2.002h-31.998c-1.105 0-2-.896-2-2.002v-31.999c0-1.104.895-1.999 2-1.999h31.998c1.105 0 2 .895 2 1.999v31.999zm-5.623-28.908c-.123-.051-.256-.078-.387-.078h-11.39c-.563 0-1.019.453-1.019 1.016 0 .562.456 1.017 1.019 1.017h8.935l-20.5 20.473v-8.926c0-.562-.455-1.017-1.018-1.017-.564 0-1.02.455-1.02 1.017v11.381c0 .562.455 1.016 1.02 1.016h11.39c.562 0 1.017-.454 1.017-1.016 0-.563-.455-1.019-1.017-1.019h-8.933l20.499-20.471v8.924c0 .563.452 1.018 1.018 1.018.561 0 1.016-.455 1.016-1.018v-11.379c0-.132-.025-.264-.076-.387-.107-.249-.304-.448-.554-.551z"></path>
-                                        </svg>
-							</span> <span class="property-info-entry"> <span
-								class="property-info-label">Area</span> <span
-								class="property-info-value">3500<b
-									class="property-info-unit">Sq Ft</b></span>
-							</span>
-						</div>
-
-						<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-							<span class="property-info-icon icon-bed"> <svg
-									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-									viewBox="0 0 48 48">
-                                        <path class="meta-icon"
-										fill="#FFA500"
-										d="M21 48.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v31c0 1.104-.895 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v7.001c0 1.104-.895 1.999-2 1.999zm25 37.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v31c0 1.104-.896 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v7.001c0 1.104-.896 1.999-2 1.999z"></path>
-                                        </svg>
-							</span> <span class="property-info-entry"> <span
-								class="property-info-label">Bedrooms</span> <span
-								class="property-info-value">3</span>
-							</span>
-						</div>
-
-						<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-							<span class="property-info-icon icon-bath"> <svg
-									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-									viewBox="0 0 48 48">
-                                        <path class="meta-icon"
-										fill="#FFA500"
-										d="M37.003 48.016h-4v-3.002h-18v3.002h-4.001v-3.699c-4.66-1.65-8.002-6.083-8.002-11.305v-4.003h-3v-3h48.006v3h-3.001v4.003c0 5.223-3.343 9.655-8.002 11.305v3.699zm-30.002-24.008h-4.001v-17.005s0-7.003 8.001-7.003h1.004c.236 0 7.995.061 7.995 8.003l5.001 4h-14l5-4-.001.01.001-.009s.938-4.001-3.999-4.001h-1s-4 0-4 3v17.005000000000003h-.001z"></path>
-                                        </svg>
-							</span> <span class="property-info-entry"> <span
-								class="property-info-label">Bathrooms</span> <span
-								class="property-info-value">3.5</span>
-							</span>
-						</div>
-
-						<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-							<span class="property-info-icon icon-garage"> <svg
-									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-									viewBox="0 0 48 48">
-                                        <path class="meta-icon"
-										fill="#FFA500"
-										d="M44 0h-40c-2.21 0-4 1.791-4 4v44h6v-40c0-1.106.895-2 2-2h31.999c1.106 0 2.001.895 2.001 2v40h6v-44c0-2.209-1.792-4-4-4zm-36 8.001h31.999v2.999h-31.999zm0 18h6v5.999h-2c-1.104 0-2 .896-2 2.001v6.001c0 1.103.896 1.998 2 1.998h2v2.001c0 1.104.896 2 2 2s2-.896 2-2v-2.001h11.999v2.001c0 1.104.896 2 2.001 2 1.104 0 2-.896 2-2v-2.001h2c1.104 0 2-.895 2-1.998v-6.001c0-1.105-.896-2.001-2-2.001h-2v-5.999h5.999v-3h-31.999v3zm8 12.999c-1.104 0-2-.895-2-1.999s.896-2 2-2 2 .896 2 2-.896 1.999-2 1.999zm10.5 2h-5c-.276 0-.5-.225-.5-.5 0-.273.224-.498.5-.498h5c.275 0 .5.225.5.498 0 .275-.225.5-.5.5zm1-2h-7c-.275 0-.5-.225-.5-.5s.226-.499.5-.499h7c.275 0 .5.224.5.499s-.225.5-.5.5zm-6.5-2.499c0-.276.224-.5.5-.5h5c.275 0 .5.224.5.5s-.225.5-.5.5h-5c-.277 0-.5-.224-.5-.5zm11 2.499c-1.104 0-2.001-.895-2.001-1.999s.896-2 2.001-2c1.104 0 2 .896 2 2s-.896 1.999-2 1.999zm0-12.999v5.999h-16v-5.999h16zm-24-13.001h31.999v3h-31.999zm0 5h31.999v3h-31.999z"></path>
-                                        </svg>
-							</span> <span class="property-info-entry"> <span
-								class="property-info-label">Garages</span> <span
-								class="property-info-value">2</span>
-							</span>
-						</div>
-
-
 					</div>
 					<!-- .property-meta -->
 
-					<div class="section">
+					<div class="section" id="div1">
 						<h4 class="s-property-title">서비스 설명</h4>
 						<div class="s-property-content">
-							<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis
-								dapibus nisl. Suspendisse ultricies commodo arcu nec pretium.
-								Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed
-								arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-								commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis
-								dapibus nisl. Suspendisse ultricies commodo arcu nec pretium.
-								Nullam sed arcu ultricies</p>
+							<p>${board.lcontent }</p>
 						</div>
 					</div>
 					<!-- End description area  -->
-
-					<div class="section additional-details">
-
-						<h4 class="s-property-title">Additional Details</h4>
-
-						<ul class="additional-details-list clearfix">
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-								<span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-							</li>
-
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built
-									In</span> <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
-							</li>
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
-								<span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or
-									More Spaces,Covered Parking,Valet Parking</span></li>
-
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-								<span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-							</li>
-
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-								<span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal
-									View,Direct ew</span></li>
-
-							<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront
-									Description:</span> <span
-								class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal
-									Front,Ocean Access</span></li>
-
-						</ul>
-					</div>
-					<!-- End additional-details area  -->
-
-					<div class="section property-features">
-
-						<h4 class="s-property-title">Features</h4>
-						<ul>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">Swimming
-									Pool</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">3
-									Stories</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">Central
-									Cooling</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">Jog
-									Path 2</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">2
-									Lawn</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/service/services.jsp">Bike
-									Path</a></li>
-						</ul>
-
-					</div>
-					<!-- End features area  -->
 					<c:if test="${board.youtube != ''}">
 					<div class="section property-video">
 						<h4 class="s-property-title">Service Video</h4>
@@ -236,6 +109,95 @@
 					</div>
 					</c:if>
 					<!-- End video area  -->
+					<div class="section additional-details" id="div2">
+
+						<h4 class="s-property-title">가격 정보</h4>
+
+						<ul class="additional-details-list clearfix">
+							<li>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-title"></span>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">STANDARD<br>${price.standard_price}<br>(VAT포함)</span>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">DELUXE<br>${price.deluxe_price}<br>(VAT포함)</span>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">PREMIUM<br>${price.premium_price}<br>(VAT포함)</span>
+							</li>
+
+							<li>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지 설명</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_title }<br>${price.standard_content}</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_title }<br>${price.deluxe_content}</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_title }<br>${price.premium_content}</span>
+							</li>
+							<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">수정 횟수</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_modify }</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_modify }</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_modify }</span>
+							</li>
+							<li>
+								<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">작업 시간</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_time }</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_time }</span>
+								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_time }</span>
+							</li>
+						</ul>
+					</div>
+					<!-- End additional-details area  -->
+					<br><br>
+					<div class="section property-features" id="div3">
+
+						<h4 class="s-property-title">취소 및 환불 규정</h4>
+						<br>
+						<ul>
+							<li>
+								${board.cancel_rule }
+							</li>
+						</ul>
+
+					</div>
+					<!-- End features area  -->
+					
+						<div class="card my-4" id="div4">
+							
+							<h5 class="s-property-title">서비스 평가</h5>
+							<div class="card-body">
+								<div class="form-group">
+									<textarea class="form-control" id="replyData" rows="3"></textarea>
+								</div>
+								<c:choose>
+									<c:when test="${empty sessionScope.email}">
+										<input type="button" class="btn btn-primary" onclick="alert('로그인 후 이용가능합니다.')" value="Submit">
+									</c:when>
+									<c:otherwise>
+										<input type="button" class="btn btn-primary" onclick="sendReply()" value="Submit">
+									</c:otherwise>
+								</c:choose>
+
+							</div>
+						</div>
+						
+						<div id="reply">
+							<c:forEach var="item" items="">
+								<div class="media mb-4">
+									<c:choose>
+										<c:when test="">
+											<a href="#">	
+											<img class="d-flex mr-3 rounded-circle" 
+											src="<%=request.getContextPath()%>/assets/img/check/clear.png">
+											</a>
+										</c:when>
+										<c:otherwise>
+										<img class="d-flex mr-3 rounded-circle" 
+											src="<%=request.getContextPath()%>/assets/img/check/reply.png">
+										</c:otherwise>
+									</c:choose>
+								
+									<div class="media-body">
+										<h5 class="mt-0">내용</h5>
+										email
+									</div>
+								</div>
+							</c:forEach>							
+						</div>
+						<!-- Comments Form -->
 				</div>
 			</div>
 
@@ -285,8 +247,7 @@
 								<div class="clear">
 									<ul class="dealer-contacts">
 									<c:if test="${seller.address != null }">
-										<li><i class="pe-7s-map-marker strong"> </i> 9089 your
-											adress her</li>
+										<li><i class="pe-7s-map-marker strong"> </i>${seller.address}</li>
 									</c:if>
 										<li><i class="pe-7s-mail strong"> </i>
 											${board.email }</li>
@@ -297,7 +258,7 @@
 											style="color: #FFF"> FAQ </a></li>
 									</ul>
 									<h5>전문가 소개</h5>
-									<p>소개자료 나중에 띄울거임</p>
+									<p>seller_intro</p>
 								</div>
 							</div>
 						</div>
@@ -309,39 +270,52 @@
 		<h3 class="panel-title">구매하기</h3>
 	</div>
 	<div class="panel-body search-widget">
-		<form id="smart_search" action="<%=request.getContextPath()%>/board" method="get" class=" form-inline">
-					<input type="hidden" name="cmd" value="smart_search">			
+		<form action="<%=request.getContextPath()%>/purchase" method="get" class=" form-inline">								
+		<details open>
+			<summary>${price.standard_price }원 STANDARD</summary>		
 			<fieldset>
 				<div class="row">
-					<div class="col-xs-12">
-						<select id="lunchBegins" class="selectpicker" name="search_category" form="smart_search"
-							data-live-search="true" data-live-search-style="begins"
-							title="Select Your Categroy">
-							<option>워드프레스</option>
-							<option>웹사이트 개발</option>
-							<option>쇼핑몰·커머스</option>
-							<option>모바일앱·웹</option>
-							<option>프로그램 개발</option>
-							<option>게임</option>
-							<option>데이터베이스</option>
-							<option>데이터분석·리포트</option>
-							<option>서버 및 기술지원</option>
-							<option>QA·테스트</option>
-							<option>파일변환</option>
-							<option>챗봇</option>
-							<option>기타</option>
-						</select>
-					</div>
-				</div>
-			</fieldset>				
-			<fieldset>
-				<div class="row">
-					<div class="col-xs-12">
-						<input class="button btn largesearch-btn" value="${board.lprice } 원/VAT포함"
+					<div class="col-xs-12">					
+					<div>${price.standard_title }</div>
+						<div>${price.standard_content }</div><br>
+						<div><span>${price.standard_modify }회	</span><span>	${price.standard_time }</span></div>
+						<input class="button btn largesearch-btn" name="standard_price" value="${price.standard_price } 원/VAT포함"
 							type="submit">
+						
 					</div>
 				</div>
 			</fieldset>
+			</details>
+			<details>
+			<summary>${price.deluxe_price }원 DELUXE</summary>
+			<fieldset>
+				<div class="row">
+					<div class="col-xs-12">					
+					<div>${price.deluxe_title }</div>
+						<div>${price.deluxe_content }</div><br>
+						<div><span>${price.deluxe_modify }회	</span><span>	${price.deluxe_time }</span></div>
+						<input class="button btn largesearch-btn" name="deluxe_price" value="${price.deluxe_price } 원/VAT포함"
+							type="submit">
+						
+					</div>
+				</div>
+			</fieldset>
+			</details>
+			<details>
+			<summary>${price.premium_price }원 PREMIUM</summary>		
+			<fieldset>
+				<div class="row">
+					<div class="col-xs-12">					
+					<div>${price.premium_title }</div>
+						<div>${price.premium_content }</div><br>
+						<div><span>${price.premium_modify }회	</span><span>	${price.premium_time }</span></div>
+						<input class="button btn largesearch-btn" name="premium_price" value="${price.premium_price } 원/VAT포함"
+							type="submit">
+						
+					</div>
+				</div>
+			</fieldset>
+			</details>
 		</form>
 	</div>
 </div>

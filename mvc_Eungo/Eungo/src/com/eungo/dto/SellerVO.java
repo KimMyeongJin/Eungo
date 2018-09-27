@@ -6,7 +6,7 @@ public class SellerVO {
 	private int account_num;
 	private int account_holder_info;
 	private int income;
-	private String seller_info;
+	private String seller_intro;
 	
 	public String getEmail() {
 		return email;
@@ -38,10 +38,10 @@ public class SellerVO {
 	public void setIncome(int income) {
 		this.income = income;
 	}
-	public String getSeller_info() {
-		return seller_info;
+	public String getSeller_intro() {
+		return seller_intro;
 	}
-	public void setSeller_info(String seller_info) {
-		this.seller_info = seller_info;
+	public void setSeller_intro(String seller_intro) {
+		this.seller_intro = seller_intro;
 	}
 }

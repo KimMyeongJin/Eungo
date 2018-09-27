@@ -2,17 +2,17 @@ package com.eungo.dto;
 
 public class PriceVO {
 	private int lnumber;
-	private int standard_price;
+	private String standard_price;
 	private String standard_title;
 	private String standard_content;
 	private int standard_modify;
 	private String standard_time;
-	private int deluxe_price;
+	private String deluxe_price;
 	private String deluxe_title;
 	private String deluxe_content;
 	private int deluxe_modify;
 	private String deluxe_time;
-	private int premium_price;
+	private String premium_price;
 	private String premium_title;
 	private String premium_content;
 	private int premium_modify;
@@ -24,10 +24,10 @@ public class PriceVO {
 	public void setLnumber(int lnumber) {
 		this.lnumber = lnumber;
 	}
-	public int getStandard_price() {
+	public String getStandard_price() {
 		return standard_price;
 	}
-	public void setStandard_price(int standard_price) {
+	public void setStandard_price(String standard_price) {
 		this.standard_price = standard_price;
 	}
 	public String getStandard_title() {
@@ -48,10 +48,10 @@ public class PriceVO {
 	public void setStandard_modify(int standard_modify) {
 		this.standard_modify = standard_modify;
 	}	
-	public int getDeluxe_price() {
+	public String getDeluxe_price() {
 		return deluxe_price;
 	}
-	public void setDeluxe_price(int deluxe_price) {
+	public void setDeluxe_price(String deluxe_price) {
 		this.deluxe_price = deluxe_price;
 	}
 	public String getDeluxe_title() {
@@ -72,10 +72,10 @@ public class PriceVO {
 	public void setDeluxe_modify(int deluxe_modify) {
 		this.deluxe_modify = deluxe_modify;
 	}	
-	public int getPremium_price() {
+	public String getPremium_price() {
 		return premium_price;
 	}
-	public void setPremium_price(int premium_price) {
+	public void setPremium_price(String premium_price) {
 		this.premium_price = premium_price;
 	}
 	public String getPremium_title() {

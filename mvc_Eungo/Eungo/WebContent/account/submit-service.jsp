@@ -329,7 +329,7 @@
 
 	/*  // textArea에 이미지 첨부 */
 	function pasteHTML(filepath) {
-		var sHTML = '<img src=../editor/upload/'+filepath+'>';
+		var sHTML = '<img src=<%=request.getContextPath()%>/editor/upload/'+filepath+'>';
 		oEditors.getById["textAreaContent"].exec("PASTE_HTML", [ sHTML ]);
 	}
 </script>

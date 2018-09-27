@@ -1,6 +1,7 @@
 package com.eungo.controller.board;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ public class SubmitServiceAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "index.jsp";
+		String url = "index.jsp";		
 		
 		HttpSession session = request.getSession();
 		String email = session.getAttribute("email").toString();
@@ -69,17 +70,17 @@ public class SubmitServiceAction implements Action{
 		int lnumber = dao.lnumberSelect(email);
 		if(lnumber!=-1) {
 			price.setLnumber(lnumber);
-			price.setStandard_price(Integer.parseInt(multi.getParameter("standard_price")));
+			price.setStandard_price(String.format("%,d", Integer.parseInt(multi.getParameter("standard_price"))));
 			price.setStandard_title(multi.getParameter("standard_title"));
 			price.setStandard_content(multi.getParameter("standard_content"));
 			price.setStandard_modify(Integer.parseInt(multi.getParameter("standard_modify")));
 			price.setStandard_time(multi.getParameter("standard_time"));	
-			price.setDeluxe_price(Integer.parseInt(multi.getParameter("deluxe_price")));
+			price.setDeluxe_price(String.format("%,d", Integer.parseInt(multi.getParameter("deluxe_price"))));
 			price.setDeluxe_title(multi.getParameter("deluxe_title"));
 			price.setDeluxe_content(multi.getParameter("deluxe_content"));
 			price.setDeluxe_modify(Integer.parseInt(multi.getParameter("deluxe_modify")));
 			price.setDeluxe_time(multi.getParameter("deluxe_time"));	
-			price.setPremium_price(Integer.parseInt(multi.getParameter("premium_price")));
+			price.setPremium_price(String.format("%,d", Integer.parseInt(multi.getParameter("premium_price"))));
 			price.setPremium_title(multi.getParameter("premium_title"));
 			price.setPremium_content(multi.getParameter("premium_content"));
 			price.setPremium_modify(Integer.parseInt(multi.getParameter("premium_modify")));
