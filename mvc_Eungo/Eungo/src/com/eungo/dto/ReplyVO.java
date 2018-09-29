@@ -7,11 +7,17 @@ public class ReplyVO {
 	private int star;
 	private int lnumber;
 	private String email;
+	private int pur_number;
 	private String re_date;
 	private String an_date;
 	private int del;
 	
-	
+	public int getPur_number() {
+		return pur_number;
+	}
+	public void setPur_number(int pur_number) {
+		this.pur_number = pur_number;
+	}
 	public int getDel() {
 		return del;
 	}

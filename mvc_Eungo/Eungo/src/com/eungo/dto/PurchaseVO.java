@@ -1,6 +1,7 @@
 package com.eungo.dto;
 
 public class PurchaseVO {
+	private int pur_number;
 	private String email;
 	private int lnumber;
 	private String product_name;
@@ -8,7 +9,20 @@ public class PurchaseVO {
 	private String price;
 	private String total_price;
 	private String date;
+	private boolean reply_cheack;
 	
+	public int getPur_number() {
+		return pur_number;
+	}
+	public void setPur_number(int pur_number) {
+		this.pur_number = pur_number;
+	}
+	public boolean isReply_cheack() {
+		return reply_cheack;
+	}
+	public void setReply_cheack(boolean reply_cheack) {
+		this.reply_cheack = reply_cheack;
+	}
 	public String getEmail() {
 		return email;
 	}

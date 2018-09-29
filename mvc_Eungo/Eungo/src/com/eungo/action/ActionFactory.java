@@ -17,6 +17,10 @@ import com.eungo.controller.member.MemberUpdateProcAction;
 import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
 import com.eungo.controller.member.PwCheckAction;
+import com.eungo.controller.reply.AnswerDeleteAction;
+import com.eungo.controller.reply.ReplyAnswerAction;
+import com.eungo.controller.reply.ReplyCommentAction;
+import com.eungo.controller.reply.ReplyDeleteAction;
 
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
@@ -65,6 +69,14 @@ public class ActionFactory {
 			return new SubmitServiceAction();
 		} else if (cmd.equals("view_service")) {
 			return new ViewServiceAction();
+		} else if (cmd.equals("reply_comment")) {
+			return new ReplyCommentAction();
+		} else if (cmd.equals("reply_delete")) {
+			return new ReplyDeleteAction();
+		} else if (cmd.equals("reply_answer")) {
+			return new ReplyAnswerAction();
+		} else if (cmd.equals("answer_delete")) {
+			return new AnswerDeleteAction();
 		}
 		return null;
 	}

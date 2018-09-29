@@ -155,38 +155,63 @@
 					</div>
 					<!-- End features area  -->
 
-					<div class="card my-4" id="div4">
-
+					<div class="section" id="div4">
 						<h5 class="s-property-title">서비스 평가</h5>
-						<div class="col-md-12 col-xs-12">
-							<c:if test="${sessionScope.email eq null}">
+						<div id="del1">
+							<c:if
+								test="${sessionScope.email ne null && sessionScope.email eq pur.email}">
 								<div class="form-group">
 									<textarea class="form-control" id="replyData" rows="3"></textarea>
 								</div>
-								<input type="button" class="btn btn-default"
-									onclick="sendReply()" value="Submit">
+								<button class="btn btn-default" type="submit"
+									onclick="sendReply()">Submit</button>
 							</c:if>
 						</div>
 					</div>
 					<div id="reply">
 						<c:forEach var="re_list" items="${re_list }">
-							<div class="media mb-4">
-								<c:if test="${re_list.email eq sessionScope.email}">
-									<a href="#"> <img class="d-flex mr-3 rounded-circle"
+							<div class="media mb-4" id="${re_list.reply_number }reply">
+								<c:if test="${re_list.email eq sessionScope.email}">								
+									<a href="javascript:;"
+										onclick="replyDelete('${re_list.reply_number}')"> <img
+										class="d-flex mr-3 rounded-circle"
 										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
-									</a>
-									<a href="#"><img class="d-flex mr-3 rounded-circle"
-										src="<%=request.getContextPath()%>/assets/img/check/reply.png">
-									</a>
+									</a><small>리뷰</small>
 								</c:if>
 								<c:if test="${sessionScope.email eq seller.email}">
-									<a href="#"> <img class="d-flex mr-3 rounded-circle"
+									<a href="javascript:;"
+										onclick="replyDelete('${re_list.reply_number}')"> <img
+										class="d-flex mr-3 rounded-circle"
 										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
-									</a>
+									</a><small>리뷰</small>
 								</c:if>
-								<div class="media-body">
-									<h5 class="mt-0">${re_list.comment}</h5>									
-								</div>
+								<div class="media-body" id="${re_list.reply_number }answer_locate">
+									<h5 class="mt-0">${re_list.reply_comment}</h5><small>${re_list.email }</small>
+									 ${re_list.re_date }<br> ${re_list.star }
+								</div>					
+							<div id="del2">
+								<c:if
+									test="${sessionScope.email eq seller.email && re_list.reply_answer eq null}">
+									<div class="form-group">
+										<textarea class="form-control" id="answerData" rows="3"></textarea>
+									</div>
+									<button class="btn btn-default"
+										onclick="sendAnswer('${re_list.reply_number}')">Submit</button>
+								</c:if>
+							</div>
+							<div class="media mb-4" id="${re_list.reply_number }answer" style="text-align: right;">
+							<c:if test="${sessionScope.email eq seller.email && re_list.reply_answer ne null}">							
+									<a href="javascript:;"
+										onclick="answerDelete('${re_list.reply_number}')"> <img
+										class="d-flex mr-3 rounded-circle"
+										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
+									</a><small>답글</small>
+								</c:if>
+							<div class="media-body" >
+								<h5 class="mt-0">${re_list.reply_answer}</h5>
+								${re_list.an_date }
+							</div>
+							</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -341,7 +366,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/assets/js/lightslider.min.js"></script>
 
-<script>
+<script>	
 	$(document).ready(function() {
 
 		$('#image-gallery').lightSlider({
@@ -357,6 +382,137 @@
 			}
 		});
 	});
+</script>
+<script>
+function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
+		var newDiv = document.createElement('div');
+		newDiv.className = 'media mb-4';
+		newDiv.id = reply_number+"reply";
+		newDiv.innerHTML = "<a href='javascript:;' onclick='answerDelete("+reply_number+")'><img class='d-flex mr-3 rounded-circle' src='<%=request.getContextPath()%>/assets/img/check/clear.png'></a><div class='media-body'><h5 class='mt-0'>" + reply_comment + "</h5>" + email + re_date + star + "</div>";
+		document.getElementById('reply').append(newDiv);
+	}						
+
+	function addDiv2(reply_number, lnumber, reply_answer, an_date){
+		var newDiv = document.createElement('div');	
+		newDiv.style = 'text-align: right';
+		newDiv.className = 'media mb-4';
+		newDiv.innerHTML = "<a href='javascript:;' onclick='replyDelete("+reply_number+")'><img class='d-flex mr-3 rounded-circle' src='<%=request.getContextPath()%>/assets/img/check/clear.png'></a><div class='media-body'><h5 class='mt-0'>" + reply_answer + "</h5>" + an_date + "</div>";
+		document.getElementById(reply_number+'answer_locate').append(newDiv);
+	}
+	
+	function sendReply() {
+		var reply_comment = $("#replyData").val();
+		if (reply_comment == ' ') {
+			alert('글을 입력하세요.');
+			return false;
+		}
+
+		var jsonData = {
+			"reply_comment" : reply_comment,
+			"email" : "${sessionScope.email}",
+			"lnumber" : "${board.lnumber}",
+			"pur_number" : "${pur.pur_number}"
+		};
+
+		var result = JSON.stringify(jsonData);
+
+		replyData.value = ' ';
+
+		$.ajax({
+			async : true,
+			type : "POST",
+			url : "<%=request.getContextPath()%>/reply?cmd=reply_comment",
+			dataType : "text",
+			contentType : "application/text:charset=utf-8",
+			data : result,
+			success : function(data) {
+				var result = JSON.parse(data);
+				addDiv(result.reply_number, result.lnumber, result.email,
+						result.reply_comment, result.re_date, result.star);
+				$("#del1").hide();			
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);
+			}
+		});
+	}
+	
+	function sendAnswer(reply_number) {
+		var answerData = document.getElementById("answerData");
+		var reply_number = reply_number;
+		var reply_answer = answerData.value; //안녕
+		if (reply_answer == ' ') {
+			alert('글을 입력하세요.');
+			return false;
+		}
+
+		var jsonData = {
+			"reply_answer" : reply_answer,			
+			"reply_number" : reply_number			
+		};
+
+		var result = JSON.stringify(jsonData);
+
+		answerData.value = ' ';
+
+		$.ajax({
+			async : true,
+			type : "POST",
+			url : "<%=request.getContextPath()%>/reply?cmd=reply_answer",
+			dataType : "text",
+			contentType : "application/text:charset=utf-8",
+			data : result,
+			success : function(data) {
+				var result = JSON.parse(data);
+				addDiv2(result.reply_number, result.lnumber, result.reply_answer, result.an_date);
+				$("#del2").hide();
+				
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);
+			}
+		});
+	}
+	
+	function replyDelete(reply_number) {
+		var reply_number = reply_number;
+		var id = reply_number+"reply";
+		
+		$.ajax({
+			async : true,
+			type : "POST",
+			url : "<%=request.getContextPath()%>/reply?cmd=reply_delete",
+			dataType : "text",
+			contentType : "application/text:charset=utf-8",
+			data : reply_number,
+			success : function(data) {
+				$('#' + id).remove();
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);
+			}
+		});
+	}
+	
+	function answerDelete(reply_number) {
+		var reply_number = reply_number;
+		var id = reply_number+"answer";
+		
+		$.ajax({
+			async : true,
+			type : "POST",
+			url : "<%=request.getContextPath()%>/reply?cmd=answer_delete",
+			dataType : "text",
+			contentType : "application/text:charset=utf-8",
+			data : reply_number,
+			success : function(data) {
+				$('#' + id).remove();				
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);
+			}
+		});
+	}
 </script>
 </body>
 </html>
