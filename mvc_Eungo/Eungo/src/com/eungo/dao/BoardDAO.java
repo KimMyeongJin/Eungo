@@ -31,7 +31,7 @@ public class BoardDAO {
 	}
 	
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -39,13 +39,14 @@ public class BoardDAO {
 			pstmt.setString(2, board.getLphone_number());
 			pstmt.setString(3, board.getLtitle());
 			pstmt.setString(4, board.getLcontent());
-			pstmt.setString(5, board.getLcategory());
-			pstmt.setString(6, board.getLimage());
-			pstmt.setString(7, board.getLimage2());
-			pstmt.setString(8, board.getLimage3());
-			pstmt.setString(9, board.getLimage4());
-			pstmt.setString(10, board.getYoutube());
-			pstmt.setString(11, board.getCancel_rule());
+			pstmt.setString(5, board.getStandard_price());
+			pstmt.setString(6, board.getLcategory());
+			pstmt.setString(7, board.getLimage());
+			pstmt.setString(8, board.getLimage2());
+			pstmt.setString(9, board.getLimage3());
+			pstmt.setString(10, board.getLimage4());
+			pstmt.setString(11, board.getYoutube());
+			pstmt.setString(12, board.getCancel_rule());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -57,21 +58,22 @@ public class BoardDAO {
 	}
 	
 	public int boardModify(BoardVO board) {
-		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
+		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, standard_price = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);			
 			pstmt.setString(1, board.getLphone_number());
 			pstmt.setString(2, board.getLtitle());
 			pstmt.setString(3, board.getLcontent());
-			pstmt.setString(4, board.getLcategory());
-			pstmt.setString(5, board.getLimage());
-			pstmt.setString(6, board.getLimage2());
-			pstmt.setString(7, board.getLimage3());
-			pstmt.setString(8, board.getLimage4());
-			pstmt.setString(9, board.getYoutube());
-			pstmt.setString(10, board.getCancel_rule());
-			pstmt.setInt(11, board.getLnumber());
+			pstmt.setString(4, board.getStandard_price());
+			pstmt.setString(5, board.getLcategory());
+			pstmt.setString(6, board.getLimage());
+			pstmt.setString(7, board.getLimage2());
+			pstmt.setString(8, board.getLimage3());
+			pstmt.setString(9, board.getLimage4());
+			pstmt.setString(10, board.getYoutube());
+			pstmt.setString(11, board.getCancel_rule());
+			pstmt.setInt(12, board.getLnumber());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -99,6 +101,7 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
@@ -200,6 +203,7 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
@@ -236,6 +240,7 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
@@ -279,6 +284,7 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
 				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
@@ -326,6 +332,7 @@ public class BoardDAO {
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
 				board.setLcategory(rs.getString("lcategory"));	
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));

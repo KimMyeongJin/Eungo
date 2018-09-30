@@ -49,6 +49,7 @@ public class SubmitServiceAction implements Action{
 		board.setEmail(email);		
 		board.setLtitle(multi.getParameter("ltitle"));				
 		board.setLcontent(multi.getParameter("lcontent"));
+		board.setStandard_price(String.format("%,d", Integer.parseInt(multi.getParameter("standard_price"))));
 		board.setLcategory(multi.getParameter("lcategory"));
 		if(limage!=null) {
 			board.setLimage("/Eungo/images/service/"+limage);

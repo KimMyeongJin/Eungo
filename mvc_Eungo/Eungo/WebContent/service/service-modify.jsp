@@ -64,7 +64,7 @@
 												<img
 													src="${board.limage}"
 													class="picture-src" id="wizardPicturePreview" />
-												<input type="file" id="wizard-picture" name="limage" value="${board.limage }">
+												<input type="file" id="wizard-picture" name="limage" value="${board.limage }" required="required">
 											</div>
 										</div>
 									</div>
@@ -194,7 +194,7 @@
 													</td>
 													<td>
 														<div style="line-height: 1.5">
-															<b><input type="text" value="${price.deluxe_title } name="deluxe_title"
+															<b><input type="text" value="${price.deluxe_title }" name="deluxe_title" 
 																id="deluxe_title" readonly="readonly"></b>
 														</div>
 													</td>

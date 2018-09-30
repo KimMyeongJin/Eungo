@@ -106,10 +106,13 @@
 						<div class="section property-video">
 							<h4 class="s-property-title">Service Video</h4>
 							<div class="video-thumb">
-								<a class="video-popup" href="yout" title="Virtual Tour"> <img
+								<%-- <a class="video-popup" href="yout" title="Virtual Tour"> <img
 									src="<%=request.getContextPath()%>/assets/img/property-video.jpg"
 									class="img-responsive wp-post-image" alt="Exterior">
-								</a>
+								</a> --%>
+								<iframe id="player" type="text/html" width="640" height="360"
+									src="${board.youtube }"
+									frameborder="0"></iframe>
 							</div>
 						</div>
 					</c:if>
@@ -283,8 +286,11 @@
 										<li><h5>전문가 소개</h5></li>
 										<li><p>seller_intro</p></li>
 										<c:if test="${sessionScope.email eq seller.email}">
-											<li><a type="button" href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${board.lnumber}" class="btn btn-default">수정하기</a>
-												<a type="button" href="<%=request.getContextPath()%>/board?cmd=service_delete&lnumber=${board.lnumber}" class="btn btn-default">삭제하기</a></li>
+											<li><a type="button"
+												href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${board.lnumber}"
+												class="btn btn-default">수정하기</a> <a type="button"
+												href="<%=request.getContextPath()%>/board?cmd=service_delete&lnumber=${board.lnumber}"
+												class="btn btn-default">삭제하기</a></li>
 										</c:if>
 									</ul>
 								</div>
@@ -299,8 +305,8 @@
 							<h3 class="panel-title">구매하기</h3>
 						</div>
 						<div class="panel-body search-widget">
-							<form action="<%=request.getContextPath()%>/purchase"
-								method="get" class=" form-inline">
+							<form action="<%=request.getContextPath()%>/payment?cmd=payment"
+								method="post" class=" form-inline">
 								<details open>
 									<summary>${price.standard_price }원 STANDARD</summary>
 									<fieldset>
@@ -333,7 +339,7 @@
 													<span>${price.deluxe_modify }회 </span><span>
 														${price.deluxe_time }</span>
 												</div>
-												<input class="button btn largesearch-btn"
+												<input class="button btn largesearch-btn" 
 													name="deluxe_price" value="${price.deluxe_price } 원/VAT포함"
 													type="submit">
 
@@ -354,7 +360,7 @@
 														${price.premium_time }</span>
 												</div>
 												<input class="button btn largesearch-btn"
-													name="premium_price"
+													name="premium_price" 
 													value="${price.premium_price } 원/VAT포함" type="submit">
 											</div>
 										</div>
@@ -511,8 +517,7 @@ function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
 		$.ajax({
 			async : true,
 			type : "POST",
-			url : "<%=request.getContextPath()%>
-	/reply?cmd=answer_delete",
+			url : "<%=request.getContextPath()%>/reply?cmd=answer_delete",
 			dataType : "text",
 			contentType : "application/text:charset=utf-8",
 			data : reply_number,

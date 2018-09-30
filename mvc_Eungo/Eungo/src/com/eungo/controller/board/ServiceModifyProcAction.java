@@ -39,15 +39,16 @@ String url = "index.jsp";
 	    String file2 = (String)files.nextElement();
 	    String file3 = (String)files.nextElement();	   
 	    String file4 = (String)files.nextElement();
-	    System.out.println(file1);
+	    
 	    String limage =multi.getFilesystemName(file1);
 	    String limage2=multi.getFilesystemName(file2);
 	    String limage3=multi.getFilesystemName(file3);
 	    String limage4=multi.getFilesystemName(file4);		
-		System.out.println(limage);
+		
 		board.setEmail(email);		
 		board.setLtitle(multi.getParameter("ltitle"));				
 		board.setLcontent(multi.getParameter("lcontent"));
+		board.setStandard_price(String.format("%,d", Integer.parseInt(multi.getParameter("standard_price"))));
 		board.setLcategory(multi.getParameter("lcategory"));
 		if(limage!=null) {
 			board.setLimage("/Eungo/images/service/"+limage);
@@ -64,9 +65,11 @@ String url = "index.jsp";
 		board.setYoutube(multi.getParameter("youtube"));
 		board.setLphone_number(multi.getParameter("lphone_number"));
 		board.setCancel_rule(multi.getParameter("cancel_rule").replace("\r\n", "<br>"));
-		System.out.println(multi.getParameter("standard_price"));
-		int result = dao.boardModify(board);
+		
 		int lnumber = dao.lnumberSelect(email);
+		
+		board.setLnumber(lnumber);
+		int result = dao.boardModify(board);
 		if(lnumber!=-1) {
 			price.setLnumber(lnumber);
 			price.setStandard_price(String.format("%,d", Integer.parseInt(multi.getParameter("standard_price"))));
@@ -86,7 +89,7 @@ String url = "index.jsp";
 			price.setPremium_time(multi.getParameter("premium_time"));	
 		}
 		int p_result = pdao.modify(price);
-		System.out.println(lnumber);
+		
 		if(result ==1&&p_result==1) {
 			Script.moving(response, "서비스를 게시합니다", url);
 		}else {
