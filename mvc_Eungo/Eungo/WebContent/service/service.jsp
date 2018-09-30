@@ -171,47 +171,54 @@
 					<div id="reply">
 						<c:forEach var="re_list" items="${re_list }">
 							<div class="media mb-4" id="${re_list.reply_number }reply">
-								<c:if test="${re_list.email eq sessionScope.email}">								
+								<c:if test="${re_list.email eq sessionScope.email}">
 									<a href="javascript:;"
 										onclick="replyDelete('${re_list.reply_number}')"> <img
 										class="d-flex mr-3 rounded-circle"
 										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
-									</a><small>리뷰</small>
+									</a>
+									<small>리뷰</small>
 								</c:if>
 								<c:if test="${sessionScope.email eq seller.email}">
 									<a href="javascript:;"
 										onclick="replyDelete('${re_list.reply_number}')"> <img
 										class="d-flex mr-3 rounded-circle"
 										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
-									</a><small>리뷰</small>
+									</a>
+									<small>리뷰</small>
 								</c:if>
-								<div class="media-body" id="${re_list.reply_number }answer_locate">
-									<h5 class="mt-0">${re_list.reply_comment}</h5><small>${re_list.email }</small>
-									 ${re_list.re_date }<br> ${re_list.star }
-								</div>					
-							<div id="del2">
-								<c:if
-									test="${sessionScope.email eq seller.email && re_list.reply_answer eq null}">
-									<div class="form-group">
-										<textarea class="form-control" id="answerData" rows="3"></textarea>
+								<div class="media-body"
+									id="${re_list.reply_number }answer_locate">
+									<h5 class="mt-0">${re_list.reply_comment}</h5>
+									<small>${re_list.email }</small> ${re_list.re_date }<br>
+									${re_list.star }
+								</div>
+								<div id="del2">
+									<c:if
+										test="${sessionScope.email eq seller.email && re_list.reply_answer eq null}">
+										<div class="form-group">
+											<textarea class="form-control" id="answerData" rows="3"></textarea>
+										</div>
+										<button class="btn btn-default"
+											onclick="sendAnswer('${re_list.reply_number}')">Submit</button>
+									</c:if>
+								</div>
+								<div class="media mb-4" id="${re_list.reply_number }answer"
+									style="text-align: right;">
+									<c:if
+										test="${sessionScope.email eq seller.email && re_list.reply_answer ne null}">
+										<a href="javascript:;"
+											onclick="answerDelete('${re_list.reply_number}')"> <img
+											class="d-flex mr-3 rounded-circle"
+											src="<%=request.getContextPath()%>/assets/img/check/clear.png">
+										</a>
+										<small>답글</small>
+									</c:if>
+									<div class="media-body">
+										<h5 class="mt-0">${re_list.reply_answer}</h5>
+										${re_list.an_date }
 									</div>
-									<button class="btn btn-default"
-										onclick="sendAnswer('${re_list.reply_number}')">Submit</button>
-								</c:if>
-							</div>
-							<div class="media mb-4" id="${re_list.reply_number }answer" style="text-align: right;">
-							<c:if test="${sessionScope.email eq seller.email && re_list.reply_answer ne null}">							
-									<a href="javascript:;"
-										onclick="answerDelete('${re_list.reply_number}')"> <img
-										class="d-flex mr-3 rounded-circle"
-										src="<%=request.getContextPath()%>/assets/img/check/clear.png">
-									</a><small>답글</small>
-								</c:if>
-							<div class="media-body" >
-								<h5 class="mt-0">${re_list.reply_answer}</h5>
-								${re_list.an_date }
-							</div>
-							</div>
+								</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -273,9 +280,13 @@
 										<li><i class="pe-7s-user strong"> </i><a
 											href="<%=request.getContextPath()%>/account/faq.jsp"
 											style="color: #FFF"> FAQ </a></li>
+										<li><h5>전문가 소개</h5></li>
+										<li><p>seller_intro</p></li>
+										<c:if test="${sessionScope.email eq seller.email}">
+											<li><a type="button" href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${board.lnumber}" class="btn btn-default">수정하기</a>
+												<a type="button" href="<%=request.getContextPath()%>/board?cmd=service_delete&lnumber=${board.lnumber}" class="btn btn-default">삭제하기</a></li>
+										</c:if>
 									</ul>
-									<h5>전문가 소개</h5>
-									<p>seller_intro</p>
 								</div>
 							</div>
 						</div>
@@ -345,7 +356,6 @@
 												<input class="button btn largesearch-btn"
 													name="premium_price"
 													value="${price.premium_price } 원/VAT포함" type="submit">
-
 											</div>
 										</div>
 									</fieldset>
@@ -501,12 +511,13 @@ function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
 		$.ajax({
 			async : true,
 			type : "POST",
-			url : "<%=request.getContextPath()%>/reply?cmd=answer_delete",
+			url : "<%=request.getContextPath()%>
+	/reply?cmd=answer_delete",
 			dataType : "text",
 			contentType : "application/text:charset=utf-8",
 			data : reply_number,
 			success : function(data) {
-				$('#' + id).remove();				
+				$('#' + id).remove();
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log("에러 발생~~\n" + textStatus + ":" + errorThrown);

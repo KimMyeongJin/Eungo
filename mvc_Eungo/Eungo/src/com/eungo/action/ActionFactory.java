@@ -2,6 +2,9 @@ package com.eungo.action;
 
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
+import com.eungo.controller.board.ServiceDeleteAction;
+import com.eungo.controller.board.ServiceModifyAction;
+import com.eungo.controller.board.ServiceModifyProcAction;
 import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.board.SubmitLoadAction;
 import com.eungo.controller.board.SubmitServiceAction;
@@ -69,6 +72,12 @@ public class ActionFactory {
 			return new SubmitServiceAction();
 		} else if (cmd.equals("view_service")) {
 			return new ViewServiceAction();
+		} else if (cmd.equals("service_delete")) {
+			return new ServiceDeleteAction();
+		} else if (cmd.equals("service_modify")) {
+			return new ServiceModifyAction();
+		} else if (cmd.equals("service_modify_proc")) {
+			return new ServiceModifyProcAction();
 		} else if (cmd.equals("reply_comment")) {
 			return new ReplyCommentAction();
 		} else if (cmd.equals("reply_delete")) {

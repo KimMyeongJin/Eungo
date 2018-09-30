@@ -55,6 +55,32 @@ public class BoardDAO {
 		}
 		return 0;
 	}
+	
+	public int boardModify(BoardVO board) {
+		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);			
+			pstmt.setString(1, board.getLphone_number());
+			pstmt.setString(2, board.getLtitle());
+			pstmt.setString(3, board.getLcontent());
+			pstmt.setString(4, board.getLcategory());
+			pstmt.setString(5, board.getLimage());
+			pstmt.setString(6, board.getLimage2());
+			pstmt.setString(7, board.getLimage3());
+			pstmt.setString(8, board.getLimage4());
+			pstmt.setString(9, board.getYoutube());
+			pstmt.setString(10, board.getCancel_rule());
+			pstmt.setInt(11, board.getLnumber());
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return 0;
+	}
 
 	// 페이지 넘길 때마다 9개씩 가져오게하는 쿼리
 	public List<BoardVO> boardPaging(int per_page, int pageNum) {
@@ -321,5 +347,20 @@ public class BoardDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return null;
+	}
+	
+	public int board_delete(int lnumber) {
+		String SQL = "DELETE FROM list WHERE lnumber = ? ";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, lnumber);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} DBManager.close(conn, pstmt);
+		return -1;
 	}
 }
