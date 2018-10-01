@@ -119,7 +119,7 @@
 								<label>Email </label> <input name="email" readonly="readonly"
 									class="form-control" value="${member.email}">
 							</div>
-							<div class="form-group">
+							<div class="form-group" style="margin-top: 28%">
 								<label for="name">Phone Number</label> <input type="tel"
 									value="${member.phonenumber }"
 									pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}" class="form-control"
@@ -132,36 +132,37 @@
 									value="${member.birthday}">
 							</div>
 						</div>
-						<div class="col-sm-3 padding-top-25">
-							<div class="form-group row">
+						<div class="col-sm-3 padding-top-25" >
+							<div class="form-group row" style="margin-left: 1%">
 								<label>password </label> <input id="password" name="password"
 									type="password" class="form-control" />
 								<button id="pwck" name="pwck" type="button" onclick="sendPw()"
-									class="btn btn-info">check</button>
+									class="btn btn-info" style="margin-top: 2%;float: right;">check</button>
 
 							</div>
 							<div class="form-group">
 								<label>modify password </label> <input id="password1" readonly
-									name="mod_password" type="password" class="form-control">
+									name="mod_password" type="password" class="form-control" style="width: 110%">
 
 							</div>
 							<div class="form-group">
 								<label>Confirm password </label> <input id="password2" readonly
-									name="check_password" type="password" class="form-control">
+									name="check_password" type="password" class="form-control" style="width: 110%">
 								<small id="checkPwd"></small>
 							</div>
 
 						</div>
-						<div class="col-sm-6 padding-top-25">
+						<div class="col-sm-6 padding-top-25" style="float:right;margin-right: 14%;">
 							<div class="form-group">
 								<label>address </label>
-								<button class="btn btn-info float-right" onclick="goPopup()"
-									type="button">주소입력</button>
+
 								<div id="callBackDiv">
 									<input id="roadFullAddr" name="roadFullAddr" type="text"
 										class="form-control" maxlength="20" value="${member.address }"
 										readonly>
 								</div>
+								<button class="btn btn-info float-right" onclick="goPopup()"
+									type="button" style="float:right; margin:2%;">주소입력</button>
 							</div>
 
 						</div>

@@ -2762,7 +2762,7 @@ padding-bottom: 15px;
     overflow: hidden;
 }
 .tab-content ul li:last-child{
-    margin-right: 0;
+    margin-right: 14px;
 }
 
 .tab-content ul li a{
