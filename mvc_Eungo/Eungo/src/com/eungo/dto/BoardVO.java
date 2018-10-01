@@ -5,6 +5,7 @@ public class BoardVO {
 	private int lnumber;
 	private String ltitle;
 	private String lcontent;
+	private String standard_price;
 	private String lcategory;
 	private String limage;
 	private String limage2;
@@ -20,6 +21,12 @@ public class BoardVO {
 	private String lphone_number;
 	
 	
+	public String getStandard_price() {
+		return standard_price;
+	}
+	public void setStandard_price(String standard_price) {
+		this.standard_price = standard_price;
+	}
 	public String getCancel_rule() {
 		return cancel_rule;
 	}

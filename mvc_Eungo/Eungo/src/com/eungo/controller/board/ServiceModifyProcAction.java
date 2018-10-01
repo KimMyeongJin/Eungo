@@ -17,12 +17,12 @@ import com.eungo.util.Script;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class SubmitServiceAction implements Action{
+public class ServiceModifyProcAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "index.jsp";		
+String url = "index.jsp";		
 		
 		HttpSession session = request.getSession();
 		String email = session.getAttribute("email").toString();
@@ -35,12 +35,12 @@ public class SubmitServiceAction implements Action{
 		PriceDAO pdao = new PriceDAO();
 		MultipartRequest multi = new MultipartRequest(request,imagePath ,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
 		Enumeration<?> files = multi.getFileNames();				
-	    String file1 = (String)files.nextElement();	   
+	    String file1 = (String)files.nextElement();
 	    String file2 = (String)files.nextElement();
 	    String file3 = (String)files.nextElement();	   
 	    String file4 = (String)files.nextElement();
 	    
-	    String limage = multi.getFilesystemName(file1);
+	    String limage =multi.getFilesystemName(file1);
 	    String limage2=multi.getFilesystemName(file2);
 	    String limage3=multi.getFilesystemName(file3);
 	    String limage4=multi.getFilesystemName(file4);		
@@ -66,8 +66,10 @@ public class SubmitServiceAction implements Action{
 		board.setLphone_number(multi.getParameter("lphone_number"));
 		board.setCancel_rule(multi.getParameter("cancel_rule").replace("\r\n", "<br>"));
 		
-		int result = dao.boardInsert(board);
 		int lnumber = dao.lnumberSelect(email);
+		
+		board.setLnumber(lnumber);
+		int result = dao.boardModify(board);
 		if(lnumber!=-1) {
 			price.setLnumber(lnumber);
 			price.setStandard_price(String.format("%,d", Integer.parseInt(multi.getParameter("standard_price"))));
@@ -86,14 +88,13 @@ public class SubmitServiceAction implements Action{
 			price.setPremium_modify(Integer.parseInt(multi.getParameter("premium_modify")));
 			price.setPremium_time(multi.getParameter("premium_time"));	
 		}
-		int p_result = pdao.insert(price);
+		int p_result = pdao.modify(price);
 		
 		if(result ==1&&p_result==1) {
 			Script.moving(response, "서비스를 게시합니다", url);
 		}else {
 			Script.moving(response, "DB에러");
 		}
-		
 	}
 
 }

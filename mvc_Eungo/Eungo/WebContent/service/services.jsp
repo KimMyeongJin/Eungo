@@ -196,7 +196,7 @@
 												</h5>
 												<div class="dot-hr"></div>
 												<span class="pull-left"></span> <span
-													class="proerty-price pull-right"> ${list.lprice} 원</span>
+													class="proerty-price pull-right"> ${list.standard_price} 원</span>
 												<p style="display: none;">Suspendisse ultricies
 													Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse
 													ultricies commodo arcu nec pretium ...</p>

@@ -2,6 +2,9 @@ package com.eungo.action;
 
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
+import com.eungo.controller.board.ServiceDeleteAction;
+import com.eungo.controller.board.ServiceModifyAction;
+import com.eungo.controller.board.ServiceModifyProcAction;
 import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.board.SubmitLoadAction;
 import com.eungo.controller.board.SubmitServiceAction;
@@ -17,6 +20,11 @@ import com.eungo.controller.member.MemberUpdateProcAction;
 import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
 import com.eungo.controller.member.PwCheckAction;
+import com.eungo.controller.payment.PaymentAction;
+import com.eungo.controller.reply.AnswerDeleteAction;
+import com.eungo.controller.reply.ReplyAnswerAction;
+import com.eungo.controller.reply.ReplyCommentAction;
+import com.eungo.controller.reply.ReplyDeleteAction;
 
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
@@ -65,6 +73,22 @@ public class ActionFactory {
 			return new SubmitServiceAction();
 		} else if (cmd.equals("view_service")) {
 			return new ViewServiceAction();
+		} else if (cmd.equals("service_delete")) {
+			return new ServiceDeleteAction();
+		} else if (cmd.equals("service_modify")) {
+			return new ServiceModifyAction();
+		} else if (cmd.equals("service_modify_proc")) {
+			return new ServiceModifyProcAction();
+		} else if (cmd.equals("reply_comment")) {
+			return new ReplyCommentAction();
+		} else if (cmd.equals("reply_delete")) {
+			return new ReplyDeleteAction();
+		} else if (cmd.equals("reply_answer")) {
+			return new ReplyAnswerAction();
+		} else if (cmd.equals("answer_delete")) {
+			return new AnswerDeleteAction();
+		} else if (cmd.equals("payment")) {
+			return new PaymentAction();
 		}
 		return null;
 	}

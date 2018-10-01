@@ -39,7 +39,7 @@
 			<div class="wizard-container">
 				<div class="wizard-card ct-wizard-orange" id="wizardProperty">
 					<form id="submit_form" name="w_form"
-						action="<%=request.getContextPath()%>/board?cmd=submit_service"
+						action="<%=request.getContextPath()%>/board?cmd=service_modify_proc"
 						method="post" enctype="multipart/form-data">
 						<div class="wizard-header">
 							<h3>
@@ -62,26 +62,24 @@
 										<div class="picture-container">
 											<div class="picture">
 												<img
-													src="<%=request.getContextPath()%>/assets/img/default-property.jpg"
-													class="picture-src" id="wizardPicturePreview" title="" />
-												<input type="file" id="wizard-picture" name="limage"
-													required="required">
+													src="${board.limage}"
+													class="picture-src" id="wizardPicturePreview" />
+												<input type="file" id="wizard-picture" name="limage" value="${board.limage }" required="required">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Service title <small>(required)</small></label> <input
-												name="ltitle" type="text" class="form-control"
-												required="required">
+											<label>Service title <small>(required)</small></label> <input value="${board.ltitle }"
+												name="ltitle" type="text" class="form-control" required="required">
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>Service category : <small>(required)</small></label>
-												<select name="lcategory" id="lunchBegins"
-													required="required" class="selectpicker"
-													data-live-search="true" data-live-search-style="begins"
-													title="Select category" form="submit_form">
+												<select name="lcategory" id="lunchBegins" required="required"
+													class="selectpicker" data-live-search="true" 
+													data-live-search-style="begins" title="Select category"
+													form="submit_form">
 													<option>워드프레스</option>
 													<option>웹사이트 개발</option>
 													<option>쇼핑몰·커머스</option>
@@ -103,7 +101,7 @@
 												<label>Phonenumber </label> <input name="lphone_number"
 													type="tel" placeholder="01012345678"
 													pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}"
-													class="form-control" value="${phonenumber }"
+													class="form-control" value="${board.lphone_number }"
 													required="required">
 											</div>
 										</div>
@@ -113,7 +111,7 @@
 									<div class="form-group">
 										<label>Service Description :</label>
 										<textarea id="textAreaContent" name="lcontent" rows="15"
-											cols="80" style="width: 100%"></textarea>
+											cols="80" style="width: 100%">${board.lcontent}</textarea>
 									</div>
 								</div>
 							</div>
@@ -126,21 +124,21 @@
 										<div class="form-group">
 											<label for="property-images">Chose Images :</label> <input
 												class="form-control" type="file" id="service-image1"
-												name="limage2">
+												name="limage2" value="${board.limage2 }">
 										</div>
 										<div class="form-group">
 											<input class="form-control" type="file" id="service-image2"
-												name="limage3">
+												name="limage3" value="${board.limage3 }">
 										</div>
 										<div class="form-group">
 											<input class="form-control" type="file" id="service-image3"
-												name="limage4">
+												name="limage4" value="${board.limage4 }">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="property-video">Property video :</label> <input
-												class="form-control" value=""
+											<label for="property-video">Service video :</label> <input
+												class="form-control" value="${board.youtube }"
 												placeholder="http://www.youtube.com, http://vimeo.com"
 												name="youtube" type="text">
 										</div>
@@ -155,69 +153,102 @@
 								</h4>
 								<div class="row">
 									<div class="col-sm-12">
-										<ul class="additional-details-list clearfix" style=" text-align: -webkit-center;">
-											<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-title"></span>
-												<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">STANDARD<br>
-												<input type="number" value="0" name="standard_price"
-													id="standard_price" required><br>(VAT포함)(단위/원)
-											</span>
-												<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">DELUXE<br>
-												<input type="number" value="0" name="deluxe_price"
-													id="deluxe_price"><br>(VAT포함)(단위/원)
-											</span>
-											
-											<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">PREMIUM<br>
-												<input type="number" value="0" name="premium_price"
-													id="premium_price"><br>(VAT포함)(단위/원)
-											</span>
+										<div class="form-group">
+											<table border="1">
+												<tr>
+													<td></td>
+													<td>
+														<div>
+															<span>STANDARD</span><br> <span><input
+																type="number" placeholder="${price.standard_price }" value="${price.standard_price }" name="standard_price"
+																id="standard_price" required></span>원
+															<div>(VAT포함)(단위/원)</div>
+														</div>
+													</td>
+													<td>
+														<div>
+															<span>DELUXE</span><br> <span><input
+																type="number" placeholder="${price.deluxe_price }" value="${price.deluxe_price }" name="deluxe_price"
+																 id="deluxe_price"></span>원
+															<div>(VAT포함)(단위/원)</div>
+														</div>
+													</td>
+													<td>
+														<div>
+															<span>PREMIUM</span><br> <span><input
+																type="number" placeholder="${price.premium_price }" value="${price.premium_price }" name="premium_price"
+																id="premium_price"></span>원
+															<div>(VAT포함)(단위/원)</div>
+														</div>
+													</td>
+												</tr>
 
+												<tr>
+													<td rowspan="2">패키지 설명</td>
+													<td>
+														<div style="line-height: 1.5">
+															<b><input type="text" value="${price.standard_title }"
+																name="standard_title" id="standard_title"
+																readonly="readonly"></b>
+														</div>
+													</td>
+													<td>
+														<div style="line-height: 1.5">
+															<b><input type="text" value="${price.deluxe_title }" name="deluxe_title" 
+																id="deluxe_title" readonly="readonly"></b>
+														</div>
+													</td>
+													<td>
+														<div style="line-height: 1.5">
+															<b><input type="text" value="${price.premium_title }" name="premium_title"
+																id="premium_title" readonly="readonly"></b>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td><input readonly="readonly" type="text" value="${price.standard_content }"
+														name="standard_content" id="standard_content"></td>
+													<td><input readonly="readonly" type="text" value="${price.deluxe_content }"
+														name="deluxe_content" id="deluxe_content"></td>
+													<td><input readonly="readonly" type="text" value="${price.premium_content }"
+														name="premium_content" id="premium_content"></td>
+												</tr>
+												<tr>
+													<td>수정 횟수</td>
+													<td><span><input readonly="readonly"
+															type="number" name="standard_modify" value="${price.standard_modify }"
+															id="standard_modify"></span></td>
+													<td><span><input readonly="readonly"
+															type="number" name="deluxe_modify" value="${price.deluxe_modify }"
+															id="deluxe_modify"></span></td>
+													<td><span><input readonly="readonly"
+															type="number" name="premium_modify" value="${price.premium_modify }"
+															id="premium_modify"></span></td>
+												</tr>
 
-											<li>
-													<h4><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지설명</span></h4>
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="standard_title" id="standard_title" readonly="readonly"></b>
-													</span> 
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="deluxe_title" id="deluxe_title" readonly="readonly"></b>
-													</span> 
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="premium_title" id="premium_title" readonly="readonly"></b>
-													</span>
-													
-													<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">상세설명</span>
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="standard_content" id="standard_content">
-													</span>
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="deluxe_content" id="deluxe_content">
-													</span>
-													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="premium_content" id="premium_content">
-													</span>
-											
-											</li>
-											
-											<li>
-											<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">수정횟수</span> 
-												<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="number" name="standard_modify" value="0" id="standard_modify">
-												</span>
-												<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="number" name="deluxe_modify" value="0" id="deluxe_modify">
-												</span>
-												<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="number" name="premium_modify" value="0" id="premium_modify">
-												</span>
-											</li>
-											
-											<li>
-											<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">작업시간</span> 
-											<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry"><input type="text" name="standard_time" value="0" id="standard_time" readonly="readonly"></span>
-											<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry"><input type="text" name="deluxe_time" value="0" id="deluxe_time" readonly="readonly"></span>
-											<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry"><input type="text" name="premium_time" value="0" id="premium_time" readonly="readonly"></span>
-											</li>
-										</ul>
-										
+												<tr>
+													<td>작업 기간</td>
+													<td>
+														<div>
+															<input readonly="readonly" type="text"
+																name="standard_time" value="${price.standard_time }" id="standard_time">
+														</div>
+													</td>
+													<td>
+														<div>
+															<input type="text" name="deluxe_time" value="${price.deluxe_time }"
+																id="deluxe_time" readonly="readonly">
+														</div>
+													</td>
+													<td>
+														<div>
+															<input type="text" name="premium_time" value="${price.premium_time }"
+																id="premium_time" readonly="readonly">
+														</div>
+													</td>
+												</tr>
+											</table>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -230,7 +261,7 @@
 										<div class="form-group">
 											<h4 class="info-text">취소 및 환불 규정</h4>
 											<textarea id="cancel_rule" name="cancel_rule" rows="15"
-												cols="80" style="width: 100%" required></textarea>
+												cols="80" style="width: 100%" required>${board.cancel_rule}</textarea>
 										</div>
 									</div>
 								</div>
@@ -272,15 +303,14 @@
 
 <!-- Naver Smart Editor 2 -->
 <script>
-	var form = document.w_form;
-	var oEditors = [];
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef : oEditors,
-		elPlaceHolder : "textAreaContent",
-		sSkinURI : "<%=request.getContextPath()%>/editor/SmartEditor2Skin.html",
-		fCreator : "createSEditor2"
-	});
-
+  var form = document.w_form;
+  var oEditors = [];  
+  nhn.husky.EZCreator.createInIFrame({
+      oAppRef: oEditors,
+      elPlaceHolder: "textAreaContent",
+      sSkinURI: "<%=request.getContextPath()%>/editor/SmartEditor2Skin.html",      
+				fCreator : "createSEditor2"
+			});  
 	//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
 	function submitContents(elClickedObj) {
 		// 에디터의 내용이 textarea에 적용된다.
@@ -291,12 +321,14 @@
 
 		try {
 			elClickedObj.form.submit();
-		} catch (e) {}
+		} catch (e) {
+
+		}
 	}
 
 	/*  // textArea에 이미지 첨부 */
 	function pasteHTML(filepath) {
-		var sHTML = '<img src=/Eugno/editor/upload/'+filepath+'>';
+		var sHTML = '<img src=<%=request.getContextPath()%>/editor/upload/'+filepath+'>';
 		oEditors.getById["textAreaContent"].exec("PASTE_HTML", [ sHTML ]);
 	}
 </script>

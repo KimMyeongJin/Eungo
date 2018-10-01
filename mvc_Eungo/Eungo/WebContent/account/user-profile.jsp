@@ -35,7 +35,7 @@
 
 	function sendPw() {
 				var pw = $("#password").val();
-				if(pw != ''){		
+				if(pw != ''){	
 				$.ajax({
 					async : true,
 					type : 'POST',
