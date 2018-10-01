@@ -49,11 +49,10 @@ public class ViewServiceAction implements Action {
 		if (email != null) {
 			pur = pur_dao.who_purchase(email, lnumber);
 		}
-		board = dao.getSelectOne(lnumber);
+		board = dao.getSelectOne(lnumber);		
 		price = pdao.selectOne(lnumber);
 		String change = board.getLphone_number();
-		board.setLphone_number(HyphenAdd.phone(change));
-		System.out.println(board.getYoutube());
+		board.setLphone_number(HyphenAdd.phone(change));		
 		MemberVO seller = mdao.select_one(board.getEmail());
 		request.setAttribute("pur", pur);
 		request.setAttribute("re_list", re_list);

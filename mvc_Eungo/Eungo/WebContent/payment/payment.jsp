@@ -43,16 +43,15 @@
 							<div>
 								<div class="pull-left margin-right-20">
 									<img class="width-120px border-radius" src="${board.limage }"
-										title="판매 서비스 타이틀">
+										>
 								</div>
 
 								<div>
-									<h4 class="order-info-gig-body margin-top-0">판매 서비스
-										타이틀ltitle</h4>
+									<h4 class="order-info-gig-body margin-top-0">${board.ltitle }</h4>
 
-									<div class="margin-top-20 color-primary">
-										<img class="border-round width-20px" src="${seller.profile }">
-										<span class="font-color-lighter">판매자 이메일</span>
+									<div>
+										<img class="img-circle" src="${seller.profile }">
+										<span class="font-color-lighter">${seller.email }</span>
 									</div>
 								</div>
 							</div>
@@ -75,15 +74,15 @@
 								</thead>
 								<tbody class="order-option">
 									<tr>
-										<td><span>판매 물품 타이틀standard_title</span></td>
+										<td><span>${price_title }</span></td>
 										<td class="text-center"><a id="decreaseQuantity"> <i
 												class="fa fa-minus" aria-hidden="true"></i>
 										</a> <span id="numberUpDown"><b>1</b></span> <a
 											id="increaseQuantity"> <i class="fa fa-plus"
 												aria-hidden="true"></i>
 										</a></td>
-										<td class="text-center">standrard_time</td>
-										<td class="text-right"><span class="tahoma">20,000</span>원</td>
+										<td class="text-center">${price_time }</td>
+										<td class="text-right"><span class="tahoma">${price }</span>원</td>
 									</tr>
 								</tbody>
 							</table>
@@ -148,7 +147,7 @@
 				<div class="box-for overflow">
 					<div class="col-xs-8"></div>
 					<div class="col-xs-4">
-						<button id="payBtn" name="" class="btn btn-default">결제하기</button>
+						<button id="payBtn" name="payBtn" class="btn btn-default">결제하기</button>
 					</div>
 				</div>
 			</div>

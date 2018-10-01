@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
+import com.eungo.dao.BoardDAO;
+import com.eungo.dao.MemberDAO;
+import com.eungo.dto.BoardVO;
+import com.eungo.dto.MemberVO;
 
 public class PaymentAction implements Action {
 
@@ -19,22 +23,56 @@ public class PaymentAction implements Action {
 		String url_back = "account/account.jsp";
 
 		HttpSession session = request.getSession();
+		BoardDAO dao = new BoardDAO();
+		BoardVO board = new BoardVO();
+		MemberDAO mdao = new MemberDAO();
+		MemberVO seller = new MemberVO();
 		String standard_price = null;
+		String standard_title = null;
+		String standard_time = null;
 		String deluxe_price = null;
-		String premium_price = null;		
-		if (session.getAttribute("email") != null) {			
+		String deluxe_title = null;
+		String deluxe_time = null;
+		String premium_price = null;
+		String premium_title = null;
+		String premium_time = null;
+		int lnumber = 0;
+		String email = null;
+		if (session.getAttribute("email") != null) {
+			lnumber = Integer.parseInt(request.getParameter("lnumber"));
+			board = dao.getSelectOne(lnumber);
+			email = request.getParameter("email");
+			seller = mdao.select_one(email);
 			standard_price = request.getParameter("standard_price");
+			standard_title = request.getParameter("standard_title");
+			standard_time = request.getParameter("standard_time");
 			deluxe_price = request.getParameter("deluxe_price");
+			deluxe_title = request.getParameter("deluxe_title");
+			deluxe_time = request.getParameter("deluxe_time");
 			premium_price = request.getParameter("premium_price");
-			System.out.println(standard_price);
-			System.out.println(deluxe_price);
-			System.out.println(premium_price);
-			request.setAttribute("standard_price", standard_price);
+			premium_title = request.getParameter("premium_title");
+			premium_time = request.getParameter("premium_time");
+			
+			if (standard_price != null) {
+				request.setAttribute("price", standard_price);
+				request.setAttribute("price_title", standard_title);
+				request.setAttribute("price_time", standard_time);
+				request.setAttribute("board", board);
+				request.setAttribute("seller", seller);
+			}
 			if (deluxe_price != null) {
-				request.setAttribute("deluxe_price", deluxe_price);
+				request.setAttribute("price", deluxe_price);
+				request.setAttribute("price_title", deluxe_title);
+				request.setAttribute("price_time", deluxe_time);
+				request.setAttribute("board", board);
+				request.setAttribute("seller", seller);
 			}
 			if (premium_price != null) {
-				request.setAttribute("premium_price", premium_price);
+				request.setAttribute("price", premium_price);
+				request.setAttribute("price_title", premium_title);
+				request.setAttribute("price_time", premium_time);
+				request.setAttribute("board", board);
+				request.setAttribute("seller", seller);
 			}
 			RequestDispatcher dis = request.getRequestDispatcher(url);
 			dis.forward(request, response);

@@ -110,7 +110,8 @@
 									src="<%=request.getContextPath()%>/assets/img/property-video.jpg"
 									class="img-responsive wp-post-image" alt="Exterior">
 								</a> --%>
-								${board.youtube }
+								<iframe id="player" type="text/html" width="90%" height="409" src="http://www.youtube.com/embed/${board.youtube }" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>"
+								
 							</div>
 						</div>
 					</c:if>
@@ -317,13 +318,11 @@
 													<span>${price.standard_modify }회 </span><span>
 														${price.standard_time }</span>
 												</div>
-												<input type="hidden" name="ltitle" value="${board.ltitle }">								
-												<input type="hidden" name="email" value="${seller.email }">
-												<input type="hidden" name="profile" value="${seller.profile }">
-												<input type="hidden" name="limage" value="${board.limage }">
+												<input type="hidden" name="lnumber" value="${board.lnumber }">								
+												<input type="hidden" name="email" value="${seller.email }">		
+												<input type="hidden" name="standard_price" value="${price.standard_price }">
 												<input type="hidden" name="standard_title" value="${price.standard_title }">
 												<input type="hidden" name="standard_time" value="${price.standard_time }">
-												<input type="hidden" name="standard_price" value="${price.standard_price }">
 												<input class="button btn largesearch-btn" 												
 													value="${price.standard_price } 원/VAT포함" type="submit">
 
@@ -346,14 +345,11 @@
 													<span>${price.deluxe_modify }회 </span><span>
 														${price.deluxe_time }</span>
 												</div>
-												<input type="hidden" name="ltitle" value="${board.ltitle }">								
-												<input type="hidden" name="email" value="${seller.email }">
-												<input type="hidden" name="profile" value="${seller.profile }">
-												<input type="hidden" name="limage" value="${board.limage }">
-												<input type="hidden" name="standard_title" value="${price.deluxe_title }">
-												<input type="hidden" name="standard_time" value="${price.deluxe_time }">
-												<input type="hidden" name="standard_price" value="${price.deluxe_price }">
+												<input type="hidden" name="lnumber" value="${board.lnumber }">								
+												<input type="hidden" name="email" value="${seller.email }">												
 												<input type="hidden" name="deluxe_price" value="${price.deluxe_price }">
+												<input type="hidden" name="deluxe_title" value="${price.deluxe_title }">
+												<input type="hidden" name="deluxe_time" value="${price.deluxe_time }">
 												<input class="button btn largesearch-btn" 
 													 value="${price.deluxe_price } 원/VAT포함"
 													type="submit">
@@ -377,14 +373,11 @@
 													<span>${price.premium_modify }회 </span><span>
 														${price.premium_time }</span>
 												</div>
-												<input type="hidden" name="ltitle" value="${board.ltitle }">								
-												<input type="hidden" name="email" value="${seller.email }">
-												<input type="hidden" name="profile" value="${seller.profile }">
-												<input type="hidden" name="limage" value="${board.limage }">
-												<input type="hidden" name="standard_title" value="${price.premium_title }">
-												<input type="hidden" name="standard_time" value="${price.premium_time }">
-												<input type="hidden" name="standard_price" value="${price.premium_price }">
+												<input type="hidden" name="lnumber" value="${board.lnumber }">								
+												<input type="hidden" name="email" value="${seller.email }">		
 												<input type="hidden" name="premium_price" value="${price.premium_price }">
+												<input type="hidden" name="premium_title" value="${price.premium_title }">
+												<input type="hidden" name="premium_time" value="${price.premium_time }">
 												<input class="button btn largesearch-btn"													 
 													value="${price.premium_price } 원/VAT포함" type="submit">
 											</div>

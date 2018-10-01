@@ -247,7 +247,7 @@ public class BoardDAO {
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
-				board.setYoutube(Youtube.makeYoutube(rs.getString("youtube")));
+				board.setYoutube(rs.getString("youtube").split("=")[1]);
 				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
