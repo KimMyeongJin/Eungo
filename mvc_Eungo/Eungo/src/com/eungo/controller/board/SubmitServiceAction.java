@@ -1,7 +1,6 @@
 package com.eungo.controller.board;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;

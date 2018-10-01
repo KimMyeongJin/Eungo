@@ -53,7 +53,7 @@ public class ViewServiceAction implements Action {
 		price = pdao.selectOne(lnumber);
 		String change = board.getLphone_number();
 		board.setLphone_number(HyphenAdd.phone(change));
-
+		System.out.println(board.getYoutube());
 		MemberVO seller = mdao.select_one(board.getEmail());
 		request.setAttribute("pur", pur);
 		request.setAttribute("re_list", re_list);
