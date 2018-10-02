@@ -170,9 +170,10 @@
 			if (num <= 0) {
 				alert('더이상 줄일수 없습니다.');
 				num = 1;
-			}			
+			}
+			var total = numberWithCommas(price*num);
 			$('#numberUpDown').text(num);
-			$('#total').text(price*num);
+			$('#total').text(total);
 			$('#submit_price').val(price*num);
 			
 		});
@@ -188,50 +189,16 @@
 			 alert('더이상 늘릴수 없습니다.');
 			 num=5;
 			 } */			 
+			var total = numberWithCommas(price*num);
 			$('#numberUpDown').text(num);
-			$('#total').text(price*num);
+			$('#total').text(total);
 			$('#submit_price').val(price*num);
 		});
 	});
 	
-/* 	
-	
-	var sell_price;
-	var amount;
-
-	function init () {
-		sell_price = document.form.sell_price.value;
-		amount = document.form.amount.value;
-		document.form.sum.value = sell_price;
-		change();
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
-
-	function add () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-		hm.value ++ ;
-
-		sum.value = parseInt(hm.value) * sell_price;
-	}
-
-	function del () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-			if (hm.value > 1) {
-				hm.value -- ;
-				sum.value = parseInt(hm.value) * sell_price;
-			}
-	}
-
-	function change () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-
-			if (hm.value < 0) {
-				hm.value = 0;
-			}
-		sum.value = parseInt(hm.value) * sell_price;
-	}  	 */
 </script>
 </body>
 </html>
