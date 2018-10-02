@@ -34,6 +34,8 @@
 	<div class="container">
 		<div class="col-md-3"></div>
 		<form action="#" method="post">
+			<input type="hidden" id="price" name="price" value="${price }">
+			<input type="hidden" id="submit_price" name="submit_price">
 			<div class="col-md-6">
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 register-blocks">
@@ -81,13 +83,12 @@
 											id="increaseQuantity"> <i class="fa fa-plus"
 												aria-hidden="true"></i>
 										</a></td>
-										<td class="text-center">${price_time }</td>
-										<td class="text-right"><span class="tahoma">${price }</span>원</td>
+										<td class="text-center">${price_time }</td>										
+										<td class="text-right"><span class="tahoma" id="total">${price }</span>원</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-
 					</div>
 				</div>
 				<div class="box-for overflow">
@@ -162,27 +163,42 @@
 		$('#decreaseQuantity').click(function(e) {
 			e.preventDefault();
 			var stat = $('#numberUpDown').text();
+			var price_str = $('#price').val();
+			var price = parseInt(price_str.replace(/,/g,""),10);
 			var num = parseInt(stat, 10);
 			num--;
 			if (num <= 0) {
 				alert('더이상 줄일수 없습니다.');
 				num = 1;
 			}
+			var total = numberWithCommas(price*num);
 			$('#numberUpDown').text(num);
+			$('#total').text(total);
+			$('#submit_price').val(price*num);
+			
 		});
 		$('#increaseQuantity').click(function(e) {
 			e.preventDefault();
 			var stat = $('#numberUpDown').text();
+			var price_str = $('#price').val();			
+			var price = parseInt(price_str.replace(/,/g,""),10);
 			var num = parseInt(stat, 10);
 			num++;
 			/* 
 			 if(num>5){
 			 alert('더이상 늘릴수 없습니다.');
 			 num=5;
-			 } */
+			 } */			 
+			var total = numberWithCommas(price*num);
 			$('#numberUpDown').text(num);
+			$('#total').text(total);
+			$('#submit_price').val(price*num);
 		});
 	});
+	
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 </script>
 </body>
 </html>

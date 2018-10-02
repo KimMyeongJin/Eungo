@@ -1,4 +1,4 @@
-package com.eungo.controller.payment;
+package com.eungo.controller.purchase;
 
 import java.io.IOException;
 
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.eungo.action.Action;
 import com.eungo.action.ActionFactory;
 
-@WebServlet("/payment")
-public class PaymentController extends HttpServlet {
+@WebServlet("/purchase")
+public class PurchaseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String naming = "PaymentContoller : ";
+	private static String naming = "PurchaseContoller : ";
        
-    public PaymentController() {
+    public PurchaseController() {
         super();
     }
 
