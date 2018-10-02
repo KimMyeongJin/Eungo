@@ -69,10 +69,10 @@
 												<c:choose>
 													<c:when test="${sessionScope.seller==true }">
 														<li><a
-															href="<%=request.getContextPath()%>/account/user-services.jsp">Your
+															href="<%=request.getContextPath()%>/service/user-services.jsp">Your
 																properties</a></li>
 														<li><a
-															href="<%=request.getContextPath()%>/account/submit-service.jsp">Submit
+															href="<%=request.getContextPath()%>/service/submit-service.jsp">Submit
 																property</a></li>
 													</c:when>
 												</c:choose>

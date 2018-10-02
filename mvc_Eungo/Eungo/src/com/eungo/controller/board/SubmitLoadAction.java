@@ -17,7 +17,7 @@ public class SubmitLoadAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "account/submit-service.jsp";
+		String url = "service/submit-service.jsp";
 		String index_url = "index.jsp";
 		
 		String phonenumber = null;		
