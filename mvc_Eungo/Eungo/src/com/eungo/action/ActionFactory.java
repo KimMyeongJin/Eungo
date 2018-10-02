@@ -2,6 +2,7 @@ package com.eungo.action;
 
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
+import com.eungo.controller.board.MyServicesAction;
 import com.eungo.controller.board.ServiceDeleteAction;
 import com.eungo.controller.board.ServiceModifyAction;
 import com.eungo.controller.board.ServiceModifyProcAction;
@@ -89,7 +90,9 @@ public class ActionFactory {
 			return new AnswerDeleteAction();
 		} else if (cmd.equals("purchase")) {
 			return new PurchaseAction();
-		}
+		} else if (cmd.equals("my_services")) {
+			return new MyServicesAction();
+		}			
 		return null;
 	}
 }
