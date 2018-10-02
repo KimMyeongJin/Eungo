@@ -1,4 +1,4 @@
-package com.eungo.controller.payment;
+package com.eungo.controller.purchase;
 
 import java.io.IOException;
 
@@ -14,12 +14,12 @@ import com.eungo.dao.MemberDAO;
 import com.eungo.dto.BoardVO;
 import com.eungo.dto.MemberVO;
 
-public class PaymentAction implements Action {
+public class PurchaseAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "payment/payment.jsp";
+		String url = "purchase/purchase.jsp";
 		String url_back = "account/account.jsp";
 
 		HttpSession session = request.getSession();

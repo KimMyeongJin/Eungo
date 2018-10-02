@@ -304,7 +304,7 @@
 							<h3 class="panel-title">구매하기</h3>
 						</div>
 						<div class="panel-body search-widget">
-							<form action="<%=request.getContextPath()%>/payment?cmd=payment"
+							<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details open>
 									<summary>${price.standard_price }원 STANDARD</summary>
@@ -331,7 +331,7 @@
 									</fieldset>
 								</details>
 								</form>
-								<form action="<%=request.getContextPath()%>/payment?cmd=payment"
+								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details>
 									<summary>${price.deluxe_price }원 DELUXE</summary>
@@ -359,7 +359,7 @@
 									</fieldset>
 								</details>
 								</form>
-								<form action="<%=request.getContextPath()%>/payment?cmd=payment"
+								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details>
 									<summary>${price.premium_price }원 PREMIUM</summary>

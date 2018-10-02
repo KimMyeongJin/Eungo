@@ -20,7 +20,7 @@ import com.eungo.controller.member.MemberUpdateProcAction;
 import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
 import com.eungo.controller.member.PwCheckAction;
-import com.eungo.controller.payment.PaymentAction;
+import com.eungo.controller.purchase.PurchaseAction;
 import com.eungo.controller.reply.AnswerDeleteAction;
 import com.eungo.controller.reply.ReplyAnswerAction;
 import com.eungo.controller.reply.ReplyCommentAction;
@@ -87,8 +87,8 @@ public class ActionFactory {
 			return new ReplyAnswerAction();
 		} else if (cmd.equals("answer_delete")) {
 			return new AnswerDeleteAction();
-		} else if (cmd.equals("payment")) {
-			return new PaymentAction();
+		} else if (cmd.equals("purchase")) {
+			return new PurchaseAction();
 		}
 		return null;
 	}
