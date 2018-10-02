@@ -34,7 +34,7 @@
 							</c:when>
 							<c:otherwise>
 								<button class="navbar-btn nav-button wow fadeInRight"
-									onclick="location.href='<%=request.getContextPath()%>/member?cmd=seller_register'"
+									onclick="location.href='<%=request.getContextPath()%>/account/seller-register.jsp'"
 									data-wow-delay="0.48s">Do Sell</button>
 							</c:otherwise>
 						</c:choose>

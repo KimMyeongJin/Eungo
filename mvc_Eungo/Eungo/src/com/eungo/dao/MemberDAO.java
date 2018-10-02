@@ -302,21 +302,5 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-	
-	public int update_seller(String email) {
-		String SQL = "UPDATE member SET seller = true WHERE email = ?";
-		Connection conn = DBManager.getConnection();
-		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, email);
-			pstmt.executeUpdate();
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-		return -1;
-	}
 
 }
