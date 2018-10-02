@@ -86,11 +86,11 @@
 					</div>
 
 					<div class="property-meta entry-meta clearfix ">
-						<div class="row">
-							<button onclick="fnMove('1')">서비스설명</button>
-							<button onclick="fnMove('2')">가격정보</button>
-							<button onclick="fnMove('3')">취소및환불규정</button>
-							<button onclick="fnMove('4')">서비스평가</button>
+						<div class="row" style="margin-left:1%;">
+							<button onclick="fnMove('1')" style="width: 20%;">서비스설명</button>
+							<button onclick="fnMove('2')" style="width: 25%;">가격정보</button>
+							<button onclick="fnMove('3')" style="width: 25%;">취소및환불규정</button>
+							<button onclick="fnMove('4')" style="width: 25%;">서비스평가</button>
 						</div>
 					</div>
 					<!-- .property-meta -->
@@ -307,17 +307,12 @@
 							<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details open>
-									<summary>${price.standard_price }원 STANDARD</summary>
+									<summary style="font-size: large;">${price.standard_price }원 STANDARD</summary>
 									<fieldset>
 										<div class="row">
 											<div class="col-xs-12">
-												<div>${price.standard_title }</div>
-												<div>${price.standard_content }</div>
-												<br>
-												<div>
-													<span>${price.standard_modify }회 </span><span>
-														${price.standard_time }</span>
-												</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.standard_title }</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.standard_content }</div>
 												<input type="hidden" name="lnumber" value="${board.lnumber }">								
 												<input type="hidden" name="email" value="${seller.email }">		
 												<input type="hidden" name="standard_price" value="${price.standard_price }">
@@ -325,6 +320,11 @@
 												<input type="hidden" name="standard_time" value="${price.standard_time }">
 												<input class="button btn largesearch-btn" 												
 													value="${price.standard_price } 원/VAT포함" type="submit">
+												<div style="float:right;">
+													<span>${price.standard_modify }회(수정) </span><span>
+														/${price.standard_time }일</span>
+												</div>													
+													
 
 											</div>
 										</div>
@@ -334,17 +334,12 @@
 								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details>
-									<summary>${price.deluxe_price }원 DELUXE</summary>
+									<summary style="font-size: large;">${price.deluxe_price }원 DELUXE</summary>
 									<fieldset>
 										<div class="row">
 											<div class="col-xs-12">
-												<div>${price.deluxe_title }</div>
-												<div>${price.deluxe_content }</div>
-												<br>
-												<div>
-													<span>${price.deluxe_modify }회 </span><span>
-														${price.deluxe_time }</span>
-												</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.deluxe_title }</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.deluxe_content }</div>
 												<input type="hidden" name="lnumber" value="${board.lnumber }">								
 												<input type="hidden" name="email" value="${seller.email }">												
 												<input type="hidden" name="deluxe_price" value="${price.deluxe_price }">
@@ -353,6 +348,10 @@
 												<input class="button btn largesearch-btn" 
 													 value="${price.deluxe_price } 원/VAT포함"
 													type="submit">
+												<div style="float:right;">
+													<span>${price.deluxe_modify }회(수정) </span><span>
+														/${price.deluxe_time }일</span>
+												</div>
 
 											</div>
 										</div>
@@ -362,17 +361,12 @@
 								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details>
-									<summary>${price.premium_price }원 PREMIUM</summary>
+									<summary style="font-size: large;">${price.premium_price }원 PREMIUM</summary>
 									<fieldset>
 										<div class="row">
 											<div class="col-xs-12">
-												<div>${price.premium_title }</div>
-												<div>${price.premium_content }</div>
-												<br>
-												<div>
-													<span>${price.premium_modify }회 </span><span>
-														${price.premium_time }</span>
-												</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.premium_title }</div>
+												<div style="margin-left:7%;color: cornflowerblue;">${price.premium_content }</div>
 												<input type="hidden" name="lnumber" value="${board.lnumber }">								
 												<input type="hidden" name="email" value="${seller.email }">		
 												<input type="hidden" name="premium_price" value="${price.premium_price }">
@@ -380,6 +374,10 @@
 												<input type="hidden" name="premium_time" value="${price.premium_time }">
 												<input class="button btn largesearch-btn"													 
 													value="${price.premium_price } 원/VAT포함" type="submit">
+												<div style="float:right;">
+													<span>${price.premium_modify }회(수정) </span><span>
+														/${price.premium_time }일</span>
+												</div>
 											</div>
 										</div>
 									</fieldset>
