@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
 import com.eungo.dao.MemberDAO;
@@ -16,13 +17,13 @@ public class SellerRegisterProcAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "index.jsp";
-		
+				
 		SellerVO seller = new SellerVO();
 		SellerDAO dao = new SellerDAO();
 		
 		String email = null;
 		int bank_code_std = 0;
-		int account_num = 0;
+		long account_num = 0;
 		int account_holder_info = 0;		
 		String seller_intro = null;
 		
@@ -33,7 +34,7 @@ public class SellerRegisterProcAction implements Action{
 			bank_code_std = Integer.parseInt(request.getParameter("bank_code_std"));
 		}
 		if(request.getParameter("account_num") != null) {
-			account_num = Integer.parseInt(request.getParameter("account_num"));
+			account_num = Long.parseLong(request.getParameter("account_num"));
 		}
 		if(request.getParameter("account_holder_info") != null) {
 			String birthday = request.getParameter("account_holder_info");
@@ -56,7 +57,10 @@ public class SellerRegisterProcAction implements Action{
 		if(result == 1) {
 			MemberDAO mdao = new MemberDAO();
 			int upResult = mdao.update_seller(email);
+			boolean dis_seller = mdao.discriminate_seller(email);
 			if(upResult == 1) {
+				HttpSession session = request.getSession();
+				session.setAttribute("seller", dis_seller);
 				Script.moving(response, "판매자 등록이 완료되었습니다.", url);
 			}else if(upResult == -1) {
 				Script.moving(response, "DB에러");

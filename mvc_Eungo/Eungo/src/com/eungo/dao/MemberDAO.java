@@ -318,5 +318,23 @@ public class MemberDAO {
 		}
 		return -1;
 	}
-
+	
+	public boolean discriminate_seller(String email) {
+		String SQL = "SELECT seller FROM member WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getBoolean("seller");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return false;
+	}
 }

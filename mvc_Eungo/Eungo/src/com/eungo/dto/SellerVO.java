@@ -3,7 +3,7 @@ package com.eungo.dto;
 public class SellerVO {
 	private String email;
 	private int bank_code_std;
-	private int account_num;
+	private long account_num;
 	private int account_holder_info;
 	private int income;
 	private String seller_intro;
@@ -20,10 +20,10 @@ public class SellerVO {
 	public void setBank_code_std(int bank_code_std) {
 		this.bank_code_std = bank_code_std;
 	}
-	public int getAccount_num() {
+	public long getAccount_num() {
 		return account_num;
 	}
-	public void setAccount_num(int account_num) {
+	public void setAccount_num(long account_num) {
 		this.account_num = account_num;
 	}
 	public int getAccount_holder_info() {

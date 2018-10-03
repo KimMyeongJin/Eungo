@@ -18,7 +18,7 @@ public class SellerDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, seller.getEmail());
 			pstmt.setInt(2, seller.getBank_code_std());
-			pstmt.setInt(3, seller.getAccount_num());
+			pstmt.setLong(3, seller.getAccount_num());
 			pstmt.setInt(4, seller.getAccount_holder_info());
 			pstmt.setString(5, seller.getSeller_intro());			
 			pstmt.executeUpdate();

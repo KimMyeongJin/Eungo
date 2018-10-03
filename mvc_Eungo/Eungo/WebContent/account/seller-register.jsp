@@ -32,22 +32,24 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-
+		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<div class="box-for overflow">
 				<div class="col-md-12 col-xs-12 register-blocks">
 					<h2>Account Info:</h2>
-					<form action="<%=request.getContextPath()%>/member?cmd=seller_registerProc"
+					<form
+						action="<%=request.getContextPath()%>/member?cmd=seller_registerProc"
 						method="post">
-						
+
 						<div class="form-group">
-							<label>Your Email</label> <input
-								required="required" type="text" class="form-control"
-								name="email" value="${sessionScope.email }" readonly="readonly">
+							<label>Your Email</label> <input required="required" type="text"
+								class="form-control" name="email" value="${sessionScope.email }"
+								readonly="readonly">
 						</div>
 						<div class="form-group">
-						<label>Bank</label>
-							<select id="lunchBegins" class="selectpicker" name="bank_code_std" form="smart_search" data-live-search="true" data-live-search-style="begins" title="Select Your Bank">
+							<label>Bank</label> <select id="lunchBegins" class="selectpicker"
+								name="bank_code_std" form="smart_search" data-live-search="true"
+								data-live-search-style="begins" title="Select Your Bank">
 								<option value="001">농협</option>
 								<option value="002">신한</option>
 								<option value="003">우리</option>
@@ -64,16 +66,17 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Account</label> <input type="text"
-								required="required" class="form-control" name="account_num">
-						</div>						
+							<label>Account</label> <input type="text" required="required"
+								class="form-control" name="account_num">
+						</div>
 						<div class="form-group">
-							<label>Identity Number</label> <input type="text"								
-								class="form-control" name="account_holder_info" value="${member.birthday }" readonly="readonly">
-								<small><a href="#">계좌등록된 생년월일과 다를 경우 회원정보를 먼저 수정해주세요.</a></small>
-						</div>						
+							<label>Identity Number</label> <input type="text"
+								class="form-control" name="account_holder_info"
+								value="${member.birthday }" readonly="readonly"> <small><a
+								href="#">계좌등록된 생년월일과 다를 경우 회원정보를 먼저 수정해주세요.</a></small>
+						</div>
 						<div class="form-group">
-							<label for="name">Introduce Yourself</label> 
+							<label for="name">Introduce Yourself</label>
 							<textarea rows="10" cols="50"></textarea>
 						</div>
 						<div class="text-center">

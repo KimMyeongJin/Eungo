@@ -38,14 +38,14 @@ public class NaverLoginAction implements Action {
 			// g.toJson(memberPro); -> JSON으로 변환
 			MemberVO member = g.fromJson(data.toString(), MemberVO.class);			
 			MemberDAO dao = new MemberDAO();
-			
-			if (dao.checkEmail(member.getEmail()) != 1) {
+			String email = member.getEmail();;	
+			boolean dis_seller = dao.discriminate_seller(email);
+			if (dao.checkEmail(member.getEmail()) != 1) {				
 				int result = dao.insert_naveremail(member);
-				
 				if (result == 1) {
 					session = request.getSession();
-					session.setAttribute("email", member.getEmail());
-					session.setAttribute("seller", member.isSeller());
+					session.setAttribute("email", email);
+					session.setAttribute("seller", dis_seller);
 					Script.moving(response, "로그인 성공", url);
 					System.out.println("네이버 로그인 성공");
 				} else if (result == -1) {
@@ -54,7 +54,7 @@ public class NaverLoginAction implements Action {
 			}else {
 				session = request.getSession();
 				session.setAttribute("email", member.getEmail());
-				session.setAttribute("seller", member.isSeller());
+				session.setAttribute("seller", dis_seller);
 				Script.moving(response, "로그인 성공", url);
 				System.out.println("네이버 로그인 성공");
 			}
