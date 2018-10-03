@@ -247,9 +247,7 @@
 <script>
 function per_page() {
     var x = document.getElementById("items_per_page").value;
-    location.href = "<%=request.getContextPath()%>
-	/board?cmd=board_paging&pageNum=1&per_page="
-				+ x;
+    location.href = "<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=" + x;
 
 	}
 </script>

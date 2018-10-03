@@ -48,17 +48,74 @@
 
 						<!--/ .sort-by-list-->
 						<div class="items-per-page pull-right">
-							<label for="items_per_page"><b>Service per page :</b></label>
+							<label for="items_per_page"><b>Servcie per page :</b></label>
 							<div class="sel">
-								<select id="items_per_page" name="per_page">
-									<option value="3">3</option>
-									<option value="6">6</option>
-									<option value="9">9</option>
-									<option selected="selected" value="12">12</option>
-									<option value="15">15</option>
-									<option value="30">30</option>
-									<option value="45">45</option>
-									<option value="60">60</option>
+								<select id="items_per_page" name="per_page"
+									onchange="per_page()">
+									<c:choose>
+										<c:when test="${per_page == 3 }">
+											<option value="3" selected="selected">3</option>
+										</c:when>
+										<c:otherwise>
+											<option value="3">3</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 6 }">
+											<option value="6" selected="selected">6</option>
+										</c:when>
+										<c:otherwise>
+											<option value="6">6</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 9 }">
+											<option value="9" selected="selected">9</option>
+										</c:when>
+										<c:otherwise>
+											<option value="9">9</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 12 }">
+											<option value="12" selected="selected">12</option>
+										</c:when>
+										<c:otherwise>
+											<option value="12">12</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 15 }">
+											<option value="15" selected="selected">15</option>
+										</c:when>
+										<c:otherwise>
+											<option value="15">15</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 30 }">
+											<option value="30" selected="selected">30</option>
+										</c:when>
+										<c:otherwise>
+											<option value="3">30</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 45 }">
+											<option value="45" selected="selected">45</option>
+										</c:when>
+										<c:otherwise>
+											<option value="45">45</option>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${per_page == 60 }">
+											<option value="60" selected="selected">60</option>
+										</c:when>
+										<c:otherwise>
+											<option value="60">60</option>
+										</c:otherwise>
+									</c:choose>
 								</select>
 							</div>
 							<!--/ .sel-->
@@ -69,221 +126,46 @@
 
 				<div class="section">
 					<div id="list-type" class="proerty-th-list">
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="property-1.jsp"><img
-										src="<%=request.getContextPath()%>/assets/img/demo/property-3.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp">
-											Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img
-											src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)|
-										<img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)|
-										<img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-										<div class="dealer-action pull-right">
+						<c:forEach var="my_list" items="${my_list }">
+							<div class="col-md-4 p0">
+								<div class="box-two proerty-item">
+									<div class="item-thumb">
+										<a
+											href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}"><img
+											src="${my_list.limage }"></a>
+									</div>
+									<div class="item-entry overflow">
+										<h5>
 											<a
-												href="<%=request.getContextPath()%>/account/submit-service.jsp"
-												class="button">Edit </a> <a href="#"
-												class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp"
-												class="button">View</a>
+												href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}">
+												${my_list.ltitle}</a>
+										</h5>
+										<div class="dot-hr"></div>
+										<span class="pull-left"></span> <span
+											class="proerty-price pull-right">
+											${my_list.standard_price}</span>
+										<p style="display: none;">${my_list.lcontent}</p>
+										<div class="property-icon">
+											<img
+												src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)|
+											<img
+												src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)|
+											<img
+												src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
+											<div class="dealer-action pull-right">
+												<a
+													href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${my_list.lnumber}"
+													class="button">Edit </a> <a
+													href="<%=request.getContextPath()%>/board?cmd=service_delete&lnumber=${my_list.lnumber}"
+													class="button delete_user_car">Delete</a> <a
+													href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}"
+													class="button">View</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="property-1.jsp"><img
-										src="<%=request.getContextPath() %>/assets/img/demo/property-2.jpg"></a>
-								</div>
-								<div class="item-entry overflow ">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-										src="<%=request.getContextPath()%>/assets/img/demo/property-1.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath() %>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-										src="<%=request.getContextPath()%>/assets/img/demo/property-3.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-										src="<%=request.getContextPath()%>/img/demo/property-1.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-										src="<%=request.getContextPath()%>/assets/img/demo/property-2.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 p0">
-							<div class="box-two proerty-item">
-								<div class="item-thumb">
-									<a href="<%=request.getContextPath()%>/service/service.jsp"><img
-										src="assets/img/demo/property-3.jpg"></a>
-								</div>
-								<div class="item-entry overflow">
-									<h5>
-										<a href="<%=request.getContextPath()%>/service/service.jsp"> Super nice villa </a>
-									</h5>
-									<div class="dot-hr"></div>
-									<span class="pull-left"><b> Area :</b> 120m </span> <span
-										class="proerty-price pull-right"> $ 300,000</span>
-									<p style="display: none;">Suspendisse ultricies Suspendisse
-										ultricies Nulla quis dapibus nisl. Suspendisse ultricies
-										commodo arcu nec pretium ...</p>
-									<div class="property-icon">
-										<img src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)| <img
-											src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-										<div class="dealer-action pull-right">
-											<a href="<%=request.getContextPath()%>/account/submit-service.jsp" class="button">Edit </a> <a
-												href="#" class="button delete_user_car">Delete</a> <a
-												href="<%=request.getContextPath()%>/service/service.jsp" class="button">View</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 
@@ -291,12 +173,19 @@
 					<div class="pull-right">
 						<div class="pagination">
 							<ul>
-								<li><a href="#">Prev</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">Next</a></li>
+								<c:choose>
+									<c:when test="${paging eq null }">
+										<li><a
+											href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=1&per_page=9">해당
+												게시물이 없습니다</a></li>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="paging" items="${paging }">
+											<li><a
+												href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=${paging.value}&per_page=${per_page}">${paging.key}</a></li>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</div>
 					</div>
@@ -327,9 +216,11 @@
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
 
-<script src="<%=request.getContextPath() %>/assets/js/jquery.bootstrap.wizard.js"
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.bootstrap.wizard.js"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath() %>/assets/js/jquery.validate.min.js"></script>
-<script src="<%=request.getContextPath() %>/assets/js/wizard.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/wizard.js"></script>
 </body>
 </html>

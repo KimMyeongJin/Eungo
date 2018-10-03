@@ -13,7 +13,7 @@ import com.eungo.util.Youtube;
 public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+
 	public int lnumberSelect(String email) {
 		String SQL = "SELECT lnumber FROM list WHERE email = ? ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
@@ -21,16 +21,18 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getInt("lnumber");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
 		return -1;
 	}
-	
+
 	public int boardInsert(BoardVO board) {
 		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
 		Connection conn = DBManager.getConnection();
@@ -57,12 +59,12 @@ public class BoardDAO {
 		}
 		return 0;
 	}
-	
+
 	public int boardModify(BoardVO board) {
 		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, standard_price = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
 		Connection conn = DBManager.getConnection();
 		try {
-			pstmt = conn.prepareStatement(SQL);			
+			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, board.getLphone_number());
 			pstmt.setString(2, board.getLtitle());
 			pstmt.setString(3, board.getLcontent());
@@ -126,6 +128,47 @@ public class BoardDAO {
 		return null;
 	}
 
+	public List<BoardVO> my_services_Paging(String email, int per_page, int pageNum) {
+		String SQL = "SELECT * FROM list WHERE email = ? ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			pstmt.setInt(2, per_page);
+			pstmt.setInt(3, (pageNum - 1) * per_page);
+			rs = pstmt.executeQuery();
+
+			List<BoardVO> list = new ArrayList<>();
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setEmail(rs.getString("email"));
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
+				board.setLcategory(rs.getString("lcategory"));
+				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
+				board.setLsellcount(rs.getInt("lsellcount"));
+				board.setLviewcount(rs.getInt("lviewcount"));
+				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getString("lphone_number"));
+				list.add(board);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
 	public int boardTotalCount() {
 		String SQL = "SELECT count(*) FROM list";
 		Connection conn = DBManager.getConnection();
@@ -140,6 +183,29 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return 0;
+	}
+
+	public int my_servcies_count(String email) {
+		String SQL = "SELECT count(*) FROM list WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		int totalNum = 0;
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				totalNum = rs.getInt("count(*)");
+			}
+			return totalNum;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
 		return 0;
 	}
@@ -166,6 +232,8 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
 		return 0;
 	}
@@ -187,6 +255,8 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
 		return 0;
 	}
@@ -334,13 +404,13 @@ public class BoardDAO {
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLcontent(rs.getString("lcontent"));
 				board.setStandard_price(rs.getString("standard_price"));
-				board.setLcategory(rs.getString("lcategory"));	
+				board.setLcategory(rs.getString("lcategory"));
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
 				board.setLimage4(rs.getString("limage4"));
 				board.setYoutube(rs.getString("youtube"));
-				board.setCancel_rule(rs.getString("cancel_rule"));		
+				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
@@ -356,7 +426,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
+
 	public int board_delete(int lnumber) {
 		String SQL = "DELETE FROM list WHERE lnumber = ? ";
 		Connection conn = DBManager.getConnection();
@@ -368,7 +438,9 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		} DBManager.close(conn, pstmt);
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 		return -1;
 	}
 }

@@ -69,7 +69,7 @@
 												<c:choose>
 													<c:when test="${sessionScope.seller==true }">
 														<li><a
-															href="<%=request.getContextPath()%>/board?cmd=my_services">My
+															href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=1&per_page=9">My
 																Services</a></li>
 														<li><a
 															href="<%=request.getContextPath()%>/service/submit-service.jsp">Submit
