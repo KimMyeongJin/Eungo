@@ -143,7 +143,7 @@
 										<div class="dot-hr"></div>
 										<span class="pull-left"></span> <span
 											class="proerty-price pull-right">
-											${my_list.standard_price}</span>
+											${my_list.standard_price} 원</span>
 										<p style="display: none;">${my_list.lcontent}</p>
 										<div class="property-icon">
 											<img

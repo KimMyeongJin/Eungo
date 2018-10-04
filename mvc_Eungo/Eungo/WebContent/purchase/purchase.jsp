@@ -43,16 +43,16 @@
 
 						<div class="panel-body">
 							<div>
-								<div class="pull-left margin-right-20">
-									<img class="width-120px border-radius" src="${board.limage }"
+								<div style="height:90px; width:120px;  margin-right: 20px;float: left; float: left">
+									<img class="width-120px border-radius" style="height:100%;width: 100%;border-radius: 5px " src="${board.limage }"
 										>
 								</div>
 
-								<div>
+								<div style="width:330px; height:100px; float: left">
 									<h4 class="order-info-gig-body margin-top-0">${board.ltitle }</h4>
 
 									<div>
-										<img class="img-circle" src="${seller.profile }">
+										<img width="30" height="40" style="margin-right: 5px" class="img-circle" src="${seller.profile }">
 										<span class="font-color-lighter">${seller.email }</span>
 									</div>
 								</div>
