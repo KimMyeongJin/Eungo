@@ -2,6 +2,7 @@ package com.eungo.action;
 
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
+import com.eungo.controller.board.IndexBoardAction;
 import com.eungo.controller.board.MyServicesAction;
 import com.eungo.controller.board.ServiceDeleteAction;
 import com.eungo.controller.board.ServiceModifyAction;
@@ -42,7 +43,9 @@ public class ActionFactory {
 	}
 
 	public Action getAction(String cmd) {
-		if (cmd.equals("member_join")) {
+		if (cmd.equals("index_board")) {
+			return new IndexBoardAction();
+		} else if (cmd.equals("member_join")) {
 			return new MemberJoinAction();
 		} else if (cmd.equals("emailSend")) {
 			return new EmailSendAction();

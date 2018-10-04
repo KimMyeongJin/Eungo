@@ -169,6 +169,46 @@ public class BoardDAO {
 		return null;
 	}
 	
+	public List<BoardVO> new_seven() {
+		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);			
+			pstmt.setInt(1, 7);
+			pstmt.setInt(2, 0);
+			rs = pstmt.executeQuery();
+
+			List<BoardVO> list = new ArrayList<>();
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setEmail(rs.getString("email"));
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLcontent(rs.getString("lcontent"));
+				board.setStandard_price(rs.getString("standard_price"));
+				board.setLcategory(rs.getString("lcategory"));
+				board.setLimage(rs.getString("limage"));
+				board.setLimage2(rs.getString("limage2"));
+				board.setLimage3(rs.getString("limage3"));
+				board.setLimage4(rs.getString("limage4"));
+				board.setYoutube(rs.getString("youtube"));
+				board.setCancel_rule(rs.getString("cancel_rule"));
+				board.setLsellcount(rs.getInt("lsellcount"));
+				board.setLviewcount(rs.getInt("lviewcount"));
+				board.setLdate(rs.getString("ldate"));
+				board.setGood(rs.getInt("good"));
+				board.setLphone_number(rs.getString("lphone_number"));
+				list.add(board);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
 	public int boardTotalCount() {
 		String SQL = "SELECT count(*) FROM list";
 		Connection conn = DBManager.getConnection();
