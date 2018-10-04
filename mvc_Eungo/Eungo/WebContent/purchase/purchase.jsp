@@ -11,6 +11,14 @@
 <html class="no-js">
 <head>
 <title>GARO ESTATE | Payment Page</title>
+<script>
+	function goPay(){
+	
+	    var amount = document.querySelector('input[name="submit_price"]').value	 	
+		var popPay = window.open("purchase/payPage.jsp?amount="+amount,"pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	     
+	}
+</script>
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
 <!-- End of header -->
@@ -33,9 +41,9 @@
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
 		<div class="col-md-3"></div>
-		<form action="#" method="post">
+		<!-- <form action="index.jsp" method="post" onsubmit="goPay()"> -->
 			<input type="hidden" id="price" name="price" value="${price }">
-			<input type="hidden" id="submit_price" name="submit_price">
+			<input type="hidden" id="submit_price" name="submit_price" value="${price }">
 			<div class="col-md-6">
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 register-blocks">
@@ -148,11 +156,11 @@
 				<div class="box-for overflow">
 					<div class="col-xs-8"></div>
 					<div class="col-xs-4">
-						<button id="payBtn" name="payBtn" class="btn btn-default">결제하기</button>
+						<button type="submit" id="payBtn" name="payBtn" class="btn btn-default" onclick="goPay()">결제하기</button>
 					</div>
 				</div>
 			</div>
-		</form>
+		<!-- </form> -->
 	</div>
 </div>
 
