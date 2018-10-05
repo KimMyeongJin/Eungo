@@ -173,26 +173,26 @@
 
 
 											<li>
-													<h4><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지설명</span></h4>
+													<h4><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지 제목</span></h4>
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="standard_title" id="standard_title" readonly="readonly"></b>
+													<b><input type="text" value="입력"name="standard_title" id="standard_title" readonly="readonly"></b>
 													</span> 
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="deluxe_title" id="deluxe_title" readonly="readonly"></b>
+													<b><input type="text" value="입력"name="deluxe_title" id="deluxe_title" readonly="readonly"></b>
 													</span> 
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<b><input type="text" value="제목"name="premium_title" id="premium_title" readonly="readonly"></b>
+													<b><input type="text" value="입력"name="premium_title" id="premium_title" readonly="readonly"></b>
 													</span>
 													
 													<span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">상세설명</span>
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="standard_content" id="standard_content">
+													<input readonly="readonly" value="상세" type="text"  name="standard_content" id="standard_content">
 													</span>
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="deluxe_content" id="deluxe_content">
+													<input readonly="readonly" value="상세" type="text"  name="deluxe_content" id="deluxe_content">
 													</span>
 													<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">
-													<input readonly="readonly" type="text"  name="premium_content" id="premium_content">
+													<input readonly="readonly" value="상세" type="text"  name="premium_content" id="premium_content">
 													</span>
 											
 											</li>
@@ -296,7 +296,7 @@
 
 	/*  // textArea에 이미지 첨부 */
 	function pasteHTML(filepath) {
-		var sHTML = '<img src=/Eugno/editor/upload/'+filepath+'>';
+		var sHTML = '<img src=/Eungo/editor/upload/'+filepath+'>';
 		oEditors.getById["textAreaContent"].exec("PASTE_HTML", [ sHTML ]);
 	}
 </script>

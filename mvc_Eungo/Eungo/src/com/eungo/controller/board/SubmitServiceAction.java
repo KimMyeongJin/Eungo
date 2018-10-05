@@ -28,7 +28,9 @@ public class SubmitServiceAction implements Action{
 		String email = session.getAttribute("email").toString();
 		//String imagePath = request.getServletContext().getRealPath("/images/service/"); //aws등록시 사용
 		//String imagePath = "C:/Users/it/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //학원 path
-		String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //집에서 path		
+		//String imagePath = "C:/Users/SMK/Documents/Eungo/mvc_Eungo/Eungo/WebContent/images/service/"; //집에서 path		
+		String imagePath = request.getServletContext().getRealPath("/images/service/");
+		System.out.println(imagePath);
 		BoardVO board = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		PriceVO price = new PriceVO();

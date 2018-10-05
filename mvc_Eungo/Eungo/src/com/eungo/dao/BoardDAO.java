@@ -208,7 +208,7 @@ public class BoardDAO {
 	}
 	
 	public List<BoardVO> top_three() {
-		String SQL = "SELECT li.lnumber, li.email, li.ltitle, li.limage, pur.total_price FROM list AS li JOIN purchase AS pur ON pur.lnumber = li.lnumber ORDER BY pur.total_price DESC LIMIT 3 OFFSET 0";
+		String SQL = "SELECT * FROM list AS li JOIN purchase AS pur ON pur.lnumber = li.lnumber ORDER BY pur.total_price DESC LIMIT 3 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -217,11 +217,11 @@ public class BoardDAO {
 			List<BoardVO> list = new ArrayList<>();
 			while (rs.next()) {
 				BoardVO board = new BoardVO();
-				board.setLnumber(rs.getInt("li.lnumber"));
-				board.setEmail(rs.getString("li.email"));
-				board.setLtitle(rs.getString("li.ltitle"));
-				board.setLimage(rs.getString("li.limage"));
-				board.setLprice(rs.getString("pur.total_price"));
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setEmail(rs.getString("email"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLimage(rs.getString("limage"));
+				board.setLprice(rs.getString("total_price"));
 				list.add(board);
 			}
 			return list;
