@@ -86,7 +86,7 @@
 					</div>
 
 					<div class="property-meta entry-meta clearfix ">
-						<div class="row" style="margin-left:1%;">
+						<div class="row" style="margin-left: 1%;">
 							<button onclick="fnMove('1')" style="width: 20%;">서비스설명</button>
 							<button onclick="fnMove('2')" style="width: 25%;">가격정보</button>
 							<button onclick="fnMove('3')" style="width: 25%;">취소및환불규정</button>
@@ -110,8 +110,12 @@
 									src="<%=request.getContextPath()%>/assets/img/property-video.jpg"
 									class="img-responsive wp-post-image" alt="Exterior">
 								</a> --%>
-								<iframe id="player" type="text/html" width="90%" height="409" src="http://www.youtube.com/embed/${board.youtube }" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>"
-								
+								<iframe id="player" type="text/html" width="90%" height="409"
+									src="http://www.youtube.com/embed/${board.youtube }"
+									frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
+									allowfullscreen=""></iframe>
+								"
+
 							</div>
 						</div>
 					</c:if>
@@ -119,30 +123,69 @@
 					<div class="section additional-details" id="div2">
 
 						<h4 class="s-property-title">가격 정보</h4>
+						<c:if
+							test="${price.deluxe_price ne '0' && price.premium_price ne '0' }">
+							<ul class="additional-details-list clearfix">
+								<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-title"></span>
+									<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">STANDARD<br>${price.standard_price}<br>(VAT포함)
+								</span> <span class="col-xs-6 col-sm-4 col-md-3 add-d-title">DELUXE<br>${price.deluxe_price}<br>(VAT포함)
+								</span> <span class="col-xs-6 col-sm-4 col-md-3 add-d-title">PREMIUM<br>${price.premium_price}<br>(VAT포함)
+								</span></li>
+								<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지
+										설명</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_title }<br>${price.standard_content}</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_title }<br>${price.deluxe_content}</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_title }<br>${price.premium_content}</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">수정
+										횟수</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_modify }</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_modify }</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_modify }</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">작업
+										시간</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_time }</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_time }</span>
+									<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_time }</span>
+								</li>
+							</ul>
+						</c:if>
+						<c:if
+							test="${price.deluxe_price == '0' && price.premium_price == '0'}">
+							<ul class="additional-details-list clearfix">
+								<li><span class="col-xs-6 col-sm-4 col-md-6 add-d-title"></span>
+									<span class="col-xs-6 col-sm-4 col-md-6 add-d-title">STANDARD<br>${price.standard_price}<br>(VAT포함)
+								</span></li>
+								<li><span class="col-xs-6 col-sm-4 col-md-6 add-d-entry">패키지
+										설명</span> <span class="col-xs-6 col-sm-8 col-md-6 add-d-entry">${price.standard_title }<br>${price.standard_content}</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-6 add-d-entry">수정
+										횟수</span> <span class="col-xs-6 col-sm-8 col-md-6 add-d-entry">${price.standard_modify }</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-6 add-d-entry">작업
+										시간</span> <span class="col-xs-6 col-sm-8 col-md-6 add-d-entry">${price.standard_time }</span>
+								</li>
+							</ul>
+						</c:if>
 
-						<ul class="additional-details-list clearfix">
-							<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-title"></span>
-								<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">STANDARD<br>${price.standard_price}<br>(VAT포함)
-							</span> <span class="col-xs-6 col-sm-4 col-md-3 add-d-title">DELUXE<br>${price.deluxe_price}<br>(VAT포함)
-							</span> <span class="col-xs-6 col-sm-4 col-md-3 add-d-title">PREMIUM<br>${price.premium_price}<br>(VAT포함)
-							</span></li>
-
-							<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">패키지
-									설명</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_title }<br>${price.standard_content}</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_title }<br>${price.deluxe_content}</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_title }<br>${price.premium_content}</span>
-							</li>
-							<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">수정
-									횟수</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_modify }</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_modify }</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_modify }</span>
-							</li>
-							<li><span class="col-xs-6 col-sm-4 col-md-3 add-d-entry">작업
-									시간</span> <span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.standard_time }</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.deluxe_time }</span>
-								<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${price.premium_time }</span>
-							</li>
-						</ul>
+						<c:if test="${price.premium_price == '0' && price.deluxe_price ne '0' }">
+							<ul class="additional-details-list clearfix">
+								<li><span class="col-xs-6 col-sm-4 col-md-4.5 add-d-title"></span>
+									<span class="col-xs-6 col-sm-4 col-md-4.5 add-d-title">STANDARD<br>${price.standard_price}<br>(VAT포함)
+								</span> <span class="col-xs-6 col-sm-4 col-md-4.5 add-d-title">DELUXE<br>${price.deluxe_price}<br>(VAT포함)
+								</span></li>
+								<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-entry">패키지
+										설명</span> <span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.standard_title }<br>${price.standard_content}</span>
+									<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.deluxe_title }<br>${price.deluxe_content}</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-entry">수정
+										횟수</span> <span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.standard_modify }</span>
+									<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.deluxe_modify }</span>
+								</li>
+								<li><span class="col-xs-6 col-sm-4 col-md-4 add-d-entry">작업
+										시간</span> <span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.standard_time }</span>
+									<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${price.deluxe_time }</span>
+								</li>
+							</ul>
+						</c:if>
 					</div>
 					<!-- End additional-details area  -->
 					<br> <br>
@@ -283,7 +326,7 @@
 											href="<%=request.getContextPath()%>/account/faq.jsp"
 											style="color: #FFF"> FAQ </a></li>
 										<li><h5>전문가 소개</h5></li>
-										<li><p>seller_intro</p></li>
+										<li><p>${seller_intro.seller_intro }</p></li>
 										<c:if test="${sessionScope.email eq seller.email}">
 											<li><a type="button"
 												href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${board.lnumber}"
@@ -304,85 +347,106 @@
 							<h3 class="panel-title">구매하기</h3>
 						</div>
 						<div class="panel-body search-widget">
-							<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
+							<form
+								action="<%=request.getContextPath()%>/purchase?cmd=purchase"
 								method="post" class=" form-inline">
 								<details open>
-									<summary style="font-size: large;">${price.standard_price }원 STANDARD</summary>
+									<summary style="font-size: large;">${price.standard_price }원
+										STANDARD</summary>
 									<fieldset>
 										<div class="row">
 											<div class="col-xs-12">
-												<div style="margin-left:7%;color: cornflowerblue;">${price.standard_title }</div>
-												<div style="margin-left:7%;color: cornflowerblue;">${price.standard_content }</div>
-												<input type="hidden" name="lnumber" value="${board.lnumber }">								
-												<input type="hidden" name="email" value="${seller.email }">		
-												<input type="hidden" name="standard_price" value="${price.standard_price }">
-												<input type="hidden" name="standard_title" value="${price.standard_title }">
-												<input type="hidden" name="standard_time" value="${price.standard_time }">
-												<input class="button btn largesearch-btn" 												
+												<div style="margin-left: 7%; color: cornflowerblue;">${price.standard_title }</div>
+												<div style="margin-left: 7%; color: cornflowerblue;">${price.standard_content }</div>
+												<input type="hidden" name="lnumber"
+													value="${board.lnumber }"> <input type="hidden"
+													name="email" value="${seller.email }"> <input
+													type="hidden" name="standard_price"
+													value="${price.standard_price }"> <input
+													type="hidden" name="standard_title"
+													value="${price.standard_title }"> <input
+													type="hidden" name="standard_time"
+													value="${price.standard_time }"> <input
+													class="button btn largesearch-btn"
 													value="${price.standard_price } 원/VAT포함" type="submit">
-												<div style="float:right;">
+												<div style="float: right;">
 													<span>${price.standard_modify }회(수정) </span><span>
-														/${price.standard_time }일</span>
-												</div>													
-													
-
-											</div>
-										</div>
-									</fieldset>
-								</details>
-								</form>
-								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
-								method="post" class=" form-inline">
-								<details>
-									<summary style="font-size: large;">${price.deluxe_price }원 DELUXE</summary>
-									<fieldset>
-										<div class="row">
-											<div class="col-xs-12">
-												<div style="margin-left:7%;color: cornflowerblue;">${price.deluxe_title }</div>
-												<div style="margin-left:7%;color: cornflowerblue;">${price.deluxe_content }</div>
-												<input type="hidden" name="lnumber" value="${board.lnumber }">								
-												<input type="hidden" name="email" value="${seller.email }">												
-												<input type="hidden" name="deluxe_price" value="${price.deluxe_price }">
-												<input type="hidden" name="deluxe_title" value="${price.deluxe_title }">
-												<input type="hidden" name="deluxe_time" value="${price.deluxe_time }">
-												<input class="button btn largesearch-btn" 
-													 value="${price.deluxe_price } 원/VAT포함"
-													type="submit">
-												<div style="float:right;">
-													<span>${price.deluxe_modify }회(수정) </span><span>
-														/${price.deluxe_time }일</span>
+														/${price.standard_time }</span>
 												</div>
 
-											</div>
-										</div>
-									</fieldset>
-								</details>
-								</form>
-								<form action="<%=request.getContextPath()%>/purchase?cmd=purchase"
-								method="post" class=" form-inline">
-								<details>
-									<summary style="font-size: large;">${price.premium_price }원 PREMIUM</summary>
-									<fieldset>
-										<div class="row">
-											<div class="col-xs-12">
-												<div style="margin-left:7%;color: cornflowerblue;">${price.premium_title }</div>
-												<div style="margin-left:7%;color: cornflowerblue;">${price.premium_content }</div>
-												<input type="hidden" name="lnumber" value="${board.lnumber }">								
-												<input type="hidden" name="email" value="${seller.email }">		
-												<input type="hidden" name="premium_price" value="${price.premium_price }">
-												<input type="hidden" name="premium_title" value="${price.premium_title }">
-												<input type="hidden" name="premium_time" value="${price.premium_time }">
-												<input class="button btn largesearch-btn"													 
-													value="${price.premium_price } 원/VAT포함" type="submit">
-												<div style="float:right;">
-													<span>${price.premium_modify }회(수정) </span><span>
-														/${price.premium_time }일</span>
-												</div>
+
 											</div>
 										</div>
 									</fieldset>
 								</details>
 							</form>
+							<c:if test="${price.deluxe_price ne '0' }">
+							<form
+								action="<%=request.getContextPath()%>/purchase?cmd=purchase"
+								method="post" class=" form-inline">
+								<details>
+									<summary style="font-size: large;">${price.deluxe_price }원
+										DELUXE</summary>
+									<fieldset>
+										<div class="row">
+											<div class="col-xs-12">
+												<div style="margin-left: 7%; color: cornflowerblue;">${price.deluxe_title }</div>
+												<div style="margin-left: 7%; color: cornflowerblue;">${price.deluxe_content }</div>
+												<input type="hidden" name="lnumber"
+													value="${board.lnumber }"> <input type="hidden"
+													name="email" value="${seller.email }"> <input
+													type="hidden" name="deluxe_price"
+													value="${price.deluxe_price }"> <input
+													type="hidden" name="deluxe_title"
+													value="${price.deluxe_title }"> <input
+													type="hidden" name="deluxe_time"
+													value="${price.deluxe_time }"> <input
+													class="button btn largesearch-btn"
+													value="${price.deluxe_price } 원/VAT포함" type="submit">
+												<div style="float: right;">
+													<span>${price.deluxe_modify }회(수정) </span><span>
+														/${price.deluxe_time }</span>
+												</div>
+
+											</div>
+										</div>
+									</fieldset>
+								</details>
+							</form>
+							</c:if>
+							<c:if test="${price.premium_price ne '0' }">
+								<form
+									action="<%=request.getContextPath()%>/purchase?cmd=purchase"
+									method="post" class=" form-inline">
+									<details>
+										<summary style="font-size: large;">${price.premium_price }원
+											PREMIUM</summary>
+										<fieldset>
+											<div class="row">
+												<div class="col-xs-12">
+													<div style="margin-left: 7%; color: cornflowerblue;">${price.premium_title }</div>
+													<div style="margin-left: 7%; color: cornflowerblue;">${price.premium_content }</div>
+													<input type="hidden" name="lnumber"
+														value="${board.lnumber }"> <input type="hidden"
+														name="email" value="${seller.email }"> <input
+														type="hidden" name="premium_price"
+														value="${price.premium_price }"> <input
+														type="hidden" name="premium_title"
+														value="${price.premium_title }"> <input
+														type="hidden" name="premium_time"
+														value="${price.premium_time }"> <input
+														class="button btn largesearch-btn"
+														value="${price.premium_price } 원/VAT포함" type="submit">
+													<div style="float: right;">
+														<span>${price.premium_modify }회(수정) </span><span>
+															/${price.premium_time }일</span>
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</details>
+								</form>
+							</c:if>
 						</div>
 					</div>
 					<!-- End of payment -->

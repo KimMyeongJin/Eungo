@@ -74,16 +74,16 @@
 							<div class="item-thumb">
 								<a
 									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}"><img
-									src="${new_list.limage }"></a>
+								style="height: 225px" src="${new_list.limage }"></a>
 							</div>
 							<div class="item-entry overflow">
-								<h5>
+								<h5 style="text-overflow: ellipsis; overflow: hidden;">
 									<a
 										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
 								</h5>
 								<div class="dot-hr"></div>
 								<span class="pull-left"></span> <span
-									class="proerty-price pull-right">${new_list.standard_price }</span>
+									class="proerty-price pull-right">${new_list.standard_price }원</span>
 							</div>
 						</div>
 					</div>
@@ -113,7 +113,7 @@
 
 <!--TESTIMONIALS -->
 <div class="testimonial-area recent-property"
-	style="background-color: #FCFCFC; padding-bottom: 15px;">
+	style="background-color: #FCFCFC; padding-bottom: 55px;">
 	<div class="container">
 		<div class="row">
 			<div
@@ -141,7 +141,7 @@
 								</h5>
 								<div class="dot-hr"></div>
 								<span class="pull-left"></span> <span
-									class="proerty-price pull-right">${top_three.lprice }</span>
+									class="proerty-price pull-right">${top_three.lprice }원	</span>
 							</div>
 						</div>
 					</div>

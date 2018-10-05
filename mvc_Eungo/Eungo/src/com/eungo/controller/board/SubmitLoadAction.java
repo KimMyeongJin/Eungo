@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
 import com.eungo.dao.MemberDAO;
+import com.eungo.dao.SellerDAO;
+import com.eungo.dto.SellerVO;
 import com.eungo.util.Script;
 
 public class SubmitLoadAction implements Action {
@@ -22,12 +24,12 @@ public class SubmitLoadAction implements Action {
 		
 		String phonenumber = null;		
 		MemberDAO dao = new MemberDAO();
-		
+
 		HttpSession session = request.getSession();
 		String email = session.getAttribute("email").toString();
-		if (session.getAttribute("email") != null) {
-			phonenumber = dao.select_phonenumber(email);
-			request.setAttribute("phonenumber", phonenumber);
+		if (session.getAttribute("email") != null) {			
+			phonenumber = dao.select_phonenumber(email);			
+			request.setAttribute("phonenumber", phonenumber);			
 			RequestDispatcher dis = request.getRequestDispatcher(url);
 			dis.forward(request, response);
 		}else {

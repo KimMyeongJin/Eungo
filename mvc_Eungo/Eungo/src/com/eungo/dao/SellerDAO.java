@@ -32,5 +32,22 @@ public class SellerDAO {
 		return -1;
 	}
 	
-
+	public String seller_intro(String email) {
+		String SQL = "SELECT seller_intro FROM seller WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString("seller_intro");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
 }

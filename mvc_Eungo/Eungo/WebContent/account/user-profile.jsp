@@ -106,8 +106,9 @@
 
 							<div class="picture-container">
 								<div class="picture">
-									<img class="picture-src" id="wizardPicturePreview" src="${member.profile }"/> <input name="profile" type="file"
-									id="wizard-picture">
+									<img class="picture-src" id="wizardPicturePreview"
+										src="${member.profile }" /> <input name="profile" type="file"
+										id="wizard-picture">
 								</div>
 								<h6>Choose Picture</h6>
 							</div>
@@ -132,27 +133,29 @@
 									value="${member.birthday}">
 							</div>
 						</div>
-						<div class="col-sm-3 padding-top-25" >
+						<div class="col-sm-3 padding-top-25">
 							<div class="form-group row" style="margin-left: 1%">
 								<label>password </label> <input id="password" name="password"
 									type="password" class="form-control" />
 								<button id="pwck" name="pwck" type="button" onclick="sendPw()"
-									class="btn btn-info" style="margin-top: 2%;float: right;">check</button>
+									class="btn btn-info" style="margin-top: 2%; float: right;">check</button>
 
 							</div>
 							<div class="form-group">
 								<label>modify password </label> <input id="password1" readonly
-									name="mod_password" type="password" class="form-control" style="width: 110%">
+									name="mod_password" type="password" class="form-control"
+									style="width: 110%">
 
 							</div>
 							<div class="form-group">
 								<label>Confirm password </label> <input id="password2" readonly
-									name="check_password" type="password" class="form-control" style="width: 110%">
-								<small id="checkPwd"></small>
+									name="check_password" type="password" class="form-control"
+									style="width: 110%"> <small id="checkPwd"></small>
 							</div>
 
 						</div>
-						<div class="col-sm-6 padding-top-25" style="float:right;margin-right: 14%;">
+						<div class="col-sm-6 padding-top-25"
+							style="float: right; margin-right: 14%;">
 							<div class="form-group">
 								<label>address </label>
 
@@ -162,10 +165,20 @@
 										readonly>
 								</div>
 								<button class="btn btn-info float-right" onclick="goPopup()"
-									type="button" style="float:right; margin:2%;">주소입력</button>
+									type="button" style="float: right; margin: 2%;">주소입력</button>
 							</div>
 
 						</div>
+						<c:if test="${seller}">
+							<div class="col-sm-6 padding-top-25"
+								style="float: right; margin-right: 14%;">
+								<div class="form-group" style="margin-left: 71px">
+									<label>판매자 소개</label>									
+										<label for="name"></label>
+										<textarea name="seller_intro" rows="5" cols="50">${seller_intro.seller_intro }</textarea>
+								</div>
+							</div>
+						</c:if>
 					</div>
 					<div class="col-sm-5 col-sm-offset-1">
 						<br>

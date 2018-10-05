@@ -168,7 +168,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
+
 	public List<BoardVO> new_seven() {
 		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
 		Connection conn = DBManager.getConnection();
@@ -206,7 +206,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
+
 	public List<BoardVO> top_three() {
 		String SQL = "SELECT * FROM list AS li JOIN purchase AS pur ON pur.lnumber = li.lnumber ORDER BY pur.total_price DESC LIMIT 3 OFFSET 0";
 		Connection conn = DBManager.getConnection();
@@ -232,7 +232,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	
+
 	public int boardTotalCount() {
 		String SQL = "SELECT count(*) FROM list";
 		Connection conn = DBManager.getConnection();
@@ -380,8 +380,12 @@ public class BoardDAO {
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
-				board.setLimage4(rs.getString("limage4"));
-				board.setYoutube(rs.getString("youtube").split("=")[1]);
+				board.setLimage4(rs.getString("limage4"));				
+				if (!rs.getString("youtube").equals("")) {
+					board.setYoutube(rs.getString("youtube").split("=")[1]);
+				} else {
+					board.setYoutube("");
+				}
 				board.setCancel_rule(rs.getString("cancel_rule"));
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));

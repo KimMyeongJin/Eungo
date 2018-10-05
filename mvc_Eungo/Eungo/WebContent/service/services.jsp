@@ -186,11 +186,11 @@
 										<div class="box-two proerty-item">
 											<div class="item-thumb">
 												<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}"><img
-													src="${list.limage}"></a>
+												style="height: 225px" src="${list.limage}"></a>
 											</div>
 
 											<div class="item-entry overflow">
-												<h5>
+												<h5 style="text-overflow: ellipsis; overflow: hidden; height: 17px">
 													<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}">
 														${list.ltitle } </a>
 												</h5>

@@ -75,7 +75,7 @@
 												name="ltitle" type="text" class="form-control"
 												required="required">
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" style="padding-left: 0px;">
 											<div class="form-group">
 												<label>Service category : <small>(required)</small></label>
 												<select name="lcategory" id="lunchBegins"
@@ -98,7 +98,7 @@
 												</select>
 											</div>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" style="padding-left: 30px; padding-right: 0px" >
 											<div class="form-group">
 												<label>Phonenumber </label> <input name="lphone_number"
 													type="tel" placeholder="01012345678"

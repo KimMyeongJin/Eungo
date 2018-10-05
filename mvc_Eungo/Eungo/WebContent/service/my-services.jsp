@@ -144,7 +144,7 @@
 										<span class="pull-left"></span> <span
 											class="proerty-price pull-right">
 											${my_list.standard_price} 원</span>
-										<div style="text-overflow: ellipsis; height: 120px">${my_list.lcontent}</div>
+										<div style="text-overflow: ellipsis; overflow: hidden; height: 120px">${my_list.lcontent}</div>
 										<div class="property-icon">
 											<img
 												src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)|
