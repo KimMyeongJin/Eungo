@@ -205,11 +205,18 @@
 						<div id="del1">
 							<c:if
 								test="${sessionScope.email ne null && sessionScope.email eq pur.email}">
+								<div class="starRev">
+  									<span class="starR on">별1</span>
+  									<span class="starR">별2</span>
+  									<span class="starR">별3</span>
+ 									<span class="starR">별4</span>
+  									<span class="starR">별5</span>	
+								</div>
 								<div class="form-group">
 									<textarea class="form-control" id="replyData" rows="3"></textarea>
 								</div>
 								<button class="btn btn-default" type="submit"
-									onclick="sendReply()">Submit</button>
+									onclick="sendReply()">입력</button>
 							</c:if>
 						</div>
 					</div>
@@ -245,7 +252,7 @@
 											<textarea class="form-control" id="answerData" rows="3"></textarea>
 										</div>
 										<button class="btn btn-default"
-											onclick="sendAnswer('${re_list.reply_number}')">Submit</button>
+											onclick="sendAnswer('${re_list.reply_number}')">입력</button>
 									</c:if>
 								</div>
 								<div class="media mb-4" id="${re_list.reply_number }answer"

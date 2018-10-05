@@ -3055,10 +3055,13 @@ padding: 10px;
     height: 300px;
 }
 
-/* 네이버 에디터 */
-#step2 iframe {
-    height: 300px !important;
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
 }
-iframe div#smart_editor2{
-    width: 100% !important;
-}
+.starR.on{background-position:0 0;}
