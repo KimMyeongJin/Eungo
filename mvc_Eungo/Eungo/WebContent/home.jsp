@@ -19,13 +19,7 @@
 		<div id="bg-slider" class="owl-carousel owl-theme">
 
 			<div class="item">
-				<img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V">
-			</div>
-			<div class="item">
-				<img src="assets/img/slide1/slider-image-2.jpg" alt="The Last of us">
-			</div>
-			<div class="item">
-				<img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V">
+				<img src="assets/img/slide1/team.jpg" alt="GTA V">
 			</div>
 
 		</div>
@@ -35,10 +29,6 @@
 			<div
 				class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 				<h2>property Searching Just Got So Easy</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam
-					velit adipisci quibusdam aliquam teneturo!</p>
-
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
 
 					<form action="<%=request.getContextPath()%>/board"
@@ -122,72 +112,7 @@
 </div>
 
 <!--Welcome area -->
-<div class="Welcome-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 Welcome-entry  col-sm-12">
-				<div class="col-md-5 col-md-offset-2 col-sm-6 col-xs-12">
-					<div class="welcome_text wow fadeInLeft" data-wow-delay="0.3s"
-						data-wow-offset="100">
-						<div class="row">
-							<div
-								class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-								<!-- /.feature title -->
-								<h2>GARO ESTATE</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-6 col-xs-12">
-					<div class="welcome_services wow fadeInRight" data-wow-delay="0.3s"
-						data-wow-offset="100">
-						<div class="row">
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-home pe-4x"></i>
-									</div>
-									<h3>Any property</h3>
-								</div>
-							</div>
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-users pe-4x"></i>
-									</div>
-									<h3>More Clients</h3>
-								</div>
-							</div>
 
-
-							<div class="col-xs-12 text-center">
-								<i class="welcome-circle"></i>
-							</div>
-
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-notebook pe-4x"></i>
-									</div>
-									<h3>Easy to use</h3>
-								</div>
-							</div>
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-help2 pe-4x"></i>
-									</div>
-									<h3>Any help</h3>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 

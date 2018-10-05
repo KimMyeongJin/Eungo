@@ -1031,8 +1031,9 @@ label small{
 .slider-content h2 {
     font-size: 40px; 
     margin-bottom: 20px;
-    text-transform: uppercase;color: rgba(255, 165, 0, 0.71);
-font-weight: 500;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+	font-weight: 500;
 }
 .slider-content p {
     font-size: 14px;
@@ -1094,8 +1095,7 @@ font-weight: 500;
 page-header
 ======================================================*/
 .page-head{
-    background: #494C53 url("../../assets/img/page-header.jpg") 
-        no-repeat scroll center top / cover;
+    background:#fdc601db;
     color:#FFF;
     position: relative;
     min-height: 140px;
@@ -2810,7 +2810,7 @@ padding-bottom: 15px;
 /*FOOOTER*/
 .footer-area{
 border-top: 1px solid #D1D1D1;
-background: #555 url("../../assets/img/bg-footer.jpg") repeat scroll 0% 0%;
+background: #555 url("../../assets/img/mac.jpg") repeat scroll 0% 0%;
 color: #535353;
 }
 .footer{
