@@ -170,12 +170,10 @@ public class BoardDAO {
 	}
 	
 	public List<BoardVO> new_seven() {
-		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
-			pstmt = conn.prepareStatement(SQL);			
-			pstmt.setInt(1, 7);
-			pstmt.setInt(2, 0);
+			pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 
 			List<BoardVO> list = new ArrayList<>();
@@ -198,6 +196,32 @@ public class BoardDAO {
 				board.setLdate(rs.getString("ldate"));
 				board.setGood(rs.getInt("good"));
 				board.setLphone_number(rs.getString("lphone_number"));
+				list.add(board);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
+	public List<BoardVO> top_three() {
+		String SQL = "SELECT * FROM list AS li JOIN purchase AS pur ON pur.lnumber = li.lnumber ORDER BY pur.total_price DESC LIMIT 3 OFFSET 0";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+
+			List<BoardVO> list = new ArrayList<>();
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setLnumber(rs.getInt("lnumber"));
+				board.setEmail(rs.getString("email"));
+				board.setLtitle(rs.getString("ltitle"));
+				board.setLimage(rs.getString("limage"));
+				board.setTotal_price(rs.getString("total_price"));
 				list.add(board);
 			}
 			return list;

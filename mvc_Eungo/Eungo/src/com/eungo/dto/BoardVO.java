@@ -14,6 +14,7 @@ public class BoardVO {
 	private String youtube;
 	private String cancel_rule;
 	private String lprice;
+	private String total_price;
 	private int lsellcount;
 	private int lviewcount;		
 	private String ldate;
@@ -21,6 +22,12 @@ public class BoardVO {
 	private String lphone_number;
 	
 	
+	public String getTotal_price() {
+		return total_price;
+	}
+	public void setTotal_price(String total_price) {
+		this.total_price = total_price;
+	}
 	public String getStandard_price() {
 		return standard_price;
 	}
