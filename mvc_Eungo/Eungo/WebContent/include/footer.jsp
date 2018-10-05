@@ -16,12 +16,6 @@
 							data-wow-delay="1s">
 						<p>Lorem ipsum dolor cum necessitatibus su quisquam molestias.
 							Vel unde, blanditiis.</p>
-						<ul class="footer-adress">
-							<li><i class="pe-7s-map-marker strong"> </i> 9089 your
-								adress her</li>
-							<li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-							<li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-						</ul>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 wow fadeInRight animated">
