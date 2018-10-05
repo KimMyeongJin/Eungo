@@ -58,7 +58,9 @@ public class PurchaseAction implements Action {
 				request.setAttribute("price_title", standard_title);
 				request.setAttribute("price_time", standard_time);
 				request.setAttribute("board", board);
-				request.setAttribute("seller", seller);
+				request.setAttribute("seller", seller);				
+				int amount = Integer.parseInt(standard_price.replaceAll(",", ""));
+				request.setAttribute("amount", amount);
 			}
 			if (deluxe_price != null) {
 				request.setAttribute("price", deluxe_price);
@@ -66,6 +68,8 @@ public class PurchaseAction implements Action {
 				request.setAttribute("price_time", deluxe_time);
 				request.setAttribute("board", board);
 				request.setAttribute("seller", seller);
+				int amount = Integer.parseInt(deluxe_price.replaceAll(",", ""));
+				request.setAttribute("amount", amount);
 			}
 			if (premium_price != null) {
 				request.setAttribute("price", premium_price);
@@ -73,6 +77,8 @@ public class PurchaseAction implements Action {
 				request.setAttribute("price_time", premium_time);
 				request.setAttribute("board", board);
 				request.setAttribute("seller", seller);
+				int amount = Integer.parseInt(premium_price.replaceAll(",", ""));
+				request.setAttribute("amount", amount);
 			}
 			RequestDispatcher dis = request.getRequestDispatcher(url);
 			dis.forward(request, response);
