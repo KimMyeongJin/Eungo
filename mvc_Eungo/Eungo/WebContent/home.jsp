@@ -121,76 +121,6 @@
 	</div>
 </div>
 
-<!--Welcome area -->
-<div class="Welcome-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 Welcome-entry  col-sm-12">
-				<div class="col-md-5 col-md-offset-2 col-sm-6 col-xs-12">
-					<div class="welcome_text wow fadeInLeft" data-wow-delay="0.3s"
-						data-wow-offset="100">
-						<div class="row">
-							<div
-								class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-								<!-- /.feature title -->
-								<h2>GARO ESTATE</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-6 col-xs-12">
-					<div class="welcome_services wow fadeInRight" data-wow-delay="0.3s"
-						data-wow-offset="100">
-						<div class="row">
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-home pe-4x"></i>
-									</div>
-									<h3>Any property</h3>
-								</div>
-							</div>
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-users pe-4x"></i>
-									</div>
-									<h3>More Clients</h3>
-								</div>
-							</div>
-
-
-							<div class="col-xs-12 text-center">
-								<i class="welcome-circle"></i>
-							</div>
-
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-notebook pe-4x"></i>
-									</div>
-									<h3>Easy to use</h3>
-								</div>
-							</div>
-							<div class="col-xs-6 m-padding">
-								<div class="welcome-estate">
-									<div class="welcome-icon">
-										<i class="pe-7s-help2 pe-4x"></i>
-									</div>
-									<h3>Any help</h3>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
 <!--TESTIMONIALS -->
 <div class="testimonial-area recent-property"
 	style="background-color: #FCFCFC; padding-bottom: 15px;">
@@ -203,33 +133,37 @@
 			</div>
 		</div>
 
-		<%-- <div class="row">
-			<div class="proerty-th">
+		<div class="row" >
+			<div class="row testimonial">
+				<div class="col-md-12" style="text-align: center;">					
 				<c:forEach var="top_three" items="${top_three}">
-					<div class="col-sm-6 col-md-3 p0">
+					<div class="col-sm-6 col-md-3" style="float: none;display: inline-block;">
 						<div class="box-two proerty-item">
 							<div class="item-thumb">
 								<a
-									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}"><img
-									src="${new_list.limage }"></a>
+									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}"><img
+									src="${top_three.limage }"></a>
 							</div>
 							<div class="item-entry overflow">
 								<h5>
 									<a
-										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
+										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}">${top_three.ltitle }</a>
 								</h5>
 								<div class="dot-hr"></div>
 								<span class="pull-left"></span> <span
-									class="proerty-price pull-right">${new_list.standard_price }</span>
+									class="proerty-price pull-right">${top_three.lprice }</span>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
+
+				</div>
 			</div>
 
-		</div> --%>
+		</div>
 	</div>
 </div>
+
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
 </body>
