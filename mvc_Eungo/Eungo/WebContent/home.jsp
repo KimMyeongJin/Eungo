@@ -78,130 +78,26 @@
 
 		<div class="row">
 			<div class="proerty-th">
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-1.jsp"><img
-								src="assets/img/demo/property-1.jpg"></a>
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-1.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-2.jsp"><img
-								src="assets/img/demo/property-2.jpg"></a>
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-2.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
+				<c:forEach var="new_list" items="${new_list}">
+					<div class="col-sm-6 col-md-3 p0">
+						<div class="box-two proerty-item">
+							<div class="item-thumb">
+								<a
+									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}"><img
+									src="${new_list.limage }"></a>
+							</div>
+							<div class="item-entry overflow">
+								<h5>
+									<a
+										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
+								</h5>
+								<div class="dot-hr"></div>
+								<span class="pull-left"></span> <span
+									class="proerty-price pull-right">${new_list.standard_price }</span>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-3.jsp"><img
-								src="assets/img/demo/property-3.jpg"></a>
-
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-3.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-1.jsp"><img
-								src="assets/img/demo/property-4.jpg"></a>
-
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-1.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-3.jsp"><img
-								src="assets/img/demo/property-2.jpg"></a>
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-3.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-2.jsp"><img
-								src="assets/img/demo/property-4.jpg"></a>
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-2.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 p0">
-					<div class="box-two proerty-item">
-						<div class="item-thumb">
-							<a href="property-1.jsp"><img
-								src="assets/img/demo/property-3.jpg"></a>
-						</div>
-						<div class="item-entry overflow">
-							<h5>
-								<a href="property-1.jsp">Super nice villa </a>
-							</h5>
-							<div class="dot-hr"></div>
-							<span class="pull-left"><b>Area :</b> 120m </span> <span
-								class="proerty-price pull-right">$ 300,000</span>
-						</div>
-					</div>
-				</div>
-
+				</c:forEach>
 				<div class="col-sm-6 col-md-3 p0">
 					<div class="box-tree more-proerty text-center">
 						<div class="item-tree-icon">
@@ -303,132 +199,35 @@
 			<div
 				class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
 				<!-- /.feature title -->
-				<h2>Our Customers Said</h2>
+				<h2>판매 top3</h2>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="row testimonial">
-				<div class="col-md-12">
-					<div id="testimonial-slider">
-						<div class="item">
-							<div class="client-text">
-								<p>Nulla quis dapibus nisl. Suspendisse llam sed arcu
-									ultried arcu ultricies !</p>
-								<h4>
-									<strong>Ohidul Islam, </strong><i>Web Designer</i>
-								</h4>
+		<%-- <div class="row">
+			<div class="proerty-th">
+				<c:forEach var="top_three" items="${top_three}">
+					<div class="col-sm-6 col-md-3 p0">
+						<div class="box-two proerty-item">
+							<div class="item-thumb">
+								<a
+									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}"><img
+									src="${new_list.limage }"></a>
 							</div>
-							<div class="client-face wow fadeInRight" data-wow-delay=".9s">
-								<img src="assets/img/client-face1.png" alt="">
-							</div>
-						</div>
-						<div class="item">
-							<div class="client-text">
-								<p>Nulla quis dapibus nisl. Suspendisse llam sed arcu
-									ultried arcu ultricies !</p>
-								<h4>
-									<strong>Ohidul Islam, </strong><i>Web Designer</i>
-								</h4>
-							</div>
-							<div class="client-face">
-								<img src="assets/img/client-face2.png" alt="">
-							</div>
-						</div>
-						<div class="item">
-							<div class="client-text">
-								<p>Nulla quis dapibus nisl. Suspendisse llam sed arcu
-									ultried arcu ultricies !</p>
-								<h4>
-									<strong>Ohidul Islam, </strong><i>Web Designer</i>
-								</h4>
-							</div>
-							<div class="client-face">
-								<img src="assets/img/client-face1.png" alt="">
-							</div>
-						</div>
-						<div class="item">
-							<div class="client-text">
-								<p>Nulla quis dapibus nisl. Suspendisse llam sed arcu
-									ultried arcu ultricies !</p>
-								<h4>
-									<strong>Ohidul Islam, </strong><i>Web Designer</i>
-								</h4>
-							</div>
-							<div class="client-face">
-								<img src="assets/img/client-face2.png" alt="">
+							<div class="item-entry overflow">
+								<h5>
+									<a
+										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
+								</h5>
+								<div class="dot-hr"></div>
+								<span class="pull-left"></span> <span
+									class="proerty-price pull-right">${new_list.standard_price }</span>
 							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 
-		</div>
-	</div>
-</div>
-
-<!-- Count area -->
-<div class="count-area">
-	<div class="container">
-		<div class="row">
-			<div
-				class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-				<!-- /.feature title -->
-				<h2>You can trust Us</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 col-xs-12 percent-blocks m-main"
-				data-waypoint-scroll="true">
-				<div class="row">
-					<div class="col-sm-3 col-xs-6">
-						<div class="count-item">
-							<div class="count-item-circle">
-								<span class="pe-7s-users"></span>
-							</div>
-							<div class="chart" data-percent="5000">
-								<h2 class="percent" id="counter">0</h2>
-								<h5>HAPPY CUSTOMER</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="count-item">
-							<div class="count-item-circle">
-								<span class="pe-7s-home"></span>
-							</div>
-							<div class="chart" data-percent="12000">
-								<h2 class="percent" id="counter1">0</h2>
-								<h5>Servcies in stock</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="count-item">
-							<div class="count-item-circle">
-								<span class="pe-7s-flag"></span>
-							</div>
-							<div class="chart" data-percent="120">
-								<h2 class="percent" id="counter2">0</h2>
-								<h5>City registered</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="count-item">
-							<div class="count-item-circle">
-								<span class="pe-7s-graph2"></span>
-							</div>
-							<div class="chart" data-percent="5000">
-								<h2 class="percent" id="counter3">5000</h2>
-								<h5>DEALER BRANCHES</h5>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
+		</div> --%>
 	</div>
 </div>
 <!-- Footer area-->

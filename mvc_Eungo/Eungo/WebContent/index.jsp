@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-	location.href="home.jsp"; 
+	location.href="<%=request.getContextPath() %>/board?cmd=index_board"; 
 </script>
 </body>
 </html>
