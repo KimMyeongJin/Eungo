@@ -111,11 +111,6 @@
 	</div>
 </div>
 
-<!--Welcome area -->
-
-
-
-
 <!--TESTIMONIALS -->
 <div class="testimonial-area recent-property"
 	style="background-color: #FCFCFC; padding-bottom: 15px;">
@@ -128,33 +123,37 @@
 			</div>
 		</div>
 
-		<%-- <div class="row">
-			<div class="proerty-th">
+		<div class="row" >
+			<div class="row testimonial">
+				<div class="col-md-12" style="text-align: center;">					
 				<c:forEach var="top_three" items="${top_three}">
-					<div class="col-sm-6 col-md-3 p0">
+					<div class="col-sm-6 col-md-3" style="float: none;display: inline-block;">
 						<div class="box-two proerty-item">
 							<div class="item-thumb">
 								<a
-									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}"><img
-									src="${new_list.limage }"></a>
+									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}"><img
+									src="${top_three.limage }"></a>
 							</div>
 							<div class="item-entry overflow">
 								<h5>
 									<a
-										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
+										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}">${top_three.ltitle }</a>
 								</h5>
 								<div class="dot-hr"></div>
 								<span class="pull-left"></span> <span
-									class="proerty-price pull-right">${new_list.standard_price }</span>
+									class="proerty-price pull-right">${top_three.lprice }</span>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
+
+				</div>
 			</div>
 
-		</div> --%>
+		</div>
 	</div>
 </div>
+
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
 </body>
