@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Submit property Page</title>
+<title>Mvc Eungo | Submit Service Page</title>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/editor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>

@@ -59,6 +59,23 @@ public class BoardDAO {
 		}
 		return 0;
 	}
+	
+	public int good_insert(int good,int lnumber) {
+		String SQL = "UPDATE list SET good = ? WHERE lnumber = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, good);
+			pstmt.setInt(2, lnumber);			
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return 0;
+	}
 
 	public int boardModify(BoardVO board) {
 		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, standard_price = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
@@ -219,9 +236,10 @@ public class BoardDAO {
 				BoardVO board = new BoardVO();
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setEmail(rs.getString("email"));
+				board.setGood(rs.getInt("good"));
 				board.setLtitle(rs.getString("ltitle"));
 				board.setLimage(rs.getString("limage"));
-				board.setLprice(rs.getString("total_price"));
+				board.setLprice(String.format("%,d", Integer.parseInt(rs.getString("total_price"))));
 				list.add(board);
 			}
 			return list;

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Service page</title>
+<title>Mvc Eungo | Service page</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/lightslider.min.css">
 <script type="text/javascript"
@@ -202,19 +202,29 @@
 
 					<div class="section" id="div4">
 						<h5 class="s-property-title">서비스 평가</h5>
-						<div id="del1">
-							<c:if
-								test="${sessionScope.email ne null && sessionScope.email eq pur.email}">
-								<div class="starRev">
-  									<span class="starR on">별1</span>
-  									<span class="starR">별2</span>
-  									<span class="starR">별3</span>
- 									<span class="starR">별4</span>
-  									<span class="starR">별5</span>	
+						<div style="text-align: center;">
+							<c:forEach var="i" begin="1" end="${board.good }" step="1">
+  								<span class="starR on">별${i}</span>
+  							</c:forEach>
+  							<c:forEach var="i" begin="1" end="${5 - board.good }" step="1">
+  									<span class="starR">별${i}</span>
+  							</c:forEach>									
 								</div>
+								<hr>
+						<div id="del1">		
+							<c:if
+								test="${sessionScope.email ne null && sessionScope.email eq pur.email}">								
+								<div class="starRev">
+  									<span class="starR" id="star1">별1</span>
+  									<span class="starR" id="star2">별2</span>
+  									<span class="starR" id="star3">별3</span>
+ 									<span class="starR" id="star4">별4</span>
+  									<span class="starR" id="star5">별5</span>	
+								</div>
+								<br>
 								<div class="form-group">
 									<textarea class="form-control" id="replyData" rows="3"></textarea>
-								</div>
+								</div>								
 								<button class="btn btn-default" type="submit"
 									onclick="sendReply()">입력</button>
 							</c:if>
@@ -243,7 +253,14 @@
 									id="${re_list.reply_number }answer_locate">
 									<h5 class="mt-0">${re_list.reply_comment}</h5>
 									<small>${re_list.email }</small> ${re_list.re_date }<br>
-									${re_list.star }
+									<div>
+										<c:forEach var="i" begin="1" end="${re_list.star }" step="1">
+  											<span class="starR on">별${i}</span>
+  										</c:forEach>
+  										<c:forEach var="i" begin="1" end="${5 - re_list.star }" step="1">
+  											<span class="starR">별${i}</span>
+  										</c:forEach>									
+									</div>
 								</div>
 								<div id="del2">
 									<c:if
@@ -485,8 +502,7 @@
 			}
 		});
 	});
-</script>
-<script>
+
 function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
 		var newDiv = document.createElement('div');
 		newDiv.className = 'media mb-4';
@@ -504,13 +520,21 @@ function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
 	}
 	
 	function sendReply() {
-		var reply_comment = $("#replyData").val();
+		var reply_comment = $("#replyData").val();		
+		var star_value = 0;
 		if (reply_comment == ' ') {
 			alert('글을 입력하세요.');
 			return false;
 		}
-
+		
+		for(var i = 1;i<6;i++ ){
+			if($("#star"+i).attr("class")=='starR on'){
+				star_value++;
+			}
+		}
+		
 		var jsonData = {
+			"star" : star_value,
 			"reply_comment" : reply_comment,
 			"email" : "${sessionScope.email}",
 			"lnumber" : "${board.lnumber}",
@@ -616,6 +640,12 @@ function addDiv(reply_number, lnumber, email, reply_comment,re_date,star){
 			}
 		});
 	}
+	
+	$('.starRev span').click(function(){
+		  $(this).parent().children('span').removeClass('on');
+		  $(this).addClass('on').prevAll('span').addClass('on');
+		  return false;
+		});
 </script>
 </body>
 </html>

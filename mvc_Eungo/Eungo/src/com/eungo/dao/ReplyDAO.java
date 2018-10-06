@@ -92,6 +92,7 @@ public class ReplyDAO {
 				reply.setReply_number(rs.getInt("reply_number"));
 				reply.setReply_comment(rs.getString("reply_comment"));
 				reply.setReply_answer(rs.getString("reply_answer"));
+				reply.setStar(rs.getInt("star"));
 				reply.setLnumber(rs.getInt("lnumber"));
 				reply.setEmail(rs.getString("email"));
 				reply.setRe_date(rs.getString("re_date"));
@@ -134,6 +135,30 @@ public class ReplyDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return null;
+	}
+	
+	public int select_star(int lnumber) {
+		String SQL = "SELECT star FROM reply WHERE lnumber = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);			
+			pstmt.setInt(1, lnumber);
+			rs = pstmt.executeQuery();
+			int star = 0;
+			int reply_people = 0;
+			while(rs.next()) {				
+				star = star + rs.getInt("star");
+				reply_people++;
+			}
+			//double d = star/(double)reply_people; 소수점 1자리까지 표시할 때 사용
+			return star/reply_people;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return 0;
 	}
 	
 	public int reply_del(int reply_number) {

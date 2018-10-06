@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Properties page</title>
+<title>Mvc Eungo | Services page</title>
 
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>

@@ -39,8 +39,7 @@ public class MemberUpdateAction implements Action{
 		}else if(member.getGender().equals(null)) {
 			Script.moving(response, "세션이 만료되었습니다", login_url);
 		}
-		seller = dao.discriminate_seller(email);
-		System.out.println(seller);
+		seller = dao.discriminate_seller(email);		
 		seller_intro.setSeller_intro(sdao.seller_intro(email));
 		request.setAttribute("seller", seller);
 		request.setAttribute("seller_intro", seller_intro);

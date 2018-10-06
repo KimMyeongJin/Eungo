@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Account page</title>
+<title>Mvc Eungo | Seller Register</title>
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
 <!-- End of header -->

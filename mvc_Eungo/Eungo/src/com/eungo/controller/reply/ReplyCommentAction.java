@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eungo.action.Action;
+import com.eungo.dao.BoardDAO;
 import com.eungo.dao.PurchaseDAO;
 import com.eungo.dao.ReplyDAO;
 import com.eungo.dto.ReplyVO;
@@ -31,10 +32,19 @@ public class ReplyCommentAction implements Action{
 		ReplyVO reply = gson.fromJson(sb.toString(), ReplyVO.class);
 		
 		//DB저장
+		BoardDAO bdao = new BoardDAO();
 		PurchaseDAO pur_dao = new PurchaseDAO();
 		pur_dao.reply_check(reply.getPur_number());
 		ReplyDAO dao = new ReplyDAO();
+		int lnumber = reply.getLnumber();
 		int result = dao.insert_Reply(reply);
+		int good = dao.select_star(lnumber);
+		int star_insert_result = bdao.good_insert(good, lnumber);
+		if(star_insert_result==1) {
+			System.out.println("잘들어감");
+		}else {
+			System.out.println("DB에러남");
+		}
 		reply = dao.select_Newest(reply.getEmail(),reply.getLnumber());
 		String data = gson.toJson(reply);
 		

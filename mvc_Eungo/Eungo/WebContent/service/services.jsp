@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Properties page</title>
+<title>Mvc Eungo | Services page</title>
 
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
@@ -200,13 +200,13 @@
 												<p style="display: none;">Suspendisse ultricies
 													Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse
 													ultricies commodo arcu nec pretium ...</p>
-												<div class="property-icon">
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/bed.png">별표
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">할
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/cars.png">거임
+												<div>
+													<c:forEach var="i" begin="1" end="${list.good }" step="1">
+  															<span class="starR on">별${i}</span>
+  													</c:forEach>
+  													<c:forEach var="i" begin="1" end="${ 5- list.good }" step="1">
+  															<span class="starR">별${i}</span>
+  													</c:forEach>									
 												</div>
 											</div>
 										</div>

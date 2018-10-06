@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Payment Page</title>
+<title>Mvc Eungo | Purchase Page</title>
 <script>
 	function goPay(){
 	

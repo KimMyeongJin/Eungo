@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>GARO ESTATE | Home page</title>
+<title>Mvc Eungo | Home page</title>
 
 <!-- Start header -->
 <%@include file="/include/header.jsp"%>
@@ -134,7 +134,7 @@
 									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}"><img
 									src="${top_three.limage }"></a>
 							</div>
-							<div class="item-entry overflow">
+							<div class="item-entry overflow" style="padding-bottom: 8px">
 								<h5>
 									<a
 										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}">${top_three.ltitle }</a>
@@ -142,6 +142,12 @@
 								<div class="dot-hr"></div>
 								<span class="pull-left"></span> <span
 									class="proerty-price pull-right">${top_three.lprice }원	</span>
+								<c:forEach var="i" begin="1" end="${top_three.good }" step="1">
+  									<span class="starR on">별${i}</span>
+  								</c:forEach>
+  								<c:forEach var="i" begin="1" end="${ 5- top_three.good }" step="1">
+  									<span class="starR">별${i}</span>
+  								</c:forEach>
 							</div>
 						</div>
 					</div>
