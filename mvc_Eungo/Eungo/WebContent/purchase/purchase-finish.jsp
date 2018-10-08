@@ -36,9 +36,9 @@
 				<div class="col-md-12" style="text-align: center;">
 					<div class="col-sm-6 col-md-3" style="float: none;display: inline-block;">
 						<div class="box-two proerty-item">
-							결제번호 : pur_number
+							결제번호 : ${purchase.pur_number }
 							<br>
-							결제시간 : date
+							결제시간 : ${purchase.date }
 						</div>
 					</div>
 				</div>

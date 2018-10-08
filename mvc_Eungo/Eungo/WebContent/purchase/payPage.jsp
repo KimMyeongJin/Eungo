@@ -25,7 +25,7 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
-    amount : amount, 					 //판매 가격
+    amount : 100, 					 //판매 가격
     buyer_email : 'iamport@siot.do', //user_email
     buyer_name : '주문자이름:',			 //user_name
     buyer_tel : '010-1234-5678',	 //user_phone
@@ -60,7 +60,7 @@ IMP.request_pay({
         msg += '에러내용 : ' + rsp.error_msg;
     }
     alert(msg);
-    opener.location.href='<%=request.getContextPath()%>/index.jsp'; 
+    opener.location.href='<%=request.getContextPath()%>/purchase?cmd=purchase_finish'; 
     window.close();
 });
 </script>

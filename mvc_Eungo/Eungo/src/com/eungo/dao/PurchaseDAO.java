@@ -73,5 +73,30 @@ public class PurchaseDAO {
 		return -1;
 	}
 	
+	public PurchaseVO select(String email) {
+		String SQL = "SELECT * FROM purchase WHERE email = ? ORDER BY pur_number DESC";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				PurchaseVO purchase = new PurchaseVO();
+				purchase.setPur_number(rs.getInt("pur_number"));
+				purchase.setLnumber(rs.getInt("lnumber"));
+				purchase.setEmail(rs.getString("email"));
+				purchase.setProduct_name(rs.getString("product_name"));
+				purchase.setQuantity(rs.getInt("quantity"));
+				purchase.setPrice(rs.getString("price"));
+				purchase.setTotal_price(rs.getString("total_price"));
+				purchase.setDate(rs.getString("date"));
+				return purchase;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 }
