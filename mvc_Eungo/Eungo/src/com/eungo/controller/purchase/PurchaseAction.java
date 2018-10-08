@@ -40,6 +40,7 @@ public class PurchaseAction implements Action {
 		String email = null;
 		if (session.getAttribute("email") != null) {
 			lnumber = Integer.parseInt(request.getParameter("lnumber"));
+			request.setAttribute("lnumber", lnumber);
 			board = dao.getSelectOne(lnumber);
 			email = request.getParameter("email");
 			seller = mdao.select_one(email);

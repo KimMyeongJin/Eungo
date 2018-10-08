@@ -13,10 +13,11 @@
 <title>Mvc Eungo | Purchase Page</title>
 <script>
 	function goPay(){
-	
-	    var amount = document.querySelector('input[name="submit_price"]').value	 	
-		var popPay = window.open("purchase/payPage.jsp?amount="+amount,"pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-	     
+		var url = "<%=request.getContextPath()%>/purchase/payPage.jsp";
+		var title = "pop";
+		var status = "width=570,height=420, scrollbars=yes, resizable=yes";
+   	 	
+		window.open(url,title,status);	     
 	}
 </script>
 <!-- Start header -->
@@ -41,7 +42,8 @@
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
 		<div class="col-md-3"></div>
-		<!-- <form action="index.jsp" method="post" onsubmit="goPay()"> -->
+		<!-- <form name="form"> -->
+			<input type="hidden" id="lnumber" name="lnumber" value="${lnumber }">
 			<input type="hidden" id="price" name="price" value="${price }">
 			<input type="hidden" id="submit_price" name="submit_price" value="${amount }">
 			<div class="col-md-6">
@@ -84,10 +86,10 @@
 								</thead>
 								<tbody class="order-option">
 									<tr>
-										<td><span>${price_title }</span></td>
+										<td><span id="price_title">${price_title }</span></td>										
 										<td class="text-center"><a id="decreaseQuantity"> <i
 												class="fa fa-minus" aria-hidden="true"></i>
-										</a> <span id="numberUpDown"><b>1</b></span> <a
+										</a> <b><span id="numberUpDown">1</span></b> <a
 											id="increaseQuantity"> <i class="fa fa-plus"
 												aria-hidden="true"></i>
 										</a></td>
@@ -156,7 +158,7 @@
 				<div class="box-for overflow">
 					<div class="col-xs-8"></div>
 					<div class="col-xs-4">
-						<button type="submit" id="payBtn" name="payBtn" class="btn btn-default" onclick="goPay()">결제하기</button>
+						<button type="submit" id="payBtn" name="payBtn" class="btn btn-default" onclick="javascript:goPay()">결제하기</button>
 					</div>
 				</div>
 			</div>

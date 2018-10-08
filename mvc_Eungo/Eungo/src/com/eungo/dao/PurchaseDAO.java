@@ -44,12 +44,34 @@ public class PurchaseDAO {
 			pstmt.setInt(1, pur_lnumber);
 			pstmt.executeUpdate();
 			return 1;
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) {			
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);			
 		}
 		return -1;
 	}
+	
+	public int insert(PurchaseVO purchase) {
+		String SQL = "INSERT INTO purchase(lnumber, email, product_name, quantity, price, total_price, date, reply_check) VALUES(?,?,?,?,?,?,now(),false)";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, purchase.getLnumber());
+			pstmt.setString(2, purchase.getEmail());
+			pstmt.setString(3, purchase.getProduct_name());
+			pstmt.setInt(4, purchase.getQuantity());
+			pstmt.setString(5, purchase.getPrice());
+			pstmt.setString(6, purchase.getTotal_price());
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
 }

@@ -25,6 +25,7 @@ import com.eungo.controller.member.PwCheckAction;
 import com.eungo.controller.member.SellerRegisterAction;
 import com.eungo.controller.member.SellerRegisterProcAction;
 import com.eungo.controller.purchase.PurchaseAction;
+import com.eungo.controller.purchase.PurchaseCompleteAction;
 import com.eungo.controller.reply.AnswerDeleteAction;
 import com.eungo.controller.reply.ReplyAnswerAction;
 import com.eungo.controller.reply.ReplyCommentAction;
@@ -101,6 +102,8 @@ public class ActionFactory {
 			return new SellerRegisterAction();
 		} else if (cmd.equals("seller_registerProc")) {
 			return new SellerRegisterProcAction();
+		} else if (cmd.equals("purchase_complete")) {
+			return new PurchaseCompleteAction();
 		}
 		return null;
 	}

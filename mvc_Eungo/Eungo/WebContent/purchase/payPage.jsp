@@ -13,8 +13,11 @@
 
 <script>
 IMP.init('imp10016557');
-var amount =<%= request.getParameter("amount") %>
-
+var amount = window.opener.document.getElementById('submit_price').value;
+var lnumber = window.opener.document.getElementById('lnumber').value;
+var product_name = window.opener.$("#price_title").html();
+var quantity = window.opener.$("#numberUpDown").html();
+var price = window.opener.document.getElementById('price').value;
 
 
 IMP.request_pay({
@@ -30,6 +33,23 @@ IMP.request_pay({
     buyer_postcode : '123-456'		 //user_postcode
 }, function(rsp) {
     if ( rsp.success ) {
+    	var jsonData = {
+	               "lnumber" : lnumber,
+	               "product_name" : product_name,
+	               "quantity" : quantity,
+	               "price" : price,
+	               "total_price" : amount
+	            };
+	            var result = JSON.stringify(jsonData); 
+	        // jQuery로 HTTP 요청
+	        jQuery.ajax({
+	            url: "<%=request.getContextPath()%>/purchase?cmd=purchase_complete", // 가맹점 서버
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            dataType : "text",
+	            data: result
+	        }).done(function (data) {				        	
+		});
         var msg = '결제가 완료되었습니다.';        
         msg += '고유ID : ' + rsp.imp_uid;
         msg += '상점 거래ID : ' + rsp.merchant_uid;
