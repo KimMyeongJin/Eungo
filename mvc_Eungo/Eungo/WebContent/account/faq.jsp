@@ -86,7 +86,7 @@
 		<!-- end row -->
 	</div>
 </div>
-<br>
+
 
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>

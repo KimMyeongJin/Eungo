@@ -28,7 +28,7 @@
 		<div class="row">
 			<div
 				class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-				<h2>property Searching Just Got So Easy</h2>
+				<h2>Service Searching Just Got So Easy</h2>
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
 
 					<form action="<%=request.getContextPath()%>/board"

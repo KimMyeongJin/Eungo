@@ -90,10 +90,11 @@
 							<div class="form-group">
 								<label for="password">Password</label> <input type="password" required="required"
 									class="form-control" name="password" id="password">
-							</div>
-							<div class="text-center">
+							</div>							
+							<div class="text-center">								
 								<button type="submit" class="btn btn-default">Log in</button>
 							</div>
+							<!-- <a href="">아이디,비밀번호 찾기</a> -->
 							</form>							
 						<br>						
 
@@ -105,29 +106,15 @@
 							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>													
 							<a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
 							<a class="login-social" href="<%=request.getContextPath()%>/member?cmd=naver_login"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
-							
-						
-						
-					
-							
-					
-
-
-
 						<p>
-
 						</p>
 					</div>
-
 				</div>
 			</div>
-
 		</div>
 	</div>
-
 	<!-- Footer area-->
-	<%@include file="../include/footer.jsp"%>
-	
+	<%@include file="../include/footer.jsp"%>	
 	<script>
 		window.onload = function() {
 			document.getElementById("validationEmail").onchange = sendId;			

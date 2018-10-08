@@ -189,7 +189,7 @@
 												style="height: 225px" src="${list.limage}"></a>
 											</div>
 
-											<div class="item-entry overflow">
+											<div class="item-entry overflow" >
 												<h5 style="text-overflow: ellipsis; overflow: hidden; height: 17px">
 													<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}">
 														${list.ltitle } </a>
