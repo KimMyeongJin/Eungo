@@ -27,6 +27,7 @@ import com.eungo.controller.member.SellerRegisterProcAction;
 import com.eungo.controller.purchase.PurchaseAction;
 import com.eungo.controller.purchase.PurchaseCompleteAction;
 import com.eungo.controller.purchase.PurchaseFinishAction;
+import com.eungo.controller.purchase.PurchaseListAction;
 import com.eungo.controller.reply.AnswerDeleteAction;
 import com.eungo.controller.reply.ReplyAnswerAction;
 import com.eungo.controller.reply.ReplyCommentAction;
@@ -107,6 +108,8 @@ public class ActionFactory {
 			return new PurchaseCompleteAction();
 		} else if (cmd.equals("purchase_finish")) {
 			return new PurchaseFinishAction();
+		} else if (cmd.equals("purchase_list")) {
+			return new PurchaseListAction();
 		}
 		return null;
 	}

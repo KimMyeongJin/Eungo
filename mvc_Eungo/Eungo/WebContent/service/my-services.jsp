@@ -195,18 +195,11 @@
 				</div>
 			</div>
 			<div class="col-md-3 p0 padding-top-40">
-				<div class="blog-asside-right">
+				<div class="blog-asside-right">					
 					<div
 						class="panel panel-default sidebar-menu wow fadeInRight animated">
 						<div class="panel-heading">
-							<h3 class="panel-title">Hello Kimaro</h3>
-						</div>
-						<div class="panel-body search-widget"></div>
-					</div>
-					<div
-						class="panel panel-default sidebar-menu wow fadeInRight animated">
-						<div class="panel-heading">
-							<h3 class="panel-title">Recommended</h3>
+							<h3 class="panel-title">추천 서비스</h3>
 						</div>
 						<div class="panel-body recent-property-widget"></div>
 					</div>

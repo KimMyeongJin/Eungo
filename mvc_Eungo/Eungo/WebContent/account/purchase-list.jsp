@@ -31,137 +31,42 @@
 		<div class="row">
 			<div
 				class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-				<div class="section">
-					<div class="page-subheader sorting pl0 pr-10">
-						<ul class="sort-by-list pull-left">
-							<li class="active"><a href="javascript:void(0);"
-								class="order_by_date" data-orderby="property_date"
-								data-order="ASC"> Service Date <i
-									class="fa fa-sort-amount-asc"></i>
-							</a></li>
-							<li class=""><a href="javascript:void(0);"
-								class="order_by_price" data-orderby="property_price"
-								data-order="DESC"> service Price <i
-									class="fa fa-sort-numeric-desc"></i>
-							</a></li>
-						</ul>
-
-						<!--/ .sort-by-list-->
-						<div class="items-per-page pull-right">
-							<label for="items_per_page"><b>Servcie per page :</b></label>
-							<div class="sel">
-								<select id="items_per_page" name="per_page"
-									onchange="per_page()">
-									<c:choose>
-										<c:when test="${per_page == 3 }">
-											<option value="3" selected="selected">3</option>
-										</c:when>
-										<c:otherwise>
-											<option value="3">3</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 6 }">
-											<option value="6" selected="selected">6</option>
-										</c:when>
-										<c:otherwise>
-											<option value="6">6</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 9 }">
-											<option value="9" selected="selected">9</option>
-										</c:when>
-										<c:otherwise>
-											<option value="9">9</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 12 }">
-											<option value="12" selected="selected">12</option>
-										</c:when>
-										<c:otherwise>
-											<option value="12">12</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 15 }">
-											<option value="15" selected="selected">15</option>
-										</c:when>
-										<c:otherwise>
-											<option value="15">15</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 30 }">
-											<option value="30" selected="selected">30</option>
-										</c:when>
-										<c:otherwise>
-											<option value="3">30</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 45 }">
-											<option value="45" selected="selected">45</option>
-										</c:when>
-										<c:otherwise>
-											<option value="45">45</option>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${per_page == 60 }">
-											<option value="60" selected="selected">60</option>
-										</c:when>
-										<c:otherwise>
-											<option value="60">60</option>
-										</c:otherwise>
-									</c:choose>
-								</select>
-							</div>
-							<!--/ .sel-->
-						</div>
-						<!--/ .items-per-page-->
-					</div>
+				<div class="section">					
 				</div>
 
 				<div class="section">
 					<div id="list-type" class="proerty-th-list">
-						<c:forEach var="my_list" items="${my_list }">
+						<c:forEach var="board" items="${board }" varStatus="status">
 							<div class="col-md-4 p0">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 										<a
-											href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}"><img
-											src="${my_list.limage }"></a>
+											href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${purchase[status.index].lnumber}"><img
+											src="${board.limage }"></a>
 									</div>
 									<div class="item-entry overflow">
 										<h5>
 											<a
-												href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}">
-												${my_list.ltitle}</a>
+												href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${purchase[status.index].lnumber}">
+												${board.ltitle}</a>
 										</h5>
-										<div class="dot-hr"></div>
-										<span class="pull-left"></span> <span
-											class="proerty-price pull-right">
-											${my_list.standard_price} 원</span>
-										<div
-											style="text-overflow: ellipsis; overflow: hidden; height: 120px">${my_list.lcontent}</div>
+										<div class="dot-hr">패키지 : ${purchase[status.index].product_name}</div>
+										<span class="pull-left">구매한 날짜 : ${purchase[status.index].date}</span><br>
+										<span class="pull-left">단가 : ${purchase[status.index].price}원</span><br>
+										<span class="pull-left">수량 : ${purchase[status.index].quantity}개</span>
+										 <span class="proerty-price pull-right">
+											${purchase[status.index].total_price} 원</span>
 										<div class="property-icon">
-											<c:forEach var="i" begin="1" end="${my_list.good }"
+											<c:forEach var="i" begin="1" end="${board.good }"
 												step="1">
 												<span class="starR on">별${i}</span>
 											</c:forEach>
-											<c:forEach var="i" begin="1" end="${ 5- my_list.good }"
+											<c:forEach var="i" begin="1" end="${ 5- board.good }"
 												step="1">
 												<span class="starR">별${i}</span>
 											</c:forEach>
-											<div class="dealer-action pull-right">
-												<a
-													href="<%=request.getContextPath()%>/board?cmd=service_modify&lnumber=${my_list.lnumber}"
-													class="button">수정 </a> <a
-													href="<%=request.getContextPath()%>/board?cmd=service_delete&lnumber=${my_list.lnumber}"
-													class="button delete_user_car">삭제</a> <a
-													href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${my_list.lnumber}"
+											<div class="pull-right">
+												  <a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${purchase[status.index].lnumber}"
 													class="button">보기</a>
 											</div>
 										</div>
@@ -179,13 +84,12 @@
 								<c:choose>
 									<c:when test="${paging eq null }">
 										<li><a
-											href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=1&per_page=9">해당
-												게시물이 없습니다</a></li>
+											href="<%=request.getContextPath()%>/board?cmd=index_board">구매한 내역이 없습니다</a></li>
 									</c:when>
 									<c:otherwise>
 										<c:forEach var="paging" items="${paging }">
 											<li><a
-												href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=${paging.value}&per_page=${per_page}">${paging.key}</a></li>
+												href="<%=request.getContextPath()%>/purchase?cmd=purchase_list&pageNum=${paging.value}">${paging.key}</a></li>
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
@@ -195,18 +99,11 @@
 				</div>
 			</div>
 			<div class="col-md-3 p0 padding-top-40">
-				<div class="blog-asside-right">
+				<div class="blog-asside-right">					
 					<div
 						class="panel panel-default sidebar-menu wow fadeInRight animated">
 						<div class="panel-heading">
-							<h3 class="panel-title">Hello Kimaro</h3>
-						</div>
-						<div class="panel-body search-widget"></div>
-					</div>
-					<div
-						class="panel panel-default sidebar-menu wow fadeInRight animated">
-						<div class="panel-heading">
-							<h3 class="panel-title">Recommended</h3>
+							<h3 class="panel-title">추천 서비스</h3>
 						</div>
 						<div class="panel-body recent-property-widget"></div>
 					</div>

@@ -75,7 +75,7 @@
 													</c:when>
 												</c:choose>
 												<li><a
-													href="<%=request.getContextPath()%>purchase/?cmd=purchase_list">구매목록</a></li>
+													href="<%=request.getContextPath()%>/purchase?cmd=purchase_list&pageNum=1">구매목록</a></li>
 												<li><a
 													href="<%=request.getContextPath()%>/member?cmd=member_update">프로필 보기</a></li>
 											</ul>
