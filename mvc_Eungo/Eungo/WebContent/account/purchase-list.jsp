@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>Mvc Eungo | My Services Page</title>
+<title>Mvc Eungo | Purchase List</title>
 
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">내가 등록한 서비스</h1>
+				<h1 class="page-title">구매한 서비스</h1>
 			</div>
 		</div>
 	</div>

@@ -18,7 +18,7 @@ var lnumber = window.opener.document.getElementById('lnumber').value;
 var product_name = window.opener.$("#price_title").html();
 var quantity = window.opener.$("#numberUpDown").html();
 var price = window.opener.document.getElementById('price').value;
-
+var seller_email = window.opener.document.getElementById('seller_email').value;
 
 IMP.request_pay({
     pg : 'inicis', // version 1.1.0부터 지원.
@@ -38,7 +38,8 @@ IMP.request_pay({
 	               "product_name" : product_name,
 	               "quantity" : quantity,
 	               "price" : price,
-	               "total_price" : amount
+	               "total_price" : amount,
+	               "seller_email" : seller_email
 	            };
 	            var result = JSON.stringify(jsonData); 
 	        // jQuery로 HTTP 요청
@@ -51,10 +52,10 @@ IMP.request_pay({
 	        }).done(function (data) {				        	
 		});
         var msg = '결제가 완료되었습니다.';        
-        msg += '고유ID : ' + rsp.imp_uid;
+       /*  msg += '고유ID : ' + rsp.imp_uid;
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
-        msg += '카드 승인번호 : ' + rsp.apply_num;
+        msg += '카드 승인번호 : ' + rsp.apply_num; */
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;

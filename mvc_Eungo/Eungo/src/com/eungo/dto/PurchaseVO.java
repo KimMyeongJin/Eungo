@@ -8,6 +8,7 @@ public class PurchaseVO {
 	private int quantity;
 	private String price;
 	private String total_price;
+	private String seller_email;
 	private String date;
 	private boolean reply_cheack;
 	
@@ -16,12 +17,6 @@ public class PurchaseVO {
 	}
 	public void setPur_number(int pur_number) {
 		this.pur_number = pur_number;
-	}
-	public boolean isReply_cheack() {
-		return reply_cheack;
-	}
-	public void setReply_cheack(boolean reply_cheack) {
-		this.reply_cheack = reply_cheack;
 	}
 	public String getEmail() {
 		return email;
@@ -59,10 +54,22 @@ public class PurchaseVO {
 	public void setTotal_price(String total_price) {
 		this.total_price = total_price;
 	}
+	public String getSeller_email() {
+		return seller_email;
+	}
+	public void setSeller_email(String seller_email) {
+		this.seller_email = seller_email;
+	}
 	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public boolean isReply_cheack() {
+		return reply_cheack;
+	}
+	public void setReply_cheack(boolean reply_cheack) {
+		this.reply_cheack = reply_cheack;
 	}
 }

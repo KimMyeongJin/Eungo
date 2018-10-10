@@ -9,97 +9,65 @@
 
 				<div class="col-md-3 col-sm-6 wow fadeInRight animated">
 					<div class="single-footer">
-						<h4>About us</h4>
+						<h4>(주)은고 사업자 정보</h4>
 						<div class="footer-title-line"></div>
 
 						<img src="<%=request.getContextPath() %>/assets/img/footer-logo2.png" alt="" class="wow pulse"
 							data-wow-delay="1s">
-						<p>Lorem ipsum dolor cum necessitatibus su quisquam molestias.
-							Vel unde, blanditiis.</p>
+						<p>-포트폴리오 프로젝트 </p>												
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 wow fadeInRight animated">
 					<div class="single-footer">
-						<h4>Quick links</h4>
+						<h4>카테고리</h4>
 						<div class="footer-title-line"></div>
 						<ul class="footer-menu">
-							<li><a href="<%=request.getContextPath() %>/service/services.jsp">sales</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="<%=request.getContextPath() %>/account/submit-service.jsp">Submit service </a></li>
-							<li><a href="<%=request.getContextPath() %>/account/contact.jsp">Contact us</a></li>
-							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">fqa</a></li>
-							<li><a href="<%=request.getContextPath() %>/account/faq.jsp">Terms </a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=워드프레스">워드프레스</a></li>							
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=웹사이트+개발">웹사이트 개발</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=쇼핑몰·커머스">쇼핑몰·커머스</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=모바일앱·웹">모바일앱·웹</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=프로그램+개발">프로그램 개발</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=게임">게임</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=데이터베이스">데이터베이스</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=데이터분석·리포트">데이터분석·리포트</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=서버+및+기술지원">서버 및 기술지원</a></li>	
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=QA·테스트">QA·테스트</a></li>				
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=파일변환">파일변환</a></li>
+							<li style="height: 22px"><a href="<%=request.getContextPath() %>/board?cmd=smart_search&search_text=&per_page=9&pageNum=1&search_category=챗봇">챗봇</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 wow fadeInRight animated">
 					<div class="single-footer">
-						<h4>Last News</h4>
+						<h4>팀 소개</h4>
 						<div class="footer-title-line"></div>
-						<ul class="footer-blog">
-							<li>
-								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="<%=request.getContextPath() %>/single/single.jsp"> <img
-										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
-									</a> <span class="blg-date">12-12-2016</span>
-
-								</div>
-								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-									<h6>
-										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
-									</h6>
-									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
-										dolor sit amet, nulla ...</p>
-								</div>
+						<ul class="footer-menu">
+							<li><a href="#">강석모</a>
 							</li>
-
-							<li>
-								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="<%=request.getContextPath() %>/single/single.jsp"> <img
-										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
-									</a> <span class="blg-date">12-12-2016</span>
-
-								</div>
-								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-									<h6>
-										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
-									</h6>
-									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
-										dolor sit amet, nulla ...</p>
-								</div>
+							<li><a href="#">이주영</a>							
 							</li>
-
-							<li>
-								<div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-									<a href="single/single.jsp"> <img
-										src="<%=request.getContextPath() %>/assets/img/demo/small-proerty-2.jpg">
-									</a> <span class="blg-date">12-12-2016</span>
-
-								</div>
-								<div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-									<h6>
-										<a href="<%=request.getContextPath() %>/single/single.jsp">Add news functions </a>
-									</h6>
-									<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum
-										dolor sit amet, nulla ...</p>
-								</div>
+							<li><a href="#">남우영</a>							
 							</li>
-
-
+							<li><a href="#">김명진</a>							
+							</li>
+							<li><a href="#">박형진</a>							
+							</li>
+							<li><a href="#">이현준</a>							
+							</li>
+							<li><a href="#">박원영</a>							
+							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 wow fadeInRight animated">
 					<div class="single-footer news-letter">
-						<h4>Stay in touch</h4>
-						<div class="footer-title-line"></div>
-						<p>Lorem ipsum dolor sit amet, nulla suscipit similique
-							quisquam molestias. Vel unde, blanditiis.</p>
+						<h4>메일 보내기</h4>
+						<div class="footer-title-line"></div>						
 
 						<form>
 							<div class="input-group">
 								<input class="form-control" type="text"
-									placeholder="E-mail ... "> <span
+									placeholder="idsiemu@gmail.com" readonly="readonly"> <span
 									class="input-group-btn">
 									<button class="btn btn-primary subscribe" type="button">
 										<i class="pe-7s-paper-plane pe-2x"></i>

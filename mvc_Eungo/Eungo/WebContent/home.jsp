@@ -28,7 +28,7 @@
 		<div class="row">
 			<div
 				class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-				<h2>Service Searching Just Got So Easy</h2>
+				<h2>검색하기</h2>
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
 
 					<form action="<%=request.getContextPath()%>/board"
@@ -97,11 +97,10 @@
 							<h5>
 								<a href="property-1.jsp">CAN'T DECIDE ? </a>
 							</h5>
-							<h5 class="tree-sub-ttl">Show all Services</h5>
+							<h5 class="tree-sub-ttl">모든 판매물 보기</h5>
 							<button
 								onclick="location.href='<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9'"
-								class="btn border-btn more-black" value="All services">All
-								Services</button>
+								class="btn border-btn more-black" value="All services">모든 판매물</button>
 						</div>
 					</div>
 				</div>
@@ -131,11 +130,11 @@
 						<div class="box-two proerty-item">
 							<div class="item-thumb">
 								<a
-									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}"><img
-									src="${top_three.limage }"></a>
+									href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}"><img  
+									src="${top_three.limage }"  style="height: 225px"></a>
 							</div>
 							<div class="item-entry overflow" style="padding-bottom: 8px">
-								<h5>
+								<h5 style="text-overflow: ellipsis; overflow: hidden;">
 									<a
 										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}">${top_three.ltitle }</a>
 								</h5>

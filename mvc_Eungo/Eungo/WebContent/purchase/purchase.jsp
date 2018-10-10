@@ -46,6 +46,7 @@
 			<input type="hidden" id="lnumber" name="lnumber" value="${lnumber }">
 			<input type="hidden" id="price" name="price" value="${price }">
 			<input type="hidden" id="submit_price" name="submit_price" value="${amount }">
+			<input type="hidden" id="seller_email" name="seller_email" value="${seller.email }">
 			<div class="col-md-6">
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 register-blocks">

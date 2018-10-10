@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="page-head-content">
-					<h1 class="page-title">Home New account / Sign in</h1>
+					<h1 class="page-title">회원가입/로그인</h1>
 				</div>
 			</div>
 		</div>
@@ -37,41 +37,41 @@
 			<div class="col-md-6">
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 register-blocks">
-						<h2>New account :</h2>
+						<h2>회원가입 하기 :</h2>
 						<form
 							action="<%=request.getContextPath()%>/member?cmd=member_join"
 							method="post">
 
 							<div class="form-group">
-								<label for="email">Email</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" autofocus="autofocus" required="required"
+								<label for="email">이메일</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" autofocus="autofocus" required="required"
 									class="form-control" name="email" id="validationEmail">
 								<small id="checkMsg"></small>
 							</div>
 							<div class="form-group">
-								<label for="password">Password</label> <input type="password" required="required"
+								<label for="password">비밀번호</label> <input type="password" required="required"
 									class="form-control" name="password" id="password1">								
 							</div>
 							<div class="form-group">
-								<label for="password">Confirm Password</label> <input required="required"
+								<label for="password">비밀번호 확인</label> <input required="required"
 									type="password" class="form-control" name="password_check"
 									id="password2">
 								<small id="checkPwd"></small>
 							</div>
 							<div class="form-group">
-								<label for="name">Phone Number</label> <input type="tel" placeholder="01012345678" pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}"
+								<label for="name">연락처</label> <input type="tel" placeholder="01012345678" pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}"
 									class="form-control" name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
-								<label>Gender <small>(required)</small></label><br> 
-								<input type="radio" name="gender" class="form-control" value="M" required="required"><label>male</label>
-								<input type="radio" name="gender" class="form-control" value="F" required="required"><label>female</label>
+								<label>성별 <small>(required)</small></label><br> 
+								<input type="radio" name="gender" class="form-control" value="M" required="required"><label>남자</label>
+								<input type="radio" name="gender" class="form-control" value="F" required="required"><label>여자</label>
 							</div>
 							<div class="form-group">
-								<label for="name">Birthday</label> <input type="date"
+								<label for="name">생년월일</label> <input type="date"
 									class="form-control" name="birthday" id="birthday" max="">
 							</div>
 							<div class="text-center">
-								<button type="submit" class="btn btn-default">Register</button>
+								<button type="submit" class="btn btn-default">등록하기</button>
 							</div>
 						</form>
 					</div>
@@ -81,18 +81,18 @@
 			<div class="col-md-6">
 				<div class="box-for overflow">
 					<div class="col-md-12 col-xs-12 login-blocks">
-						<h2>Login :</h2>
+						<h2>로그인 하기 :</h2>
 						<form action="<%=request.getContextPath() %>/member?cmd=member_login" method="post">
 							<div class="form-group">
-								<label for="email">Email</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="required"
+								<label for="email">이메일</label> <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="required"
 									class="form-control" name="email" id="validationEmail_login">								
 							</div>
 							<div class="form-group">
-								<label for="password">Password</label> <input type="password" required="required"
+								<label for="password">비밀번호</label> <input type="password" required="required"
 									class="form-control" name="password" id="password">
 							</div>							
 							<div class="text-center">								
-								<button type="submit" class="btn btn-default">Log in</button>
+								<button type="submit" class="btn btn-default">로그인</button>
 							</div>
 							<!-- <a href="">아이디,비밀번호 찾기</a> -->
 							</form>							

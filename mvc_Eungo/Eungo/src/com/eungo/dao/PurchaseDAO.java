@@ -53,7 +53,7 @@ public class PurchaseDAO {
 	}
 	
 	public int insert(PurchaseVO purchase) {
-		String SQL = "INSERT INTO purchase(lnumber, email, product_name, quantity, price, total_price, date, reply_check) VALUES(?,?,?,?,?,?,now(),false)";
+		String SQL = "INSERT INTO purchase(lnumber, email, product_name, quantity, price, total_price, seller_email, date, reply_check) VALUES(?,?,?,?,?,?,?,now(),false)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -63,6 +63,7 @@ public class PurchaseDAO {
 			pstmt.setInt(4, purchase.getQuantity());
 			pstmt.setString(5, purchase.getPrice());
 			pstmt.setString(6, purchase.getTotal_price());
+			pstmt.setString(7, purchase.getSeller_email());
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -89,11 +90,14 @@ public class PurchaseDAO {
 				purchase.setQuantity(rs.getInt("quantity"));
 				purchase.setPrice(rs.getString("price"));
 				purchase.setTotal_price(rs.getString("total_price"));
+				purchase.setSeller_email(rs.getString("seller_email"));
 				purchase.setDate(rs.getString("date"));
 				return purchase;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
 		return null;
 	}

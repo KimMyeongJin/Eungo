@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">List Layout With Sidebar</h1>
+				<h1 class="page-title">판매중인 서비스</h1>
 			</div>
 		</div>
 	</div>

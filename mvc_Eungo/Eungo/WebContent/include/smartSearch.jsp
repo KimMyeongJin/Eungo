@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="panel panel-default sidebar-menu wow fadeInRight animated">
 	<div class="panel-heading">
-		<h3 class="panel-title">Smart search</h3>
+		<h3 class="panel-title">상세 검색</h3>
 	</div>
 	<div class="panel-body search-widget">
 		<form id="smart_search" action="<%=request.getContextPath()%>/board" method="get" class=" form-inline">
@@ -113,7 +113,7 @@
 			<fieldset>
 				<div class="row">
 					<div class="col-xs-12">
-						<input class="button btn largesearch-btn" value="Search"
+						<input class="button btn largesearch-btn" value="검색하기"
 							type="submit">
 					</div>
 				</div>

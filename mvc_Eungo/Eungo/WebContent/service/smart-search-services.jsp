@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">List Layout With Sidebar</h1>
+				<h1 class="page-title">판매중인 서비스</h1>
 			</div>
 		</div>
 	</div>
@@ -186,7 +186,7 @@
 										<div class="box-two proerty-item">
 											<div class="item-thumb">
 												<a href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${list.lnumber}"><img
-													src="${list.limage}"></a>
+												style="height: 225px" src="${list.limage}"></a>
 											</div>
 
 											<div class="item-entry overflow">
@@ -197,18 +197,18 @@
 												</h5>
 												<div class="dot-hr"></div>
 												<span class="pull-left"></span> <span
-													class="proerty-price pull-right"> ${list.lprice} 원</span>
+													class="proerty-price pull-right"> ${list.standard_price} 원</span>
 												<p style="display: none;">Suspendisse ultricies
 													Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse
 													ultricies commodo arcu nec pretium ...</p>
-												<div class="property-icon">
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/bed.png">(5)|
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/shawer.png">(2)|
-													<img
-														src="<%=request.getContextPath()%>/assets/img/icon/cars.png">(1)
-												</div>
+													<div>
+													<c:forEach var="i" begin="1" end="${list.good }" step="1">
+  															<span class="starR on">별${i}</span>
+  													</c:forEach>
+  													<c:forEach var="i" begin="1" end="${ 5- list.good }" step="1">
+  															<span class="starR">별${i}</span>
+  													</c:forEach>									
+												</div>												
 											</div>
 										</div>
 									</div>

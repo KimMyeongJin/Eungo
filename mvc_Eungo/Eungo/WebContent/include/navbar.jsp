@@ -25,61 +25,59 @@
 					<c:when test="${sessionScope.email!=null}">
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							onclick="location.href='<%=request.getContextPath()%>/member?cmd=member_logout'"
-							data-wow-delay="0.45s">Logout</button>
+							data-wow-delay="0.45s">로그아웃</button>
 						<c:choose>
 							<c:when test="${sessionScope.seller==true }">
 								<button class="navbar-btn nav-button wow fadeInRight"
 									onclick="location.href='<%=request.getContextPath()%>/board?cmd=submit_load'"
-									data-wow-delay="0.48s">Submit</button>
+									data-wow-delay="0.48s">판매하기</button>
 							</c:when>
 							<c:otherwise>
 								<button class="navbar-btn nav-button wow fadeInRight"
 									onclick="location.href='<%=request.getContextPath()%>/member?cmd=seller_register'"
-									data-wow-delay="0.48s">Do Sell</button>
+									data-wow-delay="0.48s">판매자 등록</button>
 							</c:otherwise>
 						</c:choose>
 					</c:when>	
 					<c:otherwise>
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"
-							data-wow-delay="0.45s">Login</button>
+							data-wow-delay="0.45s">로그인</button>
 						<button class="navbar-btn nav-button wow fadeInRight"
 							onclick="location.href='<%=request.getContextPath()%>/account/account.jsp'"
-							data-wow-delay="0.48s">Do Sell</button>
+							data-wow-delay="0.48s">판매자 등록</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
 			<ul class="main-nav nav navbar-nav navbar-right">
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
-					href="<%=request.getContextPath()%>/index.jsp"> Home</a></li>
+					href="<%=request.getContextPath()%>/index.jsp"> 은고</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a class=""
-					href="<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9">Services</a></li>
+					href="<%=request.getContextPath()%>/board?cmd=board_paging&pageNum=1&per_page=9">IT·프로그래밍</a></li>
 				<c:if test="${sessionScope.email != null }">
 					<li class="dropdown yamm-fw" data-wow-delay="0.3s"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
-						data-hover="dropdown" data-delay="200">Account<b class="caret"></b></a>
+						data-hover="dropdown" data-delay="200">계정<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
 								<div class="yamm-content">
 									<div class="row">
 										<div class="col-sm-7"></div>
 										<div class="col-sm-3">
-											<h5>User account</h5>
+											<h5>계정 정보</h5>
 											<ul>
 												<c:choose>
 													<c:when test="${sessionScope.seller==true }">
 														<li><a
-															href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=1&per_page=9">My
-																Services</a></li>
+															href="<%=request.getContextPath()%>/board?cmd=my_services&pageNum=1&per_page=9">판매중인 서비스</a></li>
 														<li><a
-															href="<%=request.getContextPath()%>/service/submit-service.jsp">Submit
-																Service</a></li>
+															href="<%=request.getContextPath()%>/service/submit-service.jsp">판매하기</a></li>
 													</c:when>
 												</c:choose>
-
 												<li><a
-													href="<%=request.getContextPath()%>/member?cmd=member_update">Your
-														profile</a></li>
+													href="<%=request.getContextPath()%>purchase/?cmd=purchase_list">구매목록</a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/member?cmd=member_update">프로필 보기</a></li>
 											</ul>
 										</div>
 									</div>

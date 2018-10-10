@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">Submit new service</h1>
+				<h1 class="page-title">게시 서비스 수정하기</h1>
 			</div>
 		</div>
 	</div>
@@ -43,8 +43,7 @@
 						method="post" enctype="multipart/form-data">
 						<div class="wizard-header">
 							<h3>
-								<b>Submit</b> YOUR SERVICE <br> <small>Lorem ipsum
-									dolor sit amet, consectetur adipisicing.</small>
+								게시 서비스 <b>수정</b><br>
 							</h3>
 						</div>
 						<ul>
@@ -56,8 +55,7 @@
 						<div class="tab-content">
 							<div class="tab-pane" id="step1">
 								<div class="row p-b-15  ">
-									<h4 class="info-text">Let's start with the basic
-										information (with validation)</h4>
+									<h4 class="info-text"></h4><br>
 									<div class="col-sm-4 col-sm-offset-1">
 										<div class="picture-container">
 											<div class="picture">
@@ -70,12 +68,12 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Service title <small>(required)</small></label> <input value="${board.ltitle }"
+											<label>서비스 제목 <small>(required)</small></label> <input value="${board.ltitle }"
 												name="ltitle" type="text" class="form-control" required="required">
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" style="padding-left: 0px;">
 											<div class="form-group">
-												<label>Service category : <small>(required)</small></label>
+												<label>서비스 카테고리 : <small>(required)</small></label>
 												<select name="lcategory" id="lunchBegins" required="required"
 													class="selectpicker" data-live-search="true" 
 													data-live-search-style="begins" title="Select category"
@@ -96,9 +94,9 @@
 												</select>
 											</div>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" style="padding-left: 30px; padding-right: 0px">
 											<div class="form-group">
-												<label>Phonenumber </label> <input name="lphone_number"
+												<label>연락처 </label> <input name="lphone_number"
 													type="tel" placeholder="01012345678"
 													pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}"
 													class="form-control" value="${board.lphone_number }"
@@ -109,7 +107,7 @@
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
-										<label>Service Description :</label>
+										<label>서비스 설명 :</label>
 										<textarea id="textAreaContent" name="lcontent" rows="15"
 											cols="80" style="width: 100%">${board.lcontent}</textarea>
 									</div>
@@ -118,11 +116,11 @@
 							<!--  End step 1 -->
 
 							<div class="tab-pane" id="step2">
-								<h4 class="info-text">Give us somme images and videos ?</h4>
+								<h4 class="info-text">서비스 이미지 및 동영상 추가</h4>
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="property-images">Chose Images :</label> <input
+											<label for="property-images">이미지 추가 :</label> <input
 												class="form-control" type="file" id="service-image1"
 												name="limage2" value="${board.limage2 }">
 										</div>
@@ -137,7 +135,7 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="property-video">Service video :</label> <input
+											<label for="property-video">동영상 추가 :</label> <input
 												class="form-control" value="${board.youtube }"
 												placeholder="http://www.youtube.com, http://vimeo.com"
 												name="youtube" type="text">

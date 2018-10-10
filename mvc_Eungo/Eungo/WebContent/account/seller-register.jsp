@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">Register for Seller</h1>
+				<h1 class="page-title">판매자 등록하기</h1>
 			</div>
 		</div>
 	</div>
@@ -36,18 +36,18 @@
 		<div class="col-md-6">
 			<div class="box-for overflow">
 				<div class="col-md-12 col-xs-12 register-blocks">
-					<h2>Account Info:</h2>
+					<h2>계정 정보 입력:</h2>
 					<form
 						action="<%=request.getContextPath()%>/member?cmd=seller_registerProc"
 						method="post">
 
 						<div class="form-group">
-							<label>Your Email</label> <input required="required" type="text"
+							<label>이메일</label> <input required="required" type="text"
 								class="form-control" name="email" value="${sessionScope.email }"
 								readonly="readonly">
 						</div>
 						<div class="form-group">
-							<label>Bank</label> <select id="lunchBegins" class="selectpicker"
+							<label>은행</label> <select id="lunchBegins" class="selectpicker"
 								name="bank_code_std" form="smart_search" data-live-search="true"
 								data-live-search-style="begins" title="Select Your Bank">
 								<option value="001">농협</option>
@@ -66,21 +66,21 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Account</label> <input type="text" required="required"
+							<label>계좌번호</label> <input type="text" required="required"
 								class="form-control" name="account_num">
 						</div>
 						<div class="form-group">
-							<label>Identity Number</label> <input type="text"
+							<label>생년 월일</label> <input type="text"
 								class="form-control" name="account_holder_info"
 								value="${member.birthday }" readonly="readonly"> <small><a
 								href="#">계좌등록된 생년월일과 다를 경우 회원정보를 먼저 수정해주세요.</a></small>
 						</div>
 						<div class="form-group">
-							<label for="name">Introduce Yourself</label>
+							<label for="name">판매자 소개하기</label>
 							<textarea rows="10" cols="50"></textarea>
 						</div>
 						<div class="text-center">
-							<button type="submit" class="btn btn-default">Register</button>
+							<button type="submit" class="btn btn-default">등록하기</button>
 						</div>
 					</form>
 				</div>

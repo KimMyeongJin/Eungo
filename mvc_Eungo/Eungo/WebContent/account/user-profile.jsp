@@ -95,8 +95,7 @@
 					enctype="multipart/form-data" method="POST">
 					<div class="profiel-header">
 						<h3>
-							<b>BUILD</b> YOUR PROFILE <br> <small>This
-								information will let us know more about you.</small>
+							<b>내 프로필 보기</b><br>
 						</h3>
 						<hr>
 					</div>
@@ -110,24 +109,24 @@
 										src="${member.profile }" /> <input name="profile" type="file"
 										id="wizard-picture">
 								</div>
-								<h6>Choose Picture</h6>
+								<h6>프로필 이미지 등록</h6>
 							</div>
 						</div>
 
 						<div class="col-sm-3 padding-top-25">
 
 							<div class="form-group">
-								<label>Email </label> <input name="email" readonly="readonly"
+								<label>이메일 </label> <input name="email" readonly="readonly"
 									class="form-control" value="${member.email}">
 							</div>
 							<div class="form-group" style="margin-top: 28%">
-								<label for="name">Phone Number</label> <input type="tel"
+								<label for="name">연락처</label> <input type="tel"
 									value="${member.phonenumber }"
 									pattern="(02|[0-9]{3})[0-9]{3,4}[0-9]{4}" class="form-control"
 									name="phonenumber" id="phonenumber">
 							</div>
 							<div class="form-group">
-								<label>Birth Day</label> <input name="birthday" type="text"
+								<label>생일</label> <input name="birthday" type="text"
 									class="form-control"
 									pattern="[0-9]{4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}"
 									value="${member.birthday}">
@@ -135,20 +134,20 @@
 						</div>
 						<div class="col-sm-3 padding-top-25">
 							<div class="form-group row" style="margin-left: 1%">
-								<label>password </label> <input id="password" name="password"
+								<label>비밀번호 </label> <input id="password" name="password"
 									type="password" class="form-control" />
 								<button id="pwck" name="pwck" type="button" onclick="sendPw()"
-									class="btn btn-info" style="margin-top: 2%; float: right;">check</button>
+									class="btn btn-info" style="margin-top: 2%; float: right;">확인</button>
 
 							</div>
 							<div class="form-group">
-								<label>modify password </label> <input id="password1" readonly
+								<label>수정 할 비밀번호 </label> <input id="password1" readonly
 									name="mod_password" type="password" class="form-control"
 									style="width: 110%">
 
 							</div>
 							<div class="form-group">
-								<label>Confirm password </label> <input id="password2" readonly
+								<label>비밀번호 확인 </label> <input id="password2" readonly
 									name="check_password" type="password" class="form-control"
 									style="width: 110%"> <small id="checkPwd"></small>
 							</div>
@@ -157,7 +156,7 @@
 						<div class="col-sm-6 padding-top-25"
 							style="float: right; margin-right: 14%;">
 							<div class="form-group">
-								<label>address </label>
+								<label>주소 </label>
 
 								<div id="callBackDiv">
 									<input id="roadFullAddr" name="roadFullAddr" type="text"
@@ -182,7 +181,7 @@
 					</div>
 					<div class="col-sm-5 col-sm-offset-1">
 						<br>
-						<button type="submit" class="btn btn-warning">Update</button>
+						<button type="submit" class="btn btn-warning">수정하기</button>
 					</div>
 				</form>
 			</div>
