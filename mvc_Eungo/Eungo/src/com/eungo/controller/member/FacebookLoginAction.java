@@ -26,8 +26,6 @@ public class FacebookLoginAction {
 		member.setUserId(user.getId()); 
 		member.setUserEmail(user.getEmail());
 		
-		
-		
 		//if(user.getId() != null) {
 		MemberDAO dao = new MemberDAO();
 			if (dao.checkEmail(member.getUserId()) != 1) {
@@ -38,20 +36,9 @@ public class FacebookLoginAction {
 					System.out.println("페이스북 로그인 성공");
 				}else if(result == -1) {
 					System.out.println("DB 아이디 중복 에러");
-				}
-				
+				}				
 			}
-			
-		
 		return member;
-		
-		
 	}
-	
-	
-
-
-	
-	
 }
 
