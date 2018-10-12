@@ -56,7 +56,7 @@ public class EmailSendAction implements Action{
 		
 		String subject = "회원가입을 위한 이메일 인증 메일입니다.";
 		String content = "다음 링크에 접속하여 이메일 인증을 진행해주세요. "
-				+ "<a href='"+host+"gmail/emailCheckAction.jsp?code="+code+"'>이메일 인증하기</a>";
+				+ "<a href='"+host+"gmail/emailCheckAction.jsp?code="+code+"&email="+to+"'>이메일 인증하기</a>";
 				
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
