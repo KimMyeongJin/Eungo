@@ -102,9 +102,6 @@
 						<h2>Social login :</h2>
 
 						<p class="login-select">
-							<a class="login-social" href="../face.jsp"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
-							<a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a>													
-							<a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
 							<a class="login-social" href="<%=request.getContextPath()%>/member?cmd=naver_login"><i class="fa fa-Naver"></i>&nbsp;&nbsp;Naver&nbsp;&nbsp;</a>
 						<p>
 						</p>
