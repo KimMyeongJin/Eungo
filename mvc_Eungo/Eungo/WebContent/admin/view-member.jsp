@@ -27,7 +27,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/index.jsp"><img
+				href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1"><img
 				src="<%=request.getContextPath()%>/assets/img/logo2.png" alt=""></a>
 		</div>
 
@@ -45,7 +45,7 @@
 			</div>
 			<ul class="main-nav nav navbar-nav navbar-right">
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
-					href="<%=request.getContextPath()%>/index.jsp"> 은고</a></li>
+					href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1"> 은고</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.2s"><a href="#">게시판
 						관리</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.3s"><a class=""
@@ -72,7 +72,7 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-		<form action="">
+		<form action="<%=request.getContextPath()%>/member?cmd=delete_member">
 			<div class="panel-body">
 				<table id="data-table"
 					class="table table-striped table-bordered nowrap">
@@ -85,20 +85,24 @@
 							<th>생일</th>
 							<th>판매자</th>
 							<th>주소</th>
+							<th>프로필</th>
 							<th><input name="select_all" value="1" type="checkbox"></th>
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="list" items="${list }">
 						<tr class="odd gradeX">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>Ambient Temperature</td>
+							<td>${list.email }</td>
+							<td>${list.emailcheck }</td>
+							<td>${list.phonenumber }</td>
+							<td>${list.gender }</td>
+							<td>${list.birthday }</td>
+							<td>${list.seller }</td>
+							<td>${list.address }</td>
+							<td>${list.profile }</td>
 							<td><input type="checkbox" name="name1" /></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

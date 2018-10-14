@@ -3,6 +3,8 @@ package com.eungo.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.eungo.dto.FacebookVO;
 import com.eungo.dto.MemberVO;
@@ -336,5 +338,55 @@ public class MemberDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return false;
+	}
+	
+	public List<MemberVO> select_all(int pageNum){
+		String SQL = "SELECT * FROM member WHERE email != 'admin@admin.com' ORDER BY email DESC LIMIT 20 OFFSET ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, (pageNum - 1) * 20);
+			rs = pstmt.executeQuery();
+			List<MemberVO> list = new ArrayList<>();
+			while(rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setEmail(rs.getString("email"));
+				member.setEmailcheck(rs.getBoolean("emailcheck"));
+				member.setPhonenumber(rs.getString("phonenumber"));
+				member.setGender(rs.getString("gender"));
+				member.setBirthday(rs.getString("Birthday"));
+				member.setSeller(rs.getBoolean("seller"));
+				member.setProfile(rs.getString("profile"));
+				member.setAddress(rs.getString("address"));
+				list.add(member);
+			}
+			return list;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
+	public int number_of_member() {
+		String SQL = "SELECT count(*) FROM member WHERE email != 'admin@admin.com'";
+		Connection conn = DBManager.getConnection();
+		int totalNum = 0;
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				totalNum = rs.getInt("count(*)");
+			}
+			return totalNum;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return -1;
 	}
 }

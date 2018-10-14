@@ -54,6 +54,7 @@ public class MemberJoinAction implements Action{
 		member.setPhonenumber(phonenumber);
 		member.setGender(gender);
 		member.setBirthday(birthday);
+		member.setProfile(null);
 		
 		int result = dao.insert(member);
 		

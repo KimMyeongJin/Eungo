@@ -11,6 +11,7 @@ import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.board.SubmitLoadAction;
 import com.eungo.controller.board.SubmitServiceAction;
 import com.eungo.controller.board.ViewServiceAction;
+import com.eungo.controller.member.AdminMemberAction;
 import com.eungo.controller.member.ApiConnectAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
@@ -110,6 +111,8 @@ public class ActionFactory {
 			return new PurchaseFinishAction();
 		} else if (cmd.equals("purchase_list")) {
 			return new PurchaseListAction();
+		}  else if (cmd.equals("view_member")) {
+			return new AdminMemberAction();
 		}
 		return null;
 	}
