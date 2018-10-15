@@ -37,7 +37,7 @@
 			<div class="box-for overflow">
 				<div class="col-md-12 col-xs-12 register-blocks">
 					<h2>계정 정보 입력:</h2>
-					<form
+					<form id="seller_register"
 						action="<%=request.getContextPath()%>/member?cmd=seller_registerProc"
 						method="post">
 
@@ -48,21 +48,21 @@
 						</div>
 						<div class="form-group">
 							<label>은행</label> <select id="lunchBegins" class="selectpicker"
-								name="bank_code_std" form="smart_search" data-live-search="true"
+								name="bank_code_std" form="seller_register" data-live-search="true"
 								data-live-search-style="begins" title="Select Your Bank">
-								<option value="001">농협</option>
-								<option value="002">신한</option>
-								<option value="003">우리</option>
-								<option value="004">국민</option>
-								<option value="005">카카오뱅크</option>
-								<option value="006">IBK기업</option>
-								<option value="007">KEB하나</option>
-								<option value="008">SC제일</option>
-								<option value="009">대구</option>
-								<option value="010">부산</option>
-								<option value="011">광주</option>
-								<option value="012">새마을</option>
-								<option value="013">경남</option>
+								<option value="1=농협">농협</option>
+								<option value="2=신한">신한</option>
+								<option value="3=우리">우리</option>
+								<option value="4=국민">국민</option>
+								<option value="5=카카오뱅크">카카오뱅크</option>
+								<option value="6=IBK기업">IBK기업</option>
+								<option value="7=KEB하나">KEB하나</option>
+								<option value="8=SC제일">SC제일</option>
+								<option value="9=대구">대구</option>
+								<option value="10=부산">부산</option>
+								<option value="11=광주">광주</option>
+								<option value="12=새마을">새마을</option>
+								<option value="13=경남">경남</option>
 							</select>
 						</div>
 						<div class="form-group">

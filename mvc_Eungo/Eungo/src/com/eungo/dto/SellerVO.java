@@ -3,11 +3,18 @@ package com.eungo.dto;
 public class SellerVO {
 	private String email;
 	private int bank_code_std;
+	private String bank_name;
 	private long account_num;
 	private int account_holder_info;
 	private int income;
 	private String seller_intro;
 	
+	public String getBank_name() {
+		return bank_name;
+	}
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
 	public String getEmail() {
 		return email;
 	}

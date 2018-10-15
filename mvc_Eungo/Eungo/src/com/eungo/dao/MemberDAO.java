@@ -85,7 +85,7 @@ public class MemberDAO {
 	}
 
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,null,?,?,false,null)";
+		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,null,?,?,false,null,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -166,7 +166,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,null,?,?,?,?,false)";
+		String SQL = "INSERT INTO member VALUES(?,false,?,?,null,?,?,?,?,false,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -250,7 +250,26 @@ public class MemberDAO {
 		}
 		return null;
 	}
-
+	
+	public int select_del(String email) {
+		String SQL = "SELECT del FROM member WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int del = rs.getInt("del");
+				return del;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return 0;
+	}
+	
 	public int update_emailcheck(String email) {
 		String SQL = "UPDATE member SET emailcheck = true WHERE email = ?";
 		Connection conn = DBManager.getConnection();

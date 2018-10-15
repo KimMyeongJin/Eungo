@@ -29,36 +29,40 @@ public class NaverLoginAction implements Action {
 		String memberPro = ApiMemberPro.getApiMember(access_token);
 		JSONParser p = new JSONParser();
 		try {
-			JSONObject obj = (JSONObject) p.parse(memberPro);			
+			JSONObject obj = (JSONObject) p.parse(memberPro);
 			String resultcode = (String) obj.get("resultcode");
-			String message = (String) obj.get("message");			
+			String message = (String) obj.get("message");
 			JSONObject data = (JSONObject) obj.get("response");
-			
+
 			Gson g = new Gson();
 			// g.toJson(memberPro); -> JSON으로 변환
-			MemberVO member = g.fromJson(data.toString(), MemberVO.class);			
+			MemberVO member = g.fromJson(data.toString(), MemberVO.class);
 			MemberDAO dao = new MemberDAO();
-			String email = member.getEmail();;	
+			String email = member.getEmail();
 			boolean dis_seller = dao.discriminate_seller(email);
-			if (dao.checkEmail(member.getEmail()) != 1) {				
-				int result = dao.insert_naveremail(member);
-				if (result == 1) {
+			int del = dao.select_del(email);
+			if (del == 1) {
+				if (dao.checkEmail(member.getEmail()) != 1) {
+					int result = dao.insert_naveremail(member);
+					if (result == 1) {
+						session = request.getSession();
+						session.setAttribute("email", email);
+						session.setAttribute("seller", dis_seller);
+						Script.moving(response, "로그인 성공", url);
+						System.out.println("네이버 로그인 성공");
+					} else if (result == -1) {
+						System.out.println("DB에러");
+					}
+				} else {
 					session = request.getSession();
-					session.setAttribute("email", email);
+					session.setAttribute("email", member.getEmail());
 					session.setAttribute("seller", dis_seller);
 					Script.moving(response, "로그인 성공", url);
 					System.out.println("네이버 로그인 성공");
-				} else if (result == -1) {
-					System.out.println("DB에러");
 				}
-			}else {
-				session = request.getSession();
-				session.setAttribute("email", member.getEmail());
-				session.setAttribute("seller", dis_seller);
-				Script.moving(response, "로그인 성공", url);
-				System.out.println("네이버 로그인 성공");
+			} else if(del == 2) {
+				Script.moving(response, "삭제된 계정, 아직 사용 할 수 없습니다.");
 			}
-			
 			System.out.println("네이버 로그인 DB연결 성공");
 		} catch (Exception e) {
 			e.printStackTrace();

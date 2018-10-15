@@ -80,30 +80,26 @@
 					<thead>
 						<tr>
 							<th style="width: 10%">이메일</th>
-							<th style="width: 9%">이메일 체크</th>
-							<th style="width: 11%">연락처</th>
-							<th style="width: 5%">성별</th>
-							<th style="width: 9%">생일</th>
-							<th style="width: 6%">판매자</th>
-							<th style="width: 25%">주소</th>
-							<th style="width: 25%">프로필</th>
+							<th style="width: 9%">은행코드</th>
+							<th style="width: 11%">은행명</th>
+							<th style="width: 5%">계좌번호</th>
+							<th style="width: 9%">생년월일</th>
+							<th style="width: 6%">판매자소개</th>
+							<th >수입</th>							
 							<th><input name="select_all" value="1" type="checkbox"></th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:forEach var="list" items="${list }">
+					<tbody>						
 							<tr class="odd gradeX">
-								<td><a href="<%=request.getContextPath()%>/member?cmd=view_seller&seller_email=${list.email}">${list.email }</a></td>
-								<td>${list.emailcheck }</td>
-								<td>${list.phonenumber }</td>
-								<td>${list.gender }</td>
-								<td>${list.birthday }</td>
-								<td>${list.seller }</td>
-								<td>${list.address }</td>
-								<td>${list.profile }</td>
+								<td>${seller.email }</td>
+								<td>${seller.bank_code_std }</td>
+								<td>${seller.bank_name }</td>
+								<td>${seller.account_num }</td>
+								<td>${seller.account_holder_info }</td>
+								<td>${seller.seller_intro }</td>
+								<td>${seller.income }</td>								
 								<td><input type="checkbox" name="name1" /></td>
-							</tr>
-						</c:forEach>
+							</tr>						
 					</tbody>
 				</table>
 			</div>

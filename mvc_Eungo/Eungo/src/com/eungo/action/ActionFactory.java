@@ -25,6 +25,7 @@ import com.eungo.controller.member.NaverLoginAction;
 import com.eungo.controller.member.PwCheckAction;
 import com.eungo.controller.member.SellerRegisterAction;
 import com.eungo.controller.member.SellerRegisterProcAction;
+import com.eungo.controller.member.ViewSellerAction;
 import com.eungo.controller.purchase.PurchaseAction;
 import com.eungo.controller.purchase.PurchaseCompleteAction;
 import com.eungo.controller.purchase.PurchaseFinishAction;
@@ -111,8 +112,10 @@ public class ActionFactory {
 			return new PurchaseFinishAction();
 		} else if (cmd.equals("purchase_list")) {
 			return new PurchaseListAction();
-		}  else if (cmd.equals("view_member")) {
+		} else if (cmd.equals("view_member")) {
 			return new AdminMemberAction();
+		} else if (cmd.equals("view_seller")) {
+			return new ViewSellerAction();
 		}
 		return null;
 	}
