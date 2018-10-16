@@ -249,7 +249,6 @@
 function per_page() {
     var x = document.getElementById("items_per_page").value;
     location.href = "<%=request.getContextPath()%>/board?cmd=smart_search&search_category=${search_category}&search_text=${search_text}&pageNum=1&per_page="+ x;
-
 	}
 </script>
 <!-- Footer area-->

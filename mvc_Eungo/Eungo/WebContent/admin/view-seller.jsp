@@ -97,7 +97,7 @@
 								<td>${seller.account_num }</td>
 								<td>${seller.account_holder_info }</td>
 								<td>${seller.seller_intro }</td>
-								<td>${seller.income }</td>								
+								<td>${seller.income }</td>
 								<td><input type="checkbox" name="name1" /></td>
 							</tr>						
 					</tbody>
@@ -115,23 +115,7 @@
 					value="1">
 				<button class="btn search-btn" type="submit">
 					<i class="fa fa-search"></i>
-				</button>
-				<div class="pull-right">
-					<div class="pagination">
-						<ul>
-							<c:choose>
-								<c:when test="${paging eq null }">
-									<li><a href="#">해당 게시물이 없습니다</a></li>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="paging" items="${paging }">
-										<li><a href="#">${paging.key}</a></li>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</div>
-				</div>
+				</button>				
 			</div>
 		</form>
 	</div>

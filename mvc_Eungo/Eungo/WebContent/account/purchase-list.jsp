@@ -112,10 +112,8 @@
 		</div>
 	</div>
 </div>
-
 <!-- Footer area-->
 <%@include file="/include/footer.jsp"%>
-
 <script
 	src="<%=request.getContextPath()%>/assets/js/jquery.bootstrap.wizard.js"
 	type="text/javascript"></script>

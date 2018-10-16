@@ -80,7 +80,7 @@
 					<thead>
 						<tr>
 							<th style="width: 10%">이메일</th>
-							<th style="width: 9%">이메일 체크</th>
+							<th style="width: 10%">이메일 체크</th>
 							<th style="width: 11%">연락처</th>
 							<th style="width: 5%">성별</th>
 							<th style="width: 9%">생일</th>
@@ -93,14 +93,21 @@
 					<tbody>
 						<c:forEach var="list" items="${list }">
 							<tr class="odd gradeX">
-								<td><a href="<%=request.getContextPath()%>/member?cmd=view_seller&seller_email=${list.email}">${list.email }</a></td>
+								<td><a
+									href="<%=request.getContextPath()%>/member?cmd=view_seller&seller_email=${list.email}">${list.email }</a></td>
 								<td>${list.emailcheck }</td>
 								<td>${list.phonenumber }</td>
 								<td>${list.gender }</td>
 								<td>${list.birthday }</td>
 								<td>${list.seller }</td>
-								<td>${list.address }</td>
-								<td>${list.profile }</td>
+								<td style="text-overflow: ellipsis; overflow: hidden; width: 20%">${list.address }</td>
+								<td>
+									<div id="${list.email}">${list.profile }
+										<c:if test="${list.profile ne null }">
+											<input type="button" onclick="del('${list.email}'); this.onclick='';" value="삭제">
+										</c:if>
+									</div>
+								</td>
 								<td><input type="checkbox" name="name1" /></td>
 							</tr>
 						</c:forEach>
@@ -109,11 +116,8 @@
 			</div>
 			<div class="col-md-12">
 				<button class="navbar-btn nav-button wow fadeInRight"
-					onclick="location.href='#'" data-wow-delay="0.48s">수정</button>
-				<button class="navbar-btn nav-button wow fadeInRight"
 					onclick="location.href='#'" data-wow-delay="0.48s">삭제</button>
-				<input type="hidden" name="cmd" value="board_search"> <input
-					type="text" name="search_text" class="form-control"
+				<input type="text" name="search_member" class="form-control"
 					style="width: 400px; display: inline; margin-left: 15%"
 					placeholder="Key word"> <input type="hidden" name="pageNum"
 					value="1">
@@ -142,5 +146,29 @@
 </div>
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
+<script>
+	function del(email) {
+				var send_email = email;
+				$.ajax({
+					async : true,
+					type : 'POST',
+					data : send_email,	
+					url : "<%=request.getContextPath()%>/member?cmd=profile_delete",
+					dataType : "json",
+					contentType : "application/json;charset=utf-8",
+					success : function(data) {
+						if (data == 1) {
+							alert("프로필 삭제됨.");							
+							document.getElementById(send_email).style.disply = "none";
+						} else if (data == -1) {
+							alert("DB에러.");
+						}
+					},
+					error : function(error) {
+						alert("error	 : " + error);
+					}
+				});
+		}
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@ import com.eungo.util.DBManager;
 public class MemberDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-
+	
 	public MemberVO select_one(String email) {
 		String SQL = "SELECT * FROM member WHERE email = ?";
 		Connection conn = DBManager.getConnection();
@@ -405,6 +405,23 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
+		}
+		return -1;
+	}
+	
+	public int profile_delete(String email) {
+		String SQL = "UPDATE member SET profile = null where email = ?";
+		Connection conn = DBManager.getConnection();		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();			
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
 		}
 		return -1;
 	}

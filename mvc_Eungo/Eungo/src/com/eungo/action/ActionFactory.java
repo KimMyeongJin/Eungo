@@ -22,6 +22,7 @@ import com.eungo.controller.member.MemberUpdateAction;
 import com.eungo.controller.member.MemberUpdateProcAction;
 import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
+import com.eungo.controller.member.ProfileDeleteAction;
 import com.eungo.controller.member.PwCheckAction;
 import com.eungo.controller.member.SellerRegisterAction;
 import com.eungo.controller.member.SellerRegisterProcAction;
@@ -116,6 +117,8 @@ public class ActionFactory {
 			return new AdminMemberAction();
 		} else if (cmd.equals("view_seller")) {
 			return new ViewSellerAction();
+		} else if (cmd.equals("profile_delete")) {
+			return new ProfileDeleteAction();
 		}
 		return null;
 	}
