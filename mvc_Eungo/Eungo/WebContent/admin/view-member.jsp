@@ -104,7 +104,7 @@
 								<td>
 									<div id="${list.email}">${list.profile }
 										<c:if test="${list.profile ne null }">
-											<input type="button" onclick="del('${list.email}'); this.onclick='';" value="삭제">
+											<input type="button" style="width: 30%" onclick="del('${list.email}'); this.onclick='';" value="삭제">
 										</c:if>
 									</div>
 								</td>
@@ -159,7 +159,7 @@
 					success : function(data) {
 						if (data == 1) {
 							alert("프로필 삭제됨.");							
-							document.getElementById(send_email).style.disply = "none";
+							$("#"+send_email).remove();
 						} else if (data == -1) {
 							alert("DB에러.");
 						}

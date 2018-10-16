@@ -85,7 +85,7 @@ public class MemberDAO {
 	}
 
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,true,'naver','naver',null,null,?,?,false,null,1)";
+		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del) VALUES(?,true,'naver','naver',null,null,?,?,false,null,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -166,17 +166,16 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member VALUES(?,false,?,?,null,?,?,?,?,false,1)";
+		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del) VALUES(?,false,?,?,null,?,?,?,false,null,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, member.getEmail());
+			pstmt.setString(1, member.getEmail());			
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getSalt());
 			pstmt.setString(4, member.getPhonenumber());
 			pstmt.setString(5, member.getGender());
-			pstmt.setString(6, member.getBirthday());
-			pstmt.setString(7, member.getProfile());
+			pstmt.setString(6, member.getBirthday());			
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
