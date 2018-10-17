@@ -46,7 +46,7 @@ public class SellerRegisterProcAction implements Action {
 			account_holder_info = Integer.parseInt(birthday);
 		}
 		if (request.getParameter("seller_intro") != null) {
-			email = request.getParameter("seller_intro");
+			seller_intro = request.getParameter("seller_intro");
 		}
 
 		seller.setEmail(email);

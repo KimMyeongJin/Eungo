@@ -34,6 +34,23 @@ public class SellerDAO {
 		return -1;
 	}
 	
+	public int seller_intro_update(SellerVO seller) {
+		String SQL = "UPDATE seller SET seller_intro = ? WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, seller.getSeller_intro());
+			pstmt.setString(2, seller.getEmail());		
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}		
+		return -1;
+	}
+	
 	public String seller_intro(String email) {
 		String SQL = "SELECT seller_intro FROM seller WHERE email = ?";
 		Connection conn = DBManager.getConnection();

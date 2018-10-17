@@ -1,6 +1,7 @@
 package com.eungo.dto;
 
 public class BoardVO {
+	private String lphone_number;
 	private String email;
 	private int lnumber;
 	private String ltitle;
@@ -17,10 +18,17 @@ public class BoardVO {
 	private int lsellcount;
 	private int lviewcount;		
 	private String ldate;
-	private int good;	
-	private String lphone_number;
+	private int good;
+	private int del;
 	
 	
+	
+	public int getDel() {
+		return del;
+	}
+	public void setDel(int del) {
+		this.del = del;
+	}
 	public String getStandard_price() {
 		return standard_price;
 	}

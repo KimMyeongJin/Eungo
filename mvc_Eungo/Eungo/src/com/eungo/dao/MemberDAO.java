@@ -85,7 +85,7 @@ public class MemberDAO {
 	}
 
 	public int insert_naveremail(MemberVO member) {
-		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del) VALUES(?,true,'naver','naver',null,null,?,?,false,null,1)";
+		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del,date,del_date) VALUES(?,true,'naver','naver',null,null,?,?,false,null,1,now(),null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -166,7 +166,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberVO member) {
-		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del) VALUES(?,false,?,?,null,?,?,?,false,null,1)";
+		String SQL = "INSERT INTO member(email,emailcheck,password,salt,address,phonenumber,gender,birthday,seller,profile,del,date,del_date) VALUES(?,false,?,?,null,?,?,?,false,null,1,now(),null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -368,6 +368,7 @@ public class MemberDAO {
 			List<MemberVO> list = new ArrayList<>();
 			while(rs.next()) {
 				MemberVO member = new MemberVO();
+				member.setMember_number(rs.getInt("member_number"));
 				member.setEmail(rs.getString("email"));
 				member.setEmailcheck(rs.getBoolean("emailcheck"));
 				member.setPhonenumber(rs.getString("phonenumber"));
@@ -376,6 +377,7 @@ public class MemberDAO {
 				member.setSeller(rs.getBoolean("seller"));
 				member.setProfile(rs.getString("profile"));
 				member.setAddress(rs.getString("address"));
+				member.setDel(rs.getInt("del"));
 				list.add(member);
 			}
 			return list;
@@ -408,13 +410,13 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	public int profile_delete(String email) {
-		String SQL = "UPDATE member SET profile = null where email = ?";
+	public int profile_delete(int member_number) {
+		String SQL = "UPDATE member SET profile = null where member_number = ?";
 		Connection conn = DBManager.getConnection();		
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, email);
-			pstmt.executeUpdate();			
+			pstmt.setInt(1, member_number);
+			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -424,4 +426,28 @@ public class MemberDAO {
 		}
 		return -1;
 	}
+	
+	public String profile_name(int member_number) {
+		String SQL = "SELECT profile FROM member where member_number = ?";
+		Connection conn = DBManager.getConnection();		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, member_number);
+			rs = pstmt.executeQuery();
+			String pro_return = null;
+			if(rs.next()) {
+				String profile = rs.getString("profile");
+				String split[] = profile.split("/");
+				pro_return = split[4];
+			}
+			return pro_return;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt,rs);
+		}
+		return null;
+	}
+	
 }

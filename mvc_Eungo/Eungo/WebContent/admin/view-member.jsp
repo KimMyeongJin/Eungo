@@ -87,7 +87,7 @@
 							<th style="width: 6%">판매자</th>
 							<th style="width: 25%">주소</th>
 							<th style="width: 25%">프로필</th>
-							<th><input name="select_all" value="1" type="checkbox"></th>
+							<th><input name="select_all" id="select_all" type="checkbox"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -102,13 +102,13 @@
 								<td>${list.seller }</td>
 								<td style="text-overflow: ellipsis; overflow: hidden; width: 20%">${list.address }</td>
 								<td>
-									<div id="${list.email}">${list.profile }
+									<div id="member${list.member_number }">${list.profile }
 										<c:if test="${list.profile ne null }">
-											<input type="button" style="width: 30%" onclick="del('${list.email}'); this.onclick='';" value="삭제">
+											<input type="button" style="width: 30%" onclick="del('${list.member_number }'); this.onclick='';" value="삭제">
 										</c:if>
 									</div>
 								</td>
-								<td><input type="checkbox" name="name1" /></td>
+								<td><input type="checkbox" name="name1"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -146,20 +146,22 @@
 </div>
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
+
 <script>
-	function del(email) {
-				var send_email = email;
+	function del(member_number) {
+				
+				var member_number = member_number;
 				$.ajax({
 					async : true,
 					type : 'POST',
-					data : send_email,	
+					data : member_number,	
 					url : "<%=request.getContextPath()%>/member?cmd=profile_delete",
 					dataType : "json",
 					contentType : "application/json;charset=utf-8",
 					success : function(data) {
 						if (data == 1) {
 							alert("프로필 삭제됨.");							
-							$("#"+send_email).remove();
+							$("#member"+member_number).remove();
 						} else if (data == -1) {
 							alert("DB에러.");
 						}
@@ -169,6 +171,23 @@
 					}
 				});
 		}
+	
+	 
+     
+     $(function(){
+ 	    //최상단 체크박스 클릭
+ 	    $("#select_all").click(function(){
+ 	        //클릭되었으면
+ 	        if($("#select_all").prop("checked")){
+ 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+ 	            $("input[type=checkbox]").prop("checked",true);
+ 	            //클릭이 안되있으면
+ 	        }else{
+ 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+ 	            $("input[type=checkbox]").prop("checked",false);
+ 	        }
+ 	    })
+ 	})
 </script>
 </body>
 </html>

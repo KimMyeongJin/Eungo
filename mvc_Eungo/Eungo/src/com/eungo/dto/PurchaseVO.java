@@ -11,7 +11,14 @@ public class PurchaseVO {
 	private String seller_email;
 	private String date;
 	private boolean reply_cheack;
+	private int del;
 	
+	public int getDel() {
+		return del;
+	}
+	public void setDel(int del) {
+		this.del = del;
+	}
 	public int getPur_number() {
 		return pur_number;
 	}

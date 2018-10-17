@@ -1,6 +1,7 @@
 package com.eungo.dto;
 
 public class MemberVO {
+	private int member_number;
 	private String email;
 	private boolean emailcheck;
 	private String password;
@@ -12,7 +13,28 @@ public class MemberVO {
 	private boolean seller;	
 	private String profile;
 	private int del;
+	private String date;
+	private String del_date;
 	
+	
+	public String getDel_date() {
+		return del_date;
+	}
+	public void setDel_date(String del_date) {
+		this.del_date = del_date;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public int getMember_number() {
+		return member_number;
+	}
+	public void setMember_number(int member_number) {
+		this.member_number = member_number;
+	}
 	public int getDel() {
 		return del;
 	}

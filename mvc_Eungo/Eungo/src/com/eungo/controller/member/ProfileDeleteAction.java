@@ -1,6 +1,7 @@
 package com.eungo.controller.member;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,9 +30,23 @@ public class ProfileDeleteAction implements Action {
 		String email = (String) session.getAttribute("email");
 		if (email == null) {
 			Script.moving(response, "로그인 해주세요.", url_back);
-		} else if (email.equals("admin@admin.com")) {			
-			MemberDAO dao = new MemberDAO();			
-			int delete_result = dao.profile_delete(sb.toString());			
+		} else if (email.equals("admin@admin.com")) {
+			int member_number = Integer.parseInt(sb.toString());
+			MemberDAO dao = new MemberDAO();
+			String profile_name = dao.profile_name(member_number);
+			int delete_result = dao.profile_delete(member_number);	
+			if(delete_result == 1) {
+				File file = new File(request.getServletContext().getRealPath("/images/profile/")+profile_name);	
+		        if( file.exists() ){
+		            if(file.delete()){
+		                System.out.println("파일삭제 성공");
+		            }else{
+		                System.out.println("파일삭제 실패");
+		            }
+		        }else{
+		            System.out.println("파일이 존재하지 않습니다.");
+		        }		             
+		    }
 			String data = String.valueOf(delete_result);
 			PrintWriter out = response.getWriter();			
 			out.println(data);

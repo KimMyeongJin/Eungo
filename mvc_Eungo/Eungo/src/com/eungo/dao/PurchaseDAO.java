@@ -16,7 +16,7 @@ public class PurchaseDAO {
 	private ResultSet rs;
 	
 	public PurchaseVO who_purchase(String email,int lnumber){
-		String SQL = "SELECT pur_number,email,date FROM purchase WHERE lnumber = ? AND email = ? AND reply_check = false ORDER BY date DESC";
+		String SQL = "SELECT pur_number,email,date FROM purchase WHERE lnumber = ? AND email = ? AND reply_check = false AND del = 1 ORDER BY date DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -56,7 +56,7 @@ public class PurchaseDAO {
 	}
 	
 	public int insert(PurchaseVO purchase) {
-		String SQL = "INSERT INTO purchase(lnumber, email, product_name, quantity, price, total_price, seller_email, date, reply_check) VALUES(?,?,?,?,?,?,?,now(),false)";
+		String SQL = "INSERT INTO purchase(lnumber, email, product_name, quantity, price, total_price, seller_email, date, reply_check, del) VALUES(?,?,?,?,?,?,?,now(),false,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -78,7 +78,7 @@ public class PurchaseDAO {
 	}
 	
 	public PurchaseVO select(String email) {
-		String SQL = "SELECT * FROM purchase WHERE email = ? ORDER BY pur_number DESC";
+		String SQL = "SELECT * FROM purchase WHERE email = ? AND del = 1 ORDER BY pur_number DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);

@@ -34,7 +34,7 @@ public class BoardDAO {
 	}
 
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good,del) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0,1)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -106,7 +106,7 @@ public class BoardDAO {
 
 	// 페이지 넘길 때마다 9개씩 가져오게하는 쿼리
 	public List<BoardVO> boardPaging(int per_page, int pageNum) {
-		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list WHERE del = 1 ORDER BY lnumber DESC LIMIT ? OFFSET ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -146,7 +146,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> my_services_Paging(String email, int per_page, int pageNum) {
-		String SQL = "SELECT * FROM list WHERE email = ? ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list WHERE email = ? AND del = 1 ORDER BY lnumber DESC LIMIT ? OFFSET ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -187,7 +187,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> new_seven() {
-		String SQL = "SELECT * FROM list ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
+		String SQL = "SELECT * FROM list WHERE del = 1 ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -225,7 +225,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> top_three() {
-		String SQL = "SELECT li.lnumber,li.email,li.good,li.ltitle,li.limage,pur.total FROM list AS li LEFT JOIN (SELECT sum(total_price) AS 'total',lnumber FROM purchase GROUP BY lnumber) AS pur ON pur.lnumber = li.lnumber ORDER BY total DESC LIMIT 3 OFFSET 0";
+		String SQL = "SELECT li.lnumber,li.email,li.good,li.ltitle,li.limage,pur.total FROM list AS li LEFT JOIN (SELECT sum(total_price) AS 'total',lnumber FROM purchase WHERE del = 1 GROUP BY lnumber) AS pur ON pur.lnumber = li.lnumber ORDER BY total DESC LIMIT 3 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -437,6 +437,7 @@ public class BoardDAO {
 
 			while (rs.next()) {
 				BoardVO board = new BoardVO();
+				board.setLphone_number(rs.getString("lphone_number"));
 				board.setEmail(rs.getString("email"));
 				board.setLnumber(rs.getInt("lnumber"));
 				board.setLtitle(rs.getString("ltitle"));
@@ -452,8 +453,7 @@ public class BoardDAO {
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
-				board.setGood(rs.getInt("good"));
-				board.setLphone_number(rs.getString("lphone_number"));
+				board.setGood(rs.getInt("good"));				
 				list.add(board);
 			}
 			return list;
@@ -514,7 +514,7 @@ public class BoardDAO {
 	}
 
 	public int board_delete(int lnumber) {
-		String SQL = "DELETE FROM list WHERE lnumber = ? ";
+		String SQL = "UPDATE list SET del = 2 WHERE lnumber = ? ";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);

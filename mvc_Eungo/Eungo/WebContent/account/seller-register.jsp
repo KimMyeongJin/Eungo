@@ -77,7 +77,7 @@
 						</div>
 						<div class="form-group">
 							<label for="name">판매자 소개하기</label>
-							<textarea rows="10" cols="50"></textarea>
+							<textarea name="seller_intro" rows="10" cols="50"></textarea>
 						</div>
 						<div class="text-center">
 							<button type="submit" class="btn btn-default">등록하기</button>
