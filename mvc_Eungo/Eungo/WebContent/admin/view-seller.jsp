@@ -27,7 +27,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1"><img
+				href="<%=request.getContextPath()%>/index.jsp"><img
 				src="<%=request.getContextPath()%>/assets/img/logo2.png" alt=""></a>
 		</div>
 

@@ -10,20 +10,27 @@ public class ReplyVO {
 	private int pur_number;
 	private String re_date;
 	private String an_date;
-	private int del;
+	private boolean del;
+	private String del_date;
 	
+	public boolean isDel() {
+		return del;
+	}
+	public void setDel(boolean del) {
+		this.del = del;
+	}
+	public String getDel_date() {
+		return del_date;
+	}
+	public void setDel_date(String del_date) {
+		this.del_date = del_date;
+	}
 	public int getPur_number() {
 		return pur_number;
 	}
 	public void setPur_number(int pur_number) {
 		this.pur_number = pur_number;
-	}
-	public int getDel() {
-		return del;
-	}
-	public void setDel(int del) {
-		this.del = del;
-	}
+	}	
 	public String getRe_date() {
 		return re_date;
 	}

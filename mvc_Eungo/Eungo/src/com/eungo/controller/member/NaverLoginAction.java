@@ -62,6 +62,8 @@ public class NaverLoginAction implements Action {
 				}
 			} else if(del == 2) {
 				Script.moving(response, "삭제된 계정, 아직 사용 할 수 없습니다.");
+			} else {
+				Script.moving(response, "DB에러");
 			}
 			System.out.println("네이버 로그인 DB연결 성공");
 		} catch (Exception e) {

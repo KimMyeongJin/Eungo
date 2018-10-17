@@ -12,11 +12,17 @@ public class MemberVO {
 	private String birthday;
 	private boolean seller;	
 	private String profile;
-	private int del;
+	private boolean del;
 	private String date;
 	private String del_date;
 	
 	
+	public boolean isDel() {
+		return del;
+	}
+	public void setDel(boolean del) {
+		this.del = del;
+	}
 	public String getDel_date() {
 		return del_date;
 	}
@@ -34,13 +40,7 @@ public class MemberVO {
 	}
 	public void setMember_number(int member_number) {
 		this.member_number = member_number;
-	}
-	public int getDel() {
-		return del;
-	}
-	public void setDel(int del) {
-		this.del = del;
-	}
+	}	
 	public String getProfile() {
 		return profile;
 	}

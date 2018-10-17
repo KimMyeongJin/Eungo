@@ -85,9 +85,10 @@
 							</li>
 						</ul></li>
 				</c:if>
-				<%-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a
-					href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a></li> --%>
-				<!-- 당장 contact.jsp 필요없어서 주석처리함  -->
+				<c:if test="${sessionScope.email eq 'admin@admin.com' }">
+				<li class="wow fadeInDown" data-wow-delay="0.4s"><a
+					href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1">관리자 페이지</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

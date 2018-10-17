@@ -15,7 +15,7 @@ public class BoardDAO {
 	private ResultSet rs;
 
 	public int lnumberSelect(String email) {
-		String SQL = "SELECT lnumber FROM list WHERE email = ? ORDER BY lnumber DESC";
+		String SQL = "SELECT lnumber FROM list WHERE email = ? AND del = false ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -34,7 +34,7 @@ public class BoardDAO {
 	}
 
 	public int boardInsert(BoardVO board) {
-		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good,del) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0,1)";
+		String SQL = "INSERT INTO list(email,lphone_number,ltitle,lcontent,standard_price,lcategory,limage,limage2,limage3,limage4,youtube,cancel_rule,lsellcount,lviewcount,ldate,good,del,del_date) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,now(),0,false,null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -61,7 +61,7 @@ public class BoardDAO {
 	}
 	
 	public int good_insert(int good,int lnumber) {
-		String SQL = "UPDATE list SET good = ? WHERE lnumber = ?";
+		String SQL = "UPDATE list SET good = ? WHERE lnumber = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -78,7 +78,7 @@ public class BoardDAO {
 	}
 
 	public int boardModify(BoardVO board) {
-		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, standard_price = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ?";
+		String SQL = "UPDATE list SET lphone_number = ?, ltitle = ?, lcontent = ?, standard_price = ?, lcategory = ?, limage = ?, limage2 = ?,limage3 = ?,limage4 = ?, youtube = ?,cancel_rule = ? WHERE lnumber = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -106,7 +106,7 @@ public class BoardDAO {
 
 	// 페이지 넘길 때마다 9개씩 가져오게하는 쿼리
 	public List<BoardVO> boardPaging(int per_page, int pageNum) {
-		String SQL = "SELECT * FROM list WHERE del = 1 ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list WHERE del = false ORDER BY lnumber DESC LIMIT ? OFFSET ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -146,7 +146,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> my_services_Paging(String email, int per_page, int pageNum) {
-		String SQL = "SELECT * FROM list WHERE email = ? AND del = 1 ORDER BY lnumber DESC LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list WHERE email = ? AND del = false ORDER BY lnumber DESC LIMIT ? OFFSET ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -187,7 +187,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> new_seven() {
-		String SQL = "SELECT * FROM list WHERE del = 1 ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
+		String SQL = "SELECT * FROM list WHERE del = false ORDER BY lnumber DESC LIMIT 7 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -225,7 +225,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> top_three() {
-		String SQL = "SELECT li.lnumber,li.email,li.good,li.ltitle,li.limage,pur.total FROM list AS li LEFT JOIN (SELECT sum(total_price) AS 'total',lnumber FROM purchase WHERE del = 1 GROUP BY lnumber) AS pur ON pur.lnumber = li.lnumber ORDER BY total DESC LIMIT 3 OFFSET 0";
+		String SQL = "SELECT li.lnumber,li.email,li.good,li.ltitle,li.limage,pur.total FROM list AS li LEFT JOIN (SELECT sum(total_price) AS 'total',lnumber FROM purchase GROUP BY lnumber) AS pur ON pur.lnumber = li.lnumber WHERE del = false ORDER BY total DESC LIMIT 3 OFFSET 0";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -252,7 +252,7 @@ public class BoardDAO {
 	}
 
 	public int boardTotalCount() {
-		String SQL = "SELECT count(*) FROM list";
+		String SQL = "SELECT count(*) FROM list WHERE del = false";
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
@@ -272,7 +272,7 @@ public class BoardDAO {
 	}
 
 	public int my_servcies_count(String email) {
-		String SQL = "SELECT count(*) FROM list WHERE email = ?";
+		String SQL = "SELECT count(*) FROM list WHERE email = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
@@ -295,9 +295,9 @@ public class BoardDAO {
 	public int smartSearchCount(String search_text, String search_category) {
 		String SQL = "";
 		if (search_text.equals("") || search_text == null) {
-			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? ORDER BY lnumber DESC";
+			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? AND del = false ORDER BY lnumber DESC";
 		} else {
-			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
+			SQL = "SELECT count(*) FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? AND del = false ORDER BY lnumber DESC";
 		}
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
@@ -321,7 +321,7 @@ public class BoardDAO {
 	}
 
 	public int searchCount(String search_text) {
-		String SQL = "SELECT count(*) FROM list WHERE lcategory like ? OR ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC";
+		String SQL = "SELECT count(*) FROM list WHERE lcategory like ? OR ltitle LIKE ? OR lcontent like ? AND del = false ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		int totalNum = 0;
 		try {
@@ -344,7 +344,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> getSelectAll() {
-		String SQL = "SELECT * FROM list ORDER BY lnumber DESC";
+		String SQL = "SELECT * FROM list WHERE del = false ORDER BY lnumber DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -381,7 +381,7 @@ public class BoardDAO {
 	}
 
 	public BoardVO getSelectOne(int lnumber) {
-		String SQL = "SELECT * FROM list WHERE lnumber = ?";
+		String SQL = "SELECT * FROM list WHERE lnumber = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -422,7 +422,7 @@ public class BoardDAO {
 
 	public List<BoardVO> search(String search_text, int per_page, int pageNum) {
 
-		String SQL = "SELECT * FROM list WHERE ltitle LIKE ? OR lcategory LIKE ? OR lcontent LIKE ? ORDER bY lnumber DESC  LIMIT ? OFFSET ?";
+		String SQL = "SELECT * FROM list WHERE ltitle LIKE ? OR lcategory LIKE ? OR lcontent LIKE ? AND del = false ORDER bY lnumber DESC  LIMIT ? OFFSET ?";
 
 		Connection conn = DBManager.getConnection();
 		try {
@@ -468,9 +468,9 @@ public class BoardDAO {
 	public List<BoardVO> smart_search(String search_text, String search_category, int per_page, int pageNum) {
 		String SQL = "";
 		if (search_text.equals("") || search_text == null) {
-			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
+			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? AND lcontent like ? AND del = false ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
 		} else {
-			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
+			SQL = "SELECT * FROM list WHERE lcategory = ? AND ltitle LIKE ? OR lcontent like ? AND del = false ORDER BY lnumber DESC  LIMIT ? OFFSET ?";
 		}
 		Connection conn = DBManager.getConnection();
 		try {
@@ -514,7 +514,7 @@ public class BoardDAO {
 	}
 
 	public int board_delete(int lnumber) {
-		String SQL = "UPDATE list SET del = 2 WHERE lnumber = ? ";
+		String SQL = "UPDATE list SET del = true WHERE lnumber = ? ";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);

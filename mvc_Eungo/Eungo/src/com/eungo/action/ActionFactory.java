@@ -13,6 +13,7 @@ import com.eungo.controller.board.SubmitServiceAction;
 import com.eungo.controller.board.ViewServiceAction;
 import com.eungo.controller.member.AdminMemberAction;
 import com.eungo.controller.member.ApiConnectAction;
+import com.eungo.controller.member.DeleteMemberAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
@@ -119,6 +120,8 @@ public class ActionFactory {
 			return new ViewSellerAction();
 		} else if (cmd.equals("profile_delete")) {
 			return new ProfileDeleteAction();
+		} else if (cmd.equals("delete_member")) {
+			return new DeleteMemberAction();
 		}
 		return null;
 	}

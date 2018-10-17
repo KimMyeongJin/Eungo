@@ -14,7 +14,7 @@ public class ReplyDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	public int insert_Reply(ReplyVO reply) {
-		String SQL = "INSERT INTO reply(reply_comment,star,lnumber,email,re_date,del,pur_number) VALUES(?,?,?,?,now(),1,?)";
+		String SQL = "INSERT INTO reply(reply_comment,star,lnumber,email,pur_number,re_date,del,del_date) VALUES(?,?,?,?,?,now(),false,null)";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -53,7 +53,7 @@ public class ReplyDAO {
 	}
 	
 	public ReplyVO select_answer(int reply_number) {
-		String SQL = "SELECT * FROM reply WHERE reply_number = ?";
+		String SQL = "SELECT * FROM reply WHERE reply_number = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -78,7 +78,7 @@ public class ReplyDAO {
 	}
 	
 	public List<ReplyVO> select_Reply(int lnumber){
-		String SQL = "SELECT * FROM reply WHERE lnumber = ? ORDER BY reply_number DESC";
+		String SQL = "SELECT * FROM reply WHERE lnumber = ? AND del = false ORDER BY reply_number DESC";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -162,7 +162,7 @@ public class ReplyDAO {
 	}
 	
 	public int reply_del(int reply_number) {
-		String SQL = "UPDATE reply SET del = 0 WHERE reply_number = ?";
+		String SQL = "UPDATE reply SET del = true, del_date = now() WHERE reply_number = ?";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);

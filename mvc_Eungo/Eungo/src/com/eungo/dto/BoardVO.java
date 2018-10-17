@@ -19,14 +19,19 @@ public class BoardVO {
 	private int lviewcount;		
 	private String ldate;
 	private int good;
-	private int del;
-	
-	
-	
-	public int getDel() {
+	private boolean del;
+	private String del_date;
+
+	public String getDel_date() {
+		return del_date;
+	}
+	public void setDel_date(String del_date) {
+		this.del_date = del_date;
+	}
+	public boolean isDel() {
 		return del;
 	}
-	public void setDel(int del) {
+	public void setDel(boolean del) {
 		this.del = del;
 	}
 	public String getStandard_price() {

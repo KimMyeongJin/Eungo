@@ -32,7 +32,7 @@ public class MemberLoginAction implements Action {
 		String salt = dao.select_salt(email);
 		int del = dao.select_del(email);
 
-		if (del == 1) {
+		if (del==1) {
 			if (salt == null) {
 				Script.moving(response, "아이디가 존재하지 않습니다.");
 			} else if (salt.equals("naver")) {
@@ -87,6 +87,8 @@ public class MemberLoginAction implements Action {
 			}
 		} else if(del == 2) {
 			Script.moving(response, "삭제 된 계정, 아직사용 할 수 없습니다.");
+		} else {
+			Script.moving(response, "DB에러");
 		}
 	}
 }

@@ -27,7 +27,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1"><img
+				href="<%=request.getContextPath()%>/index.jsp"><img
 				src="<%=request.getContextPath()%>/assets/img/logo2.png" alt=""></a>
 		</div>
 
@@ -73,7 +73,8 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-		<form action="<%=request.getContextPath()%>/member?cmd=delete_member">
+		<form action="<%=request.getContextPath()%>/member">
+		<input type="hidden" name="cmd" value="delete_member">
 			<div class="panel-body">
 				<table id="data-table"
 					class="table table-striped table-bordered nowrap">
@@ -87,7 +88,7 @@
 							<th style="width: 6%">판매자</th>
 							<th style="width: 25%">주소</th>
 							<th style="width: 25%">프로필</th>
-							<th><input name="select_all" id="select_all" type="checkbox"></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -108,7 +109,7 @@
 										</c:if>
 									</div>
 								</td>
-								<td><input type="checkbox" name="name1"/></td>
+								<td><input type="checkbox" name="check" value="${list.member_number }"></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -116,12 +117,12 @@
 			</div>
 			<div class="col-md-12">
 				<button class="navbar-btn nav-button wow fadeInRight"
-					onclick="location.href='#'" data-wow-delay="0.48s">삭제</button>
+					 data-wow-delay="0.48s">삭제</button>
 				<input type="text" name="search_member" class="form-control"
 					style="width: 400px; display: inline; margin-left: 15%"
 					placeholder="Key word"> <input type="hidden" name="pageNum"
 					value="1">
-				<button class="btn search-btn" type="submit">
+				<button class="btn search-btn" type="button">
 					<i class="fa fa-search"></i>
 				</button>
 				<div class="pull-right">
@@ -171,23 +172,6 @@
 					}
 				});
 		}
-	
-	 
-     
-     $(function(){
- 	    //최상단 체크박스 클릭
- 	    $("#select_all").click(function(){
- 	        //클릭되었으면
- 	        if($("#select_all").prop("checked")){
- 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
- 	            $("input[type=checkbox]").prop("checked",true);
- 	            //클릭이 안되있으면
- 	        }else{
- 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
- 	            $("input[type=checkbox]").prop("checked",false);
- 	        }
- 	    })
- 	})
 </script>
 </body>
 </html>
