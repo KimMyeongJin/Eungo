@@ -36,7 +36,6 @@ public class MemberDAO {
 		} finally {
 			DBManager.close(conn, pstmt, rs);
 		}
-
 		return null;
 	}
 
@@ -342,6 +341,22 @@ public class MemberDAO {
 		return -1;
 	}
 
+	public int re_update_seller(String email) {
+		String SQL = "UPDATE member SET seller = false WHERE email = ? AND del = false";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return -1;
+	}
+
 	public boolean discriminate_seller(String email) {
 		String SQL = "SELECT seller FROM member WHERE email = ? AND del = false";
 		Connection conn = DBManager.getConnection();
@@ -430,6 +445,42 @@ public class MemberDAO {
 		return -1;
 	}
 
+	public int member_delete(String email) {
+		String SQL = "UPDATE member SET del = true, del_date = now() WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return -1;
+	}
+
+	public String select_email_by_num(int member_number) {
+		String SQL = "SELECT email FROM member WHERE member_number = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, member_number);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getString("email");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+
 	public String profile_name(int member_number) {
 		String SQL = "SELECT profile FROM member where member_number = ? AND del = false";
 		Connection conn = DBManager.getConnection();
@@ -451,6 +502,54 @@ public class MemberDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return null;
+	}
+
+	public List<MemberVO> search_member(String search_text, int pageNum) {
+		String SQL = "SELECT * FROM member WHERE email like ? AND del = false ORDER BY email DESC LIMIT 20 OFFSET ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, "%" + search_text + "%");
+			pstmt.setInt(2, (pageNum - 1) * 20);
+			rs = pstmt.executeQuery();
+			List<MemberVO> list = new ArrayList<>();
+			while (rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setEmail(rs.getString("email"));
+				member.setPhonenumber(rs.getString("phonenumber"));
+				member.setGender(rs.getString("gender"));
+				member.setBirthday(rs.getString("Birthday"));
+				member.setProfile(rs.getString("profile"));
+				member.setAddress(rs.getString("address"));
+				list.add(member);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+
+	public int search_member_count(String search_text) {
+		String SQL = "SELECT count(*) FROM member WHERE email like ? AND del = false";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, "%" + search_text + "%");
+			rs = pstmt.executeQuery();
+			int totalNum = 0;
+			while (rs.next()) {
+				totalNum++;
+			}
+			return totalNum;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return -1;
 	}
 
 }

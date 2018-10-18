@@ -2,6 +2,7 @@ package com.eungo.action;
 
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
+import com.eungo.controller.board.DeleteBoardAction;
 import com.eungo.controller.board.IndexBoardAction;
 import com.eungo.controller.board.MyServicesAction;
 import com.eungo.controller.board.ServiceDeleteAction;
@@ -10,10 +11,12 @@ import com.eungo.controller.board.ServiceModifyProcAction;
 import com.eungo.controller.board.SmartSearchAction;
 import com.eungo.controller.board.SubmitLoadAction;
 import com.eungo.controller.board.SubmitServiceAction;
+import com.eungo.controller.board.ViewBoardAction;
 import com.eungo.controller.board.ViewServiceAction;
 import com.eungo.controller.member.AdminMemberAction;
 import com.eungo.controller.member.ApiConnectAction;
 import com.eungo.controller.member.DeleteMemberAction;
+import com.eungo.controller.member.DeleteSellerAction;
 import com.eungo.controller.member.EmailCheckAction;
 import com.eungo.controller.member.EmailSendAction;
 import com.eungo.controller.member.MemberJoinAction;
@@ -25,6 +28,7 @@ import com.eungo.controller.member.NaverCallBackAction;
 import com.eungo.controller.member.NaverLoginAction;
 import com.eungo.controller.member.ProfileDeleteAction;
 import com.eungo.controller.member.PwCheckAction;
+import com.eungo.controller.member.SearchMemberAction;
 import com.eungo.controller.member.SellerRegisterAction;
 import com.eungo.controller.member.SellerRegisterProcAction;
 import com.eungo.controller.member.ViewSellerAction;
@@ -122,6 +126,14 @@ public class ActionFactory {
 			return new ProfileDeleteAction();
 		} else if (cmd.equals("delete_member")) {
 			return new DeleteMemberAction();
+		} else if (cmd.equals("delete_seller")) {
+			return new DeleteSellerAction();
+		} else if (cmd.equals("search_member")) {
+			return new SearchMemberAction();
+		} else if (cmd.equals("view_board")) {
+			return new ViewBoardAction();
+		} else if (cmd.equals("delete_board")) {
+			return new DeleteBoardAction();
 		}
 		return null;
 	}

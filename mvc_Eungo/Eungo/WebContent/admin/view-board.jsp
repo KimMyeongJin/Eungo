@@ -46,10 +46,11 @@
 			<ul class="main-nav nav navbar-nav navbar-right">
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
 					href="<%=request.getContextPath()%>/index.jsp"> 은고</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.2s"><a href="#">게시판
+				<li class="wow fadeInDown" data-wow-delay="0.2s"><a
+					href="<%=request.getContextPath()%>/board?cmd=view_board&pageNum=1">게시판
 						관리</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.3s"><a class=""
-					href="#">회원관리</a></li>
+					href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1">회원관리</a></li>
 				<%-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a
 					href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a></li> --%>
 				<!-- 당장 contact.jsp 필요없어서 주석처리함  -->
@@ -84,38 +85,38 @@
 							<th>카테고리</th>
 							<th>가격</th>
 							<th>판매수량</th>
-							<th>평점</th>
+							<th style="width: 5%">평점</th>
 							<th>게시일</th>
-							<th><input name="select_all" value="1" type="checkbox"></th>
+							<th style="width: 3%"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>Ambient Temperature</td>
-							<td><input type="checkbox" name="name1" /></td>
-						</tr>
+						<c:forEach var="list" items="${list }">
+							<tr>
+								<td>${list.email }</td>
+								<td>${list.ltitle }</td>
+								<td>${list.lphone_number }</td>
+								<td>${list.lcategory }</td>
+								<td>${list.standard_price }</td>
+								<td>${list.lsellcount }</td>
+								<td>${list.good }</td>
+								<td>${list.ldate }</td>
+								<td><input type="checkbox" name="name1" /></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			<div class="col-md-12">
 				<div class="row">
 					<button class="navbar-btn nav-button wow fadeInRight"
-						onclick="location.href='#'" data-wow-delay="0.48s">수정</button>
-					<button class="navbar-btn nav-button wow fadeInRight"
-						onclick="location.href='#'" data-wow-delay="0.48s">삭제</button>
-					<input type="hidden" name="cmd" value="board_search"> <input
-						type="text" name="search_text" class="form-control"
+						data-wow-delay="0.48s"
+						onclick="javascript: form.action='<%=request.getContextPath()%>/board?cmd=delete_board';">삭제</button>
+					<input type="text" name="search_text" class="form-control"
 						style="width: 400px; display: inline; margin-left: 15%"
-						placeholder="Key word"> <input type="hidden"
-						name="pageNum" value="1">
-					<button class="btn search-btn" type="submit">
+						placeholder="검색어" onkeydown="EnterShift();">
+					<button class="btn search-btn" name="searchbox"
+						onclick="javascript: form.action='<%=request.getContextPath()%>/board?cmd=search_board&pageNum=1';">
 						<i class="fa fa-search"></i>
 					</button>
 					<div class="pull-right">
@@ -141,5 +142,12 @@
 </div>
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
+<script type="text/javascript">
+	function EnterShift() {
+		var keyValue = event.keyCode;
+		if (keyValue == '13')
+			document.adminForm.searchbox.focus();
+	}
+</script>
 </body>
 </html>

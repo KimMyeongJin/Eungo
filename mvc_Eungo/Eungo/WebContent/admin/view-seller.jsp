@@ -73,20 +73,21 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-		<form action="<%=request.getContextPath()%>/member?cmd=delete_member">
+		<form action="<%=request.getContextPath()%>/member">
+		<input type="hidden" name="cmd" value="delete_seller">
 			<div class="panel-body">
 				<table id="data-table"
 					class="table table-striped table-bordered nowrap">
 					<thead>
 						<tr>
 							<th style="width: 10%">이메일</th>
-							<th style="width: 9%">은행코드</th>
+							<th style="width: 7%">은행코드</th>
 							<th style="width: 11%">은행명</th>
-							<th style="width: 5%">계좌번호</th>
+							<th style="width: 8%">계좌번호</th>
 							<th style="width: 9%">생년월일</th>
-							<th style="width: 6%">판매자소개</th>
+							<th style="width: 25%">판매자소개</th>
 							<th >수입</th>							
-							<th><input name="select_all" value="1" type="checkbox"></th>
+							<th style="width: 3%"></th>
 						</tr>
 					</thead>
 					<tbody>						
@@ -96,26 +97,16 @@
 								<td>${seller.bank_name }</td>
 								<td>${seller.account_num }</td>
 								<td>${seller.account_holder_info }</td>
-								<td>${seller.seller_intro }</td>
+								<td><div style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">${seller.seller_intro }</div></td>
 								<td>${seller.income }</td>
-								<td><input type="checkbox" name="name1" /></td>
+								<td><input type="checkbox" name="check" value="${seller.email }"></td>
 							</tr>						
 					</tbody>
 				</table>
 			</div>
 			<div class="col-md-12">
 				<button class="navbar-btn nav-button wow fadeInRight"
-					onclick="location.href='#'" data-wow-delay="0.48s">수정</button>
-				<button class="navbar-btn nav-button wow fadeInRight"
-					onclick="location.href='#'" data-wow-delay="0.48s">삭제</button>
-				<input type="hidden" name="cmd" value="board_search"> <input
-					type="text" name="search_text" class="form-control"
-					style="width: 400px; display: inline; margin-left: 15%"
-					placeholder="Key word"> <input type="hidden" name="pageNum"
-					value="1">
-				<button class="btn search-btn" type="submit">
-					<i class="fa fa-search"></i>
-				</button>				
+					type="submit" data-wow-delay="0.48s">삭제</button>
 			</div>
 		</form>
 	</div>

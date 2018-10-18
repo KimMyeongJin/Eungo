@@ -194,4 +194,39 @@ public class ReplyDAO {
 		}
 		return -1;
 	}
+	
+	public int reply_del_by_member(String email) {
+		String SQL = "UPDATE reply SET del = true, del_date = now() WHERE email = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	public int reply_del_by_board(int lnumber) {
+		String SQL = "UPDATE reply SET del = true, del_date = now() WHERE lnumber = ?";
+		Connection conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, lnumber);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
 }

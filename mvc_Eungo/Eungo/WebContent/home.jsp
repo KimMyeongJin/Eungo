@@ -77,7 +77,7 @@
 								style="height: 225px" src="${new_list.limage }"></a>
 							</div>
 							<div class="item-entry overflow">
-								<h5 style="text-overflow: ellipsis; overflow: hidden;">
+								<h5 style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100%;">
 									<a
 										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${new_list.lnumber}">${new_list.ltitle }</a>
 								</h5>

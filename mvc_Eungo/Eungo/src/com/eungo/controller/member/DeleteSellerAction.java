@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.eungo.action.Action;
-import com.eungo.dao.BoardDAO;
 import com.eungo.dao.MemberDAO;
-import com.eungo.dao.ReplyDAO;
+import com.eungo.dao.SellerDAO;
 import com.eungo.util.Script;
 
-public class DeleteMemberAction implements Action {
+public class DeleteSellerAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,23 +26,14 @@ public class DeleteMemberAction implements Action {
 		if (email == null) {
 			Script.moving(response, "로그인 해주세요.", url_back);
 		} else if (email.equals("admin@admin.com")) {
-			MemberDAO dao = new MemberDAO();
-			BoardDAO bdao = new BoardDAO();
-			ReplyDAO rdao = new ReplyDAO();
-			if (request.getParameterValues("check") == null) {
-				Script.moving(response, "체크 해주세요.");
+			SellerDAO dao = new SellerDAO();
+			MemberDAO mdao = new MemberDAO();
+			String seller_email = request.getParameter("check");
+			int result = dao.delete_seller(seller_email);
+			int m_result = mdao.re_update_seller(seller_email);
+			if (result == -1 || m_result == -1) {
+				Script.moving(response, "DB에러", url);
 			} else {
-				String member_number[] = request.getParameterValues("check");
-				for (int i = 0; i < member_number.length; i++) {
-					String member_email = dao.select_email_by_num(Integer.parseInt(member_number[i]));
-					int result = dao.member_delete(member_email);
-					int b_result = bdao.board_delete_by_member(member_email);
-					int r_result = rdao.reply_del_by_member(member_email);
-					if (result == -1 || b_result == -1 || r_result == -1) {
-						Script.moving(response, "DB에러", url);
-						break;
-					}
-				}
 				RequestDispatcher dis = request.getRequestDispatcher(url);
 				dis.forward(request, response);
 			}

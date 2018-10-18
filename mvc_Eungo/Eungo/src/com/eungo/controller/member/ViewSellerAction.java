@@ -28,11 +28,15 @@ public class ViewSellerAction implements Action {
 		String seller_email = request.getParameter("seller_email");
 		if (email == null) {
 			Script.moving(response, "로그인 해주세요.", url_back);
-		} else if (email != null && email.equals("admin@admin.com")) {
+		} else if (email.equals("admin@admin.com")) {
 			seller = dao.select_seller(seller_email);
-			request.setAttribute("seller", seller);
-			RequestDispatcher dis = request.getRequestDispatcher(url);
-			dis.forward(request, response);
+			if(seller==null) {
+				Script.moving(response, "판매자가 아닙니다.");
+			}else {
+				request.setAttribute("seller", seller);
+				RequestDispatcher dis = request.getRequestDispatcher(url);
+				dis.forward(request, response);
+			}			
 		}
 	}
 }

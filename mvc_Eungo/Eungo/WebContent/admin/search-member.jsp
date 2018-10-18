@@ -73,7 +73,7 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-		<form name="adminForm" method="post">
+		<form name="adminForm" method="post">		
 			<div class="panel-body">
 				<table id="data-table"
 					class="table table-striped table-bordered nowrap">
@@ -132,7 +132,7 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="paging" items="${paging }">
-										<li><a href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=${paging.value}">${paging.key}</a></li>
+										<li><a href="<%=request.getContextPath()%>/member?cmd=search_member&pageNum=${paging.value}&search_text=${search_text}">${paging.key}</a></li>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -170,12 +170,12 @@
 					}
 				});
 		}
-
-function EnterShift() {
-       var keyValue = event.keyCode;
-       if (keyValue =='13')
-                document.adminForm.searchbox.focus();
-}
+	
+	function EnterShift() {
+	       var keyValue = event.keyCode;
+	       if (keyValue =='13')
+	                document.adminForm.searchbox.focus();
+	}
 </script>
 </body>
 </html>
