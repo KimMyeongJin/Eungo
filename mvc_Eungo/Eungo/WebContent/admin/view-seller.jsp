@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">회원관리</h1>
+				<h1 class="page-title">판매자 관리</h1>
 			</div>
 		</div>
 	</div>
@@ -97,7 +97,7 @@
 								<td>${seller.bank_name }</td>
 								<td>${seller.account_num }</td>
 								<td>${seller.account_holder_info }</td>
-								<td><div style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">${seller.seller_intro }</div></td>
+								<td><div style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100%;">${seller.seller_intro }</div></td>
 								<td>${seller.income }</td>
 								<td><input type="checkbox" name="check" value="${seller.email }"></td>
 							</tr>						

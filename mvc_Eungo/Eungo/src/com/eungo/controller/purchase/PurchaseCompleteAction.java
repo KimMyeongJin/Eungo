@@ -29,7 +29,6 @@ public class PurchaseCompleteAction implements Action{
 		while((line = in.readLine()) != null) {
 			sb.append(line);
 			System.out.println("ajax data : "+line);
-			
 		}
 		String data = sb.toString();
 		

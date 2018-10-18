@@ -59,14 +59,14 @@ public class BoardDAO {
 		}
 		return 0;
 	}
-	
-	public int good_insert(int good,int lnumber) {
+
+	public int good_insert(int good, int lnumber) {
 		String SQL = "UPDATE list SET good = ? WHERE lnumber = ? AND del = false";
 		Connection conn = DBManager.getConnection();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, good);
-			pstmt.setInt(2, lnumber);			
+			pstmt.setInt(2, lnumber);
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -233,14 +233,16 @@ public class BoardDAO {
 
 			List<BoardVO> list = new ArrayList<>();
 			while (rs.next()) {
-				BoardVO board = new BoardVO();
-				board.setLnumber(rs.getInt("lnumber"));
-				board.setEmail(rs.getString("email"));
-				board.setGood(rs.getInt("good"));
-				board.setLtitle(rs.getString("ltitle"));
-				board.setLimage(rs.getString("limage"));
-				board.setLprice(String.format("%,d", Integer.parseInt(rs.getString("total"))));
-				list.add(board);
+				if (rs.getString("total") != null) {
+					BoardVO board = new BoardVO();
+					board.setLnumber(rs.getInt("lnumber"));
+					board.setEmail(rs.getString("email"));
+					board.setGood(rs.getInt("good"));
+					board.setLtitle(rs.getString("ltitle"));
+					board.setLimage(rs.getString("limage"));
+					board.setLprice(String.format("%,d", Integer.parseInt(rs.getString("total"))));
+					list.add(board);
+				}
 			}
 			return list;
 		} catch (Exception e) {
@@ -398,7 +400,7 @@ public class BoardDAO {
 				board.setLimage(rs.getString("limage"));
 				board.setLimage2(rs.getString("limage2"));
 				board.setLimage3(rs.getString("limage3"));
-				board.setLimage4(rs.getString("limage4"));				
+				board.setLimage4(rs.getString("limage4"));
 				if (!rs.getString("youtube").equals("")) {
 					board.setYoutube(rs.getString("youtube").split("=")[1]);
 				} else {
@@ -453,7 +455,7 @@ public class BoardDAO {
 				board.setLsellcount(rs.getInt("lsellcount"));
 				board.setLviewcount(rs.getInt("lviewcount"));
 				board.setLdate(rs.getString("ldate"));
-				board.setGood(rs.getInt("good"));				
+				board.setGood(rs.getInt("good"));
 				list.add(board);
 			}
 			return list;
@@ -529,7 +531,7 @@ public class BoardDAO {
 		}
 		return -1;
 	}
-	
+
 	public int board_delete_by_member(String email) {
 		String SQL = "UPDATE list SET del = true, del_date = now() WHERE email = ? ";
 		Connection conn = DBManager.getConnection();

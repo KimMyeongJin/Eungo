@@ -128,7 +128,7 @@
 									</c:when>
 									<c:otherwise>
 										<c:forEach var="paging" items="${paging }">
-											<li><a href="<%=request.getContextPath()%>/member?cmd=view_board&pageNum=${paging.value}">${paging.key}</a></li>
+											<li><a href="<%=request.getContextPath()%>/member?cmd=admin_board_search&pageNum=${paging.value}&search_text=${search_text}">${paging.key}</a></li>
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>

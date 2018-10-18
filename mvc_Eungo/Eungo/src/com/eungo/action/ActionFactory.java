@@ -1,5 +1,6 @@
 package com.eungo.action;
 
+import com.eungo.controller.board.AdminBoardSearchAction;
 import com.eungo.controller.board.BoardPagingAction;
 import com.eungo.controller.board.BoardSearchAction;
 import com.eungo.controller.board.DeleteBoardAction;
@@ -36,10 +37,12 @@ import com.eungo.controller.purchase.PurchaseAction;
 import com.eungo.controller.purchase.PurchaseCompleteAction;
 import com.eungo.controller.purchase.PurchaseFinishAction;
 import com.eungo.controller.purchase.PurchaseListAction;
+import com.eungo.controller.reply.AdminDeleteReplyAction;
 import com.eungo.controller.reply.AnswerDeleteAction;
 import com.eungo.controller.reply.ReplyAnswerAction;
 import com.eungo.controller.reply.ReplyCommentAction;
 import com.eungo.controller.reply.ReplyDeleteAction;
+import com.eungo.controller.reply.ViewReplyAction;
 
 public class ActionFactory {
 	private static String naming = "ActionFactory : ";
@@ -134,6 +137,12 @@ public class ActionFactory {
 			return new ViewBoardAction();
 		} else if (cmd.equals("delete_board")) {
 			return new DeleteBoardAction();
+		} else if (cmd.equals("view_reply")) {
+			return new ViewReplyAction();
+		} else if (cmd.equals("admin_delete_reply")) {
+			return new AdminDeleteReplyAction();
+		} else if (cmd.equals("admin_board_search")) {
+			return new AdminBoardSearchAction();
 		}
 		return null;
 	}

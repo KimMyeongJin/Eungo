@@ -28,8 +28,7 @@ public class BoardSearchAction implements Action{
 		
 		int totalNum = dao.searchCount(search_text); // list에 들어있는 모든 values 수				
 		List<BoardVO> list = dao.search(search_text,per_page,pageNum);
-		Map<String, Integer> paging = page.pagenation(per_page, pageNum, totalNum);		
-		System.out.println(paging.keySet().toArray()[0]);
+		Map<String, Integer> paging = page.pagenation(per_page, pageNum, totalNum);
 		if(paging.keySet().toArray()[0].equals("null")) {
 			paging = null;
 		}

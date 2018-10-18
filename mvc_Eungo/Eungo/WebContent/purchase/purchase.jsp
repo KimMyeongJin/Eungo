@@ -15,7 +15,7 @@
 	function goPay(){
 		var url = "<%=request.getContextPath()%>/purchase/payPage.jsp";
 		var title = "pop";
-		var status = "width=570,height=420, scrollbars=yes, resizable=yes";
+		var status = "width=850,height=600, scrollbars=yes, resizable=yes";
    	 	
 		window.open(url,title,status);	     
 	}

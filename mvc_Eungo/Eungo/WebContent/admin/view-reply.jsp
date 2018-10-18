@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>Mvc Eungo | View board</title>
+<title>Mvc Eungo | View Member</title>
 <!-- Start header -->
 <%@include file="../include/header.jsp"%>
 <!-- End of header -->
@@ -45,12 +45,12 @@
 			</div>
 			<ul class="main-nav nav navbar-nav navbar-right">
 				<li class="wow fadeInDown" data-wow-delay="0.1s"><a
-					href="<%=request.getContextPath()%>/index.jsp"> 은고</a></li>
-				<li class="wow fadeInDown" data-wow-delay="0.2s"><a
-					href="<%=request.getContextPath()%>/board?cmd=view_board&pageNum=1">게시판
+					href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1">
+						은고</a></li>
+				<li class="wow fadeInDown" data-wow-delay="0.2s"><a href="#">게시판
 						관리</a></li>
 				<li class="wow fadeInDown" data-wow-delay="0.3s"><a class=""
-					href="<%=request.getContextPath()%>/member?cmd=view_member&pageNum=1">회원관리</a></li>
+					href="#">회원관리</a></li>
 				<%-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a
 					href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a></li> --%>
 				<!-- 당장 contact.jsp 필요없어서 주석처리함  -->
@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="page-head-content">
-				<h1 class="page-title">서비스 게시물 관리</h1>
+				<h1 class="page-title">댓글 관리</h1>
 			</div>
 		</div>
 	</div>
@@ -73,81 +73,49 @@
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
 	<div class="container">
-		<form name="adminForm" method="post">
+		<form action="<%=request.getContextPath()%>/reply">
+			<input type="hidden" name="cmd" value="admin_delete_reply">
 			<div class="panel-body">
 				<table id="data-table"
 					class="table table-striped table-bordered nowrap">
 					<thead>
 						<tr>
-							<th>이메일</th>
-							<th>제목</th>
-							<th>연락처</th>
-							<th>카테고리</th>
-							<th>가격</th>
-							<th>판매수량</th>
-							<th style="width: 5%">평점</th>
-							<th>게시일</th>
+							<th style="width: 7%">구매번호</th>
+							<th style="width: 13%">이메일</th>
+							<th style="width: 25%">댓글</th>
+							<th style="width: 9%">댓글 날짜</th>
+							<th style="width: 5%">별점</th>
+							<th style="width: 25%">답글</th>
+							<th style="width: 9%">답글 날짜</th>
 							<th style="width: 3%"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="list" items="${list }">
-							<tr>
-								<td>${list.email }</td>
-								<td><a href="<%=request.getContextPath()%>/board?cmd=view_reply&lnumber=${list.lnumber}">${list.ltitle }</a></td>
-								<td>${list.lphone_number }</td>
-								<td>${list.lcategory }</td>
-								<td>${list.standard_price }</td>
-								<td>${list.lsellcount }</td>
-								<td>${list.good }</td>
-								<td>${list.ldate }</td>
-								<td><input type="checkbox" name="name1" /></td>
+						<c:forEach var="re_list" items="${re_list }">
+							<tr class="odd gradeX">
+								<td>${re_list.pur_number }</td>
+								<td>${re_list.email }</td>
+								<td><div
+										style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">${re_list.reply_comment }</div></td>
+								<td>${re_list.re_date }</td>
+								<td>${re_list.star }</td>
+								<td><div
+										style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">${re_list.reply_answer }</div></td>
+								<td>${re_list.an_date }</td>
+								<td><input type="checkbox" name="check" value="${re_list.reply_number}"></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			<div class="col-md-12">
-				<div class="row">
-					<button class="navbar-btn nav-button wow fadeInRight"
-						data-wow-delay="0.48s"
-						onclick="javascript: form.action='<%=request.getContextPath()%>/board?cmd=delete_board';">삭제</button>
-					<input type="text" name="search_text" class="form-control"
-						style="width: 400px; display: inline; margin-left: 15%"
-						placeholder="검색어" onkeydown="EnterShift();">
-					<button class="btn search-btn" name="searchbox"
-						onclick="javascript: form.action='<%=request.getContextPath()%>/board?cmd=admin_board_search&pageNum=1';">
-						<i class="fa fa-search"></i>
-					</button>
-					<div class="pull-right">
-						<div class="pagination">
-							<ul>
-								<c:choose>
-									<c:when test="${paging eq null }">
-										<li><a href="#">해당 게시물이 없습니다</a></li>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="paging" items="${paging }">
-											<li><a href="<%=request.getContextPath()%>/member?cmd=view_board&pageNum=${paging.value}">${paging.key}</a></li>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</div>
-					</div>
-				</div>
+				<button class="navbar-btn nav-button wow fadeInRight" type="submit"
+					data-wow-delay="0.48s">삭제</button>
 			</div>
 		</form>
 	</div>
 </div>
 <!-- Footer area-->
 <%@include file="../include/footer.jsp"%>
-<script type="text/javascript">
-	function EnterShift() {
-		var keyValue = event.keyCode;
-		if (keyValue == '13')
-			document.adminForm.searchbox.focus();
-	}
-</script>
 </body>
 </html>

@@ -134,7 +134,7 @@
 									src="${top_three.limage }"  style="height: 225px"></a>
 							</div>
 							<div class="item-entry overflow" style="padding-bottom: 8px">
-								<h5 style="text-overflow: ellipsis; overflow: hidden;">
+								<h5 style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100%;">
 									<a
 										href="<%=request.getContextPath()%>/board?cmd=view_service&lnumber=${top_three.lnumber}">${top_three.ltitle }</a>
 								</h5>
