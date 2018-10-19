@@ -19,6 +19,7 @@ var product_name = window.opener.$("#price_title").html();
 var quantity = window.opener.$("#numberUpDown").html();
 var price = window.opener.document.getElementById('price').value;
 var seller_email = window.opener.document.getElementById('seller_email').value;
+var email = '${sessionScope.email}';
 
 IMP.request_pay({
     pg : 'inicis', // version 1.1.0부터 지원.
@@ -26,7 +27,7 @@ IMP.request_pay({
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
     amount : 100, 					 //판매 가격
-    buyer_email : 'iamport@siot.do', //user_email
+    buyer_email : email, //user_email
     buyer_name : '주문자이름:',			 //user_name
     buyer_tel : '010-1234-5678',	 //user_phone
     buyer_addr : '서울특별시 강남구 삼성동', //user_address
@@ -56,12 +57,13 @@ IMP.request_pay({
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num; */
+        alert(msg);
+        opener.location.href='<%=request.getContextPath()%>/purchase?cmd=purchase_finish';
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
     }
-    alert(msg);
-    opener.location.href='<%=request.getContextPath()%>/purchase?cmd=purchase_finish'; 
+     
     window.close();
 });
 </script>
