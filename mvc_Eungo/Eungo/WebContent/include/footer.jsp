@@ -42,11 +42,11 @@
 						<h4>팀 소개</h4>
 						<div class="footer-title-line"></div>
 						<ul class="footer-menu">
-							<li><a href="#">강석모</a>
+							<li><a href="http://18.220.218.215:8000/resume/">강석모</a>
 							</li>
-							<li><a href="#">이주영</a>							
+							<li><a href="#">이주영</a>				
 							</li>
-							<li><a href="#">남우영</a>							
+							<li><a href="https://blog.naver.com/karoda2">남우영</a>							
 							</li>
 							<li><a href="#">김명진</a>							
 							</li>
