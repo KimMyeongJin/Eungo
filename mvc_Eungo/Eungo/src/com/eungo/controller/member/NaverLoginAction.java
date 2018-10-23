@@ -23,7 +23,7 @@ public class NaverLoginAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "index.jsp";
-		
+
 		HttpSession session = request.getSession();
 		String access_token = (String) session.getAttribute("access_token");
 		String memberPro = ApiMemberPro.getApiMember(access_token);
@@ -39,29 +39,28 @@ public class NaverLoginAction implements Action {
 			MemberVO member = g.fromJson(data.toString(), MemberVO.class);
 			MemberDAO dao = new MemberDAO();
 			String email = member.getEmail();
-			boolean dis_seller = dao.discriminate_seller(email);
+			boolean dis_seller = false;
 			int del = dao.select_del(email);
-			if (del == 1) {
-				if (dao.checkEmail(member.getEmail()) != 1) {
-					int result = dao.insert_naveremail(member);
-					if (result == 1) {
-						session = request.getSession();
-						session.setAttribute("email", email);
-						session.setAttribute("seller", dis_seller);
-						Script.moving(response, "로그인 성공", url);
-						System.out.println("네이버 로그인 성공");
-					} else if (result == -1) {
-						System.out.println("DB에러");
-					}
-				} else {
+			if (del == -1) {
+				int result = dao.insert_naveremail(member);
+				if (result == 1) {
 					session = request.getSession();
-					session.setAttribute("email", member.getEmail());
+					session.setAttribute("email", email);
 					session.setAttribute("seller", dis_seller);
 					Script.moving(response, "로그인 성공", url);
 					System.out.println("네이버 로그인 성공");
+				} else {
+					Script.moving(response, "DB에러");
 				}
-			} else if(del == 2) {
+			} else if (del == 2) {
 				Script.moving(response, "삭제된 계정, 아직 사용 할 수 없습니다.");
+			} else if (del == 1) {
+				dis_seller = dao.discriminate_seller(email);
+				session = request.getSession();
+				session.setAttribute("email", email);
+				session.setAttribute("seller", dis_seller);
+				Script.moving(response, "로그인 성공", url);
+				System.out.println("네이버 로그인 성공");
 			} else {
 				Script.moving(response, "DB에러");
 			}
